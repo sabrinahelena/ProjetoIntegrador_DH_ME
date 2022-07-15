@@ -6,3 +6,5 @@
 - ### 🔗 [Hugo Diniz](https://github.com/Hugogdiniz)
 - ### 🔗 [Carla Rani](https://github.com/carlarani)
 - ### 🔗 [Danilo Hiroyuki]
+- ### 🔗 [Jose Junior](https://github.com/NICKN1)
+
