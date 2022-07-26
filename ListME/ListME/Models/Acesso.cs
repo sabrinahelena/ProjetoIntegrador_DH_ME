@@ -6,7 +6,7 @@
         public string Login { get; set; }
         public string Senha { get; set; }
 
-        public Usuario? usuario { get; set; }
+        public Usuario usuario { get; set; }
 
     }
 }
