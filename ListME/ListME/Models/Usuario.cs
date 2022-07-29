@@ -11,6 +11,5 @@
         public string? Foto_Perfil { get; set; }
 
         public List<Residencias> residencias { get; set; } = new List<Residencias>();
-        public List<Produtos_ListaDeCompras>? produtos { get; set; } = new List<Produtos_ListaDeCompras>();
     }
 }

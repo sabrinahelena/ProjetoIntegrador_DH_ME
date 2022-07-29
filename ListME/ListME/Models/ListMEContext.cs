@@ -61,7 +61,6 @@ namespace ListME.Models
                 TabelaUsuario.HasKey(Coluna => Coluna.Id_Usuario);
                 // Definindo o nome da Tabela no Database.
                 TabelaUsuario.ToTable("Usuários");
-                TabelaUsuario.HasMany(Tabela => Tabela.produtos);
                 TabelaUsuario.HasMany(Tabela => Tabela.residencias);
             });
         }

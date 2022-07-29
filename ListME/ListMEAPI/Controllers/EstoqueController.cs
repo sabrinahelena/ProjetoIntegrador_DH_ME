@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace ListME.Controllers
+namespace ListMEAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
