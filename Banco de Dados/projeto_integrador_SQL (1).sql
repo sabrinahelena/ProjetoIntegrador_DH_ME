@@ -1,4 +1,4 @@
-create database [Projeto integrador];
+create database [Projeto integradorteste];
 
 
 create table estoque (
