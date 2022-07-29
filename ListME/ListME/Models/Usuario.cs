@@ -1,5 +1,6 @@
 ﻿namespace ListME.Models
 {
+    //.
     public class Usuario
     {
         public int Id_Usuario { get; set; }
