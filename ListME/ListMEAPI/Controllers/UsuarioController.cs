@@ -12,11 +12,23 @@ namespace ListMEAPI.Controllers
         private ListMEContext _listMEContext = new ListMEContext();
 
         //USUÁRIOS 
-        /*
-         * Fizemos com acesso pois ao criar usuário precisa das informações
-         * de login, que estão em Acesso
-         * Necessitamos de limitar o usuário em suas funções
-         */
+
+
+        /// <summary>
+        /// Cadastra um novo usuário
+        /// </summary>
+        /// <remarks>
+        /// Exemplo requisição:
+        ///
+        ///     POST /Acesso
+        ///     {
+        ///        "nome": "Willian",
+        ///        "sobrenome": "Sant Anna"
+        ///     }
+        /// </remarks>
+        /// <returns>Retorna o usuário recém criado</returns>
+        /// <param name="usuario">Cadastro do usuário</param>
+        /// 
         [HttpPost("AdicionarUsuario")]
 
         public Acesso AdicionarUsuarioLogin(Acesso usuario)
@@ -255,4 +267,4 @@ namespace ListMEAPI.Controllers
 
     }
 }
-}
+
