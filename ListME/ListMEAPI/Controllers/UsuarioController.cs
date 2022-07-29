@@ -21,14 +21,47 @@ namespace ListMEAPI.Controllers
         /// Exemplo requisição:
         ///
         ///     POST /Acesso
+        ///  {
+        ///     "id_Acesso": 0,
+        ///     "login": "string",
+        ///     "senha": "string",
+        ///     "usuario": {
+        ///     "id_Usuario": 0,
+        ///     "nome_Usuario": "string",
+        ///     "sobrenome": "string",
+        ///     "telefone": "string",
+        ///     "data_Nascimento": "string",
+        ///     "email": "string",
+        ///     "foto_Perfil": "string",
+        ///     "residencias": [
         ///     {
-        ///        "nome": "Willian",
-        ///        "sobrenome": "Sant Anna"
+        ///         "id_Residencias": 0,
+        ///         "nome_Residencias": "string",
+        ///         "descricao_Residencias": "string",
+        ///         "foto_Residencias": "string",
+        ///         "estoque": {
+        ///              "id_Estoque": 0,
+        ///              "data_Validade": "string",
+        ///              "quantidade_Estoque": 0,
+        ///                 "produtos": [
+        ///      {
+        ///     "id_Produtos": 0,
+        ///"nome_Produtos": "string",
+        ///"descricao_Produtos": "string",
+        ///   "preco": 0,
+        ///      "quantidade_Produtos": 0
         ///     }
+        ///        ]
+        ///        }
+        ///      }
+        ///   ]
+        ///  }
+        ///}
         /// </remarks>
         /// <returns>Retorna o usuário recém criado</returns>
         /// <param name="usuario">Cadastro do usuário</param>
-        /// 
+        /// <response code="201">Retorna o usuário recém criado</response>
+        /// <response code="500">Ocorreu algum erro criar o usuários</response>
         [HttpPost("AdicionarUsuario")]
 
         public Acesso AdicionarUsuarioLogin(Acesso usuario)
