@@ -1,10 +1,11 @@
 ﻿using ListME.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace ListME.Controllers
+namespace ListMEAPI.Controllers
 {
-    [Route("v1/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase
     {
@@ -254,5 +255,4 @@ namespace ListME.Controllers
 
     }
 }
-
-
+}
