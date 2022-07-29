@@ -80,6 +80,24 @@ namespace ListMEAPI.Controllers
             return usuario;
         }
 
+        /// <summary>
+        /// Deletar um usuario
+        /// </summary>
+        /// <remarks>
+        /// Exemplo requisição:
+        ///
+        ///     Delete /Acesso
+        ///  {
+        ///     Colocar a ID do usuario a ser deletado
+        ///  }
+        ///}
+        /// </remarks>
+        /// <returns>Retorna o usuário recém deletado</returns>
+        /// <param name="usuario">Delete do usuário</param>
+        /// <response code="201">Retorna o usuário recém deletado</response>
+        /// <response code="404">Usuário não encontrado</response>
+        /// <response code="204">Solicitação bem sucedida</response>
+        /// <response code="500">Ocorreu algum erro ao deletar o usuários</response>
         [HttpDelete("DeletarUsuario{Id}")]
 
         public ActionResult<Acesso> DeleteUmPelaId(int Id)
