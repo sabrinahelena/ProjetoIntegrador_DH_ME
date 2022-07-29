@@ -88,7 +88,7 @@ namespace ListMEAPI.Controllers
         /// <response code="201">Retorna o usuário recém deletado</response>
         /// <response code="404">Usuário não encontrado</response>
         /// <response code="204">Usuário deletado</response>
-        /// <response code="500">Ocorreu algum erro ao deletar o usuários</response>
+        /// <response code="500">Ocorreu algum erro ao deletar o usuário</response>
         [HttpDelete("DeletarUsuario{Id}")]
 
         public ActionResult<Acesso> DeleteUmPelaId(int Id)
