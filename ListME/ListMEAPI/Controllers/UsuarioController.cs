@@ -278,7 +278,15 @@ namespace ListMEAPI.Controllers
             return Produtos;
         }
 
-
+        /// <summary>
+        /// Deletar um produto a partir de seu Id
+        /// </summary>
+        /// <returns>Retorna o produto recém deletado</returns>
+        /// <param name="Id">Id do produto</param>
+        /// <response code="201">Retorna o produto recém deletado</response>
+        /// <response code="404">Produto não encontrado</response>
+        /// <response code="204">Produto deletado</response>
+        /// <response code="500">Ocorreu algum erro ao deletar o produto</response>
         [HttpDelete("DeletarProduto{Id}")]
 
         public ActionResult<Produtos_ListaDeCompras> DeleteProdutoPelaId(int Id)
