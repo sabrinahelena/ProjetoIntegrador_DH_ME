@@ -60,6 +60,15 @@ namespace ListMEAPI.Controllers
             return estoque;
         }
 
+        /// <summary>
+        /// Deletar um produto do estoque a partir da sua Id
+        /// </summary>
+        /// <returns>Retorna o produto recém deletado do estoque</returns>
+        /// <param name="Id">Id do produto</param>
+        /// <response code="201">Retorna o produto recém deletado do estoque</response>
+        /// <response code="404">produto não encontrado</response>
+        /// <response code="204">produto deletado</response>
+        /// <response code="500">Ocorreu algum erro ao deletar o produto</response>
         [HttpDelete("DeletarProdutoEstoque{Id}")]
 
         public ActionResult<Estoque> DeleteItemEstoquePelaId(int Id)
