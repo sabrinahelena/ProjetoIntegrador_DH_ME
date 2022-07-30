@@ -80,6 +80,15 @@ namespace ListMEAPI.Controllers
             return usuario;
         }
 
+        /// <summary>
+        /// Deletar um usuario a partir da sua Id
+        /// </summary>
+        /// <returns>Retorna o usuário recém deletado</returns>
+        /// <param name="Id">Id do usuário</param>
+        /// <response code="201">Retorna o usuário recém deletado</response>
+        /// <response code="404">Usuário não encontrado</response>
+        /// <response code="204">Usuário deletado</response>
+        /// <response code="500">Ocorreu algum erro ao deletar o usuário</response>
         [HttpDelete("DeletarUsuario{Id}")]
 
         public ActionResult<Acesso> DeleteUmPelaId(int Id)
@@ -170,6 +179,15 @@ namespace ListMEAPI.Controllers
             return residencias;
         }
 
+        /// <summary>
+        /// Deletar uma residência a partir de sua Id
+        /// </summary>
+        /// <returns>Retorna a residência recém deletada</returns>
+        /// <param name="Id">Id da residência</param>
+        /// <response code="201">Retorna a residência recém deletada</response>
+        /// <response code="404">Residência não encontrada</response>
+        /// <response code="204">Residência deletada</response>
+        /// <response code="500">Ocorreu algum erro ao deletar a residência</response>
         [HttpDelete("DeletarResidencia{Id}")]
 
         public ActionResult<Residencias> DeleteResidenciaPelaId(int Id)
@@ -260,7 +278,15 @@ namespace ListMEAPI.Controllers
             return Produtos;
         }
 
-
+        /// <summary>
+        /// Deletar um produto a partir de seu Id
+        /// </summary>
+        /// <returns>Retorna o produto recém deletado</returns>
+        /// <param name="Id">Id do produto</param>
+        /// <response code="201">Retorna o produto recém deletado</response>
+        /// <response code="404">Produto não encontrado</response>
+        /// <response code="204">Produto deletado</response>
+        /// <response code="500">Ocorreu algum erro ao deletar o produto</response>
         [HttpDelete("DeletarProduto{Id}")]
 
         public ActionResult<Produtos_ListaDeCompras> DeleteProdutoPelaId(int Id)
