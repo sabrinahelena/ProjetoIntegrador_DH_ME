@@ -86,7 +86,36 @@ namespace ListMEAPI.Controllers
             }
 
         }
+        //PARTE SABRINA
 
+        /// <summary>
+        /// Substitui produto do estoque a partir de seu Id
+        /// </summary>
+        /// <returns>Retorna produto substituído</returns>
+        /// <remarks>
+        ///     Exemplo requisição:
+        ///
+        ///     PUT /SubstituirProdutoEstoque{Id}
+        ///{
+        /// "id_Estoque": 0,
+        /// "data_Validade": "string",
+        /// "quantidade_Estoque": 0,
+        /// "produtos": [
+        ///  {
+        ///    "id_Produtos": 0,
+        ///    "nome_Produtos": "string",
+        ///    "descricao_Produtos": "string",
+        ///    "preco": 0,
+        ///    "quantidade_Produtos": 0
+        ///  }
+        /// ]
+        ///  }
+        /// </remarks>
+        /// <param name="Id">Id do estoque</param>
+        /// <param name="Estoque">Modelo do estoque</param>
+        /// <response code="400">Estoque não pode ter sua Id modificada</response>
+        /// <response code="404">Estoque não encontrado</response>
+        /// <response code="204">Estoque substituído</response>
         [HttpPut("SubstituirProdutoEstoque{Id}")]
 
         public ActionResult SubstituirPelaIdEstoque(int Id, Estoque Estoque)
