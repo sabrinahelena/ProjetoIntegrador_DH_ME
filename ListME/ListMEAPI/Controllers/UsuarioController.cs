@@ -10,7 +10,6 @@ namespace ListMEAPI.Controllers
     public class UsuarioController : ControllerBase
     {
         private ListMEContext _listMEContext = new ListMEContext();
-        //Junior AQQQQ
         //USUÁRIOS 
 
 
@@ -20,7 +19,7 @@ namespace ListMEAPI.Controllers
         /// <remarks>
         /// Exemplo requisição:
         ///
-        ///     POST /Acesso
+        ///     POST /AdicionarUsuario
         ///  {
         ///     "id_Acesso": 0,
         ///     "login": "string",
@@ -106,6 +105,59 @@ namespace ListMEAPI.Controllers
             }
 
         }
+        //PARTE SABRINA
+
+        /// <summary>
+        /// Substitui um usuário a partir de sua Id
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        ///     Exemplo requisição:
+        ///
+        ///     PUT /SubstituirUsuario/{Id}
+        ///  {
+        ///     "id_Acesso": 0,
+        ///     "login": "string",
+        ///     "senha": "string",
+        ///     "usuario": {
+        ///     "id_Usuario": 0,
+        ///     "nome_Usuario": "string",
+        ///     "sobrenome": "string",
+        ///     "telefone": "string",
+        ///     "data_Nascimento": "string",
+        ///     "email": "string",
+        ///     "foto_Perfil": "string",
+        ///     "residencias": [
+        ///     {
+        ///         "id_Residencias": 0,
+        ///         "nome_Residencias": "string",
+        ///         "descricao_Residencias": "string",
+        ///         "foto_Residencias": "string",
+        ///         "estoque": {
+        ///              "id_Estoque": 0,
+        ///              "data_Validade": "string",
+        ///              "quantidade_Estoque": 0,
+        ///                 "produtos": [
+        ///      {
+        ///     "id_Produtos": 0,
+        ///"nome_Produtos": "string",
+        ///"descricao_Produtos": "string",
+        ///   "preco": 0,
+        ///      "quantidade_Produtos": 0
+        ///     }
+        ///        ]
+        ///        }
+        ///      }
+        ///   ]
+        ///  }
+        ///}
+        ///
+        /// </remarks>
+        /// <param name="Id">Id do usuário</param>
+        /// <param name="usuario">Modelo do usuário</param>
+        /// <response code="400">Usuário não pode ter sua Id modificada</response>
+        /// <response code="404">Usuário não encontrado</response>
+        /// <response code="204">Usuário substituído</response>
 
         [HttpPut("SubstituirUsuario{Id}")]
 
@@ -206,6 +258,44 @@ namespace ListMEAPI.Controllers
 
         }
 
+        //PARTE SABRINA
+
+        /// <summary>
+        /// Substitui residência a partir de sua Id
+        /// </summary>
+        /// <returns>Residência substituída</returns>
+        /// <remarks>
+        ///     Exemplo requisição:
+        ///
+        ///     PUT /SubstituirResidencia/{Id}
+        ///  {
+        ///     {
+        /// "id_Residencias": 0,
+        ///"nome_Residencias": "string",
+        ///"descricao_Residencias": "string",
+        /// "foto_Residencias": "string",
+        ///"estoque": {
+        ///"id_Estoque": 0,
+        ///"data_Validade": "string",
+        ///"quantidade_Estoque": 0,
+        /// "produtos": [
+        ///      {
+        ///     "id_Produtos": 0,
+        ///  "nome_Produtos": "string",
+        ///     "descricao_Produtos": "string",
+        ///     "preco": 0,
+        ///   "quantidade_Produtos": 0
+        ///   }
+        /// ]
+        ///}
+        ///}
+        /// </remarks>
+        /// <param name="Id">Id da residência</param>
+        /// <param name="Residencia">Modelo da residência</param>
+        /// <response code="400">Residência não pode ter sua Id modificada</response>
+        /// <response code="404">Residência não encontrada</response>
+        /// <response code="204">Residência substituída</response>
+
         [HttpPut("SubstituirResidencia{Id}")]
 
         public ActionResult SubstituirPelaIdResidencia(int Id, Residencias Residencia)
@@ -304,6 +394,30 @@ namespace ListMEAPI.Controllers
             }
 
         }
+
+        //PARTE SABRINA
+
+        /// <summary>
+        /// Substitui produto a partir de sua Id
+        /// </summary>
+        /// <returns>Produto substituído</returns>
+        /// <remarks>
+        ///     Exemplo requisição:
+        ///
+        ///     PUT /SubstituirProduto/{Id}
+        ///  {
+        ///"id_Produtos": 0,
+        ///"nome_Produtos": "string",
+        /// "descricao_Produtos": "string",
+        ///"preco": 0,
+        ///"quantidade_Produtos": 0
+        ///}
+        /// </remarks>
+        /// <param name="Id">Id do produto</param>
+        /// <param name="Produto">Modelo do produto</param>
+        /// <response code="400">Produto não pode ter sua Id modificada</response>
+        /// <response code="404">Produto não encontrado</response>
+        /// <response code="204">Produto substituído</response>
 
         [HttpPut("SubstituirProduto{Id}")]
 
