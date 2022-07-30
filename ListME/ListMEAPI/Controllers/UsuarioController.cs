@@ -10,7 +10,7 @@ namespace ListMEAPI.Controllers
     public class UsuarioController : ControllerBase
     {
         private ListMEContext _listMEContext = new ListMEContext();
-
+        //Junior AQQQQ
         //USUÁRIOS 
 
 
