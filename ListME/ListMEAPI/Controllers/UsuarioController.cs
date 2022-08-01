@@ -120,6 +120,11 @@ namespace ListMEAPI.Controllers
 
         //RESIDÊNCIAS
 
+        /// <summary>
+        /// Exibe todas as residências
+        /// </summary>
+        /// <response code="200">Retorna todas as residências cadastradas</response>
+        /// <response code="204">Caso não haja residências cadastradas</response> 
         [HttpGet("ExibirTodasResidencias")]
 
         public ActionResult<List<Residencias>> RequererTodasResidencias()
@@ -136,6 +141,12 @@ namespace ListMEAPI.Controllers
 
         }
 
+        /// <summary>
+        /// Busca uma residência no registro pelo o seu Id
+        /// </summary>
+        /// <param name="Id">Digitar o Id da residência</param>
+        /// <response code="200">Retorna a residência digitada</response>
+        /// <response code="404">Caso não haja residência com o Id fornecido</response> 
         [HttpGet("ExibirResidencia{Id}")]
 
         public ActionResult<Residencias> RequererUmaResidencia(int Id)
@@ -209,7 +220,11 @@ namespace ListMEAPI.Controllers
 
 
         //Produtos_ListaDeCompras
-
+        /// <summary>
+        /// Exibe todos os produtos da lista de compras
+        /// </summary>
+        /// <response code="200">Retorna os produtos da lista de compras</response>
+        /// <response code="204">Caso não haja produto na lista de compras</response> 
         [HttpGet("ExibirTodosProdutos")]
 
         public ActionResult<List<Produtos_ListaDeCompras>> RequererTodosProdutos()
@@ -226,6 +241,12 @@ namespace ListMEAPI.Controllers
 
         }
 
+        /// <summary>
+        /// Busca um produto na lista de compras pelo o seu Id
+        /// </summary>
+        /// <param name="Id">Digitar o Id do produto</param>
+        /// <response code="200">Retorna o produto da lista de compras</response>
+        /// <response code="404">Caso não haja produto com o Id fornecido</response> 
         [HttpGet("ExibirProduto{Id}")]
 
         public ActionResult<Produtos_ListaDeCompras> RequererUmProduto(int Id)
