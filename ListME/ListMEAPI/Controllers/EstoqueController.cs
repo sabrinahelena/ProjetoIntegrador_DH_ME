@@ -11,6 +11,12 @@ namespace ListMEAPI.Controllers
     {
         private ListMEContext _listMEContext = new ListMEContext();
 
+
+        /// <summary>
+        /// Exibe todos os itens no estoque
+        /// </summary>
+        /// <response code="200">Retorna a lista de produtos no estoque</response>
+        /// <response code="204">Caso não haja produtos no estoque</response> 
         [HttpGet("ExibirTodoEstoque")]
 
         public ActionResult<List<Estoque>> RequererTodosEstoque()
@@ -26,6 +32,12 @@ namespace ListMEAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Busca um produto no estoque pelo o seu Id
+        /// </summary> 
+        /// <param name="Id">Digitar o Id do produto</param>
+        /// <response code="200">Retorna o produto do estoque</response>
+        /// <response code="404">Caso não haja produto com o Id fornecido</response> 
         [HttpGet("ExibirEstoque{Id}")]
 
         public ActionResult<Estoque> RequererItemEstoque(int Id)
