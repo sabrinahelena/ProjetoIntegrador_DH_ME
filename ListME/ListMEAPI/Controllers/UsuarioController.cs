@@ -224,6 +224,41 @@ namespace ListMEAPI.Controllers
             }
         }
 
+        // Residências
+
+        /// <summary>
+        /// Cadastra uma nova residência
+        /// </summary>
+        /// <remarks>
+        /// Exemplo requisição:
+        ///
+        ///     POST /Residência
+        //        {
+        //  "id_Residencias": 0,
+        //  "nome_Residencias": "string",
+        //  "descricao_Residencias": "string",
+        //  "foto_Residencias": "string",
+        //  "estoque": {
+        //    "id_Estoque": 0,
+        //    "data_Validade": "string",
+        //    "quantidade_Estoque": 0,
+        //    "produtos": [
+        //      {
+        //        "id_Produtos": 0,
+        //        "nome_Produtos": "string",
+        //        "descricao_Produtos": "string",
+        //        "preco": 0,
+        //        "quantidade_Produtos": 0
+        //      }
+        //    ]
+        //  }
+        //}
+        /// </remarks>
+        /// <returns>Retorna a residência recém criada</returns>
+        /// <param name="residencia">Cadastro da residência</param>
+        /// <response code="201">Retorna a residêmcia recém criada</response>
+        /// <response code="500">Ocorreu algum erro criar a residência</response>
+
         [HttpPost("AdicionarResidencia")]
 
         public Residencias AdicionarResidencia(Residencias residencias)
@@ -370,6 +405,27 @@ namespace ListMEAPI.Controllers
                 return Ok(produto);
             }
         }
+        // Estoque
+
+        /// <summary>
+        /// Cadastra um novo produto
+        /// </summary>
+        /// <remarks>
+        /// Exemplo requisição:
+        ///
+        ///     POST / Produto
+        ///  {
+        //  "id_Produtos": 0,
+        //  "nome_Produtos": "string",
+        //  "descricao_Produtos": "string",
+        //  "preco": 0,
+        //  "quantidade_Produtos": 0
+        //}
+        /// </remarks>
+        /// <returns>Retorna o produto recém criado</returns>
+        /// <param name="produto">Cadastro do produto</param>
+        /// <response code="201">Retorna o produto recém criado</response>
+        /// <response code="500">Ocorreu algum erro criar o produto</response>
 
         [HttpPost("AdicionarProduto")]
 
