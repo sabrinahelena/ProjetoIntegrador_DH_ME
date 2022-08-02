@@ -21,7 +21,7 @@ namespace ListMEAPI.Controllers
 
         public ActionResult<List<Estoque>> RequererTodosEstoque()
         {
-            var ListaEstoque = _listMEContext.Produtos_ListaDeCompras.ToList();
+            var ListaEstoque = _listMEContext.Estoque.ToList();
             if (ListaEstoque == null)
             {
                 return NotFound();
