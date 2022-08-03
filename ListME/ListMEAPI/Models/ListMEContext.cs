@@ -18,6 +18,13 @@ namespace ListME.Models
 
         protected override void OnModelCreating(ModelBuilder Modelagem)
         {
+            Modelagem.Entity<UsuarioRelacaorResidencia>(TabelaAcesso =>
+            {
+                // Definindo a PK da Tabela Aluno.
+                TabelaAcesso.HasKey(Coluna => Coluna.Id_UsuarioRelacaoResidencia);
+                }
+
+            );
             Modelagem.Entity<Acesso>(TabelaAcesso =>
             {
                 // Definindo a PK da Tabela Aluno.
