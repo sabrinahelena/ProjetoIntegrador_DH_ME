@@ -178,7 +178,7 @@ namespace ListMEAPI.Controllers
 
         }
 
-
+        //
         //RESIDÊNCIAS
 
         /// <summary>
