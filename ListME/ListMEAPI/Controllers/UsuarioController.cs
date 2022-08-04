@@ -79,6 +79,29 @@ namespace ListMEAPI.Controllers
             return usuario;
         }
 
+        [HttpPost]
+        public ActionResult<List<Usuario>> CriarUsuario(Usuario usuario, int IdResidencia, int IdEstoque, int IdListaDeCompras)
+        {
+            var residencia = _listMEContext.Residencias.Find(IdResidencia);
+            var estoque = _listMEContext.Estoque.Find(IdEstoque);
+            var listaDecompras = _listMEContext.ListaDeCompras.Find(IdListaDeCompras);
+
+            usuario.residencias = residencia;
+            usuario.estoque = estoque;
+            usuario.listaDeCompras = listaDecompras;
+            _listMEContext.Usuario.Add(usuario);
+
+            _listMEContext.SaveChanges();
+            return Ok(usuario);
+        }
+
+        [HttpGet]
+        public ActionResult<Usuario> RequererTodosUsuarios()
+        {
+            // return OK(DbSistema.Atendimentos.Include(c => c.Enderecos).Include(c => c.Clientes).Include(c => c.Profissionais).AsNoTracking().ToList());
+            return Ok(_listMEContext.Usuario.Include(c => c.residencias).Include(c => c.estoque).Include(c => c.listaDeCompras).ToList());
+        }
+
         /// <summary>
         /// Deletar um usuario a partir da sua Id
         /// </summary>
