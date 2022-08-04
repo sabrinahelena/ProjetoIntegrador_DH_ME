@@ -30,7 +30,7 @@ namespace ListME.Models
         // public List<Residencias> listaResidencias { get; set; } = new List<Residencias>();
         public Residencias residencias { get; set; }
         public Estoque estoque { get; set; }
-        public listaDeCompras listaDeCompras { get; set; }
+        public ListaDeCompras listaDeCompras { get; set; }
 
     }
 }
