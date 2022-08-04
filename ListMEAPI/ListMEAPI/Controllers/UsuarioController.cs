@@ -20,15 +20,7 @@ namespace ListMEAPI.Controllers
             return Ok(usuario);
         }
 
-        [HttpPost("AdicionarResidencia")]
-
-        public ActionResult<ResidenciaModel> AdicionarResidencia(ResidenciaModel residencia)
-        {
-            _listMEContext.Residencias.Add(residencia);
-            _listMEContext.SaveChanges();
-            return Ok(residencia);
-        }
-
+     
         [HttpPost("AdicionarEstoque")]
 
         public ActionResult<EstoqueModel> AdicionarEstoque(EstoqueModel estoque)

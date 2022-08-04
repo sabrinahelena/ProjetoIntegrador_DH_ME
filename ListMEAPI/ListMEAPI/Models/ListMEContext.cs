@@ -8,7 +8,7 @@ namespace ListMEAPI.Models
         public DbSet<EstoqueModel> Estoque { get; set; }
         public DbSet<ProdutosModel> Produtos { get; set; }
         public DbSet<ListaComprasModel> ListaCompras { get; set; }
-        public DbSet<ResidenciaModel> Residencias { get; set; }
+        public DbSet<ResidenciaModel>? Residencias { get; set; }
         public DbSet<RelacionarUsuario> RelacaoUsuario { get; set; }
 
         protected override void OnModelCreating(ModelBuilder Modelagem)
@@ -52,10 +52,10 @@ namespace ListMEAPI.Models
         protected override void OnConfiguring(DbContextOptionsBuilder Configuracao)
         {
             // Credêncial de Conexão com Banco de dados.
-            string Credencial = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ListME;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+           // string Credencial = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ListME;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
             // Definição da Conexão em um Banco de dados Sql Server.
-            Configuracao.UseSqlServer(Credencial);
+            Configuracao.UseInMemoryDatabase("ListME-InMemory");
         }
     }
 }

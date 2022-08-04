@@ -33,21 +33,6 @@ namespace ListMEAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Residencias",
-                columns: table => new
-                {
-                    Id_Residencias = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome_Residencias = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Descricao_Residencias = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Foto_Residencias = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Residencias", x => x.Id_Residencias);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Usuarios",
                 columns: table => new
                 {
@@ -86,6 +71,27 @@ namespace ListMEAPI.Migrations
                         column: x => x.ListaComprasModelId_ListaDeCompras,
                         principalTable: "Lista de compras",
                         principalColumn: "Id_ListaDeCompras");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Residencias",
+                columns: table => new
+                {
+                    Id_Residencias = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome_Residencias = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Descricao_Residencias = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Foto_Residencias = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UsuarioModelId_Usuario = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Residencias", x => x.Id_Residencias);
+                    table.ForeignKey(
+                        name: "FK_Residencias_Usuarios_UsuarioModelId_Usuario",
+                        column: x => x.UsuarioModelId_Usuario,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id_Usuario");
                 });
 
             migrationBuilder.CreateTable(
@@ -164,6 +170,11 @@ namespace ListMEAPI.Migrations
                 name: "IX_Relacao Usuario_Id_Usuario1",
                 table: "Relacao Usuario",
                 column: "Id_Usuario1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Residencias_UsuarioModelId_Usuario",
+                table: "Residencias",
+                column: "UsuarioModelId_Usuario");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -181,10 +192,10 @@ namespace ListMEAPI.Migrations
                 name: "Residencias");
 
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "Lista de compras");
 
             migrationBuilder.DropTable(
-                name: "Lista de compras");
+                name: "Usuarios");
         }
     }
 }

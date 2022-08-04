@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ListMEAPI.Migrations
 {
     [DbContext(typeof(ListMEContext))]
-    [Migration("20220804005604_inicial")]
+    [Migration("20220804163132_inicial")]
     partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -140,7 +140,12 @@ namespace ListMEAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UsuarioModelId_Usuario")
+                        .HasColumnType("int");
+
                     b.HasKey("Id_Residencias");
+
+                    b.HasIndex("UsuarioModelId_Usuario");
 
                     b.ToTable("Residencias", (string)null);
                 });
@@ -230,9 +235,21 @@ namespace ListMEAPI.Migrations
                     b.Navigation("Id_Usuario");
                 });
 
+            modelBuilder.Entity("ListMEAPI.Models.ResidenciaModel", b =>
+                {
+                    b.HasOne("ListMEAPI.Models.UsuarioModel", null)
+                        .WithMany("residencias")
+                        .HasForeignKey("UsuarioModelId_Usuario");
+                });
+
             modelBuilder.Entity("ListMEAPI.Models.ListaComprasModel", b =>
                 {
                     b.Navigation("ListaProdutos");
+                });
+
+            modelBuilder.Entity("ListMEAPI.Models.UsuarioModel", b =>
+                {
+                    b.Navigation("residencias");
                 });
 #pragma warning restore 612, 618
         }
