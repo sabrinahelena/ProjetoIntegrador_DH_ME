@@ -63,11 +63,67 @@ namespace ListMEAPI.Controllers
             return Ok(Relacao);
         }
 
-        [HttpGet]
+        [HttpGet("ExibirTodosUsuariosComRelacionamentos")]
         public ActionResult<RelacionarUsuario> RequererTodosUsuarios()
         {
             return Ok(_listMEContext.RelacaoUsuario.Include(c => c.Id_Usuario).Include(c => c.Id_ListaCompras).Include(c => c.Id_Residencia).Include(c => c.Id_Estoque).Include(c => c.Id_Produto).ToList());
         }
+
+        [HttpGet("ExibirTodosUsuariosSemRelacionamentos")]
+       
+
+        public ActionResult<List<UsuarioModel>> RequererTodasResidencias()
+        {
+            var ListaResidencias = _listMEContext.Usuarios.ToList();
+            if (ListaResidencias == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(ListaResidencias);
+            }
+
+        }
+
+        [HttpDelete("DeletarUsuario{Id}")]
+
+        public ActionResult<UsuarioModel> DeleteUmUsuarioPelaId(int Id)
+        {
+            var usuario = _listMEContext.Usuarios.Find(Id);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _listMEContext.Usuarios.Remove(usuario);
+                _listMEContext.SaveChanges();
+                return NoContent();
+            }
+
+        }
+
+
+        [HttpPut("SubstituirUsuario{Id}")]
+
+        public ActionResult SubstituirPelaId(int Id, UsuarioModel usuario)
+        {
+            if (Id != usuario.Id_Usuario)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                //Substitui valor da instância no banco de dados 
+                _listMEContext.Entry(usuario).State = EntityState.Modified;
+                _listMEContext.SaveChanges();
+
+                return NoContent();
+            }
+
+        }
+
     }
 }
 
