@@ -21,14 +21,6 @@ namespace ListMEAPI.Controllers
         }
 
      
-        [HttpPost("AdicionarEstoque")]
-
-        public ActionResult<EstoqueModel> AdicionarEstoque(EstoqueModel estoque)
-        {
-            _listMEContext.Estoque.Add(estoque);
-            _listMEContext.SaveChanges();
-            return Ok(estoque);
-        }
 
 
         [HttpPost("AdicionarProduto")]
