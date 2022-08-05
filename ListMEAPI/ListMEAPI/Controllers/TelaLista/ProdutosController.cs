@@ -8,5 +8,10 @@ namespace ListMEAPI.Controllers.TelaLista
     public class ProdutosController : ControllerBase
     {
         //GET LISTA DE COMPRAS
+
+        /*
+         * A lista de compras ela vai ser feita a partir do que removeu 
+         * do estoque, temos que pensar em como fazer isso.
+         */
     }
 }

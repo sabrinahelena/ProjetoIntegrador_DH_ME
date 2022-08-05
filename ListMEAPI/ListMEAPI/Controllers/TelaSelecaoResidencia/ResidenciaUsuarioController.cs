@@ -17,15 +17,15 @@ namespace ListMEAPI.Controllers.TelaSelecaoResidencia
         {
             var usuario = _listMEContext.Usuarios.Find(IdUsuario);
 
-            //if (_listMEContext.Usuarios.Any(u => usuario.residencias == u.residencias))
-            //{
-            return Ok(_listMEContext.Usuarios.Include(c => c.residencias)
-                .Where(c => c == usuario).ToList()) ;
-            //}
-            //else
-            //{
-            //    return NoContent();
-            //}
+            if (usuario == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                return Ok(_listMEContext.Usuarios.Include(c => c.residencias)
+                    .Where(c => c == usuario).ToList());
+            }
         }
 
         //POST para selecionar a residência

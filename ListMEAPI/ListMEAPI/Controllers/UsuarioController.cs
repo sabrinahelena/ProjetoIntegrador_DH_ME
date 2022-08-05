@@ -10,16 +10,6 @@ namespace ListMEAPI.Controllers
     public class UsuarioController : ControllerBase
     {
         private ListMEContext _listMEContext = new ListMEContext();
-
-        [HttpPost("AdicionarUsuario")]
-
-        public ActionResult<UsuarioModel> AdicionarUsuario(UsuarioModel usuario)
-        {
-            _listMEContext.Usuarios.Add(usuario);
-            _listMEContext.SaveChanges();
-            return Ok(usuario);
-        }
-
      
 
 
@@ -100,44 +90,6 @@ namespace ListMEAPI.Controllers
             {
                 return Ok(usuario);
             }
-        }
-
-        [HttpDelete("DeletarUsuario{Id}")]
-
-        public ActionResult<UsuarioModel> DeleteUmUsuarioPelaId(int Id)
-        {
-            var usuario = _listMEContext.Usuarios.Find(Id);
-            if (usuario == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                _listMEContext.Usuarios.Remove(usuario);
-                _listMEContext.SaveChanges();
-                return NoContent();
-            }
-
-        }
-
-
-        [HttpPut("SubstituirUsuario{Id}")]
-
-        public ActionResult SubstituirPelaId(int Id, UsuarioModel usuario)
-        {
-            if (Id != usuario.Id_Usuario)
-            {
-                return BadRequest();
-            }
-            else
-            {
-                //Substitui valor da instância no banco de dados 
-                _listMEContext.Entry(usuario).State = EntityState.Modified;
-                _listMEContext.SaveChanges();
-
-                return NoContent();
-            }
-
         }
 
     }
