@@ -32,26 +32,6 @@ namespace ListMEAPI.Controllers
         }
 
 
-        [HttpPost("AdicionarRelacao")]
-        public ActionResult<RelacionarUsuario> RelacionarUsuario(RelacionarUsuario Relacao, int IdUsuario, int IdResidencia, int IdEstoque, int IdListaDeCompras, int IdProduto)
-        {
-            var usuario = _listMEContext.Usuarios.Find(IdUsuario);
-            var residencia = _listMEContext.Residencias.Find(IdResidencia);
-            var estoque = _listMEContext.Estoque.Find(IdEstoque);
-            var produto = _listMEContext.Produtos.Find(IdProduto);
-            var listaDecompras = _listMEContext.ListaCompras.Find(IdListaDeCompras);
-
-            Relacao.Id_Usuario = usuario;
-            Relacao.Id_Residencia = residencia;
-            Relacao.Id_Estoque = estoque;
-            Relacao.Id_ListaCompras = listaDecompras;
-            Relacao.Id_Produto = produto;
-
-            _listMEContext.RelacaoUsuario.Add(Relacao);
-
-            _listMEContext.SaveChanges();
-            return Ok(Relacao);
-        }
 
         [HttpGet("ExibirTodosUsuariosComRelacionamentos")]
         public ActionResult<RelacionarUsuario> RequererTodosUsuarios()
