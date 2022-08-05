@@ -27,7 +27,11 @@ namespace ListME.Models
         public string Email { get; set; }
         public string? Foto_Perfil { get; set; }
 
-        public List<Residencias> residencias { get; set; } = new List<Residencias>();
+        // public List<Residencias> listaResidencias { get; set; } = new List<Residencias>();
+        public Residencias residencias { get; set; }
+        public Estoque estoque { get; set; }
+        public ListaDeCompras listaDeCompras { get; set; }
+
     }
 }
 //teste

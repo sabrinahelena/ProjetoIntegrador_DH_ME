@@ -5,7 +5,9 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListME", "ListME\ListME.csproj", "{A9474EC5-E9DB-44CF-86FE-32AB53BD913D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListMEAPI", "ListMEAPI\ListMEAPI.csproj", "{2FC760A8-61F1-4D30-B0AC-9E00164799A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListMEAPIbase", "ListMEAPI\ListMEAPIbase.csproj", "{2FC760A8-61F1-4D30-B0AC-9E00164799A9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListMEAPI", "..\..\ListMEAPI\ListMEAPI\ListMEAPI.csproj", "{A259AF0E-236F-4ACD-83A5-FD5087DE1459}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2FC760A8-61F1-4D30-B0AC-9E00164799A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FC760A8-61F1-4D30-B0AC-9E00164799A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FC760A8-61F1-4D30-B0AC-9E00164799A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A259AF0E-236F-4ACD-83A5-FD5087DE1459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A259AF0E-236F-4ACD-83A5-FD5087DE1459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A259AF0E-236F-4ACD-83A5-FD5087DE1459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A259AF0E-236F-4ACD-83A5-FD5087DE1459}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

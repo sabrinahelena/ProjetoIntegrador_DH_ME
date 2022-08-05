@@ -13,6 +13,8 @@ namespace ListME.Models
         public DbSet<Residencias> Residencias { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
 
+        public DbSet<ListaDeCompras> ListaDeCompras { get; set; }
+
         // Modelagem da tabela no banco de dados.
 
         protected override void OnModelCreating(ModelBuilder Modelagem)
@@ -23,7 +25,7 @@ namespace ListME.Models
                 TabelaAcesso.HasKey(Coluna => Coluna.Id_Acesso);
                 // Definindo o nome da Tabela no Database.
                 TabelaAcesso.ToTable("Acessos");
-                TabelaAcesso.HasOne(Tabela => Tabela.usuario);
+                //TabelaAcesso.HasOne(Tabela => Tabela.usuario);
             });
 
             Modelagem.Entity<Estoque>(TabelaEstoque =>
@@ -32,7 +34,7 @@ namespace ListME.Models
                 TabelaEstoque.HasKey(Coluna => Coluna.Id_Estoque);
                 // Definindo o nome da Tabela no Database.
                 TabelaEstoque.ToTable("Estoque");
-                TabelaEstoque.HasMany(Tabela => Tabela.produtos);
+                //TabelaEstoque.HasMany(Tabela => Tabela.produtos);
 
             });
 
@@ -51,7 +53,7 @@ namespace ListME.Models
                 TabelaResidencias.HasKey(Coluna => Coluna.Id_Residencias);
                 // Definindo o nome da Tabela no Database.
                 TabelaResidencias.ToTable("Residências");
-                TabelaResidencias.HasOne(Tabela => Tabela.estoque);
+               // TabelaResidencias.HasOne(Tabela => Tabela.estoque);
 
             });
 
@@ -61,7 +63,7 @@ namespace ListME.Models
                 TabelaUsuario.HasKey(Coluna => Coluna.Id_Usuario);
                 // Definindo o nome da Tabela no Database.
                 TabelaUsuario.ToTable("Usuários");
-                TabelaUsuario.HasMany(Tabela => Tabela.residencias);
+               //TabelaUsuario.HasMany(Tabela => Tabela.residencias);
             });
         }
 
