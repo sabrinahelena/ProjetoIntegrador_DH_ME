@@ -43,6 +43,23 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         }
 
 
+        [HttpGet("ExibirLisaDeProdutos{Id}")]
+
+        public ActionResult<ListaComprasModel> RequererUmaListaDeCompras(int Id)
+        {
+            //Usando find para localizar uma lista pelo ID
+            var residencia = _listMEContext.ListaCompras.Find(Id);
+            if (residencia == null)
+            {
+                return NotFound(); //Se não houver lista com essa Id, retorna esse código
+            }
+            else
+            {
+                return Ok(residencia);
+            }
+        }
+
+
 
         [HttpDelete("DeletarListaDeCompras{Id}")]
 
@@ -84,5 +101,5 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         }
     }
 
-        
+
 }
