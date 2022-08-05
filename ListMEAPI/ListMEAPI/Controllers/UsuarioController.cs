@@ -74,16 +74,32 @@ namespace ListMEAPI.Controllers
 
         public ActionResult<List<UsuarioModel>> RequererTodasResidencias()
         {
-            var ListaResidencias = _listMEContext.Usuarios.ToList();
-            if (ListaResidencias == null)
+            var Usuarios = _listMEContext.Usuarios.ToList();
+            if (Usuarios == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(ListaResidencias);
+                return Ok(Usuarios);
             }
 
+        }
+
+        [HttpGet("ExibirUsuario{Id}")]
+
+        public ActionResult<UsuarioModel> RequererUmUsuarioPeloId(int Id)
+        {
+            //Usei find para localizar um usuário pelo ID
+            var usuario = _listMEContext.Usuarios.Find(Id);
+            if (usuario == null)
+            {
+                return NotFound(); //Se não houver usuário no Id, retorna esse código
+            }
+            else
+            {
+                return Ok(usuario);
+            }
         }
 
         [HttpDelete("DeletarUsuario{Id}")]
