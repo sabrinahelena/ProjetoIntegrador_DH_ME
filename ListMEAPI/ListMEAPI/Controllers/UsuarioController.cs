@@ -13,26 +13,6 @@ namespace ListMEAPI.Controllers
      
 
 
-        [HttpPost("AdicionarProduto")]
-
-        public ActionResult<ProdutosModel> AdicionarProduto(ProdutosModel produto)
-        {
-            _listMEContext.Produtos.Add(produto);
-            _listMEContext.SaveChanges();
-            return Ok(produto);
-
-        }
-        [HttpPost("AdicionarListaCompra")]
-
-        public ActionResult<ListaComprasModel> AdicionarListaCompra(ListaComprasModel ListaCompras)
-        {
-            _listMEContext.ListaCompras.Add(ListaCompras);
-            _listMEContext.SaveChanges();
-            return Ok(ListaCompras);
-        }
-
-
-
         [HttpGet("ExibirTodosUsuariosComRelacionamentos")]
         public ActionResult<RelacionarUsuario> RequererTodosUsuarios()
         {

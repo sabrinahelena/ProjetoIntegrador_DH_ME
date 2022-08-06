@@ -11,6 +11,30 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
     {
         private ListMEContext _listMEContext = new ListMEContext();
 
+        //POST PRODUTOS
+
+        [HttpPost("AdicionarProduto")]
+
+        //[Authorize]
+
+        /*
+         * Aqui, terá que ter login para realizar a ação de att a lista de produtos
+         */
+
+        public ActionResult<ProdutosModel> AdicionarProduto(ProdutosModel produto)
+        {
+            if (produto == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                _listMEContext.Produtos.Add(produto);
+                _listMEContext.SaveChanges();
+                return Ok(produto);
+            }
+
+        }
         //GET PRODUTOS
         [HttpGet("RequererTodosProdutos")]
         //[Authorize]
@@ -48,31 +72,6 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
                 _listMEContext.SaveChanges();
 
                 return NoContent();
-            }
-
-        }
-
-        //POST PRODUTOS
-
-        [HttpPost("AdicionarProduto")]
-
-        //[Authorize]
-
-        /*
-         * Aqui, terá que ter login para realizar a ação de att a lista de produtos
-         */
-
-        public ActionResult<ProdutosModel> AdicionarProduto(ProdutosModel produto)
-        {
-            if (produto == null)
-            {
-                return BadRequest();
-            }
-            else
-            {
-                _listMEContext.Produtos.Add(produto);
-                _listMEContext.SaveChanges();
-                return Ok(produto);
             }
 
         }
