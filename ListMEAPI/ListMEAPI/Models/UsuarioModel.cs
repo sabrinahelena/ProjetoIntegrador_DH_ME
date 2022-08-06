@@ -25,6 +25,8 @@ namespace ListMEAPI.Models
         public string Data_Nascimento { get; set; }
         public string Email { get; set; }
         public string? Foto_Perfil { get; set; }
+
+        public string Senha { get; set; }
         public List<ResidenciaModel>? residencias { get; set; } = new List<ResidenciaModel>();
     }
 }
