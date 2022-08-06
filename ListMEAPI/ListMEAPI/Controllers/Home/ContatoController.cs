@@ -15,6 +15,25 @@ namespace ListMEAPI.Controllers.Home
     public class ContatoController : ControllerBase
     {
         private ListMEContext _listMEContext = new ListMEContext();
+
+        /// <summary>
+        /// Cadastra um novo contato
+        /// </summary>
+        /// <returns>Retorna o contato recém criado</returns>
+        /// <remarks>
+        /// Exemplo requisição:
+        ///
+        ///     POST /api/Contato/AdicionarContato
+        ///     {
+        ///        "nome": "Sabrina",
+        ///        "email": "sabrinahelenaf@gmail.com"
+        ///        "mensagem": "Olá, gostaria de saber quanto custa os serviços do app"
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="contato">Modelo do contato</param>
+        /// <response code="200">Retorna o contato recém criado</response>
+        /// <response code="500">Ocorreu algum erro criar o contato</response>
         [HttpPost("AdicionarContato")]
         [AllowAnonymous]
 
@@ -38,9 +57,13 @@ namespace ListMEAPI.Controllers.Home
 
         }
 
-
-        
-
+        /// <summary>
+        /// Listar todos os contatod
+        /// </summary>
+        /// <returns>Lista de contatos solicitados</returns>
+        /// <response code="404">Não há contatos cadastrados</response>
+        /// <response code="200">Retorna a lista de contatos cadastrados</response>
+        /// <response code="500">Ocorreu algum erro ao obter lista de contatos cadastrados</response>
         [HttpGet("RequererTodosContatos")]
         //[Authorize]
 
@@ -50,12 +73,28 @@ namespace ListMEAPI.Controllers.Home
          * essa lista com os contatos.
          */
 
-        public ActionResult<ContatoModel> RequererTodosPedidosContato()
+        public ActionResult<List<ContatoModel>> RequererTodosPedidosContato()
         {
-            return Ok(_listMEContext.Contato.ToList());
+            var contatos = _listMEContext.Contato.ToList();
+            if (contatos == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(contatos);
+            }
+
+
         }
 
-
+        /// <summary>
+        /// Retorna contato encontrado a partir de sua Id
+        /// </summary>
+        /// <returns>Retorna o contato encontrado a partir da Id</returns>
+        /// <param name="Id">Id do contato</param>
+        /// <response code="404">Contato não encontrado</response>
+        /// <response code="200">Retorna contato encontrado</response>
         [HttpGet("RequererContatosPorId{Id}")]
         //[Authorize]
 
@@ -79,6 +118,15 @@ namespace ListMEAPI.Controllers.Home
                 return Ok(requerimento);
             }
         }
+
+
+        /// <summary>
+        /// Delete um contato a partir de sua Id
+        /// </summary>
+        /// <returns>Retorna o contato recém deletado</returns>
+        /// <param name="Id">Id do contato</param>
+        /// <response code="404">Contato não encontrado</response>
+        /// <response code="204">Contato deletado</response>
 
         [HttpDelete("DeletarContatoPorId{Id}")]
         //[Authorize]
