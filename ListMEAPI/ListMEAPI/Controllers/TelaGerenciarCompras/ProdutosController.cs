@@ -12,6 +12,26 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         private ListMEContext _listMEContext = new ListMEContext();
 
         //POST PRODUTOS
+        /// <summary>
+        /// Cadastra um novo produto
+        /// </summary>
+        /// <returns>Retorna produto recém criada</returns>
+        /// <remarks>
+        /// Exemplo requisição:
+        ///
+        ///     POST /api/Produtos/AdicionarProduto
+        ///     {
+        ///         "nome_Produtos": "Macarrão",
+        ///         "descricao_Produto": "macarrão parafuso",
+        ///         "preco": 20,
+        ///         "data_Validade": "10/12/2030",
+        ///         "quantidade_Produto": 3             
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="produto">Modelo do estoque</param>
+        /// <response code="200">Retorna o estoque recém criado</response>
+        /// <response code="500">Ocorreu algum erro criar o estoque</response>
 
         [HttpPost("AdicionarProduto")]
 
@@ -36,6 +56,14 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
 
         }
         //GET PRODUTOS
+        
+        /// <summary>
+        /// Listar todos produtos
+        /// </summary>
+        /// <returns>Lista de produtos criados</returns>
+        /// <response code="404">Não há produtos cadastrados</response>
+        /// <response code="200">Retorna produtos cadastrados</response>
+        /// <response code="500">Ocorreu algum erro ao obter produtos cadastrados</response>
         [HttpGet("RequererTodosProdutos")]
         //[Authorize]
 
@@ -44,11 +72,41 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
          * Aqui, terá que ter login para realizar a ação de puxar a lista de produtos
          */
 
-        public ActionResult<ProdutosModel> RequererTodosProdutos()
+        public ActionResult<List<ProdutosModel>> RequererTodosProdutos()
         {
-            return Ok(_listMEContext.Produtos.ToList());
+            var produtos = _listMEContext.Produtos.ToList();
+            if (produtos == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(produtos);
+            }
         }
         //PUT PRODUTOS
+
+        /// <summary>
+        /// Substitui um estoque a partir de sua Id
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>  
+        /// Exemplo requisição:
+        ///
+        ///     PUT /api/Produtos/SubstituirPelaId{Id}
+        ///     {
+        ///         "nome_Produtos": "Macarrão",
+        ///         "descricao_Produto": "macarrão parafuso",
+        ///         "preco": 20,
+        ///         "data_Validade": "10/12/2030",
+        ///         "quantidade_Produto": 3             
+        ///     }
+        /// </remarks>
+        /// <param name="Id">Id do usuário</param>
+        /// <param name="produto">Modelo do usuário</param>
+        /// <response code="400">Usuário não pode ter sua Id modificada</response>
+        /// <response code="404">Usuário não encontrado</response>
+        /// <response code="204">Usuário substituído</response>
 
         [HttpPut]
         //[Authorize]
@@ -77,7 +135,13 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         }
 
         //DELETE PRODUTOS
-
+        /// <summary>
+        /// Deleta o produto a partir de sua Id
+        /// </summary>
+        /// <returns>Retorna o produto recém deletado</returns>
+        /// <param name="Id">Id do produto</param>
+        /// <response code="404">produto não encontrado</response>
+        /// <response code="204">produtos deletado</response>
         [HttpDelete("DeletarProdutoPorId")]
 
         //[Authorize]
