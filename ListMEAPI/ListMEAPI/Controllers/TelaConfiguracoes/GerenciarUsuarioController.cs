@@ -11,6 +11,31 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
     {
         private ListMEContext _listMEContext = new ListMEContext();
 
+        //ADICIONAR MAIS RESIDÊNCIAS
+
+        [HttpPost("AdicionarResidencia")]
+
+        //[Authorize]
+
+        /*
+         * Aqui, terá que ter login para realizar a ação de adicionar residência
+         */
+
+        public ActionResult<ResidenciaModel> AdicionarResidencia(ResidenciaModel residencia)
+        {
+            if (residencia == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                _listMEContext.Residencias.Add(residencia);
+                _listMEContext.SaveChanges();
+                return Ok(residencia);
+            }
+
+        }
+
         //PUT PARA USUÁRIO E RESIDÊNCIA
         [HttpPut("SubstituirUsuario{Id}")]
         //[Authorize]
@@ -57,30 +82,7 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
             }
 
         }
-        //ADICIONAR MAIS RESIDÊNCIAS
-
-        [HttpPost("AdicionarResidencia")]
-
-        //[Authorize]
-
-        /*
-         * Aqui, terá que ter login para realizar a ação de adicionar residência
-         */
-
-        public ActionResult<ResidenciaModel> AdicionarResidencia(ResidenciaModel residencia)
-        {
-            if (residencia == null)
-            {
-                return BadRequest();
-            }
-            else
-            {
-                _listMEContext.Residencias.Add(residencia);
-                _listMEContext.SaveChanges();
-                return Ok(residencia);
-            }
-
-        }
+        
         //DELETE PARA USUÁRIO E RESIDÊNCIA
 
         [HttpDelete("DeletarUsuario{Id}")]

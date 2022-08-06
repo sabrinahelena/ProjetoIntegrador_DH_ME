@@ -9,12 +9,6 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
     public class EstoqueController : ControllerBase
     {
         private ListMEContext _listMEContext = new ListMEContext();
-        //GET ESTOQUE
-        [HttpGet("Receber o estoque")]
-        public ActionResult<EstoqueModel> GetEstoque()
-        {
-            return Ok(_listMEContext.Estoque);
-        }
         //POST ESTOQUE
         [HttpPost("AdicionarEstoque")]
 
@@ -24,6 +18,15 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
             _listMEContext.SaveChanges();
             return Ok(estoque);
         }
+
+        //GET ESTOQUE
+        [HttpGet("Receber o estoque")]
+        public ActionResult<EstoqueModel> GetEstoque()
+        {
+            return Ok(_listMEContext.Estoque);
+        }
+       
+
         //PUT ESTOQUE
         //Necessário entender como será feita a identificação do estoque
         //Utilizando por enquanto o Id do estoque

@@ -27,8 +27,5 @@ namespace ListMEAPI.Controllers.TelaSelecaoResidencia
                     .Where(c => c == usuario).ToList());
             }
         }
-
-        //POST para selecionar a residência
-        //GET retornando a relação
     }
 }

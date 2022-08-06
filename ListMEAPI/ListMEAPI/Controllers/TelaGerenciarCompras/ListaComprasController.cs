@@ -59,6 +59,25 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
             }
         }
 
+        [HttpPut("SubstituirListaDeCompras{Id}")]
+
+        public ActionResult SubstituirPelaIdResidencia(int Id, ListaComprasModel ListaDeCompras)
+        {
+            if (Id != ListaDeCompras.Id_ListaDeCompras)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                //Substitui valor da instância no banco de dados 
+                _listMEContext.Entry(ListaDeCompras).State = EntityState.Modified;
+                _listMEContext.SaveChanges();
+
+                return NoContent();
+            }
+
+        }
+
 
 
         [HttpDelete("DeletarListaDeCompras{Id}")]
@@ -81,24 +100,7 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
 
 
 
-        [HttpPut("SubstituirListaDeCompras{Id}")]
-
-        public ActionResult SubstituirPelaIdResidencia(int Id, ListaComprasModel ListaDeCompras)
-        {
-            if (Id != ListaDeCompras.Id_ListaDeCompras)
-            {
-                return BadRequest();
-            }
-            else
-            {
-                //Substitui valor da instância no banco de dados 
-                _listMEContext.Entry(ListaDeCompras).State = EntityState.Modified;
-                _listMEContext.SaveChanges();
-
-                return NoContent();
-            }
-
-        }
+       
     }
 
 

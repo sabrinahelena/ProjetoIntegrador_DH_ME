@@ -32,6 +32,35 @@ namespace ListMEAPI.Controllers.TelaRelacao
             return Ok(Relacao);
         }
 
+        [HttpGet("RequererRelacaoPorId{Id}")]
+
+        public ActionResult<RelacionarUsuario> RequererRelacaoPorId(int Id)
+        {
+            var requerimento = _listMEContext.RelacaoUsuario.FirstOrDefault(x => x.Id_Relacionamento == Id);
+
+            if (requerimento == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(requerimento);
+            }
+        }
+
+        [HttpPut("AlterarRelacao{Id}")]
+        public ActionResult<RelacionarUsuario> PutRelacao(int Id, RelacionarUsuario relacao)
+        {
+            var existeRelacao = _listMEContext.RelacaoUsuario.Find(Id);
+            if (existeRelacao != null)
+            {
+                _listMEContext.Entry(existeRelacao).State = EntityState.Modified;
+                _listMEContext.SaveChanges();
+                return NoContent();
+            }
+            return NotFound();
+        }
+
         [HttpDelete("DeletarRelacao{Id}")]
         public ActionResult<RelacionarUsuario> DeleteRelacao(int Id, RelacionarUsuario relacao)
         {
@@ -45,23 +74,8 @@ namespace ListMEAPI.Controllers.TelaRelacao
             return NotFound();
         }
 
-        [HttpPut("AlterarRelacao{Id}")]
-        public ActionResult<RelacionarUsuario> PutRelacao(int Id, RelacionarUsuario relacao)
-        {
-            var existeRelacao = _listMEContext.RelacaoUsuario.Find(Id);
-            if(existeRelacao != null)
-            {
-                _listMEContext.Entry(existeRelacao).State = EntityState.Modified;
-                _listMEContext.SaveChanges();
-                return NoContent();
-            }
-            return NotFound();
-        }
+       
 
-        [HttpGet("{Id}")]
-        public ActionResult<RelacionarUsuario> GetRelacao(int Id)
-        {
-            return _listMEContext.RelacaoUsuario.Find(Id);
-        }
+       
     }
 }
