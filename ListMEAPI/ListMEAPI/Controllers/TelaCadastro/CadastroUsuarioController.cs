@@ -18,7 +18,7 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /// <remarks>
         /// Exemplo requisição:
         ///
-        ///     POST /Usuario
+        ///     POST /api/CadastroUsuario/AdicionarUsuario
         ///     {
         ///        "nome_Usuario": "Sabrina",
         ///        "sobrenome": "Helena",

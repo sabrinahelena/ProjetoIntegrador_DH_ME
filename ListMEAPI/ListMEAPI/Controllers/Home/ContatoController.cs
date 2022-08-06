@@ -58,7 +58,7 @@ namespace ListMEAPI.Controllers.Home
         }
 
         /// <summary>
-        /// Listar todos os contatod
+        /// Listar todos os contatos
         /// </summary>
         /// <returns>Lista de contatos solicitados</returns>
         /// <response code="404">Não há contatos cadastrados</response>
