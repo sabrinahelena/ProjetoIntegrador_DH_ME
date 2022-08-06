@@ -57,6 +57,30 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
             }
 
         }
+        //ADICIONAR MAIS RESIDÊNCIAS
+
+        [HttpPost("AdicionarResidencia")]
+
+        //[Authorize]
+
+        /*
+         * Aqui, terá que ter login para realizar a ação de adicionar residência
+         */
+
+        public ActionResult<ResidenciaModel> AdicionarResidencia(ResidenciaModel residencia)
+        {
+            if (residencia == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                _listMEContext.Residencias.Add(residencia);
+                _listMEContext.SaveChanges();
+                return Ok(residencia);
+            }
+
+        }
         //DELETE PARA USUÁRIO E RESIDÊNCIA
 
         [HttpDelete("DeletarUsuario{Id}")]

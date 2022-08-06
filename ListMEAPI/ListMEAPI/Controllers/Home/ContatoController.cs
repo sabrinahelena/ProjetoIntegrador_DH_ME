@@ -15,7 +15,7 @@ namespace ListMEAPI.Controllers.Home
     public class ContatoController : ControllerBase
     {
         private ListMEContext _listMEContext = new ListMEContext();
-        [HttpPost]
+        [HttpPost("AdicionarContato")]
         [AllowAnonymous]
 
         /*
@@ -41,7 +41,7 @@ namespace ListMEAPI.Controllers.Home
 
         
 
-        [HttpGet]
+        [HttpGet("RequererTodosContatos")]
         //[Authorize]
 
         /*
@@ -56,7 +56,7 @@ namespace ListMEAPI.Controllers.Home
         }
 
 
-        [HttpGet("{Id}")]
+        [HttpGet("RequererContatosPorId{Id}")]
         //[Authorize]
 
 
@@ -80,7 +80,7 @@ namespace ListMEAPI.Controllers.Home
             }
         }
 
-        [HttpDelete("{Id}")]
+        [HttpDelete("DeletarContatoPorId{Id}")]
         //[Authorize]
 
         /*
