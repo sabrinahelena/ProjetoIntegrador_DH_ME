@@ -12,16 +12,16 @@ namespace ListMEAPI.Controllers
         private ListMEContext _listMEContext = new ListMEContext();
      
 
-
+        //Não funciona
         [HttpGet("ExibirTodosUsuariosComRelacionamentos")]
         public ActionResult<RelacionarUsuario> RequererTodosUsuarios()
         {
             return Ok(_listMEContext.RelacaoUsuario.Include(c => c.Id_Usuario).Include(c => c.Id_ListaCompras).Include(c => c.Id_Residencia).Include(c => c.Id_Estoque).Include(c => c.Id_Produto).ToList());
         }
-
+  
+        //Não funciona
         [HttpGet("ExibirTodosUsuariosSemRelacionamentos")]
        
-
         public ActionResult<List<UsuarioModel>> RequererTodasResidencias()
         {
             var Usuarios = _listMEContext.Usuarios.ToList();
