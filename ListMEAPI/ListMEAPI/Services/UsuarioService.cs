@@ -16,11 +16,6 @@ namespace ListMEAPI.Services
             _usuarioRepository = usuarioRepository;
         }
 
-        //put
-        public void Atualizar(int id, UsuarioModel usuario)
-        {
-            throw new NotImplementedException();
-        }
 
         //POST
 
@@ -51,9 +46,17 @@ namespace ListMEAPI.Services
             return list.Select(c => UsuarioMapper.From(c)).ToList();
         }
 
+        public void Salvar()
+        {
+            _usuarioRepository.Save();
+        }
 
-
-
-
+        UsuarioModel IUsuarioService.Atualizar(int id, AtualizacaoUsuarioRequest usuarioNovo)
+        {
+            var newUser = new UsuarioModel(usuarioNovo.Nome_Usuario, usuarioNovo.Sobrenome, usuarioNovo.Telefone, usuarioNovo.Data_Nascimento, usuarioNovo.Email, usuarioNovo.Foto_Perfil, usuarioNovo.Senha);
+            _usuarioRepository.Update(id, newUser);
+            _usuarioRepository.Save();
+            return newUser;
+        }
     }
 }

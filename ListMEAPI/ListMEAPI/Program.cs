@@ -73,6 +73,7 @@ namespace ListMEAPI
                 });
             builder.Services.AddDbContext<ListMEContext>();
             builder.Services.ResolveApiDependencies();
+
             //Ignorando possíveis ciclos do get one de usuário SE HOUVER USUARIO EM RESIDENCIA
             //builder.Services.AddControllers().AddJsonOptions(x =>
             //    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);

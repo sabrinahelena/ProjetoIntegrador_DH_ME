@@ -1,4 +1,5 @@
-﻿using ListMEAPI.Models;
+﻿using ListMEAPI.DTOs.Request;
+using ListMEAPI.Models;
 
 namespace ListMEAPI.Interfaces.Repositorios
 {
@@ -8,9 +9,11 @@ namespace ListMEAPI.Interfaces.Repositorios
         void Create(UsuarioModel usuario); //POST
         List<UsuarioModel> GetAll(); //GET 
 
-        void Update(UsuarioModel usuario); //PUT
+        void Update(int id, UsuarioModel usuarioNovo); //PUT
 
         void Delete(int id); //DELETE
+
+        void Save();
 
         UsuarioModel GetOne(int id);
     }

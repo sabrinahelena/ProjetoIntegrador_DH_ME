@@ -1,5 +1,6 @@
 ﻿using ListMEAPI.Interfaces.Repositorios;
 using ListMEAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
@@ -20,19 +21,6 @@ namespace ListMEAPI.Repositories
         {
             _context.Add(usuario);
             _context.SaveChanges();
-        }
-
-
-        public void AlterarUsuario(int id, UsuarioModel usuario)
-        {
-            var result = _context.Usuarios.Find(id);
-            _context.Entry(usuario).State = EntityState.Modified;
-            _context.SaveChanges();
-        }
-
-        public void Update(UsuarioModel usuario)
-        {
-            throw new NotImplementedException();
         }
 
         //DELETE
@@ -59,7 +47,36 @@ namespace ListMEAPI.Repositories
             return result;
         }
 
+        public void Update(int id, UsuarioModel usuario)
+        {
+            if (id != usuario.Id_Usuario)
+            {
+                _context.Entry(usuario).State = EntityState.Modified;
 
+                _context.SaveChanges();
+            }
+        }
+
+        //public ActionResult SubstituirUsuarioPelaId(int Id, UsuarioModel usuario)
+        //{
+        //    if (Id != usuario.Id_Usuario)
+        //    {
+        //        return BadRequest();
+        //    }
+        //    if (Id == usuario.Id_Usuario)
+        //    {
+        //        //Substitui valor da instância no banco de dados 
+        //        _listMEContext.Entry(usuario).State = EntityState.Modified;
+        //        _listMEContext.SaveChanges();
+
+        //        return NoContent();
+        //    }
+
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
     }
 }
 
