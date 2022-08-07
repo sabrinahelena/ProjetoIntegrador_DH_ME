@@ -1,12 +1,12 @@
-﻿namespace ListMEAPI.Models
+﻿//namespace ListMEAPI.Models
 
-{
-    public class ListaComprasModel
-    {
-        public int Id_ListaDeCompras { get; set; }
+//{
+//    public class ListaComprasModel
+//    {
+//        public int Id_ListaDeCompras { get; set; }
 
-        public int teste { get; set; }
+//        public int teste { get; set; }
 
-        public List<ProdutosModel>? ListaProdutos { get; set; } = new List<ProdutosModel>();
-    }
-}
+//        public List<ProdutosModel>? ListaProdutos { get; set; } = new List<ProdutosModel>();
+//    }
+//}

@@ -1,4 +1,7 @@
-﻿using ListMEAPI.Models;
+﻿using ListMEAPI.DTOs.Request;
+using ListMEAPI.DTOs.Response;
+using ListMEAPI.Interfaces.Servicos;
+using ListMEAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,8 +12,14 @@ namespace ListMEAPI.Controllers.TelaCadastro
     [ApiController]
     public class CadastroUsuarioController : ControllerBase
     {
-        private ListMEContext _listMEContext = new ListMEContext();
-       
+
+        public IUsuarioService _usuarioService;
+
+        public CadastroUsuarioController(IUsuarioService usuarioService)
+        {
+            _usuarioService = usuarioService;
+        }
+
         /// <summary>
         /// Cadastra um novo usuário
         /// </summary>
@@ -20,22 +29,18 @@ namespace ListMEAPI.Controllers.TelaCadastro
         ///
         ///     POST /api/CadastroUsuario/AdicionarUsuario
         ///     {
-        ///        "nome_Usuario": "Sabrina",
-        ///        "sobrenome": "Helena",
-        ///        "telefone": "99999999999"
-        ///        "data_Nascimento": "08/01/2004",
-        ///        "email:" "sabrinahelenaf@gmail.com",
-        ///        "foto_Perfil:" "x",
-        ///        "residencias": [
-        ///        {
-        ///        "nome_Residencias": "casa de praia",
-        ///        "descricao_Residencias": "de frente para o mar",
-        ///        "foto_Residencias": x"
-        ///        }
-        ///       ]
-        ///   
+        /// 
+        ///         "nome_Usuario": "string",
+        ///         "sobrenome": "string",
+        ///         "telefone": "string",
+        ///         "data_Nascimento": "string",
+        ///         "email": "string",
+        ///         "foto_Perfil": "string",
+        ///         "senha": "string",
+        ///         "nome_Residencias": "string",
+        ///         "descricao_Residencias": "string",
+        ///         "foto_Residencias": "string"
         ///     }
-        ///
         /// </remarks>
         /// <param name="usuario">Modelo do usuário</param>
         /// <response code="200">Retorna o usuário recém criado</response>
@@ -48,12 +53,16 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /*
          * Para criar seu acesso, não precisa estar autenticado.
          */
-
-        public ActionResult<UsuarioModel> AdicionarUsuario(UsuarioModel usuario)
+        public IActionResult Create([FromBody] CadastroUsuarioRequest usuario)
         {
-            _listMEContext.Usuarios.Add(usuario);
-            _listMEContext.SaveChanges();
-            return Ok(usuario);
+            _usuarioService.Cadastrar(usuario);
+            return Ok();
+        }
+
+        [HttpGet]
+        public ActionResult<List<UsuarioResponse>> GetAll()
+        {
+            return Ok(_usuarioService.Listar());
         }
     }
 }

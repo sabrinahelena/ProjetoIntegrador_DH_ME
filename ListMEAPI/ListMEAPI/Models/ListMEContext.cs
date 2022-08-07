@@ -4,21 +4,19 @@ namespace ListMEAPI.Models
 {
     public class ListMEContext : DbContext
     {
-        public DbSet<UsuarioModel> Usuarios { get; set; }
-        public DbSet<EstoqueModel> Estoque { get; set; }
-        public DbSet<ProdutosModel> Produtos { get; set; }
-        public DbSet<ListaComprasModel> ListaCompras { get; set; }
+        public ListMEContext(DbContextOptions<ListMEContext> options) : base(options)
+        {
+
+        }
+        public DbSet<UsuarioModel>? Usuarios { get; set; }
+        public DbSet<EstoqueModel>? Estoque { get; set; }
+        public DbSet<ProdutosModel>? Produtos { get; set; }
+       // public DbSet<ListaComprasModel>? ListaCompras { get; set; }
         public DbSet<ResidenciaModel>? Residencias { get; set; }
-        public DbSet<RelacionarUsuario> RelacaoUsuario { get; set; }
-        public DbSet<ContatoModel> Contato { get; set; }
+       // public DbSet<ContatoModel>? Contato { get; set; }
 
         protected override void OnModelCreating(ModelBuilder Modelagem)
         {
-            Modelagem.Entity<UsuarioModel>(TabelaUsuario =>
-            {
-                TabelaUsuario.HasKey(Coluna => Coluna.Id_Usuario);
-                TabelaUsuario.ToTable("Usuarios");
-            });
             Modelagem.Entity<EstoqueModel>(TabelaEstoque =>
             {
                 TabelaEstoque.HasKey(Coluna => Coluna.Id_Estoque);
@@ -29,26 +27,16 @@ namespace ListMEAPI.Models
                 TabelaProduto.HasKey(Coluna => Coluna.Id_Produtos);
                 TabelaProduto.ToTable("Produtos");
             });
-            Modelagem.Entity<ResidenciaModel>(TabelaResidencia =>
-            {
-                TabelaResidencia.HasKey(Coluna => Coluna.Id_Residencias);
-                TabelaResidencia.ToTable("Residencias");
-            });
-            Modelagem.Entity<ListaComprasModel>(TabelaListaCompras =>
-            {
-                TabelaListaCompras.HasKey(Coluna => Coluna.Id_ListaDeCompras);
-                TabelaListaCompras.ToTable("Lista de compras");
-            });
-            Modelagem.Entity<RelacionarUsuario>(TabelaRelacaoUsuario =>
-            {
-                TabelaRelacaoUsuario.HasKey(Coluna => Coluna.Id_Relacionamento);
-                TabelaRelacaoUsuario.ToTable("Relacao Usuario");
-            });
-            Modelagem.Entity<ContatoModel>(TabelaContato =>
-            {
-                TabelaContato.HasKey(Coluna => Coluna.Id_Contato);
-                TabelaContato.ToTable("Tabela de contato");
-            });
+            //Modelagem.Entity<ListaComprasModel>(TabelaListaCompras =>
+            //{
+            //    TabelaListaCompras.HasKey(Coluna => Coluna.Id_ListaDeCompras);
+            //    TabelaListaCompras.ToTable("Lista de compras");
+            //});
+            //Modelagem.Entity<ContatoModel>(TabelaContato =>
+            //{
+            //    TabelaContato.HasKey(Coluna => Coluna.Id_Contato);
+            //    TabelaContato.ToTable("Tabela de contato");
+            //});
 
 
 

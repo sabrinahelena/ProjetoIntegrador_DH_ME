@@ -1,3 +1,4 @@
+using ListMEAPI.DependencyInjections;
 using ListMEAPI.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -44,6 +45,8 @@ namespace ListMEAPI
             });
 
 
+
+
             var Chave = Encoding.ASCII.GetBytes(Ambiente.Chave);
 
             // Adiciono os serviços de Autenticação e Autorização utilizando Jwt Bearer
@@ -67,7 +70,8 @@ namespace ListMEAPI
                         ValidateAudience = false
                     };
                 });
-
+            builder.Services.AddDbContext<ListMEContext>();
+            builder.Services.ResolveApiDependencies();
 
             var app = builder.Build();
 
