@@ -26,5 +26,16 @@ namespace ListMEAPI.Repositories
             return _context.Usuarios.Include(i => i.Residencias).ToList();
         }
 
+        public void AlterarUsuario(int id, UsuarioModel usuario)
+        {
+            var result = _context.Usuarios.Find(id);
+            _context.Entry(usuario).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+
+        public void Update(UsuarioModel usuario)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

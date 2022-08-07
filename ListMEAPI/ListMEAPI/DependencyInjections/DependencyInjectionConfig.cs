@@ -15,9 +15,12 @@ namespace ListMEAPI.DependencyInjections
 
             services.AddTransient<IUsuarioService, UsuarioService>();
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
+            services.AddTransient<IResidenciaService, ResidenciaService>();
+            services.AddTransient<IResidenciaRepository, ResidenciaRepository>();
 
             return services;
         }
+        }
 
     }
-}
+

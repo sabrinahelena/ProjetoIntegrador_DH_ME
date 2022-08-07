@@ -1,5 +1,6 @@
 ﻿using ListMEAPI.DTOs.Request;
 using ListMEAPI.DTOs.Response;
+using ListMEAPI.Models;
 
 namespace ListMEAPI.Interfaces.Servicos
 {
@@ -9,5 +10,7 @@ namespace ListMEAPI.Interfaces.Servicos
         void Cadastrar(CadastroUsuarioRequest usuario);
 
         List<UsuarioResponse> Listar();
+
+        void Atualizar(int id, UsuarioModel usuario);
     }
 }

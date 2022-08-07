@@ -16,13 +16,19 @@ namespace ListMEAPI.Services
             _usuarioRepository = usuarioRepository;
         }
 
+        public void Atualizar(int id, UsuarioModel usuario)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public void Atualizar(int id)
+        //{
+        //    _usuarioRepository.Update
+        //}
+
         public void Cadastrar(CadastroUsuarioRequest usuario)
         {
             var user = new UsuarioModel(usuario.Nome_Usuario, usuario.Sobrenome, usuario.Telefone, usuario.Data_Nascimento, usuario.Email, usuario.Foto_Perfil, usuario.Senha);
-
-            var residencia = new ResidenciaModel(usuario.Nome_Residencias, usuario.Descricao_Residencias, usuario.Foto_Residencias);
-
-            user.AdicionarResidencia(residencia);
 
             _usuarioRepository.Create(user);
         }
@@ -33,6 +39,10 @@ namespace ListMEAPI.Services
 
             return list.Select(c => UsuarioMapper.From(c)).ToList();
         }
+
+
+
+
 
     }
 }
