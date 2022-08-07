@@ -23,7 +23,7 @@ namespace ListMEAPI.Repositories
 
         public List<ResidenciaModel> GetAll()
         {
-            return _context.Residencias.Include(i => i.usuario).ToList();
+            return _context.Residencias.ToList();
         }
 
         public UsuarioModel GetUsuario(int Id)

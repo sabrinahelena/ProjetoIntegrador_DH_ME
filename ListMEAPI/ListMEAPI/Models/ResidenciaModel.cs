@@ -19,8 +19,5 @@ namespace ListMEAPI.Models
         public string? Descricao_Residencias { get; set; }
         public string? Foto_Residencias { get; set; }
 
-        public UsuarioModel usuario { get; set; }
-
-
     }
 }
