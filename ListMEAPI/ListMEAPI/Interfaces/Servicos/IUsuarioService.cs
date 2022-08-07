@@ -15,6 +15,6 @@ namespace ListMEAPI.Interfaces.Servicos
         UsuarioModel ExibirUsuario(int id);
 
         void Salvar();
-        UsuarioModel Atualizar(int id);
+        UsuarioModel Atualizar(int id, AtualizacaoUsuarioRequest usuarioAtualizado);
     }
 }

@@ -52,14 +52,14 @@ namespace ListMEAPI.Services
             _usuarioRepository.Save();
         }
 
-        UsuarioModel IUsuarioService.Atualizar(int id)
+        UsuarioModel IUsuarioService.Atualizar(int Id, AtualizacaoUsuarioRequest usuarioAtualizado)
         {
-            var newUser = _usuarioRepository.GetOne(id);
+            
 
             //var newUser = new UsuarioModel(usuarioNovo.Nome_Usuario, usuarioNovo.Sobrenome, usuarioNovo.Telefone, usuarioNovo.Data_Nascimento, usuarioNovo.Email, usuarioNovo.Foto_Perfil, usuarioNovo.Senha);
-            _usuarioRepository.Update(id, newUser);
-            _usuarioRepository.Save();
-            return newUser;
+            
+           
+            return _usuarioRepository.Update(Id, usuarioAtualizado); ;
         }
     }
 }

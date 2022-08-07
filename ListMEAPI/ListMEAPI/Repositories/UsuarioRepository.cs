@@ -1,4 +1,5 @@
-﻿using ListMEAPI.Interfaces.Repositorios;
+﻿using ListMEAPI.DTOs.Request;
+using ListMEAPI.Interfaces.Repositorios;
 using ListMEAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -47,10 +48,23 @@ namespace ListMEAPI.Repositories
             return result;
         }
 
-        public void Update(int id, UsuarioModel usuario)
+        public UsuarioModel Update(int Id, AtualizacaoUsuarioRequest usuarioAtualizado)
         {
-                _context.Entry(usuario).State = EntityState.Modified;
+            UsuarioModel usuarioAntigo = _context.Usuarios.Find(Id);
+            if (usuarioAntigo != null)
+            {
+                usuarioAntigo.Nome_Usuario = usuarioAtualizado.Nome_Usuario;
+                usuarioAntigo.Sobrenome = usuarioAtualizado.Sobrenome;
+                usuarioAntigo.Telefone = usuarioAtualizado.Telefone;
+                usuarioAntigo.Foto_Perfil = usuarioAtualizado.Foto_Perfil;
+                usuarioAntigo.Data_Nascimento = usuarioAtualizado.Data_Nascimento;
+                usuarioAntigo.Email = usuarioAtualizado.Email;
+                usuarioAntigo.Senha = usuarioAtualizado.Senha;
                 _context.SaveChanges();
+                return usuarioAntigo;
+            }
+            return usuarioAntigo;
+            
         }
 
         //public ActionResult SubstituirUsuarioPelaId(int Id, UsuarioModel usuario)

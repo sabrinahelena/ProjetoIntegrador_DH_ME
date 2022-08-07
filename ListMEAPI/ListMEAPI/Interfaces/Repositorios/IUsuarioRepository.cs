@@ -9,7 +9,7 @@ namespace ListMEAPI.Interfaces.Repositorios
         void Create(UsuarioModel usuario); //POST
         List<UsuarioModel> GetAll(); //GET 
 
-        void Update(int id, UsuarioModel usuarioNovo); //PUT
+        UsuarioModel Update(int id, AtualizacaoUsuarioRequest usuarioNovo); //PUT
 
         void Delete(int id); //DELETE
 
