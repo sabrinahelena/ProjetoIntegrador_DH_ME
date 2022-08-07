@@ -1,3 +1,4 @@
+using ListMEAPI.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -66,7 +67,6 @@ namespace ListMEAPI
                         ValidateAudience = false
                     };
                 });
-
 
 
             var app = builder.Build();

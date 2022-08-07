@@ -8,12 +8,14 @@ namespace ListMEAPI.Controllers.Home
     [Route("api/[controller]")]
     [ApiController]
 
+
     /*
      * Esse controller fica na pasta Home, pois na tela inicial (home) haverá um espaço
      * no qual o cliente poderá entrar em contato com a equipe.
      */ 
     public class ContatoController : ControllerBase
     {
+
         private ListMEContext _listMEContext = new ListMEContext();
 
         /// <summary>
@@ -41,10 +43,12 @@ namespace ListMEAPI.Controllers.Home
          * Para armazenar esse contato, o usuário faz um post do model Contato, que contém
          * nome, email (para respondermos) e a mensagem. Esse método permite anônimos, não é necessário
          * autenticar.
-         */ 
+         */
+
+
         public ActionResult<ContatoModel> AdicionarContato(ContatoModel contato)
         {
-            if(contato == null)
+            if (contato == null)
             {
                 return BadRequest();
             }
@@ -57,14 +61,14 @@ namespace ListMEAPI.Controllers.Home
 
         }
 
-        /// <summary>
-        /// Listar todos os contatos
-        /// </summary>
-        /// <returns>Lista de contatos solicitados</returns>
-        /// <response code="404">Não há contatos cadastrados</response>
-        /// <response code="200">Retorna a lista de contatos cadastrados</response>
-        /// <response code="500">Ocorreu algum erro ao obter lista de contatos cadastrados</response>
-        [HttpGet("RequererTodosContatos")]
+            /// <summary>
+            /// Listar todos os contatos
+            /// </summary>
+            /// <returns>Lista de contatos solicitados</returns>
+            /// <response code="404">Não há contatos cadastrados</response>
+            /// <response code="200">Retorna a lista de contatos cadastrados</response>
+            /// <response code="500">Ocorreu algum erro ao obter lista de contatos cadastrados</response>
+            [HttpGet("RequererTodosContatos")]
         //[Authorize]
 
         /*
