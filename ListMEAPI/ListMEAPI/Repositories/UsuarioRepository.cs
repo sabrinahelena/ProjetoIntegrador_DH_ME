@@ -49,24 +49,29 @@ namespace ListMEAPI.Repositories
 
         public void Update(int id, UsuarioModel usuario)
         {
+            //public ActionResult SubstituirUsuarioPelaId(int Id, UsuarioModel usuario)
+            //{
+            //    if (Id != usuario.Id_Usuario)
+            //    {
+            //        return BadRequest();
+            //    }
+            //    else
+            //    {
+            //        //Substitui valor da instância no banco de dados 
+            //        _listMEContext.Entry(usuario).State = EntityState.Modified;
+            //        _listMEContext.SaveChanges();
+
+            //        return NoContent();
+            //    }
+
+            if (id == usuario.Id_Usuario)
+            {
+
                 _context.Entry(usuario).State = EntityState.Modified;
                 _context.SaveChanges();
+            }
         }
 
-        //public ActionResult SubstituirUsuarioPelaId(int Id, UsuarioModel usuario)
-        //{
-        //    if (Id != usuario.Id_Usuario)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    if (Id == usuario.Id_Usuario)
-        //    {
-        //        //Substitui valor da instância no banco de dados 
-        //        _listMEContext.Entry(usuario).State = EntityState.Modified;
-        //        _listMEContext.SaveChanges();
-
-        //        return NoContent();
-        //    }
 
 
         public void Save()
