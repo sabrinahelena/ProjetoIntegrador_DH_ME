@@ -16,15 +16,13 @@ namespace ListMEAPI.Services
             _usuarioRepository = usuarioRepository;
         }
 
+        //put
         public void Atualizar(int id, UsuarioModel usuario)
         {
             throw new NotImplementedException();
         }
 
-        //public void Atualizar(int id)
-        //{
-        //    _usuarioRepository.Update
-        //}
+        //POST
 
         public void Cadastrar(CadastroUsuarioRequest usuario)
         {
@@ -33,6 +31,19 @@ namespace ListMEAPI.Services
             _usuarioRepository.Create(user);
         }
 
+        //DELETE
+        public void Deletar(int id)
+        {
+            _usuarioRepository.Delete(id);
+        }
+
+        //GET POR ID
+        public UsuarioModel ExibirUsuario(int id)
+        {
+           return _usuarioRepository.GetOne(id);
+        }
+
+        //GET
         public List<UsuarioResponse> Listar()
         {
             var list = _usuarioRepository.GetAll();

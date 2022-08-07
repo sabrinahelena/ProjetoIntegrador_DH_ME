@@ -64,5 +64,21 @@ namespace ListMEAPI.Controllers.TelaCadastro
         {
             return Ok(_usuarioService.Listar());
         }
+
+        [HttpDelete("{Id}")]
+
+        public ActionResult<UsuarioResponse> Deleta(int Id)
+        {
+             _usuarioService.Deletar(Id);
+            return Ok();
+        }
+
+        [HttpGet("ExibirUmUsuario{Id}")]
+
+        public ActionResult<UsuarioResponse> ExibeUm(int Id)
+        {
+            return Ok(_usuarioService.ExibirUsuario(Id));
+        }
+
     }
 }

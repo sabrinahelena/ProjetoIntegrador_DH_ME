@@ -1,6 +1,7 @@
 ﻿using ListMEAPI.Interfaces.Repositorios;
 using ListMEAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace ListMEAPI.Repositories
 {
@@ -21,10 +22,6 @@ namespace ListMEAPI.Repositories
             _context.SaveChanges();
         }
 
-        public List<UsuarioModel> GetAll()
-        {
-            return _context.Usuarios.Include(i => i.Residencias).ToList();
-        }
 
         public void AlterarUsuario(int id, UsuarioModel usuario)
         {
@@ -37,5 +34,32 @@ namespace ListMEAPI.Repositories
         {
             throw new NotImplementedException();
         }
+
+        //DELETE
+        public void Delete(int id)
+        {
+            var result = _context.Usuarios.Find(id);
+            _context.Usuarios.Remove(result);
+            _context.SaveChanges();
+
+        }
+
+        public List<UsuarioModel> GetAll()
+        {
+            return _context.Usuarios.Include(i => i.Residencias).ToList();
+        }
+        /*
+         * 
+         * PUXA USUÁRIO SEM RESIDENCIA
+         */
+        public UsuarioModel GetOne(int id)
+        {
+            //var requerimento = _context.Usuarios.Find(id);
+            var result = _context.Usuarios.Include(i => i.Residencias).Where(i => i.Id_Usuario == id).FirstOrDefault();
+            return result;
+        }
+
+
     }
 }
+

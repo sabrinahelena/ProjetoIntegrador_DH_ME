@@ -12,5 +12,9 @@ namespace ListMEAPI.Interfaces.Servicos
         List<UsuarioResponse> Listar();
 
         void Atualizar(int id, UsuarioModel usuario);
+
+        void Deletar(int id);
+
+        UsuarioModel ExibirUsuario(int id);
     }
 }

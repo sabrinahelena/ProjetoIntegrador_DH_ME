@@ -9,5 +9,9 @@ namespace ListMEAPI.Interfaces.Repositorios
         List<UsuarioModel> GetAll(); //GET 
 
         void Update(UsuarioModel usuario); //PUT
+
+        void Delete(int id); //DELETE
+
+        UsuarioModel GetOne(int id);
     }
 }
