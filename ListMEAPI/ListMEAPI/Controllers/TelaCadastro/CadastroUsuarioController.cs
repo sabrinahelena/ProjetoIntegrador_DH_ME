@@ -82,9 +82,9 @@ namespace ListMEAPI.Controllers.TelaCadastro
 
         [HttpPut("AtualizarUsuarioPorId{Id}")]
 
-        public ActionResult<UsuarioResponse> AtualizaUsuario(int Id, AtualizacaoUsuarioRequest usuario)
+        public ActionResult<UsuarioResponse> AtualizaUsuario(int Id)
         {
-            return Ok(_usuarioService.Atualizar(Id, usuario));
+            return Ok(_usuarioService.Atualizar(Id));
         }
 
     }

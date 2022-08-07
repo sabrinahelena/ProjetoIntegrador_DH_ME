@@ -10,13 +10,11 @@ namespace ListMEAPI.Interfaces.Servicos
         void Cadastrar(CadastroUsuarioRequest usuario);
 
         List<UsuarioResponse> Listar();
-
-        UsuarioModel Atualizar(int id, AtualizacaoUsuarioRequest usuarioNovo);
-
         void Deletar(int id);
 
         UsuarioModel ExibirUsuario(int id);
 
         void Salvar();
+        UsuarioModel Atualizar(int id);
     }
 }

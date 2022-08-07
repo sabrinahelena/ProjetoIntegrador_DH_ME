@@ -17,6 +17,7 @@ namespace ListMEAPI.Services
         }
 
 
+
         //POST
 
         public void Cadastrar(CadastroUsuarioRequest usuario)
@@ -51,9 +52,11 @@ namespace ListMEAPI.Services
             _usuarioRepository.Save();
         }
 
-        UsuarioModel IUsuarioService.Atualizar(int id, AtualizacaoUsuarioRequest usuarioNovo)
+        UsuarioModel IUsuarioService.Atualizar(int id)
         {
-            var newUser = new UsuarioModel(usuarioNovo.Nome_Usuario, usuarioNovo.Sobrenome, usuarioNovo.Telefone, usuarioNovo.Data_Nascimento, usuarioNovo.Email, usuarioNovo.Foto_Perfil, usuarioNovo.Senha);
+            var newUser = _usuarioRepository.GetOne(id);
+
+            //var newUser = new UsuarioModel(usuarioNovo.Nome_Usuario, usuarioNovo.Sobrenome, usuarioNovo.Telefone, usuarioNovo.Data_Nascimento, usuarioNovo.Email, usuarioNovo.Foto_Perfil, usuarioNovo.Senha);
             _usuarioRepository.Update(id, newUser);
             _usuarioRepository.Save();
             return newUser;

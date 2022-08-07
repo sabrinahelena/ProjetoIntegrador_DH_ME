@@ -49,12 +49,8 @@ namespace ListMEAPI.Repositories
 
         public void Update(int id, UsuarioModel usuario)
         {
-            if (id != usuario.Id_Usuario)
-            {
                 _context.Entry(usuario).State = EntityState.Modified;
-
                 _context.SaveChanges();
-            }
         }
 
         //public ActionResult SubstituirUsuarioPelaId(int Id, UsuarioModel usuario)
