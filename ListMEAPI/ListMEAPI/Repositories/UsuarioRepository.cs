@@ -79,8 +79,17 @@ namespace ListMEAPI.Repositories
         //        _listMEContext.Entry(usuario).State = EntityState.Modified;
         //        _listMEContext.SaveChanges();
 
-        //        return NoContent();
-        //    }
+            //        return NoContent();
+            //    }
+
+            if (id == usuario.Id_Usuario)
+            {
+
+                _context.Entry(usuario).State = EntityState.Modified;
+                _context.SaveChanges();
+            }
+        }
+
 
 
         public void Save()
