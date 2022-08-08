@@ -1,4 +1,4 @@
-﻿namespace ListMEAPI.DTOs.Request
+﻿namespace ListMEAPI.DTOs.Request.Usuario
 {
     /*
      * DTO = Objeto de Transferência de Dados

@@ -1,4 +1,4 @@
-﻿namespace ListMEAPI.DTOs.Request
+﻿namespace ListMEAPI.DTOs.Request.Residencia
 {
     public class CadastroResidenciaRequest
     {

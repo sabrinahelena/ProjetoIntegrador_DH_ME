@@ -1,4 +1,4 @@
-﻿using ListMEAPI.DTOs.Request;
+﻿using ListMEAPI.DTOs.Request.Usuario;
 using ListMEAPI.DTOs.Response;
 using ListMEAPI.Models;
 

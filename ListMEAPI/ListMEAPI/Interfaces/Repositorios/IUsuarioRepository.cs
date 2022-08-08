@@ -1,4 +1,4 @@
-﻿using ListMEAPI.DTOs.Request;
+﻿using ListMEAPI.DTOs.Request.Usuario;
 using ListMEAPI.Models;
 
 namespace ListMEAPI.Interfaces.Repositorios

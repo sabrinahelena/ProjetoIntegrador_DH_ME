@@ -1,4 +1,4 @@
-﻿using ListMEAPI.DTOs.Request;
+﻿using ListMEAPI.DTOs.Request.Residencia;
 using ListMEAPI.DTOs.Response;
 using ListMEAPI.Interfaces.Repositorios;
 using ListMEAPI.Interfaces.Servicos;
