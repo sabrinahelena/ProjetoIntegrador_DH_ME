@@ -51,14 +51,9 @@ namespace ListMEAPI.Services
         {
             _usuarioRepository.Save();
         }
-
+        //PUT
         UsuarioModel IUsuarioService.Atualizar(int Id, AtualizacaoUsuarioRequest usuarioAtualizado)
-        {
-            
-
-            //var newUser = new UsuarioModel(usuarioNovo.Nome_Usuario, usuarioNovo.Sobrenome, usuarioNovo.Telefone, usuarioNovo.Data_Nascimento, usuarioNovo.Email, usuarioNovo.Foto_Perfil, usuarioNovo.Senha);
-            
-           
+        {  
             return _usuarioRepository.Update(Id, usuarioAtualizado); ;
         }
     }

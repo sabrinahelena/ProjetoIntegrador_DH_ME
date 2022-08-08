@@ -40,7 +40,6 @@ namespace ListMEAPI.Models
         public string Data_Nascimento { get; set; }
 
         [Unique]
-
         public string Email { get; set; }
         public string? Foto_Perfil { get; set; }
 

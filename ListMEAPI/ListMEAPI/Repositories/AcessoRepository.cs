@@ -26,7 +26,7 @@ namespace ListMEAPI.Repositories
             
             if (usuario == null)
             {
-                return new { menseger = "Usuário ou senha incorretos" };
+                return null;
             }
             else
             {

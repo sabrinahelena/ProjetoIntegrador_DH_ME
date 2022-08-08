@@ -5,6 +5,7 @@ using ListMEAPI.Interfaces.Servicos;
 using ListMEAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace ListMEAPI.Services
 {
     public class AcessoService : IAcessoService
@@ -18,11 +19,10 @@ namespace ListMEAPI.Services
 
         //POST
 
-        public ActionResult<dynamic> Cadastrar(CadastroAcessoRequest acesso)
+        public dynamic Cadastrar(CadastroAcessoRequest acesso)
         {
             var acessoNovo = new AcessoModel(acesso.email, acesso.senha);
-
-            return Ok(_acessoRepository.Create(acessoNovo));
+            return _acessoRepository.Create(acessoNovo);
         }
     
     }

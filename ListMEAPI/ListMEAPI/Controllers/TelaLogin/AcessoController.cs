@@ -21,12 +21,18 @@ namespace ListMEAPI.Controllers.TelaLogin
         [Route("Autenticar")]
         [AllowAnonymous]
 
-        public dynamic Create([FromBody] CadastroAcessoRequest acesso)
+        public ActionResult<dynamic> Create([FromBody] CadastroAcessoRequest acesso)
         {
 
-            return (_acessoService.Cadastrar(acesso));
-
-
+            var teste = (_acessoService.Cadastrar(acesso));
+            if(teste == null)
+            {
+                return NotFound(new { menssager = "E-mail ou senha incorretos" });
+            }
+            else
+            {
+                return Ok(teste);
+            }
         }
     }
 }
