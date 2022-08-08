@@ -1,6 +1,7 @@
 ﻿using ListMEAPI.DTOs.Request.Login;
 using ListMEAPI.Interfaces.Repositorios.Login;
 using ListMEAPI.Models;
+using ListMEAPI.Services;
 
 namespace ListMEAPI.Repositories
 {
@@ -15,10 +16,30 @@ namespace ListMEAPI.Repositories
             _context = ctx;
         }
 
+        /*
+         *  var usuario = _listMEContext.Usuarios.Where(Usuario => Usuario.Nome_Usuario == acesso.usuario && Usuario.Senha == acesso.senha).FirstOrDefault();
+            if (usuario == null)
+            {
+                return NotFound(new { menseger = "Usuário ou senha incorretos" });
+            }
+            else
+            {
+                var chaveToken = TokenService.GerarChaveToken();
+                var usuarioEx = _listMEContext.Usuarios.Where(Usuario => Usuario.Nome_Usuario == acesso.usuario && Usuario.Senha == acesso.senha).FirstOrDefault();
+                usuarioEx.Senha = "";
+
+                return Ok(new { token = chaveToken, user = usuarioEx });
+            }
+
+        */
         public void Create(AcessoModel acesso)
         {
-            _context.Add(acesso);
-            _context.SaveChanges();
+            var usuario = _context.Usuarios.Where(Usuario => Usuario.Nome_Usuario == acesso.usuario && Usuario.Senha == acesso.senha).FirstOrDefault();)
+            var chaveToken = TokenService.GerarChaveToken();
+            var usuarioEx = _context.Usuarios.Where(Usuario => Usuario.Nome_Usuario == acesso.usuario && Usuario.Senha == acesso.senha).FirstOrDefault();
+            usuarioEx.Senha = "";
+
+            return new { token = chaveToken, user = usuarioEx };
         }
 
         //DELETE

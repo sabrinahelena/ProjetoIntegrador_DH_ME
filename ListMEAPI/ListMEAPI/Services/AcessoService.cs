@@ -16,6 +16,7 @@ namespace ListMEAPI.Services
         }
 
         //POST
+
         public void Cadastrar(CadastroAcessoRequest acesso)
         {
             var acessoNovo = new AcessoModel(acesso.usuario, acesso.senha);
@@ -43,7 +44,7 @@ namespace ListMEAPI.Services
         {
             return _acessoRepository.GetAll();
         }
-    
+
         //PUT
         public AcessoModel Atualizar(int id, CadastroAcessoRequest acessoAtualizado)
         {
