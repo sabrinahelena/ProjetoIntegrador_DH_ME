@@ -13,11 +13,12 @@ namespace ListMEAPI.Services
         {
             _contatoRepository = contatoRepository;
         }
-        public void Cadastrar(CadastroContatoRequest contato)
+        public dynamic Cadastrar(CadastroContatoRequest contato)
         {
             var contact = new ContatoModel(contato.Nome, contato.Email, contato.Mensagem);
 
             _contatoRepository.Create(contact);
+            return contact;
         }
 
         public void Deletar(int id)
