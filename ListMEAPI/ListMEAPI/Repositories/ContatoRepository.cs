@@ -42,7 +42,7 @@ namespace ListMEAPI.Repositories
         public ContatoModel GetOne(int id)
         {
             //var requerimento = _context.Usuarios.Find(id);
-            var result = _context.Contatos.FirstOrDefault();
+            var result = _context.Contatos.Find(id);
             return result;
         }   
 
