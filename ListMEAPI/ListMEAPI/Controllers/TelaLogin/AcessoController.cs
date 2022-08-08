@@ -1,4 +1,6 @@
-﻿using ListMEAPI.Models;
+﻿using ListMEAPI.DTOs.Request.Login;
+using ListMEAPI.Interfaces.Servicos;
+using ListMEAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,25 +11,20 @@ namespace ListMEAPI.Controllers.TelaLogin
     [ApiController]
     public class AcessoController : ControllerBase
     {
+        public IAcessoService _acessoService;
+
+        public AcessoController(IAcessoService acessoService)
+        {
+            _acessoService = acessoService;
+        }
         [HttpPost]
         [Route("Autenticar")]
         [AllowAnonymous]
 
-        public ActionResult<dynamic> Autenticar(AcessoModel acesso)
+        public IActionResult Create([FromBody] CadastroAcessoRequest acesso)
         {
-            var usuario = _listMEContext.Usuarios.Where(Usuario => Usuario.Nome_Usuario == acesso.usuario && Usuario.Senha == acesso.senha).FirstOrDefault();
-            if (usuario == null)
-            {
-                return NotFound(new { menseger = "Usuário ou senha incorretos" });
-            }
-            else
-            {
-                var chaveToken = TokenService.GerarChaveToken();
-                var usuarioEx = _listMEContext.Usuarios.Where(Usuario => Usuario.Nome_Usuario == acesso.usuario && Usuario.Senha == acesso.senha).FirstOrDefault();
-                usuarioEx.Senha = "";
-
-                return Ok(new { token = chaveToken, user = usuarioEx });
-            }
+            _acessoService.Cadastrar(acesso);
+            return Ok();
 
         }
     }

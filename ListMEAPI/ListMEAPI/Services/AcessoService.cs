@@ -23,39 +23,6 @@ namespace ListMEAPI.Services
 
             _acessoRepository.Create(acessoNovo);
         }
-
-
-        //DELETE
-        public void Deletar(int id)
-        {
-            _acessoRepository.Delete(id);
-        }
-
-        //GET POR ID
-
-        public AcessoModel ExibirAcesso(int id)
-        {
-            return _acessoRepository.GetOne(id);
-        }
-
-
-        //GET
-        public List<AcessoModel> Listar()
-        {
-            return _acessoRepository.GetAll();
-        }
-
-        //PUT
-        public AcessoModel Atualizar(int id, CadastroAcessoRequest acessoAtualizado)
-        {
-            return _acessoRepository.Update(id, acessoAtualizado);
-        }
-
-        //save
-        public void Salvar()
-        {
-            _acessoRepository.Save();
-
-        }
+    
     }
 }
