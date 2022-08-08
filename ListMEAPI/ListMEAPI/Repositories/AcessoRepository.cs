@@ -19,14 +19,14 @@ namespace ListMEAPI.Repositories
         }
 
         
-        public ActionResult<dynamic> Create(AcessoModel acesso)
+        public dynamic Create(AcessoModel acesso)
         {
             
             var usuario = _context.Usuarios.Where(Usuario => Usuario.Email == acesso.email && Usuario.Senha == acesso.senha).FirstOrDefault();
             
             if (usuario == null)
             {
-                return BadRequest(new { menseger = "Usuário ou senha incorretos" });
+                return new { menseger = "Usuário ou senha incorretos" };
             }
             else
             {
