@@ -24,7 +24,7 @@ namespace ListMEAPI.Controllers.TelaLogin
         public ActionResult<dynamic> Create([FromBody] CadastroAcessoRequest acesso)
         {
 
-            var teste = (_acessoService.Cadastrar(acesso));
+            var teste = _acessoService.Cadastrar(acesso);
             if(teste == null)
             {
                 return NotFound(new { menssager = "E-mail ou senha incorretos" });

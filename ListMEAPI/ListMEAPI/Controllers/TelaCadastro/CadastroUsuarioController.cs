@@ -53,13 +53,22 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /*
          * Para criar seu acesso, não precisa estar autenticado.
          */
-        public IActionResult Create([FromBody] CadastroUsuarioRequest usuario)
+        public ActionResult<dynamic> Create([FromBody] CadastroUsuarioRequest usuario)
         {
-            _usuarioService.Cadastrar(usuario);
-            return Ok();
+            var teste = _usuarioService.Cadastrar(usuario);
+            if (teste == true)
+            {
+
+                return BadRequest(new { menssager = "E-mail ja existente" });
+            }
+            else {
+                return Ok(teste);
+                    
+            };
         }
 
-        [HttpGet]
+
+[HttpGet]
         public ActionResult<List<UsuarioResponse>> GetAll()
         {
             return Ok(_usuarioService.Listar());

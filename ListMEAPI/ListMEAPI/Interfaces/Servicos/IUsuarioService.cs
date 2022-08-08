@@ -7,7 +7,7 @@ namespace ListMEAPI.Interfaces.Servicos
     public interface IUsuarioService
     {
         //Create e List para o DTOs, request e response
-        void Cadastrar(CadastroUsuarioRequest usuario);
+        dynamic Cadastrar(CadastroUsuarioRequest usuario);
 
         List<UsuarioResponse> Listar();
         void Deletar(int id);

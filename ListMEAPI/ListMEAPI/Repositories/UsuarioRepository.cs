@@ -18,10 +18,21 @@ namespace ListMEAPI.Repositories
             _context = ctx;
         }
 
-        public void Create(UsuarioModel usuario)
+        // POST
+        public dynamic Create(UsuarioModel usuario)
         {
+            var busca = _context.Usuarios.Any(a => a.Email == usuario.Email);
+            if (busca == true) {
+
+                return busca;
+
+            }               
+            
             _context.Add(usuario);
             _context.SaveChanges();
+
+            return null;
+
         }
 
         //DELETE
