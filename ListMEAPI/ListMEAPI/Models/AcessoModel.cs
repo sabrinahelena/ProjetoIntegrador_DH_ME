@@ -4,9 +4,9 @@ namespace ListMEAPI.Models
 {
     public class AcessoModel
     {
-        public AcessoModel(string usuario, string senha)
+        public AcessoModel(string email, string senha)
         {
-            this.usuario = usuario;
+            this.email = email;
             this.senha = senha;
         }
 
@@ -14,7 +14,7 @@ namespace ListMEAPI.Models
         [Key]
 
         public int Id_Acesso { get; set; }
-        public string usuario { get; set; }
+        public string email { get; set; }
 
         public string senha { get; set; }
     }

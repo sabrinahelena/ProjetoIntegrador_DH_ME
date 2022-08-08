@@ -9,9 +9,7 @@ namespace ListMEAPI.Mapper
         {
             var dto = new AcessoResponse();
             dto.Id_Acesso = acesso.Id_Acesso;
-            dto.usuario = acesso.usuario;
-            dto.senha = acesso.senha;
-
+            dto.email = acesso.email;
             return dto;
 
         }

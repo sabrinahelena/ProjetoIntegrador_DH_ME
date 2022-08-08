@@ -17,11 +17,17 @@ namespace ListMEAPI.Repositories
         }
         public dynamic Create(AcessoModel acesso)
         {
-            var usuario = _context.Usuarios.Where(Usuario => Usuario.Nome_Usuario == acesso.usuario && Usuario.Senha == acesso.senha).FirstOrDefault();
-            var chaveToken = TokenService.GerarChaveToken();
-            var usuarioEx = _context.Usuarios.Where(Usuario => Usuario.Nome_Usuario == acesso.usuario && Usuario.Senha == acesso.senha).FirstOrDefault();
-            usuarioEx.Senha = "";
-            return new { token = chaveToken, user = usuarioEx };
+            
+            var usuario = _context.Usuarios.Where(Usuario => Usuario.Email == acesso.email && Usuario.Senha == acesso.senha).FirstOrDefault();
+            if (usuario == null)
+            {
+
+            }
+            else
+            {
+                var chaveToken = TokenService.GerarChaveToken();
+                return new { token = chaveToken, user = usuario };
+            }
         }  
     }
 }

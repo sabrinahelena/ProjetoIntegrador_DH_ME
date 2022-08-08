@@ -17,11 +17,11 @@ namespace ListMEAPI.Services
 
         //POST
 
-        public void Cadastrar(CadastroAcessoRequest acesso)
+        public dynamic Cadastrar(CadastroAcessoRequest acesso)
         {
-            var acessoNovo = new AcessoModel(acesso.usuario, acesso.senha);
+            var acessoNovo = new AcessoModel(acesso.email, acesso.senha);
 
-            _acessoRepository.Create(acessoNovo);
+            return _acessoRepository.Create(acessoNovo);
         }
     
     }

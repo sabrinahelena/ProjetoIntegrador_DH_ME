@@ -21,10 +21,9 @@ namespace ListMEAPI.Controllers.TelaLogin
         [Route("Autenticar")]
         [AllowAnonymous]
 
-        public IActionResult Create([FromBody] CadastroAcessoRequest acesso)
+        public dynamic Create([FromBody] CadastroAcessoRequest acesso)
         {
-            _acessoService.Cadastrar(acesso);
-            return Ok();
+            return Ok(_acessoService.Cadastrar(acesso));
 
         }
     }

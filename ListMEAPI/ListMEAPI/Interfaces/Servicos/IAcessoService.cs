@@ -5,7 +5,7 @@ namespace ListMEAPI.Interfaces.Servicos
 {
     public interface IAcessoService
     {
-        void Cadastrar(CadastroAcessoRequest acesso); //POST
+        dynamic Cadastrar(CadastroAcessoRequest acesso); //POST
         
     }
 }

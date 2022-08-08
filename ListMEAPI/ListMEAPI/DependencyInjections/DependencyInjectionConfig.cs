@@ -1,4 +1,5 @@
 ﻿using ListMEAPI.Interfaces.Repositorios.Contato;
+using ListMEAPI.Interfaces.Repositorios.Login;
 using ListMEAPI.Interfaces.Repositorios.Residencia;
 using ListMEAPI.Interfaces.Repositorios.Usuario;
 using ListMEAPI.Interfaces.Servicos;
@@ -21,6 +22,8 @@ namespace ListMEAPI.DependencyInjections
             services.AddTransient<IResidenciaRepository, ResidenciaRepository>();
             services.AddTransient<IContatoRepository, ContatoRepository>();
             services.AddTransient<IContatoService, ContatoService>();
+            services.AddTransient<IAcessoRepository, AcessoRepository>();
+            services.AddTransient<IAcessoService, AcessoService>();
 
             return services;
         }
