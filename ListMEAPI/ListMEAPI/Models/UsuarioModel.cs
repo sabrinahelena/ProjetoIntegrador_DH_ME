@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ServiceStack.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace ListMEAPI.Models
 {
@@ -37,6 +38,9 @@ namespace ListMEAPI.Models
         public string Sobrenome { get; set; }
         public string? Telefone { get; set; }
         public string Data_Nascimento { get; set; }
+
+        [Unique]
+
         public string Email { get; set; }
         public string? Foto_Perfil { get; set; }
 
