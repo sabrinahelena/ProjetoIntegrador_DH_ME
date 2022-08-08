@@ -1,4 +1,5 @@
 ﻿using ListMEAPI.DTOs.Request.Login;
+using ListMEAPI.DTOs.Response.Login;
 using ListMEAPI.Interfaces.Repositorios.Login;
 using ListMEAPI.Models;
 using ListMEAPI.Services;
@@ -15,18 +16,22 @@ namespace ListMEAPI.Repositories
             //INSERÇÃO NO BANCO DE DADOS
             _context = ctx;
         }
+
+        
         public dynamic Create(AcessoModel acesso)
         {
             
             var usuario = _context.Usuarios.Where(Usuario => Usuario.Email == acesso.email && Usuario.Senha == acesso.senha).FirstOrDefault();
+            
             if (usuario == null)
             {
-
+                return new { menseger = "Usuário ou senha incorretos" };
             }
             else
             {
                 var chaveToken = TokenService.GerarChaveToken();
-                return new { token = chaveToken, user = usuario };
+                var acessoResponse = new AcessoResponse(usuario.Email);
+                return new { token = chaveToken, user = acessoResponse };
             }
         }  
     }

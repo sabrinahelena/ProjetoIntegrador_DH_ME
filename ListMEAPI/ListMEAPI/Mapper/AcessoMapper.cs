@@ -7,9 +7,7 @@ namespace ListMEAPI.Mapper
     {
         public static AcessoResponse From(AcessoModel acesso)
         {
-            var dto = new AcessoResponse();
-            dto.Id_Acesso = acesso.Id_Acesso;
-            dto.email = acesso.email;
+            var dto = new AcessoResponse(acesso.email);
             return dto;
 
         }

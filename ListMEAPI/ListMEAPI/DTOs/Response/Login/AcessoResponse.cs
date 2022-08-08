@@ -2,7 +2,10 @@
 {
     public class AcessoResponse
     {
-        public int Id_Acesso { get; set; }
+        public AcessoResponse(string email)
+        {
+            this.email = email;
+        }
         public string email { get; set; }
     }
 }
