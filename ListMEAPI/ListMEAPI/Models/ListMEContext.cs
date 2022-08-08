@@ -13,7 +13,7 @@ namespace ListMEAPI.Models
         //public DbSet<ProdutosModel>? Produtos { get; set; }
        // public DbSet<ListaComprasModel>? ListaCompras { get; set; }
         public DbSet<ResidenciaModel>? Residencias { get; set; }
-       // public DbSet<ContatoModel>? Contato { get; set; }
+        public DbSet<ContatoModel>? Contatos { get; set; }
 
         //protected override void OnModelCreating(ModelBuilder Modelagem)
         //{

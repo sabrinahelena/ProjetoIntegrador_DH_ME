@@ -1,10 +1,10 @@
 ﻿using ListMEAPI.Models;
 
-namespace ListMEAPI.Interfaces.Repositorios
+namespace ListMEAPI.Interfaces.Repositorios.Residencia
 {
     public interface IResidenciaRepository
     {
-       
+
         //Create da residenciamodel
         void Create(ResidenciaModel residencia); //POST
         List<ResidenciaModel> GetAll(); //GET 

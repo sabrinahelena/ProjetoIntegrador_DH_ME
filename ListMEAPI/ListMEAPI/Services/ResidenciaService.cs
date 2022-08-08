@@ -1,6 +1,6 @@
 ﻿using ListMEAPI.DTOs.Request.Residencia;
-using ListMEAPI.DTOs.Response;
-using ListMEAPI.Interfaces.Repositorios;
+using ListMEAPI.DTOs.Response.Residencia;
+using ListMEAPI.Interfaces.Repositorios.Residencia;
 using ListMEAPI.Interfaces.Servicos;
 using ListMEAPI.Mapper;
 using ListMEAPI.Models;

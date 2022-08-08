@@ -1,4 +1,4 @@
-﻿using ListMEAPI.Interfaces.Repositorios;
+﻿using ListMEAPI.Interfaces.Repositorios.Residencia;
 using ListMEAPI.Models;
 using Microsoft.EntityFrameworkCore;
 

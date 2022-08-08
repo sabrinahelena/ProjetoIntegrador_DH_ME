@@ -1,4 +1,4 @@
-﻿namespace ListMEAPI.DTOs.Response
+﻿namespace ListMEAPI.DTOs.Response.Residencia
 {
     public class ResidenciaResponse
     {

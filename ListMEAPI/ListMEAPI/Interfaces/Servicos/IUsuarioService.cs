@@ -1,5 +1,5 @@
 ﻿using ListMEAPI.DTOs.Request.Usuario;
-using ListMEAPI.DTOs.Response;
+using ListMEAPI.DTOs.Response.Usuario;
 using ListMEAPI.Models;
 
 namespace ListMEAPI.Interfaces.Servicos

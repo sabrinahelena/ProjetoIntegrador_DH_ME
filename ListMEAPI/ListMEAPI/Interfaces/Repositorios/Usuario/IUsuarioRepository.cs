@@ -1,7 +1,7 @@
 ﻿using ListMEAPI.DTOs.Request.Usuario;
 using ListMEAPI.Models;
 
-namespace ListMEAPI.Interfaces.Repositorios
+namespace ListMEAPI.Interfaces.Repositorios.Usuario
 {
     public interface IUsuarioRepository
     {

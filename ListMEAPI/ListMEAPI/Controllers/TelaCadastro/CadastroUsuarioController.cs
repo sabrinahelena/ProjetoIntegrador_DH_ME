@@ -1,5 +1,5 @@
-﻿using ListMEAPI.DTOs.Request;
-using ListMEAPI.DTOs.Response;
+﻿using ListMEAPI.DTOs.Request.Usuario;
+using ListMEAPI.DTOs.Response.Usuario;
 using ListMEAPI.Interfaces.Servicos;
 using ListMEAPI.Models;
 using Microsoft.AspNetCore.Authorization;

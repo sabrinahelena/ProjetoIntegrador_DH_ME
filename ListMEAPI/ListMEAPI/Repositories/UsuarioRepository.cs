@@ -1,5 +1,5 @@
 ﻿using ListMEAPI.DTOs.Request.Usuario;
-using ListMEAPI.Interfaces.Repositorios;
+using ListMEAPI.Interfaces.Repositorios.Usuario;
 using ListMEAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -64,38 +64,15 @@ namespace ListMEAPI.Repositories
                 return usuarioAntigo;
             }
             return usuarioAntigo;
-            
+
         }
-
-        //public ActionResult SubstituirUsuarioPelaId(int Id, UsuarioModel usuario)
-        //{
-        //    if (Id != usuario.Id_Usuario)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    if (Id == usuario.Id_Usuario)
-        //    {
-        //        //Substitui valor da instância no banco de dados 
-        //        _listMEContext.Entry(usuario).State = EntityState.Modified;
-        //        _listMEContext.SaveChanges();
-
-            //        return NoContent();
-            //    }
-
-            if (id == usuario.Id_Usuario)
-            {
-
-                _context.Entry(usuario).State = EntityState.Modified;
-                _context.SaveChanges();
-            }
-        }
-
-
 
         public void Save()
         {
             _context.SaveChanges();
         }
+
     }
 }
+
 

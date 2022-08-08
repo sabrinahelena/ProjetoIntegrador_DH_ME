@@ -1,6 +1,6 @@
 ﻿using ListMEAPI.DTOs.Request.Usuario;
-using ListMEAPI.DTOs.Response;
-using ListMEAPI.Interfaces.Repositorios;
+using ListMEAPI.DTOs.Response.Usuario;
+using ListMEAPI.Interfaces.Repositorios.Usuario;
 using ListMEAPI.Interfaces.Servicos;
 using ListMEAPI.Mapper;
 using ListMEAPI.Models;

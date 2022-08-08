@@ -1,5 +1,5 @@
 ﻿using ListMEAPI.DTOs.Request.Residencia;
-using ListMEAPI.DTOs.Response;
+using ListMEAPI.DTOs.Response.Residencia;
 using ListMEAPI.Models;
 
 namespace ListMEAPI.Interfaces.Servicos
