@@ -4,6 +4,7 @@ using ListMEAPI.Interfaces.Repositorios.Login;
 using ListMEAPI.Models;
 using ListMEAPI.Services;
 
+
 namespace ListMEAPI.Repositories
 {
     public class AcessoRepository : IAcessoRepository
@@ -18,14 +19,14 @@ namespace ListMEAPI.Repositories
         }
 
         
-        public dynamic Create(AcessoModel acesso)
+        public ActionResult<dynamic> Create(AcessoModel acesso)
         {
             
             var usuario = _context.Usuarios.Where(Usuario => Usuario.Email == acesso.email && Usuario.Senha == acesso.senha).FirstOrDefault();
             
             if (usuario == null)
             {
-                return new { menseger = "Usuário ou senha incorretos" };
+                return BadRequest(new { menseger = "Usuário ou senha incorretos" });
             }
             else
             {

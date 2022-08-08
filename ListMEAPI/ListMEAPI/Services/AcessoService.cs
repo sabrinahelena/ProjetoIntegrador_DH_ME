@@ -3,6 +3,7 @@ using ListMEAPI.DTOs.Response.Login;
 using ListMEAPI.Interfaces.Repositorios.Login;
 using ListMEAPI.Interfaces.Servicos;
 using ListMEAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ListMEAPI.Services
 {
@@ -17,11 +18,11 @@ namespace ListMEAPI.Services
 
         //POST
 
-        public dynamic Cadastrar(CadastroAcessoRequest acesso)
+        public ActionResult<dynamic> Cadastrar(CadastroAcessoRequest acesso)
         {
             var acessoNovo = new AcessoModel(acesso.email, acesso.senha);
 
-            return _acessoRepository.Create(acessoNovo);
+            return Ok(_acessoRepository.Create(acessoNovo));
         }
     
     }
