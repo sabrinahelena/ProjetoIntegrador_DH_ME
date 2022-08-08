@@ -15,6 +15,8 @@ namespace ListMEAPI.Models
         public DbSet<ResidenciaModel>? Residencias { get; set; }
         public DbSet<ContatoModel>? Contatos { get; set; }
 
+        public DbSet<AcessoModel>? Acessos { get; set; }
+
         //protected override void OnModelCreating(ModelBuilder Modelagem)
         //{
         //    //Modelagem.Entity<EstoqueModel>(TabelaEstoque =>
