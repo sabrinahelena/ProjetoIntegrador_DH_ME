@@ -1,4 +1,5 @@
-﻿using ListMEAPI.DTOs.Request.Residencia;
+﻿using ListMEAPI.Controllers.TelaGerenciarCompras;
+using ListMEAPI.DTOs.Request.Residencia;
 using ListMEAPI.DTOs.Response.Residencia;
 using ListMEAPI.Interfaces.Servicos;
 using ListMEAPI.Models;

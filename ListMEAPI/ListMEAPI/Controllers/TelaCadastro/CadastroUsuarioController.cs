@@ -68,7 +68,7 @@ namespace ListMEAPI.Controllers.TelaCadastro
         }
 
 
-[HttpGet]
+        [HttpGet]
         public ActionResult<List<UsuarioResponse>> GetAll()
         {
             return Ok(_usuarioService.Listar());

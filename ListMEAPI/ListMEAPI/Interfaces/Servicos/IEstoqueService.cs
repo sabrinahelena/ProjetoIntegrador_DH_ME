@@ -4,10 +4,12 @@ namespace ListMEAPI.Interfaces.Servicos
 {
     public interface IEstoqueService
     {
-        void Criar(EstoqueModel estoque); //POST
+        void Criar(); //POST
         bool DeleteEstoque(int Id); //Delete
 
-        EstoqueModel AdicionarProdutoAoEstoque(); //Put adicionando produto ao estoque
+        EstoqueModel AdicionarProdutoAoEstoque(int IdProduto, int IdEstoque); //Put adicionando produto ao estoque
+
+        List<EstoqueModel> GetEstoque();
 
 
     }
