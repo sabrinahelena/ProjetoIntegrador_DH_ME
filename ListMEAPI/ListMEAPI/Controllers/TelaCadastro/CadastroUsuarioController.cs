@@ -68,7 +68,7 @@ namespace ListMEAPI.Controllers.TelaCadastro
         }
 
 
-[HttpGet]
+        [HttpGet]
         public ActionResult<List<UsuarioResponse>> GetAll()
         {
             return Ok(_usuarioService.Listar());
@@ -78,22 +78,46 @@ namespace ListMEAPI.Controllers.TelaCadastro
 
         public ActionResult<UsuarioResponse> Deleta(int Id)
         {
-             _usuarioService.Deletar(Id);
-            return Ok();
+            var boolean = _usuarioService.Deletar(Id);
+            if(boolean == true)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+            
         }
 
         [HttpGet("ExibirUmUsuario{Id}")]
 
         public ActionResult<UsuarioResponse> ExibeUm(int Id)
         {
-            return Ok(_usuarioService.ExibirUsuario(Id));
+            var verificacao = _usuarioService.ExibirUsuario(Id);
+            if (verificacao != null)
+            {
+                return Ok(verificacao);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         [HttpPut("AtualizarUsuarioPorId{Id}")]
 
         public ActionResult<UsuarioResponse> AtualizaUsuario(int Id, AtualizacaoUsuarioRequest usuarioAtualizado)
         {
-            return Ok(_usuarioService.Atualizar(Id, usuarioAtualizado));
+            var verificacao = _usuarioService.Atualizar(Id, usuarioAtualizado);
+            if (verificacao != null)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
     }

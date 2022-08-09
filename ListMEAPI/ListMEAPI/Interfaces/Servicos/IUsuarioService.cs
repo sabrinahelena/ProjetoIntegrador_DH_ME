@@ -10,7 +10,7 @@ namespace ListMEAPI.Interfaces.Servicos
         dynamic Cadastrar(CadastroUsuarioRequest usuario);
 
         List<UsuarioResponse> Listar();
-        void Deletar(int id);
+        bool Deletar(int id);
 
         UsuarioModel ExibirUsuario(int id);
 

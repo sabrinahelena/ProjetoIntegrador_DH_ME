@@ -14,11 +14,5 @@ namespace ListMEAPI.Interfaces.Servicos
 
         void Salvar();
 
-
-
-
-
-
-
     }
 }

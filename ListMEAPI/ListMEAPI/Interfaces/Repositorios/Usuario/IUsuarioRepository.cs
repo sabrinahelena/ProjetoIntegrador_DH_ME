@@ -11,7 +11,7 @@ namespace ListMEAPI.Interfaces.Repositorios.Usuario
 
         UsuarioModel Update(int id, AtualizacaoUsuarioRequest usuarioNovo); //PUT
 
-        void Delete(int id); //DELETE
+        bool Delete(int id); //DELETE
 
         void Save();
 
