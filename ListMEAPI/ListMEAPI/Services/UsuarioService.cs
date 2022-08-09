@@ -20,11 +20,11 @@ namespace ListMEAPI.Services
 
         //POST
 
-        public void Cadastrar(CadastroUsuarioRequest usuario)
+        public dynamic Cadastrar(CadastroUsuarioRequest usuario)
         {
             var user = new UsuarioModel(usuario.Nome_Usuario, usuario.Sobrenome, usuario.Telefone, usuario.Data_Nascimento, usuario.Email, usuario.Foto_Perfil, usuario.Senha);
 
-            _usuarioRepository.Create(user);
+            return _usuarioRepository.Create(user);
         }
 
         //DELETE
