@@ -22,6 +22,11 @@ namespace ListMEAPI.Services
            
             return usuarioRetornado;
         }
+
+        public ResidenciaModel ExibirResidencia(int id)
+        {
+            return _residenciaRepository.GetOneResidencia(id);
+        }
         public void Cadastrar(CadastroResidenciaRequest residencia, int id)
         {
 

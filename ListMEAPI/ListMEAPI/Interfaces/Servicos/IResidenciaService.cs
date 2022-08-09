@@ -12,6 +12,8 @@ namespace ListMEAPI.Interfaces.Servicos
 
         UsuarioModel RetornarUm(int id);
 
+        ResidenciaModel ExibirResidencia(int id);
+
         void Salvar();
 
 

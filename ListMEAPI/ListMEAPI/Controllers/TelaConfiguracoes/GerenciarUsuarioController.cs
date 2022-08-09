@@ -60,6 +60,13 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
             return Ok(_residenciaService.Listar());
         }
 
+        [HttpGet("RequererContatosPorId{Id}")]
+        
+        public ActionResult<ResidenciaResponse> ExibeUm(int Id)
+        {
+            return Ok(_residenciaService.ExibirResidencia(Id));
+        }
+
         //PUT PARA USUÁRIO E RESIDÊNCIA
         /// <summary>
         /// Substitui um usuário a partir de sua Id

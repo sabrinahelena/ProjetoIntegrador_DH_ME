@@ -31,6 +31,12 @@ namespace ListMEAPI.Repositories
             var usuarioRequerido = _context.Usuarios.Find(Id);
             return usuarioRequerido;
         }
+
+        public ResidenciaModel GetOneResidencia(int Id)
+        {
+            var residenciaRequerida = _context.Residencias.Find(Id);
+            return residenciaRequerida;
+        }
         public void Save()
         {
             _context.SaveChanges();

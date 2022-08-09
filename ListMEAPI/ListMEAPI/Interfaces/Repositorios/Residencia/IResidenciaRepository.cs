@@ -11,6 +11,8 @@ namespace ListMEAPI.Interfaces.Repositorios.Residencia
 
         UsuarioModel GetUsuario(int id);
 
+        ResidenciaModel GetOneResidencia(int Id);
+
         void Save();
 
         //void Update(ResidenciaModel residencia);
