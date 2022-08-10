@@ -11,6 +11,9 @@ namespace ListMEAPI.Models
         [Key]
         public int Id_Estoque { get; set; }
        
+        /// <summary>
+        /// O estoque possui uma lista de produtos.
+        /// </summary>
         public List<ProdutosModel> Produtos { get; set; }
 
         public void AdicionarProdutoNaLista(ProdutosModel produto)
