@@ -50,20 +50,28 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
         public IActionResult Create([FromBody] CadastroResidenciaRequest residencia, int id)
         {
 
-            _residenciaService.Cadastrar(residencia, id);
+            if (_residenciaService.Cadastrar(residencia, id) == null)
+            {
+                return NotFound(new { mensagem = "Usuario não existe no banco" });
+            };
             return Ok();
         }
 
-        [HttpGet]
+        [HttpGet("ListarResidencias")]
         public ActionResult<List<ResidenciaResponse>> GetAll()
         {
             return Ok(_residenciaService.Listar());
         }
 
-        [HttpGet("RequererContatosPorId{Id}")]
+        [HttpGet("ListarResidenciaPorId{Id}")]
         
         public ActionResult<ResidenciaResponse> ExibeUm(int Id)
         {
+            if (_residenciaService.ExibirResidencia(Id) == null)
+            {
+                return NotFound(new { menssager = "Residencia não encontrada" });
+
+            }
             return Ok(_residenciaService.ExibirResidencia(Id));
         }
 

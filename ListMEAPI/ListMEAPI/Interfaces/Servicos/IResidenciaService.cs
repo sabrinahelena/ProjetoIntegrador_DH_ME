@@ -6,7 +6,7 @@ namespace ListMEAPI.Interfaces.Servicos
 {
     public interface IResidenciaService
     {
-        void Cadastrar(CadastroResidenciaRequest residencia, int id);
+        dynamic Cadastrar(CadastroResidenciaRequest residencia, int id);
 
         List<ResidenciaResponse> Listar();
 
