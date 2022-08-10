@@ -54,9 +54,9 @@ namespace ListMEAPI.Services
             return list.Select(c => ResidenciaMapper.From(c)).ToList();
         }
 
-        public void Deletar(int id)
+        public bool Deletar(int id)
         {
-            _residenciaRepository.Delete(id);
+            return _residenciaRepository.Delete(id);
         }
 
         ResidenciaModel IResidenciaService.Atualizar(int Id, CadastroResidenciaRequest residenciaAtualizada)

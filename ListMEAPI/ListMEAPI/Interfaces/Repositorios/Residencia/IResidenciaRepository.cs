@@ -14,7 +14,7 @@ namespace ListMEAPI.Interfaces.Repositorios.Residencia
 
         ResidenciaModel GetOneResidencia(int Id); //GET
 
-        void Delete(int id); //DELETE
+        bool Delete(int id); //DELETE
 
         ResidenciaModel Update(int id, CadastroResidenciaRequest residenciaNova); //PUT
 

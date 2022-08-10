@@ -70,7 +70,7 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /// <response code="200">Retorna a lista de usuários cadastrados</response>
         /// <response code="500">Ocorreu algum erro ao obter lista de usuários cadastrados</response>
 
-        [HttpGet]
+        [HttpGet("ListarUsuarios")]
 
         public ActionResult<List<UsuarioResponse>> GetAll()
         {
@@ -85,7 +85,7 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /// <param name="Id">Id do usuário</param>
         /// <response code="404">Usuário não encontrado</response>
         /// <response code="204">Usuário deletado</response>
-        [HttpDelete("{Id}")]
+        [HttpDelete("DeletarUsuarioPorId{Id}")]
        
 
         public ActionResult<UsuarioResponse> Deleta(int Id)

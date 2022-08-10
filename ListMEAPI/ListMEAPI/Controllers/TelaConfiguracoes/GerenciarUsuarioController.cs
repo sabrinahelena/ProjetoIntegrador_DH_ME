@@ -101,8 +101,15 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
 
         public ActionResult<ResidenciaResponse> Deleta(int Id)
         {
-            _residenciaService.Deletar(Id);
-            return Ok();
+            var boolean = _residenciaService.Deletar(Id);
+            if (boolean == true)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         /// <summary>
