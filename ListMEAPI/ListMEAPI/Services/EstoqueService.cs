@@ -1,4 +1,5 @@
-﻿using ListMEAPI.Interfaces.Repositorios.Estoque;
+﻿using ListMEAPI.DTOs.Request.Produtos;
+using ListMEAPI.Interfaces.Repositorios.Estoque;
 using ListMEAPI.Interfaces.Servicos;
 using ListMEAPI.Models;
 
@@ -32,6 +33,16 @@ namespace ListMEAPI.Services
         public List<EstoqueModel> GetEstoque()
         {
             return _estoqueRepository.GetAll();
+        }
+
+        public EstoqueModel RetirarProdutoDoEstoque(int IdProduto, int IdEstoque)
+        {
+            return _estoqueRepository.RemoveFromEstoque(IdProduto,IdEstoque);
+        }
+
+        public EstoqueModel AlterarProdutoNoEstoque(AlterarQuantidadeEDataRequest produtos, int IdProduto, int IdEstoque)
+        {
+            return _estoqueRepository.PatchEstoque( produtos,  IdProduto,  IdEstoque);
         }
     }
 }

@@ -9,6 +9,7 @@ namespace ListMEAPI.Models
             Nome_Produtos = nome_Produtos;
             Descricao_Produtos = descricao_Produtos;
             Preco = preco;
+            Quantidade_Produto = 0;
         }
 
         [Key]
