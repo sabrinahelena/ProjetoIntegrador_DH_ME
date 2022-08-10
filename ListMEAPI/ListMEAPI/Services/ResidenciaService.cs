@@ -10,6 +10,9 @@ namespace ListMEAPI.Services
 {
     public class ResidenciaService : IResidenciaService
     {
+        //LEITURA DO BANCO DE DADOS
+        private readonly ListMEContext _context;
+
         private IResidenciaRepository _residenciaRepository;
 
         public ResidenciaService(IResidenciaRepository residenciaRepository)
@@ -22,15 +25,26 @@ namespace ListMEAPI.Services
            
             return usuarioRetornado;
         }
-        public void Cadastrar(CadastroResidenciaRequest residencia, int id)
-        {
 
+        public ResidenciaModel ExibirResidencia(int id)
+        {
+            return _residenciaRepository.GetOneResidencia(id);
+        }
+        public dynamic Cadastrar(CadastroResidenciaRequest residencia, int id)
+        {
+            var usuarioRetornado = RetornarUm(id);
+            if (usuarioRetornado == null)
+            {
+
+                return usuarioRetornado;
+            }
             var residenciaNova = new ResidenciaModel(residencia.Nome_Residencias, residencia.Descricao_Residencias, residencia.Foto_Residencias);
             _residenciaRepository.Create(residenciaNova);
-            var usuarioRetornado = RetornarUm(id);
+            
             usuarioRetornado.AdicionarResidencia(residenciaNova);
             _residenciaRepository.Save();
 
+            return residenciaNova;
         }
 
         public List<ResidenciaResponse> Listar()
@@ -38,6 +52,16 @@ namespace ListMEAPI.Services
             var list = _residenciaRepository.GetAll();
 
             return list.Select(c => ResidenciaMapper.From(c)).ToList();
+        }
+
+        public void Deletar(int id)
+        {
+            _residenciaRepository.Delete(id);
+        }
+
+        ResidenciaModel IResidenciaService.Atualizar(int Id, CadastroResidenciaRequest residenciaAtualizada)
+        {
+            return _residenciaRepository.Update(Id, residenciaAtualizada); ;
         }
 
         public void Salvar()
