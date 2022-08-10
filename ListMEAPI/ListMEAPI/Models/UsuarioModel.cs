@@ -1,5 +1,6 @@
 ﻿using ServiceStack.DataAnnotations;
 using System.ComponentModel.DataAnnotations;
+using RequiredAttribute = ServiceStack.DataAnnotations.RequiredAttribute;
 
 namespace ListMEAPI.Models
 {
@@ -46,6 +47,7 @@ namespace ListMEAPI.Models
         /// O telefone do usuário
         /// </summary>
         /// 
+        [Required]
         [MinLength(13, ErrorMessage = "O número deve conter pelo menos treze dígitos: '(0XX) - XXXXX-XXXX'")]
         public string? Telefone { get; set; }
 
