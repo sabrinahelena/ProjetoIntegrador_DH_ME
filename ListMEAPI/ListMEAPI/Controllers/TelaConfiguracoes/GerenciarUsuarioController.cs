@@ -57,12 +57,26 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
             return Ok();
         }
 
+        /// <summary>
+        /// Listar todas as residências
+        /// </summary>
+        /// <returns>Lista de residências solicitadas</returns>
+        /// <response code="404">Não há residências cadastradas</response>
+        /// <response code="200">Retorna a lista de residências cadastradas</response>
+        /// <response code="500">Ocorreu algum erro ao obter lista de residências cadastradas</response>
         [HttpGet("ListarResidencias")]
         public ActionResult<List<ResidenciaResponse>> GetAll()
         {
             return Ok(_residenciaService.Listar());
         }
 
+        /// <summary>
+        /// Retorna residência encontrada a partir de sua Id
+        /// </summary>
+        /// <returns>Retorna a residência encontrada a partir da Id</returns>
+        /// <param name="Id">Id da residência</param>
+        /// <response code="404">Residência não encontrada</response>
+        /// <response code="200">Retorna residência encontrada</response>
         [HttpGet("ListarResidenciaPorId{Id}")]
         
         public ActionResult<ResidenciaResponse> ExibeUm(int Id)
@@ -75,6 +89,13 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
             return Ok(_residenciaService.ExibirResidencia(Id));
         }
 
+        /// <summary>
+        /// Delete uma residência a partir de sua Id
+        /// </summary>
+        /// <returns>Retorna a residência recém deletada</returns>
+        /// <param name="Id">Id da residência</param>
+        /// <response code="404">Residência não encontrada</response>
+        /// <response code="204">Residência deletada</response>
         [HttpDelete("DeletarResidenciaPorId{Id}")]
 
         public ActionResult<ResidenciaResponse> Deleta(int Id)
@@ -83,6 +104,26 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
             return Ok();
         }
 
+        /// <summary>
+        /// Substitui uma residência a partir de sua Id
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo requisição:
+        ///
+        ///     PUT /api/GerenciarUsuario/AtualizarResidenciaPorId{Id}
+        ///     {
+        ///        "nome_Residencias": "Casa na montanha",
+        ///        "descricao_Residencias": "Casa isolada no meio da floresta",
+        ///        "foto_Residencias": "x"
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="Id">Id da residência</param>
+        /// <param name="residenciaAtualizada">Modelo de residência</param>
+        /// <response code="400">Residência não pode ter sua Id modificada</response>
+        /// <response code="404">Residência não encontrada</response>
+        /// <response code="204">Residência substituída</response>
         [HttpPut("AtualizarResidenciaPorId{Id}")]
 
         public ActionResult<ResidenciaResponse> AtualizaUsuario(int Id, CadastroResidenciaRequest residenciaAtualizada)
