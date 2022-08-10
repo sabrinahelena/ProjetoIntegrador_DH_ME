@@ -21,9 +21,9 @@ namespace ListMEAPI.Services
             return contact;
         }
 
-        public void Deletar(int id)
+        public bool Deletar(int id)
         {
-            _contatoRepository.Delete(id);
+            return _contatoRepository.Delete(id);
         }
 
         public ContatoModel ExibirContato(int id)

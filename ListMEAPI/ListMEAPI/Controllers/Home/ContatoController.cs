@@ -133,11 +133,18 @@ namespace ListMEAPI.Controllers.Home
          */
 
 
-        //Precisa implementar erros aq
         public ActionResult<ContatoResponse> Deleta(int Id)
         {
-            _contatoService.Deletar(Id);
-            return Ok();
+            var boolean = _contatoService.Deletar(Id);
+            if (boolean == true)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+
         }
     }
 }

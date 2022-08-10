@@ -8,7 +8,7 @@ namespace ListMEAPI.Interfaces.Servicos
         dynamic Cadastrar(CadastroContatoRequest contato); //POST
         List<ContatoModel> Listar(); //GET 
 
-        void Deletar(int id); //DELETE
+        bool Deletar(int id); //DELETE
 
         void Salvar();
 
