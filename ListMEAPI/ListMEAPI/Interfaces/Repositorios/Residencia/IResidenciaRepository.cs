@@ -1,4 +1,5 @@
-﻿using ListMEAPI.Models;
+﻿using ListMEAPI.DTOs.Request.Residencia;
+using ListMEAPI.Models;
 
 namespace ListMEAPI.Interfaces.Repositorios.Residencia
 {
@@ -14,6 +15,8 @@ namespace ListMEAPI.Interfaces.Repositorios.Residencia
         ResidenciaModel GetOneResidencia(int Id); //GET
 
         void Delete(int id); //DELETE
+
+        ResidenciaModel Update(int id, CadastroResidenciaRequest residenciaNova); //PUT
 
         void Save();
 

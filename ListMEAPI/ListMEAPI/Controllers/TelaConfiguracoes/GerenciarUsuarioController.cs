@@ -83,6 +83,13 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
             return Ok();
         }
 
+        [HttpPut("AtualizarResidenciaPorId{Id}")]
+
+        public ActionResult<ResidenciaResponse> AtualizaUsuario(int Id, CadastroResidenciaRequest residenciaAtualizada)
+        {
+            return Ok(_residenciaService.Atualizar(Id, residenciaAtualizada));
+        }
+
         //PUT PARA USUÁRIO E RESIDÊNCIA
         /// <summary>
         /// Substitui um usuário a partir de sua Id

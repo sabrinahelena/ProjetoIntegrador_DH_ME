@@ -59,6 +59,11 @@ namespace ListMEAPI.Services
             _residenciaRepository.Delete(id);
         }
 
+        ResidenciaModel IResidenciaService.Atualizar(int Id, CadastroResidenciaRequest residenciaAtualizada)
+        {
+            return _residenciaRepository.Update(Id, residenciaAtualizada); ;
+        }
+
         public void Salvar()
         {
             _residenciaRepository.Save();

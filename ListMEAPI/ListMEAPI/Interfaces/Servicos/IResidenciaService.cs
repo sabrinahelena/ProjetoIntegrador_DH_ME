@@ -16,6 +16,8 @@ namespace ListMEAPI.Interfaces.Servicos
 
         void Deletar(int id); //DELETE
 
+        ResidenciaModel Atualizar(int id, CadastroResidenciaRequest residenciaAtualizada);
+
         void Salvar();
 
 
