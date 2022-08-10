@@ -75,6 +75,14 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
             return Ok(_residenciaService.ExibirResidencia(Id));
         }
 
+        [HttpDelete("DeletarResidenciaPorId{Id}")]
+
+        public ActionResult<ResidenciaResponse> Deleta(int Id)
+        {
+            _residenciaService.Deletar(Id);
+            return Ok();
+        }
+
         //PUT PARA USUÁRIO E RESIDÊNCIA
         /// <summary>
         /// Substitui um usuário a partir de sua Id

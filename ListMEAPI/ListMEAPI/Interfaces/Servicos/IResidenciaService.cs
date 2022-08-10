@@ -6,13 +6,15 @@ namespace ListMEAPI.Interfaces.Servicos
 {
     public interface IResidenciaService
     {
-        dynamic Cadastrar(CadastroResidenciaRequest residencia, int id);
+        dynamic Cadastrar(CadastroResidenciaRequest residencia, int id); //POST
 
-        List<ResidenciaResponse> Listar();
+        List<ResidenciaResponse> Listar(); //GET
 
-        UsuarioModel RetornarUm(int id);
+        UsuarioModel RetornarUm(int id); //GET
 
-        ResidenciaModel ExibirResidencia(int id);
+        ResidenciaModel ExibirResidencia(int id); //GET
+
+        void Deletar(int id); //DELETE
 
         void Salvar();
 

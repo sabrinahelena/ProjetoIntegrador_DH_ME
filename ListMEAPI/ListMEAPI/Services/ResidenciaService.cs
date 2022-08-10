@@ -33,9 +33,10 @@ namespace ListMEAPI.Services
         public dynamic Cadastrar(CadastroResidenciaRequest residencia, int id)
         {
             var usuarioRetornado = RetornarUm(id);
-            if (usuarioRetornado == null ) {
-                
-                return usuarioRetornado ;
+            if (usuarioRetornado == null)
+            {
+
+                return usuarioRetornado;
             }
             var residenciaNova = new ResidenciaModel(residencia.Nome_Residencias, residencia.Descricao_Residencias, residencia.Foto_Residencias);
             _residenciaRepository.Create(residenciaNova);
@@ -43,7 +44,7 @@ namespace ListMEAPI.Services
             usuarioRetornado.AdicionarResidencia(residenciaNova);
             _residenciaRepository.Save();
 
-            return null;
+            return residenciaNova;
         }
 
         public List<ResidenciaResponse> Listar()
@@ -51,6 +52,11 @@ namespace ListMEAPI.Services
             var list = _residenciaRepository.GetAll();
 
             return list.Select(c => ResidenciaMapper.From(c)).ToList();
+        }
+
+        public void Deletar(int id)
+        {
+            _residenciaRepository.Delete(id);
         }
 
         public void Salvar()

@@ -9,9 +9,11 @@ namespace ListMEAPI.Interfaces.Repositorios.Residencia
         dynamic Create(ResidenciaModel residencia); //POST
         List<ResidenciaModel> GetAll(); //GET 
 
-        UsuarioModel GetUsuario(int id);
+        UsuarioModel GetUsuario(int id); //GET
 
-        ResidenciaModel GetOneResidencia(int Id);
+        ResidenciaModel GetOneResidencia(int Id); //GET
+
+        void Delete(int id); //DELETE
 
         void Save();
 
