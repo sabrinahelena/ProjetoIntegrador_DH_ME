@@ -1,4 +1,6 @@
-﻿namespace ListMEAPI.DTOs.Response
+﻿using ListMEAPI.DTOs.Response.Residencia;
+
+namespace ListMEAPI.DTOs.Response.Usuario
 {
     public class AtualizacaoUsuarioResponse
     {

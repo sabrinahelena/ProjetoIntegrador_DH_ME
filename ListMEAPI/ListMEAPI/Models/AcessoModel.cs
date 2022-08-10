@@ -1,10 +1,29 @@
-﻿//namespace ListMEAPI.Models
-//{
-//    public class AcessoModel
-//    {
-//        public int Id_Acesso { get; set; }
-//        public string usuario { get; set; }
+﻿using System.ComponentModel.DataAnnotations;
 
-//        public string senha { get; set; }
-//    }
-//}
+namespace ListMEAPI.Models
+{
+    public class AcessoModel
+    {
+        public AcessoModel(string email, string senha)
+        {
+            this.email = email;
+            this.senha = senha;
+        }
+
+
+        [Key]
+
+        public int Id_Acesso { get; set; }
+        /// <summary>
+        /// O e-mail para autenticar.
+        /// </summary>
+        public string email { get; set; }
+        /// <summary>
+        /// A senha para autenticar.
+        /// </summary>
+        /// 
+       [MinLength(4, ErrorMessage = "A senha deve conter ao menos 4 dígitos.")]
+
+        public string senha { get; set; }
+    }
+}

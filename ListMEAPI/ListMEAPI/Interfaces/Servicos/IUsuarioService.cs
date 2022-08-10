@@ -1,5 +1,5 @@
-﻿using ListMEAPI.DTOs.Request;
-using ListMEAPI.DTOs.Response;
+﻿using ListMEAPI.DTOs.Request.Usuario;
+using ListMEAPI.DTOs.Response.Usuario;
 using ListMEAPI.Models;
 
 namespace ListMEAPI.Interfaces.Servicos
@@ -7,10 +7,10 @@ namespace ListMEAPI.Interfaces.Servicos
     public interface IUsuarioService
     {
         //Create e List para o DTOs, request e response
-        void Cadastrar(CadastroUsuarioRequest usuario);
+        dynamic Cadastrar(CadastroUsuarioRequest usuario);
 
         List<UsuarioResponse> Listar();
-        void Deletar(int id);
+        bool Deletar(int id);
 
         UsuarioModel ExibirUsuario(int id);
 

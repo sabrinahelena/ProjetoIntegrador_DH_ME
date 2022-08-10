@@ -1,6 +1,6 @@
-﻿using ListMEAPI.DTOs.Request;
-using ListMEAPI.DTOs.Response;
-using ListMEAPI.Interfaces.Repositorios;
+﻿using ListMEAPI.DTOs.Request.Usuario;
+using ListMEAPI.DTOs.Response.Usuario;
+using ListMEAPI.Interfaces.Repositorios.Usuario;
 using ListMEAPI.Interfaces.Servicos;
 using ListMEAPI.Mapper;
 using ListMEAPI.Models;
@@ -20,17 +20,17 @@ namespace ListMEAPI.Services
 
         //POST
 
-        public void Cadastrar(CadastroUsuarioRequest usuario)
+        public dynamic Cadastrar(CadastroUsuarioRequest usuario)
         {
             var user = new UsuarioModel(usuario.Nome_Usuario, usuario.Sobrenome, usuario.Telefone, usuario.Data_Nascimento, usuario.Email, usuario.Foto_Perfil, usuario.Senha);
 
-            _usuarioRepository.Create(user);
+            return _usuarioRepository.Create(user);
         }
 
         //DELETE
-        public void Deletar(int id)
+        public bool Deletar(int id)
         {
-            _usuarioRepository.Delete(id);
+            return _usuarioRepository.Delete(id);
         }
 
         //GET POR ID
@@ -51,14 +51,9 @@ namespace ListMEAPI.Services
         {
             _usuarioRepository.Save();
         }
-
+        //PUT
         UsuarioModel IUsuarioService.Atualizar(int Id, AtualizacaoUsuarioRequest usuarioAtualizado)
-        {
-            
-
-            //var newUser = new UsuarioModel(usuarioNovo.Nome_Usuario, usuarioNovo.Sobrenome, usuarioNovo.Telefone, usuarioNovo.Data_Nascimento, usuarioNovo.Email, usuarioNovo.Foto_Perfil, usuarioNovo.Senha);
-            
-           
+        {  
             return _usuarioRepository.Update(Id, usuarioAtualizado); ;
         }
     }

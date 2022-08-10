@@ -1,5 +1,5 @@
-﻿using ListMEAPI.DTOs.Request;
-using ListMEAPI.DTOs.Response;
+﻿using ListMEAPI.DTOs.Request.Usuario;
+using ListMEAPI.DTOs.Response.Usuario;
 using ListMEAPI.Interfaces.Servicos;
 using ListMEAPI.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -29,17 +29,13 @@ namespace ListMEAPI.Controllers.TelaCadastro
         ///
         ///     POST /api/CadastroUsuario/AdicionarUsuario
         ///     {
-        /// 
-        ///         "nome_Usuario": "string",
-        ///         "sobrenome": "string",
-        ///         "telefone": "string",
-        ///         "data_Nascimento": "string",
-        ///         "email": "string",
+        ///         "nome_Usuario": "Sabrina",
+        ///         "sobrenome": "Ferreira",
+        ///         "telefone": "31985268244",
+        ///         "data_Nascimento": "08/01/2004",
+        ///         "email": "sabrinahelenaf@gmail.com",
         ///         "foto_Perfil": "string",
-        ///         "senha": "string",
-        ///         "nome_Residencias": "string",
-        ///         "descricao_Residencias": "string",
-        ///         "foto_Residencias": "string"
+        ///         "senha": "sabrinalinda",
         ///     }
         /// </remarks>
         /// <param name="usuario">Modelo do usuário</param>
@@ -53,38 +49,118 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /*
          * Para criar seu acesso, não precisa estar autenticado.
          */
-        public IActionResult Create([FromBody] CadastroUsuarioRequest usuario)
+        public ActionResult<dynamic> Create([FromBody] CadastroUsuarioRequest usuario)
         {
-            _usuarioService.Cadastrar(usuario);
-            return Ok();
-        }
+            var teste = _usuarioService.Cadastrar(usuario);
+            if (teste == true)
+            {
 
-        [HttpGet]
+                return BadRequest(new { menssager = "E-mail ja existente" });
+            }
+            else {
+                return Ok(teste);
+                    
+            };
+        }
+        /// <summary>
+        /// Listar todos os usuários
+        /// </summary>
+        /// <returns>Lista de usuários cadastrados</returns>
+        /// <response code="404">Não há usuários cadastrados</response>
+        /// <response code="200">Retorna a lista de usuários cadastrados</response>
+        /// <response code="500">Ocorreu algum erro ao obter lista de usuários cadastrados</response>
+
+        [HttpGet("ListarUsuarios")]
+
         public ActionResult<List<UsuarioResponse>> GetAll()
         {
             return Ok(_usuarioService.Listar());
         }
 
-        [HttpDelete("{Id}")]
+
+        /// <summary>
+        /// Delete um usuário a partir de sua Id
+        /// </summary>
+        /// <returns>Retorna o usuário recém criado</returns>
+        /// <param name="Id">Id do usuário</param>
+        /// <response code="404">Usuário não encontrado</response>
+        /// <response code="204">Usuário deletado</response>
+        [HttpDelete("DeletarUsuarioPorId{Id}")]
+       
 
         public ActionResult<UsuarioResponse> Deleta(int Id)
         {
-             _usuarioService.Deletar(Id);
-            return Ok();
+            var boolean = _usuarioService.Deletar(Id);
+            if(boolean == true)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+            
         }
+        /// <summary>
+        /// Retorna usuário encontrado a partir de sua Id
+        /// </summary>
+        /// <returns>Retorna o usuário encontrado a partir da Id</returns>
+        /// <param name="Id">Id do usuário</param>
+        /// <response code="404">Usuário não encontrado</response>
+        /// <response code="200">Retorna usuário encontrado</response>
 
         [HttpGet("ExibirUmUsuario{Id}")]
 
         public ActionResult<UsuarioResponse> ExibeUm(int Id)
         {
-            return Ok(_usuarioService.ExibirUsuario(Id));
+            var verificacao = _usuarioService.ExibirUsuario(Id);
+            if (verificacao != null)
+            {
+                return Ok(verificacao);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
+        /// <summary>
+        /// Substitui um usuário a partir de sua Id
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo requisição:
+        ///
+        ///     PUT /api/CadastroUsuario/AtualizarUsuarioPorId{Id}
+        ///     {    
+        ///         "nome_Usuario": "Sabrina",
+        ///         "sobrenome": "Ferreira",
+        ///         "telefone": "31985268244",
+        ///         "data_Nascimento": "08/01/2004",
+        ///         "email": "sabrinahelenaf@gmail.com",
+        ///         "foto_Perfil": "string",
+        ///         "senha": "sabrinalinda",
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="Id">Id do usuário</param>
+        /// <param name="Usuario">Modelo do usuário</param>
+        /// <response code="400">Usuário não pode ter sua Id modificada</response>
+        /// <response code="404">Usuário não encontrado</response>
+        /// <response code="204">Usuário substituído</response>
 
         [HttpPut("AtualizarUsuarioPorId{Id}")]
 
         public ActionResult<UsuarioResponse> AtualizaUsuario(int Id, AtualizacaoUsuarioRequest usuarioAtualizado)
         {
-            return Ok(_usuarioService.Atualizar(Id, usuarioAtualizado));
+            var verificacao = _usuarioService.Atualizar(Id, usuarioAtualizado);
+            if (verificacao != null)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
     }
