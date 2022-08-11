@@ -42,7 +42,30 @@ body{
 
 }
 
+.main{
+    display: flex;
+    margin-top: 100px;
+    border: 1px solid black;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.texto_main{
+    width: 800px;
+    height: auto;
+    margin-left: 40px;
+}
+
+.contate{
+    margin-top: 40px
+}
+
+.figure_main{
+}
+
+.imagem_main{
+    width: 250px;
+}
 .botao{
     background-color: #16262E; 
     border-radius: 30px;
