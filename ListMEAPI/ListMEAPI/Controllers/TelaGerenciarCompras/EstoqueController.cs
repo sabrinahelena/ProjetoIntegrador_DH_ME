@@ -59,7 +59,7 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         [HttpPut("Remover Produto Do Estoque {IdProduto}/{IdEstoque}")]
         public ActionResult RetirarProduto(int IdProduto ,int IdEstoque)
         {
-            var verifica=_estoqueService.RetirarProdutoDoEstoque(IdProduto, IdEstoque);
+           var verifica=_estoqueService.RetirarProdutoDoEstoque(IdProduto, IdEstoque);
            if(verifica != null)
             {
                 return Ok();

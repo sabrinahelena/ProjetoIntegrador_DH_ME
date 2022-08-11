@@ -16,10 +16,12 @@ namespace ListMEAPI.Services
         public void Criar()
         {
             var NovoEstoque = new EstoqueModel();
+            //_estoqueRepository.CreateProdutoNoEstoque(NovoEstoque);
             _estoqueRepository.Create(NovoEstoque);
         }
         public EstoqueModel AdicionarProdutoAoEstoque(int IdProduto, int IdEstoque)
         {
+            
             return _estoqueRepository.PutOnEstoque(IdProduto, IdEstoque);
         }
 

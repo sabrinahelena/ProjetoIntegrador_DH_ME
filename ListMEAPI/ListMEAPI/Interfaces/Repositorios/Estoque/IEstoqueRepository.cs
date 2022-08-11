@@ -11,5 +11,6 @@ namespace ListMEAPI.Interfaces.Repositorios.Estoque
         public EstoqueModel RemoveFromEstoque(int IdProduto, int IdEstoque);
         EstoqueModel PutOnEstoque(int IdProduto, int IdEstoque);
         EstoqueModel PatchEstoque(AlterarQuantidadeEDataRequest produtos, int IdProduto, int IdEstoque);
+        //void CreateProdutoNoEstoque(ProdutosNoEstoque produtosNoEstoque);
     }
 }

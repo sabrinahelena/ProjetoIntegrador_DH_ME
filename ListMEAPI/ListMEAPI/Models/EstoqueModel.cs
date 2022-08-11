@@ -7,43 +7,33 @@ namespace ListMEAPI.Models
     {
         public EstoqueModel()
         {
-            Produtos = new List<ProdutosModel>();
+            Produtos = new List<ProdutosNoEstoqueModel>();
         }
         [Key]
         public int Id_Estoque { get; set; }
        
-        public List<ProdutosModel> Produtos { get; set; }
-        //public List<ProdutosNoEstoque> produtos { get; set; }
+        //public List<ProdutosModel> Produtos { get; set; }
+        public IList<ProdutosNoEstoqueModel> Produtos { get; set; }
 
-        public void AdicionarProdutoNaLista(ProdutosModel produto)
+        public void AdicionarProdutoNaLista(ProdutosNoEstoqueModel produto)
         {
             Produtos.Add(produto);
         }
-        public void RemoverProdutoNaLista(ProdutosModel produto)
+        public void RemoverProdutoNaLista(ProdutosNoEstoqueModel produto)
         {
             Produtos.Remove(produto);
         }
-        public bool AdicionarQuantidadeEData(AlterarQuantidadeEDataRequest dadosEnviados, ProdutosModel produto)
-        {
-            var existe = Produtos.FirstOrDefault(produto);
-            existe.Data_Validade = dadosEnviados.Data_Validade;
-            if(dadosEnviados.Quantidade_Produto < 0)
-            {
-                if(existe.Quantidade_Produto - dadosEnviados.Quantidade_Produto < 0)
-                {
-                    return false;
-                }
-                else
-                {
-                    existe.Quantidade_Produto += dadosEnviados.Quantidade_Produto;
-                    return true;
-                }
-            }
-            else
-            {
-                existe.Quantidade_Produto += dadosEnviados.Quantidade_Produto;
-                return true;
-            }
-        }
+
+        //public List<ProdutosModel> RetornaProdutoCadastrado()
+        //{
+        //    List<ProdutosModel> lista = new List<ProdutosModel>();
+        //    foreach(var produto in Produtos)
+        //    {
+        //         lista.Add(produto.Produto);
+        //    }
+        //    return lista;
+        //}
+       
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using ListMEAPI.DTOs.Request.Produtos;
+﻿using LinqKit;
+using ListMEAPI.DTOs.Request.Produtos;
 using ListMEAPI.Interfaces.Repositorios.Estoque;
 using ListMEAPI.Models;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ namespace ListMEAPI.Repositories
         }
         public void Create(EstoqueModel estoque)
         {
+            
             _context.Add(estoque);
             _context.SaveChanges();
         }
@@ -34,21 +36,22 @@ namespace ListMEAPI.Repositories
                 return false;
             }
         }
-
+        
         public List<EstoqueModel> GetAll()
         {
+
             return _context.Estoques.Include(i => i.Produtos).ToList();
         }
 
-        public EstoqueModel PatchEstoque(AlterarQuantidadeEDataRequest produtos, int IdProduto, int IdEstoque)
+        public EstoqueModel PatchEstoque(AlterarQuantidadeEDataRequest dadosEnviados, int IdProduto, int IdEstoque)
         {
             var estoque = _context.Estoques.Find(IdEstoque);
             var produtoDb = _context.Produtos.Find(IdProduto);
-            var estoqueProdutoVerify = _context.Estoques.Find(IdEstoque).Produtos.Contains(produtoDb);
-            if (produtoDb != null && estoque != null && estoqueProdutoVerify == true)
+            var estoqueProdutoVerify = estoque.Produtos.Where(a=> a.Produto == produtoDb).FirstOrDefault();
+            if (produtoDb != null && estoque != null && estoqueProdutoVerify != null)
             {
          
-                var adiciona = estoque.AdicionarQuantidadeEData(produtos,produtoDb);
+                var adiciona = estoqueProdutoVerify.AdicionarDataEQuantidade(dadosEnviados);
                 if (adiciona)
                 {
                     _context.SaveChanges();
@@ -69,11 +72,26 @@ namespace ListMEAPI.Repositories
         {
             var searchEstoque = _context.Estoques.Find(IdEstoque);
             var searchProduto = _context.Produtos.Find(IdProduto);
-            if (searchEstoque != null && searchProduto != null && searchEstoque.Produtos.Contains(searchProduto)==false)
+            
+            if (searchEstoque != null && searchProduto != null)
             {
-                searchEstoque.AdicionarProdutoNaLista(searchProduto);
-                _context.SaveChanges();
-                return (searchEstoque);
+                var searchProdutoNoEstoque = searchEstoque.Produtos.Where(a => a.Produto == searchProduto).FirstOrDefault();
+                if(searchProdutoNoEstoque == null)
+                {
+                    var EstoqueProduto = new ProdutosNoEstoqueModel(searchProduto);
+                    //EstoqueProduto.AdicionarProduto(searchProduto);
+                    searchEstoque.AdicionarProdutoNaLista(EstoqueProduto);
+                    _context.Add(EstoqueProduto);
+                   
+                    
+                    _context.SaveChanges();
+                    return (searchEstoque);
+                }
+                else
+                {
+                    return null;
+                }
+                
             }
             else
             {
@@ -85,9 +103,10 @@ namespace ListMEAPI.Repositories
         {
             var searchEstoque = _context.Estoques.Find(IdEstoque);
             var searchProduto = _context.Produtos.Find(IdProduto);
-            if (searchEstoque != null && searchProduto != null)
+            var searchProdutoNoEstoque = searchEstoque.Produtos.Where(a => a.Produto == searchProduto).FirstOrDefault();
+            if (searchEstoque != null && searchProduto != null && searchProdutoNoEstoque != null)
             {
-                searchEstoque.RemoverProdutoNaLista(searchProduto);
+                searchEstoque.RemoverProdutoNaLista(searchProdutoNoEstoque);
                 _context.SaveChanges();
                 return (searchEstoque);
             }
@@ -96,5 +115,9 @@ namespace ListMEAPI.Repositories
                 return null;
             }
         }
+        //public EstoqueModel FindEstoque(int IdEstoque)
+        //{
+
+        //}
     }
 }

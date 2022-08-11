@@ -14,7 +14,7 @@ namespace ListMEAPI.Mapper
         {
             var dto = new EstoqueResponse();
             dto.Id_Estoque = estoque.Id_Estoque;
-            dto.Produtos = estoque.Produtos;
+            dto.Produtos = (List<ProdutosNoEstoqueModel>)estoque.Produtos;
 
             return dto;
         }
