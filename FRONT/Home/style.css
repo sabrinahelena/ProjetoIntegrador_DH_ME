@@ -1,3 +1,7 @@
+*{
+    scroll-behavior: smooth;
+}
+
 body{
     background-color: #2E4756;
     color:white;
@@ -126,12 +130,19 @@ body{
 /*FERRAMENTAS*/
 
 .ferramentas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 600px;
+
 }
 
 /*SUPORTE*/
 
 .suporte{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 600px;
 
 }
@@ -139,8 +150,18 @@ body{
 /*CONTATO*/
 
 .contato{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-top: 600px;
+}
 
+.contato-fale{
+    margin-left: 600px;
+}
+
+.contato_imagem{
+    margin-left: 100px;
 }
 
 
