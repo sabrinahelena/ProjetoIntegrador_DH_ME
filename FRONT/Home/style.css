@@ -5,6 +5,9 @@ body{
 
 }
 
+/* HEADER */
+
+
 .imagem_logo{
     width: 80px;
     height: auto;
@@ -42,10 +45,34 @@ body{
 
 }
 
+.item{
+    text-decoration: none;
+    color: white;
+    margin: 40px;
+    font-weight: bold;
+    
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 0px;
+    padding: 0px;
+    align-items: center;
+    width: auto;
+    height: 90px;
+
+
+}
+
+
+/* MAIN */
 .main{
     display: flex;
     margin-top: 100px;
-    border: 1px solid black;
     justify-content: space-between;
     align-items: center;
 }
@@ -61,11 +88,15 @@ body{
 }
 
 .figure_main{
+    margin-right: 100px;
 }
 
 .imagem_main{
     width: 250px;
 }
+
+
+/*GERAL*/
 .botao{
     background-color: #16262E; 
     border-radius: 30px;
@@ -81,26 +112,36 @@ body{
 
 }
 
+/* SOBRE */
 
-.item{
-    text-decoration: none;
-    color: white;
-    margin: 40px;
-    font-weight: bold;
-    
-}
-.header{
+.sobre{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-left: 10px;
-    margin-right: 10px;
-    gap: 0px;
-    padding: 0px;
+    flex-direction: column;
+    margin-top: 300px;
     align-items: center;
-    width: auto;
-    height: 90px;
-
+    justify-content: space-between;
 
 }
+
+/*FERRAMENTAS*/
+
+.ferramentas{
+    margin-top: 600px;
+}
+
+/*SUPORTE*/
+
+.suporte{
+    margin-top: 600px;
+
+}
+
+/*CONTATO*/
+
+.contato{
+    margin-top: 600px;
+
+}
+
+
 
