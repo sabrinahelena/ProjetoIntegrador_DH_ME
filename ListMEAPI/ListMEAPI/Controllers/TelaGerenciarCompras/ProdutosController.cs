@@ -27,5 +27,32 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         {
             return Ok(_produtosService.GetEstoque());
         }
+
+        [HttpDelete("Delete por Id {IdProduto}")]
+        public ActionResult DeleteProduto(int IdProduto)
+        {
+            var boolean = _produtosService.DeleteProduto(IdProduto);
+            if (boolean)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+        [HttpPut("Alterar Produto")]
+        public ActionResult<ProdutosModel> AlterarProduto(int IdProduto, CadastroProdutosRequest alteracoes)
+        {
+            var existe = _produtosService.AlterarProduto(IdProduto, alteracoes);
+            if (existe != null)
+            {
+                return Ok(existe);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 }

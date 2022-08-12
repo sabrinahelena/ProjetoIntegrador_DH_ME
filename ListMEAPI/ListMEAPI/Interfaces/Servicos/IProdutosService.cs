@@ -8,5 +8,6 @@ namespace ListMEAPI.Interfaces.Servicos
         void Criar(CadastroProdutosRequest produto); //POST
         bool DeleteProduto(int Id); //Delete
         List<ProdutosModel> GetEstoque();
+        ProdutosModel AlterarProduto(int IdProduto, CadastroProdutosRequest alteracoes);
     }
 }

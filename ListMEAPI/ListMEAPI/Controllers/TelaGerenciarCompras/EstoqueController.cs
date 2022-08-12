@@ -64,10 +64,18 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         
         
         [HttpPatch("Alterar quantidade de produto ou data de validade {IdProduto}/{IdEstoque}")]
-        public ActionResult AlterarQuantidadeOuData(AlterarQuantidadeEDataRequest produtos, int IdProduto, int IdEstoque)
+        public ActionResult<EstoqueModel> AlterarQuantidadeOuData(AlterarQuantidadeEDataRequest produtos, int IdProduto, int IdEstoque)
         {
-            _estoqueService.AlterarProdutoNoEstoque(produtos, IdProduto, IdEstoque);
-            return Ok();
+            var existe = _estoqueService.AlterarProdutoNoEstoque(produtos, IdProduto, IdEstoque);
+     
+            if (existe != null)
+            {
+                return Ok(existe);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }
