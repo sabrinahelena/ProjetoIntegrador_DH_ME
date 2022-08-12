@@ -4,6 +4,6 @@
     {
         public string? Data_Validade { get; set; }
 
-        public int? Quantidade_Produto { get; set; }
+        public int Quantidade_Produto { get; set; }
     }
 }

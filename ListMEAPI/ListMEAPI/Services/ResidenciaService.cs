@@ -4,6 +4,7 @@ using ListMEAPI.Interfaces.Repositorios.Residencia;
 using ListMEAPI.Interfaces.Servicos;
 using ListMEAPI.Mapper;
 using ListMEAPI.Models;
+using ListMEAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ListMEAPI.Services
@@ -11,10 +12,12 @@ namespace ListMEAPI.Services
     public class ResidenciaService : IResidenciaService
     {
         private IResidenciaRepository _residenciaRepository;
+        private ValidacaoRepository _validacaoRepository;
 
-        public ResidenciaService(IResidenciaRepository residenciaRepository)
+        public ResidenciaService(IResidenciaRepository residenciaRepository, ValidacaoRepository validacao)
         {
             _residenciaRepository = residenciaRepository;
+            _validacaoRepository = validacao;
         }
         public UsuarioModel RetornarUm(int id)
         {
@@ -26,15 +29,16 @@ namespace ListMEAPI.Services
         {
 
             var residenciaNova = new ResidenciaModel(residencia.Nome_Residencias, residencia.Descricao_Residencias, residencia.Foto_Residencias);
-            _residenciaRepository.Create(residenciaNova);
-            var usuarioRetornado = RetornarUm(id);
-            usuarioRetornado.AdicionarResidencia(residenciaNova);
-            _residenciaRepository.Save();
-
+            var usuarioRetornado = _validacaoRepository.FindUsuario(id);
+            if(usuarioRetornado == null){ }
+            _residenciaRepository.Create(residenciaNova,usuarioRetornado);
+          
+            
         }
 
         public List<ResidenciaResponse> Listar()
         {
+            
             var list = _residenciaRepository.GetAll();
 
             return list.Select(c => ResidenciaMapper.From(c)).ToList();

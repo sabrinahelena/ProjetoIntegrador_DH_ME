@@ -5,11 +5,12 @@ namespace ListMEAPI.Interfaces.Repositorios.Estoque
 {
     public interface IEstoqueRepository
     {
-        void Create(EstoqueModel estoque);
+        void Create(EstoqueModel estoque, ResidenciaModel residencia);
         List<EstoqueModel> GetAll();
+        List<EstoqueModel> GetByIdFromResidencia(int IdResidencia);
         bool Delete(int Id);
-        public EstoqueModel RemoveFromEstoque(int IdProduto, int IdEstoque);
-        EstoqueModel PutOnEstoque(int IdProduto, int IdEstoque);
-        EstoqueModel PatchEstoque(AlterarQuantidadeEDataRequest produtos, int IdProduto, int IdEstoque);
+       
+        EstoqueModel PatchEstoque(AlterarQuantidadeEDataRequest alteracoes, ProdutosModel Produto, EstoqueModel Estoque);
+       
     }
 }

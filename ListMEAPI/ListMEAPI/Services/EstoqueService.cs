@@ -2,6 +2,7 @@
 using ListMEAPI.Interfaces.Repositorios.Estoque;
 using ListMEAPI.Interfaces.Servicos;
 using ListMEAPI.Models;
+using ListMEAPI.Repositories;
 
 namespace ListMEAPI.Services
 {
@@ -9,19 +10,25 @@ namespace ListMEAPI.Services
 
     {
         private IEstoqueRepository _estoqueRepository;
-        public EstoqueService(IEstoqueRepository estoqueRepository)
+        private ValidacaoRepository _validacaoRepository;
+        public EstoqueService(IEstoqueRepository estoqueRepository, ValidacaoRepository validacao)
         {
             _estoqueRepository = estoqueRepository;
+            _validacaoRepository = validacao;
         }
-        public void Criar()
+        public bool Criar(int IdResidencia, int IdProduto)
         {
-            var NovoEstoque = new EstoqueModel();
-            _estoqueRepository.Create(NovoEstoque);
+            var procuraProduto = _validacaoRepository.FindProduto(IdProduto);
+            var procuraResidencia = _validacaoRepository.FindResidencia(IdResidencia);
+            if(procuraProduto == null || procuraResidencia == null)
+            {
+                return false;
+            }
+            var NovoEstoque = new EstoqueModel(IdResidencia,procuraProduto,0,"");
+            _estoqueRepository.Create(NovoEstoque,procuraResidencia);
+            return true;
         }
-        public EstoqueModel AdicionarProdutoAoEstoque(int IdProduto, int IdEstoque)
-        {
-            return _estoqueRepository.PutOnEstoque(IdProduto, IdEstoque);
-        }
+     
 
         
 
@@ -35,14 +42,39 @@ namespace ListMEAPI.Services
             return _estoqueRepository.GetAll();
         }
 
-        public EstoqueModel RetirarProdutoDoEstoque(int IdProduto, int IdEstoque)
+        public List<EstoqueModel> GetEstoquePorIdResidencia(int IdResidencia)
         {
-            return _estoqueRepository.RemoveFromEstoque(IdProduto,IdEstoque);
+            if(_validacaoRepository.FindResidencia(IdResidencia) == null)
+            {
+                return null;
+            }
+            else
+            {
+                return _estoqueRepository.GetByIdFromResidencia(IdResidencia);
+            }
         }
 
-        public EstoqueModel AlterarProdutoNoEstoque(AlterarQuantidadeEDataRequest produtos, int IdProduto, int IdEstoque)
+        
+
+        public EstoqueModel AlterarProdutoNoEstoque(AlterarQuantidadeEDataRequest alteracoes, int IdProduto, int IdEstoque)
         {
-            return _estoqueRepository.PatchEstoque( produtos,  IdProduto,  IdEstoque);
+            var searchProduto = _validacaoRepository.FindProduto(IdProduto);
+            if (searchProduto != null)
+            {
+                var searchEstoqueComProduto = _validacaoRepository.FindEstoqueWithProduto(searchProduto);
+                if (searchEstoqueComProduto != null)
+                {
+                    return _estoqueRepository.PatchEstoque(alteracoes, searchProduto, searchEstoqueComProduto);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

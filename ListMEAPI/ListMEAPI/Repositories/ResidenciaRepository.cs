@@ -15,14 +15,16 @@ namespace ListMEAPI.Repositories
             _context = ctx;
         }
 
-        public void Create(ResidenciaModel residencia)
+        public void Create(ResidenciaModel residencia, UsuarioModel usuario)
         {
+            usuario.AdicionarResidencia(residencia);
             _context.Add(residencia);
             _context.SaveChanges();
         }
 
         public List<ResidenciaModel> GetAll()
         {
+            
             return _context.Residencias.ToList();
         }
 

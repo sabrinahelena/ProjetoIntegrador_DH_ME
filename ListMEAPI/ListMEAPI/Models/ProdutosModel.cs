@@ -9,7 +9,6 @@ namespace ListMEAPI.Models
             Nome_Produtos = nome_Produtos;
             Descricao_Produtos = descricao_Produtos;
             Preco = preco;
-            Quantidade_Produto = 0;
         }
 
         [Key]
@@ -17,9 +16,5 @@ namespace ListMEAPI.Models
         public string Nome_Produtos { get; set; }
         public string? Descricao_Produtos { get; set; }
         public float Preco { get; set; }
-        public string? Data_Validade { get; set; }
-
-        public int? Quantidade_Produto { get; set; }
-
     }
 }

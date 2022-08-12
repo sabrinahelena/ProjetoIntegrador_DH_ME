@@ -36,6 +36,8 @@ namespace ListMEAPI.DependencyInjections
             services.AddTransient<IProdutosRepository, ProdutosRepository>();
             services.AddTransient<IProdutosService, ProdutosService>();
 
+            services.AddTransient<ValidacaoRepository>();
+
             return services;
         }
         }

@@ -15,8 +15,9 @@ namespace ListMEAPI.Repositories
             //INSERÇÃO NO BANCO DE DADOS
             _context = ctx;
         }
-        public void Create(EstoqueModel estoque)
+        public void Create(EstoqueModel estoque, ResidenciaModel residencia)
         {
+            residencia.AddEstoque(estoque);
             _context.Add(estoque);
             _context.SaveChanges();
         }
@@ -37,43 +38,20 @@ namespace ListMEAPI.Repositories
 
         public List<EstoqueModel> GetAll()
         {
-            return _context.Estoques.Include(i => i.Produtos).ToList();
+            return _context.Estoques.Include(i => i.Produto).ToList();
+        }
+        public List<EstoqueModel> GetByIdFromResidencia(int IdResidencia)
+        {
+            return _context.Estoques.Where(i => i.IdResidencia == IdResidencia).Include(i => i.Produto).ToList();
         }
 
-        public EstoqueModel PatchEstoque(AlterarQuantidadeEDataRequest produtos, int IdProduto, int IdEstoque)
+        public EstoqueModel PatchEstoque(AlterarQuantidadeEDataRequest alteracoes, ProdutosModel Produto, EstoqueModel Estoque)
         {
-            var estoque = _context.Estoques.Find(IdEstoque);
-            var produtoDb = _context.Produtos.Find(IdProduto);
-            var estoqueProdutoVerify = _context.Estoques.Find(IdEstoque).Produtos.Contains(produtoDb);
-            if (produtoDb != null && estoque != null && estoqueProdutoVerify == true)
+            var adiciona = Estoque.AdicionarQuantidadeEData(alteracoes, Produto);
+            if (adiciona)
             {
-         
-                var adiciona = estoque.AdicionarQuantidadeEData(produtos,produtoDb);
-                if (adiciona)
-                {
-                    _context.SaveChanges();
-                    return estoque;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public EstoqueModel PutOnEstoque(int IdProduto, int IdEstoque)
-        {
-            var searchEstoque = _context.Estoques.Find(IdEstoque);
-            var searchProduto = _context.Produtos.Find(IdProduto);
-            if (searchEstoque != null && searchProduto != null && searchEstoque.Produtos.Contains(searchProduto)==false)
-            {
-                searchEstoque.AdicionarProdutoNaLista(searchProduto);
                 _context.SaveChanges();
-                return (searchEstoque);
+                return Estoque;
             }
             else
             {
@@ -81,20 +59,23 @@ namespace ListMEAPI.Repositories
             }
         }
 
-        public EstoqueModel RemoveFromEstoque(int IdProduto, int IdEstoque)
-        {
-            var searchEstoque = _context.Estoques.Find(IdEstoque);
-            var searchProduto = _context.Produtos.Find(IdProduto);
-            if (searchEstoque != null && searchProduto != null)
-            {
-                searchEstoque.RemoverProdutoNaLista(searchProduto);
-                _context.SaveChanges();
-                return (searchEstoque);
-            }
-            else
-            {
-                return null;
-            }
-        }
+        
+
+        //public EstoqueModel RemoveFromEstoque(int IdProduto, int IdEstoque)
+        //{
+        //    var searchEstoque = _context.Estoques.Find(IdEstoque);
+        //    var searchProduto = _context.Produtos.Find(IdProduto);
+        //    if (searchEstoque != null && searchProduto != null)
+        //    {
+        //        searchEstoque.RemoverProdutoNaLista(searchProduto);
+        //        _context.SaveChanges();
+        //        return (searchEstoque);
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
+
     }
 }
