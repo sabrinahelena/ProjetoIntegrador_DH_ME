@@ -68,6 +68,7 @@ body{
     align-items: center;
     width: auto;
     height: 90px;
+    border-bottom: 1px solid white;
 
 
 }
@@ -125,6 +126,10 @@ body{
     align-items: center;
     justify-content: space-between;
 
+}
+
+.texto_sobre{
+    width: 800px;
 }
 
 /*FERRAMENTAS*/
