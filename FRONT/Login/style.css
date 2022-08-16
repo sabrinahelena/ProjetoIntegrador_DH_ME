@@ -3,6 +3,7 @@ body{
     background-color: rgb(236, 235, 235);
 }
 
+
 .tela_principal{
     border-radius: 20px;
     margin-top: 70px;
@@ -44,4 +45,8 @@ body{
     height: 25px;
     border-radius: 5px;
     border-style: none;
+}
+
+.imagem{
+    width: 400px;
 }
