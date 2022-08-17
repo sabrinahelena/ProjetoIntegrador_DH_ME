@@ -18,7 +18,18 @@ namespace ListMEAPI.Repositories
         public void Create(EstoqueModel estoque, ResidenciaModel residencia)
         {
             residencia.AddEstoque(estoque);
+           
             _context.Add(estoque);
+            
+            _context.SaveChanges();
+        }
+
+        public void CreateWhithLista(EstoqueModel estoque, ResidenciaModel residencia, EstoqueModel ListaCompras)
+        {
+            residencia.AddEstoque(estoque);
+            residencia.AddListaCompras(ListaCompras);
+            _context.Add(estoque);
+            _context.Add(ListaCompras);
             _context.SaveChanges();
         }
 
@@ -42,9 +53,8 @@ namespace ListMEAPI.Repositories
         }
         public List<EstoqueModel> GetByIdFromResidencia(int IdResidencia)
         {
-            return _context.Estoques.Where(i => i.IdResidencia == IdResidencia).Include(i => i.Produto).ToList();
+            return _context.Estoques.Where(i => i.IdResidencia == IdResidencia && i.Id_Lista == 0).Include(i => i.Produto).ToList();
         }
-
         public EstoqueModel PatchEstoque(AlterarQuantidadeEDataRequest alteracoes, ProdutosModel Produto, EstoqueModel Estoque)
         {
             var adiciona = Estoque.AdicionarQuantidadeEData(alteracoes, Produto);
@@ -60,22 +70,5 @@ namespace ListMEAPI.Repositories
         }
 
         
-
-        //public EstoqueModel RemoveFromEstoque(int IdProduto, int IdEstoque)
-        //{
-        //    var searchEstoque = _context.Estoques.Find(IdEstoque);
-        //    var searchProduto = _context.Produtos.Find(IdProduto);
-        //    if (searchEstoque != null && searchProduto != null)
-        //    {
-        //        searchEstoque.RemoverProdutoNaLista(searchProduto);
-        //        _context.SaveChanges();
-        //        return (searchEstoque);
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
-
     }
 }
