@@ -38,5 +38,15 @@ namespace ListMEAPI.Repositories
             _context.SaveChanges();
 
         }
+        public ResidenciaModel GetOneResidencia(int Id)
+        {
+            return _context.Residencias.Find(Id);
+        }
+
+        public void Delete(ResidenciaModel residencia)
+        {
+            _context.Residencias.Remove(residencia);
+            _context.SaveChanges();
+        }
     }
 }

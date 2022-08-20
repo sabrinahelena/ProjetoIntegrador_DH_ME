@@ -49,6 +49,25 @@ namespace ListMEAPI.Services
             _residenciaRepository.Save();
 
         }
+
+        public ResidenciaModel ExibirResidencia(int Id)
+        {
+            return _residenciaRepository.GetOneResidencia(Id);
+        }
+
+        public bool Deletar(int Id)
+        {
+            var searchResidencia = _validacaoRepository.FindResidencia(Id);
+            if (searchResidencia != null)
+            {
+                _residenciaRepository.Delete(searchResidencia);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
 

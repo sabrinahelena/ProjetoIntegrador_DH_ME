@@ -12,7 +12,9 @@ namespace ListMEAPI.Interfaces.Servicos
 
         UsuarioModel RetornarUm(int id);
 
+        ResidenciaModel ExibirResidencia(int Id);
         void Salvar();
 
+        bool Deletar(int Id);
     }
 }

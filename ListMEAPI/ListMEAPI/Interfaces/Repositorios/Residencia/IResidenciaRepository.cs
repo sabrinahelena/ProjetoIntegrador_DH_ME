@@ -10,6 +10,9 @@ namespace ListMEAPI.Interfaces.Repositorios.Residencia
         List<ResidenciaModel> GetAll(); //GET 
 
         UsuarioModel GetUsuario(int id);
+        ResidenciaModel GetOneResidencia(int id);
+
+        void Delete(ResidenciaModel residencia);
 
         void Save();
 
