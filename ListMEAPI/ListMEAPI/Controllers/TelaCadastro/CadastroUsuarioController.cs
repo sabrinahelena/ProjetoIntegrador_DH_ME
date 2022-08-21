@@ -74,10 +74,32 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /// <response code="404">Não há usuários cadastrados</response>
         /// <response code="200">Retorna a lista de usuários cadastrados</response>
         /// <response code="500">Ocorreu algum erro ao obter lista de usuários cadastrados</response>
-        [HttpGet("Listar usuários")]
+        [HttpGet("ListarTodosUsuários")]
         public ActionResult<List<UsuarioResponse>> GetAll()
         {
             return Ok(_usuarioService.Listar());
+        }
+
+        /// <summary>
+        /// Retorna usuário encontrado a partir de sua Id
+        /// </summary>
+        /// <returns>Retorna o usuário encontrado a partir da Id</returns>
+        /// <param name="Id">Id do usuário</param>
+        /// <response code="404">Usuário não encontrado</response>
+        /// <response code="200">Retorna usuário encontrado</response>
+        [HttpGet("RequererUsuárioPorId{Id}")]
+
+        public ActionResult<UsuarioResponse> ExibeUm(int Id)
+        {
+            var verificacao = _usuarioService.ExibirUsuario(Id);
+            if (verificacao != null)
+            {
+                return Ok(verificacao);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -87,7 +109,7 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /// <param name="Id">Id do usuário</param>
         /// <response code="404">Usuário não encontrado</response>
         /// <response code="204">Usuário deletado</response>
-        [HttpDelete("Deletar Usuário por Id {Id}")]
+        [HttpDelete("DeletarUsuárioPorId{Id}")]
 
         public ActionResult<UsuarioResponse> Deleta(int Id)
         {
@@ -103,27 +125,6 @@ namespace ListMEAPI.Controllers.TelaCadastro
             
         }
 
-        /// <summary>
-        /// Retorna usuário encontrado a partir de sua Id
-        /// </summary>
-        /// <returns>Retorna o usuário encontrado a partir da Id</returns>
-        /// <param name="Id">Id do usuário</param>
-        /// <response code="404">Usuário não encontrado</response>
-        /// <response code="200">Retorna usuário encontrado</response>
-        [HttpGet("ExibirUmUsuario{Id}")]
-
-        public ActionResult<UsuarioResponse> ExibeUm(int Id)
-        {
-            var verificacao = _usuarioService.ExibirUsuario(Id);
-            if (verificacao != null)
-            {
-                return Ok(verificacao);
-            }
-            else
-            {
-                return NotFound();
-            }
-        }
 
         /// <summary>
         /// Substitui um usuário a partir de sua Id
@@ -149,7 +150,7 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /// <response code="400">Usuário não pode ter sua Id modificada</response>
         /// <response code="404">Usuário não encontrado</response>
         /// <response code="204">Usuário substituído</response>
-        [HttpPut("AtualizarUsuarioPorId{Id}")]
+        [HttpPut("AlterarUsuarioPorId{Id}")]
 
         public ActionResult<UsuarioResponse> AtualizaUsuario(int Id, AtualizacaoUsuarioRequest usuarioAtualizado)
         {

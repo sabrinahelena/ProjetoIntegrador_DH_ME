@@ -71,7 +71,7 @@ namespace ListMEAPI.Controllers.Home
         /// <response code="404">Não há contatos cadastrados</response>
         /// <response code="200">Retorna a lista de contatos cadastrados</response>
         /// <response code="500">Ocorreu algum erro ao obter lista de contatos cadastrados</response>
-        [HttpGet("RequererTodosContatos")]
+        [HttpGet("ListarTodosContatos")]
         //[Authorize]
 
         /*
@@ -91,7 +91,7 @@ namespace ListMEAPI.Controllers.Home
         /// <param name="Id">Id do contato</param>
         /// <response code="404">Contato não encontrado</response>
         /// <response code="200">Retorna contato encontrado</response>
-        [HttpGet("RequererContatosPorId{Id}")]
+        [HttpGet("RequererContatoPorId{Id}")]
         //[Authorize]
 
 
