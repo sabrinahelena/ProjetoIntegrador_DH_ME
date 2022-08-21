@@ -12,7 +12,7 @@ namespace ListMEAPI.Interfaces.Servicos
         List<UsuarioResponse> Listar();
         bool Deletar(int id);
 
-        UsuarioModel ExibirUsuario(int id);
+        UsuarioResponse ExibirUsuario(int id);
 
         void Salvar();
         UsuarioModel Atualizar(int id, AtualizacaoUsuarioRequest usuarioAtualizado);
