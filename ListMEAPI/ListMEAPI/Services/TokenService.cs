@@ -1,5 +1,7 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using ListMEAPI.Models;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 namespace ListMEAPI.Services
@@ -7,13 +9,17 @@ namespace ListMEAPI.Services
 {
     public class TokenService
     {
-        public static string GerarChaveToken()
+        public static string GerarChaveToken(UsuarioModel usuario)
         {
             var jwt = new JwtSecurityTokenHandler();
 
             // 1. Implementar o Corpo/Payload do Token
             var payload = new SecurityTokenDescriptor
             {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Role, usuario.tipousuario)
+                }),
                 Expires = DateTime.UtcNow.AddHours(1),
                 // 1.1. Implementar a Assinatura.
                 SigningCredentials = new SigningCredentials(

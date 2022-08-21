@@ -30,7 +30,7 @@ namespace ListMEAPI.Repositories
             }
             else
             {
-                var chaveToken = TokenService.GerarChaveToken();
+                var chaveToken = TokenService.GerarChaveToken(usuario);
                 var acessoResponse = new AcessoResponse(usuario.Email);
                 return new { token = chaveToken, user = acessoResponse };
             }

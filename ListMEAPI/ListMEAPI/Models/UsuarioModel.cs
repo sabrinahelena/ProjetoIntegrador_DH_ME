@@ -18,7 +18,7 @@ namespace ListMEAPI.Models
             Senha = senha;
             Residencias = new List<ResidenciaModel>();
         }
-        public UsuarioModel(int id_Usuario, string nome_Usuario, string sobrenome, string? telefone, string data_Nascimento, string email, string? foto_Perfil, string senha, List<ResidenciaModel> residencias)
+        public UsuarioModel(int id_Usuario, string nome_Usuario, string sobrenome, string? telefone, string data_Nascimento, string email, string? foto_Perfil, string senha, List<ResidenciaModel> residencias, string tipoDoUsuario)
         {
             Id_Usuario = id_Usuario;
             Nome_Usuario = nome_Usuario;
@@ -29,8 +29,12 @@ namespace ListMEAPI.Models
             Foto_Perfil = foto_Perfil;
             Senha = senha;
             Residencias = residencias;
+            tipousuario = tipoDoUsuario;
         }
 
+        public UsuarioModel()
+        {
+        }
 
         [Key]
         public int Id_Usuario { get; set; }
