@@ -1,0 +1,767 @@
+{
+	"info": {
+		"_postman_id": "8df9f8a8-d1a6-441e-8f4f-8c1395d61f8e",
+		"name": "ListME",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20767491"
+	},
+	"item": [
+		{
+			"name": "Home",
+			"item": [
+				{
+					"name": "AdicionarContato",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"string\",\r\n  \"email\": \"string\",\r\n  \"mensagem\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7163/api/Contato/AdicionarContato",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7163",
+							"path": [
+								"api",
+								"Contato",
+								"AdicionarContato"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarTodosContatos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7163/api/Contato/ListarTodosContatos",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7163",
+							"path": [
+								"api",
+								"Contato",
+								"ListarTodosContatos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RequererContatoPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7163/api/Contato/RequererContatoPorId1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7163",
+							"path": [
+								"api",
+								"Contato",
+								"RequererContatoPorId1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletarContatoPorId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7163/api/Contato/DeletarContatoPorId1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7163",
+							"path": [
+								"api",
+								"Contato",
+								"DeletarContatoPorId1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TelaCadastro",
+			"item": [
+				{
+					"name": "AdicionarUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome_Usuario\": \"string\",\r\n  \"sobrenome\": \"string\",\r\n  \"telefone\": \"string\",\r\n  \"data_Nascimento\": \"string\",\r\n  \"email\": \"string\",\r\n  \"foto_Perfil\": \"string\",\r\n  \"senha\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7163/api/CadastroUsuario/AdicionarUsuario",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7163",
+							"path": [
+								"api",
+								"CadastroUsuario",
+								"AdicionarUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarTodosUsuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7163/api/CadastroUsuario/ListarTodosUsuários\n",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7163",
+							"path": [
+								"api",
+								"CadastroUsuario",
+								"ListarTodosUsuários\n"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ExibirUmUsuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7163/api/CadastroUsuario/RequererUsuárioPorId1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7163",
+							"path": [
+								"api",
+								"CadastroUsuario",
+								"RequererUsuárioPorId1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AtualizarUsuarioPorId",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome_Usuario\": \"string\",\r\n  \"sobrenome\": \"string\",\r\n  \"telefone\": \"string\",\r\n  \"data_Nascimento\": \"string\",\r\n  \"email\": \"string\",\r\n  \"foto_Perfil\": \"string\",\r\n  \"senha\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7163/api/CadastroUsuario/AlterarUsuarioPorId1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7163",
+							"path": [
+								"api",
+								"CadastroUsuario",
+								"AlterarUsuarioPorId1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletarUsuarioPorId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7163/api/CadastroUsuario/DeletarUsuárioPorId1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7163",
+							"path": [
+								"api",
+								"CadastroUsuario",
+								"DeletarUsuárioPorId1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TelaConfiguracoes",
+			"item": [
+				{
+					"name": "AdicionarResidencia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome_Residencias\": \"string\",\r\n  \"descricao_Residencias\": \"string\",\r\n  \"foto_Residencias\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7163/api/GerenciarUsuario/AdicionarResidencia?id=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7163",
+							"path": [
+								"api",
+								"GerenciarUsuario",
+								"AdicionarResidencia"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarResidencias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7163/api/GerenciarUsuario/ListarTodasResidencias\n",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7163",
+							"path": [
+								"api",
+								"GerenciarUsuario",
+								"ListarTodasResidencias\n"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarResidenciaPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7163/api/GerenciarUsuario/RequererResidenciaPorId1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7163",
+							"path": [
+								"api",
+								"GerenciarUsuario",
+								"RequererResidenciaPorId1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarResidenciasPorIdUsuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7163/api/GerenciarUsuario/RequererResidênciasPorIdUsuario?IdUsuario=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7163",
+							"path": [
+								"api",
+								"GerenciarUsuario",
+								"RequererResidênciasPorIdUsuario"
+							],
+							"query": [
+								{
+									"key": "IdUsuario",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletarResidenciaPorId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7163/api/GerenciarUsuario/DeletarResidenciaPorId1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7163",
+							"path": [
+								"api",
+								"GerenciarUsuario",
+								"DeletarResidenciaPorId1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TelaGerenciarCompras",
+			"item": [
+				{
+					"name": "Produtos",
+					"item": [
+						{
+							"name": "AdicionarProduto",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome_Produtos\": \"string\",\r\n  \"descricao_Produtos\": \"string\",\r\n  \"preco\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7163/api/Produtos/AdicionarProduto",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7163",
+									"path": [
+										"api",
+										"Produtos",
+										"AdicionarProduto"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ListarRodosProdutos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7163/api/ListarTodosProdutos",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7163",
+									"path": [
+										"api",
+										"ListarTodosProdutos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AlterarProdutoPorId",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome_Produtos\": \"string\",\r\n  \"descricao_Produtos\": \"string\",\r\n  \"preco\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7163/api/Produtos/AlterarProdutoPorId?IdProduto=1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7163",
+									"path": [
+										"api",
+										"Produtos",
+										"AlterarProdutoPorId"
+									],
+									"query": [
+										{
+											"key": "IdProduto",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeletarProdutoPorId",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7163/api/Produtos/DeletarProdutoPorId1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7163",
+									"path": [
+										"api",
+										"Produtos",
+										"DeletarProdutoPorId1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Estoque",
+					"item": [
+						{
+							"name": "CriacaoEstoque{IdResidencia}",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7163/api/Estoque/AdicionarEstoquePorIdResidencia1?IdProduto=1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7163",
+									"path": [
+										"api",
+										"Estoque",
+										"AdicionarEstoquePorIdResidencia1"
+									],
+									"query": [
+										{
+											"key": "IdProduto",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ListarTodosOsEstoques",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7163/api/Estoque/ListarTodosEstoques",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7163",
+									"path": [
+										"api",
+										"Estoque",
+										"ListarTodosEstoques"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ListarPorIdResidencia",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7163/api/Estoque/RequererEstoquePorIdResidencia1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7163",
+									"path": [
+										"api",
+										"Estoque",
+										"RequererEstoquePorIdResidencia1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeletarEstoquePorId",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7163/api/Estoque/DeletarEstoquePorId1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7163",
+									"path": [
+										"api",
+										"Estoque",
+										"DeletarEstoquePorId1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AlterarQuantProdutoOuDataValidade",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"data_Validade\": \"string\",\r\n  \"quantidade_Produto\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7163/api/Estoque/Alterar quantidade de produto ou data de validade 1/1?IdResidencia=1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7163",
+									"path": [
+										"api",
+										"Estoque",
+										"Alterar quantidade de produto ou data de validade 1",
+										"1"
+									],
+									"query": [
+										{
+											"key": "IdResidencia",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ListaDeCompras",
+					"item": [
+						{
+							"name": "CadastrarListaDeCompras",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7163/api/ListaDeCompras/AdicionarListaDeCompras?IdResidencia=1&IdProduto=1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7163",
+									"path": [
+										"api",
+										"ListaDeCompras",
+										"AdicionarListaDeCompras"
+									],
+									"query": [
+										{
+											"key": "IdResidencia",
+											"value": "1"
+										},
+										{
+											"key": "IdProduto",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ListarListaComprasPorIdResidencia",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7163/api/ListaDeCompras/RequererListaDeComprasPorIdResidência?IdResidencia=1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7163",
+									"path": [
+										"api",
+										"ListaDeCompras",
+										"RequererListaDeComprasPorIdResidência"
+									],
+									"query": [
+										{
+											"key": "IdResidencia",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeletarListaComprasPorIdEstoqueEIdProduto",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7163/api/ListaDeCompras/DeletarProdutoDaListaPorId?IdProduto=1&IdResidencia=1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7163",
+									"path": [
+										"api",
+										"ListaDeCompras",
+										"DeletarProdutoDaListaPorId"
+									],
+									"query": [
+										{
+											"key": "IdProduto",
+											"value": "1"
+										},
+										{
+											"key": "IdResidencia",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AtualizarQuantidadeProduto",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7163/api/ListaDeCompras/AtualizarQuantidadeProdutoNaListaDeCompras?IdResidencia=1&IdProduto=1&Quantidade=2",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7163",
+									"path": [
+										"api",
+										"ListaDeCompras",
+										"AtualizarQuantidadeProdutoNaListaDeCompras"
+									],
+									"query": [
+										{
+											"key": "IdResidencia",
+											"value": "1"
+										},
+										{
+											"key": "IdProduto",
+											"value": "1"
+										},
+										{
+											"key": "Quantidade",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "TelaLogin",
+			"item": [
+				{
+					"name": "Autenticar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"string\",\r\n  \"senha\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
