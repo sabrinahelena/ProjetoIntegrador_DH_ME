@@ -39,7 +39,7 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <param name="produto">Modelo do produto</param>
         /// <response code="200">Produto foi cadastrado com seucesso</response>
         /// <response code="500">Ocorreu algum erro ao criar o produto</response>
-        [HttpPost("Adicionar Produto Ao Sistema")]
+        [HttpPost("AdicionarProduto")]
         public ActionResult<ProdutosModel> CadastrarProduto(CadastroProdutosRequest produto)
         {
             
@@ -58,31 +58,10 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="404">Não há podutos cadastradas</response>
         /// <response code="200">Retorna a lista de produtos cadastrados</response>
         /// <response code="500">Ocorreu algum erro ao obter lista de produtos cadastrados</response>
-        [HttpGet]
+        [HttpGet("ListarTodosProdutos")]
         public ActionResult<List<ProdutosModel>> GetAll()
         {
             return Ok(_produtosService.GetEstoque());
-        }
-
-        /// <summary>
-        /// Retorna produto encontrado a partir de sua Id
-        /// </summary>
-        /// <returns>Retorna a residência encontrada a partir da Id</returns>
-        /// <param name="IdProduto">Id do produto</param>
-        /// <response code="404">Produto não encontrada</response>
-        /// <response code="200">Retorna produto encontrado</response>
-        [HttpDelete("Delete por Id {IdProduto}")]
-        public ActionResult DeleteProduto(int IdProduto)
-        {
-            var boolean = _produtosService.DeleteProduto(IdProduto);
-            if (boolean)
-            {
-                return Ok();
-            }
-            else
-            {
-                return BadRequest();
-            }
         }
 
         //PUT PARA USUÁRIO E RESIDÊNCIA
@@ -107,7 +86,7 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="400">Produto não pode ter sua Id modificada</response>
         /// <response code="404">Produto não encontrado</response>
         /// <response code="204">Produto substituído</response>
-        [HttpPut("Alterar Produto")]
+        [HttpPut("AlterarProdutoPorId")]
         public ActionResult<ProdutosModel> AlterarProduto(int IdProduto, CadastroProdutosRequest alteracoes)
         {
             var existe = _produtosService.AlterarProduto(IdProduto, alteracoes);
@@ -120,5 +99,27 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
                 return BadRequest();
             }
         }
+        /// <summary>
+        /// Retorna produto encontrado a partir de sua Id
+        /// </summary>
+        /// <returns>Retorna a residência encontrada a partir da Id</returns>
+        /// <param name="IdProduto">Id do produto</param>
+        /// <response code="404">Produto não encontrada</response>
+        /// <response code="200">Retorna produto encontrado</response>
+        [HttpDelete("DeletarProdutoPorId{IdProduto}")]
+        public ActionResult DeleteProduto(int IdProduto)
+        {
+            var boolean = _produtosService.DeleteProduto(IdProduto);
+            if (boolean)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+       
     }
 }
