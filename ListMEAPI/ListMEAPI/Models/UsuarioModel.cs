@@ -38,12 +38,12 @@ namespace ListMEAPI.Models
         public string Sobrenome { get; set; }
         public string? Telefone { get; set; }
         public string Data_Nascimento { get; set; }
-
-        [Unique]
         public string Email { get; set; }
         public string? Foto_Perfil { get; set; }
 
         public string Senha { get; set; }
+
+        public string tipousuario = "Usuario";
         public List<ResidenciaModel> Residencias { get; private set; }
         public void AdicionarResidencia(ResidenciaModel residencia)
         {

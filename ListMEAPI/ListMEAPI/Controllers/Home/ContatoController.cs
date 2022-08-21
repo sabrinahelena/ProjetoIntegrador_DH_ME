@@ -72,7 +72,7 @@ namespace ListMEAPI.Controllers.Home
         /// <response code="200">Retorna a lista de contatos cadastrados</response>
         /// <response code="500">Ocorreu algum erro ao obter lista de contatos cadastrados</response>
         [HttpGet("ListarTodosContatos")]
-        //[Authorize]
+        [Authorize(Roles = "Adm")]
 
         /*
          * Aqui, terá que ter autorização, pois um usuário cliente normal não pode
@@ -92,7 +92,7 @@ namespace ListMEAPI.Controllers.Home
         /// <response code="404">Contato não encontrado</response>
         /// <response code="200">Retorna contato encontrado</response>
         [HttpGet("RequererContatoPorId{Id}")]
-        //[Authorize]
+        [Authorize(Roles = "Adm")]
 
 
         /*
@@ -122,7 +122,7 @@ namespace ListMEAPI.Controllers.Home
         /// <response code="204">Contato deletado</response>
 
         [HttpDelete("DeletarContatoPorId{Id}")]
-        //[Authorize]
+        [Authorize(Roles = "Adm")]
 
         /*
          * Apenas administradores poderão deletar algum contato, depois de respondido.
