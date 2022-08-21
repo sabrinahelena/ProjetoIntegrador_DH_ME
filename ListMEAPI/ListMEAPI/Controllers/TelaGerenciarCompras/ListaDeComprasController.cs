@@ -89,7 +89,7 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         }
 
         /// <summary>
-        /// Deleta um produto da listaa partir de sua Id
+        /// Deleta um produto da lista a partir de sua Id
         /// </summary>
         /// <returns>Retorna se o estoque foi deletado ou não</returns>
         /// <param name="IdProduto">Id do estoque</param>

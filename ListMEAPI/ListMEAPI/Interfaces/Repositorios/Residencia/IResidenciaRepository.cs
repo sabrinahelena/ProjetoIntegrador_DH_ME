@@ -7,9 +7,10 @@ namespace ListMEAPI.Interfaces.Repositorios.Residencia
     {
 
         //Create da residenciamodel
-        dynamic Create(ResidenciaModel residencia); //POST
+        void Create(ResidenciaModel residencia, UsuarioModel usuario); //POST
         List<ResidenciaModel> GetAll(); //GET 
 
+        ResidenciaModel Update(int Id, CadastroResidenciaRequest residenciaAtualizada);
         UsuarioModel GetUsuario(int id);
         ResidenciaModel GetOneResidencia(int id);
 

@@ -41,10 +41,10 @@ namespace ListMEAPI.Repositories
             return residenciaRequerida;
         }
 
-        public void Delete(int id)
+        public void Delete(ResidenciaModel residencia)
         {
-            var result = _context.Residencias.Find(id);
-            _context.Residencias.Remove(result);
+           
+            _context.Residencias.Remove(residencia);
             _context.SaveChanges();
 
         }

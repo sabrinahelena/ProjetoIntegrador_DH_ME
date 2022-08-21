@@ -25,14 +25,17 @@ namespace ListMEAPI.Services
            
             return usuarioRetornado;
         }
-        public void Cadastrar(CadastroResidenciaRequest residencia, int id)
+        public dynamic Cadastrar(CadastroResidenciaRequest residencia, int id)
         {
 
             var residenciaNova = new ResidenciaModel(residencia.Nome_Residencias, residencia.Descricao_Residencias, residencia.Foto_Residencias);
             var usuarioRetornado = _validacaoRepository.FindUsuario(id);
-            if(usuarioRetornado == null){ }
+            if(usuarioRetornado == null){
+                return null;
+            }
             _residenciaRepository.Create(residenciaNova,usuarioRetornado);
-          
+
+            return usuarioRetornado;
             
         }
 
@@ -68,6 +71,12 @@ namespace ListMEAPI.Services
                 return false;
             }
         }
+
+        ResidenciaModel IResidenciaService.Atualizar(int id, CadastroResidenciaRequest residenciaAtualizada)
+        {
+            return _residenciaRepository.Update(id, residenciaAtualizada);
+        }
+
     }
 }
 
