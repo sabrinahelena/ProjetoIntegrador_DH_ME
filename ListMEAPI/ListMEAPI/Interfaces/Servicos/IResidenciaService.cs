@@ -20,7 +20,7 @@ namespace ListMEAPI.Interfaces.Servicos
 
         // ResidenciaModel ExibirResidencia(int Id);
         void Salvar();
-
+        List<ResidenciaModel> ListarResidenciasDoUsuario(int IdUsuario);
         bool Deletar(int Id);
     }
 }

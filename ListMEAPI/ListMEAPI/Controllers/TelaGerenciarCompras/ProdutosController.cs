@@ -1,6 +1,7 @@
 ﻿using ListMEAPI.DTOs.Request.Produtos;
 using ListMEAPI.Interfaces.Servicos;
 using ListMEAPI.Models;
+using ListMEAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,10 +12,12 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
     public class ProdutosController : ControllerBase
     {
         public IProdutosService _produtosService;
+        private ValidacaoRepository _validacaoRepository;
 
-        public ProdutosController(IProdutosService produtosService)
+        public ProdutosController(IProdutosService produtosService, ValidacaoRepository validacao)
         {
             _produtosService = produtosService;
+            _validacaoRepository = validacao;
         }
 
         //ADICIONAR MAIS PRODUTOS
@@ -39,8 +42,13 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         [HttpPost("Adicionar Produto Ao Sistema")]
         public ActionResult<ProdutosModel> CadastrarProduto(CadastroProdutosRequest produto)
         {
-            _produtosService.Criar(produto);
-            return Ok();
+            
+            var boolean=_produtosService.Criar(produto);
+            if (boolean)
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
 
         /// <summary>

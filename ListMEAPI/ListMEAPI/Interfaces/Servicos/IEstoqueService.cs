@@ -10,7 +10,7 @@ namespace ListMEAPI.Interfaces.Servicos
 
         List<EstoqueModel> GetEstoque();
         List<EstoqueModel> GetEstoquePorIdResidencia(int IdResidencia);
-        EstoqueModel AlterarProdutoNoEstoque(AlterarQuantidadeEDataRequest produtos, int IdProduto, int IdEstoque); //Patch alterando a data de validade e quantidade do produto no estoque
+        EstoqueModel AlterarProdutoNoEstoque(AlterarQuantidadeEDataRequest produtos, int IdProduto, int IdResidencia); //Patch alterando a data de validade e quantidade do produto no estoque
 
 
     }

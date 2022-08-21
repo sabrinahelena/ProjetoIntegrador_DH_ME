@@ -42,6 +42,10 @@ namespace ListMEAPI.Repositories
             return _context.Estoques.Where(i => i.Produto == produto && 
                  i.IdResidencia == IdResidencia && i.Id_Lista ==0 ).FirstOrDefault();
         }
+        public bool ExisteProduto(string nome)
+        {
+            return _context.Produtos.Any(i => i.Nome_Produtos == nome);
+        }
 
     }
 }

@@ -103,7 +103,12 @@ namespace ListMEAPI.Controllers.Home
 
         public ActionResult<ContatoResponse> ExibeUm(int Id)
         {
-            return Ok(_contatoService.ExibirContato(Id));
+            var existe = _contatoService.ExibirContato(Id);
+            if (existe == null)
+            {
+                return BadRequest(new { message = "Contanto não encontrado" });
+            }
+            return Ok(existe);
         }
     
 

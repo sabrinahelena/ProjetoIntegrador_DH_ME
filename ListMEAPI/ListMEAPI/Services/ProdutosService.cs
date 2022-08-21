@@ -24,10 +24,16 @@ namespace ListMEAPI.Services
             
         }
 
-        public void Criar(CadastroProdutosRequest produto)
+        public bool Criar(CadastroProdutosRequest produto)
         {
+            var searchProdutoExistente = _validacaoRepository.ExisteProduto(produto.Nome_Produtos);
+            if (searchProdutoExistente)
+            {
+                return false;
+            }
             var novoProduto = new ProdutosModel(produto.Nome_Produtos, produto.Descricao_Produtos, produto.Preco);
             _produtosRepository.Create(novoProduto);
+            return true;
         }
 
         public bool DeleteProduto(int Id)

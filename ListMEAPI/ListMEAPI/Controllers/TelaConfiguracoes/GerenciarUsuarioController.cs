@@ -111,7 +111,16 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
                 return BadRequest();
             }
         }
-
+        [HttpGet("Listar residências por Id Usuario")]
+        public ActionResult<List<ResidenciaModel>> ListarResidenciasDoUsuario(int IdUsuario)
+        {
+            var existe = _residenciaService.ListarResidenciasDoUsuario(IdUsuario);
+            if (existe == null)
+            {
+                return BadRequest(new { message = "Produto já existente" });
+            }
+            return Ok(existe);
+        }
             //PUT PARA USUÁRIO E RESIDÊNCIA
             /// <summary>
             /// Substitui um usuário a partir de sua Id

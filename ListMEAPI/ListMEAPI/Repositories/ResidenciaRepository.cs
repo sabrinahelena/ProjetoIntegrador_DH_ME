@@ -64,6 +64,10 @@ namespace ListMEAPI.Repositories
             return residenciaAntiga;
 
         }
+        public List<ResidenciaModel> GetAllResidenciasFromUsuario(int IdUsuario)
+        {
+            return _context.Residencias.Where(i => i.Id_Usuario == IdUsuario).ToList();
+        }
         public void Save()
         {
             _context.SaveChanges();

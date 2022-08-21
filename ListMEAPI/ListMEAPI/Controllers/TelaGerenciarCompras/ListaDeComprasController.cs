@@ -26,8 +26,12 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         [HttpGet("Get Lista de compras por Id de residência")]
         public ActionResult<List<EstoqueModel>> Listar(int IdResidencia)
         {
-            
-            return Ok(_listaDeComprasService.ListarAListaDeCompras(IdResidencia));
+            var existe = _listaDeComprasService.ListarAListaDeCompras(IdResidencia);
+            if(existe == null)
+            {
+                return BadRequest(new { message = "Rêsidencia não encontrada" });
+            }
+            return Ok(existe);
         }
 
         //ADICIONAR MAIS PRODUTOS NA LISTA DE COMPRAS DA RESIDÊNCIA
