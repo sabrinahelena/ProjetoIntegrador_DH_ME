@@ -65,7 +65,7 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
         /// <response code="404">Não há residências cadastradas</response>
         /// <response code="200">Retorna a lista de residências cadastradas</response>
         /// <response code="500">Ocorreu algum erro ao obter lista de residências cadastradas</response>
-        [HttpGet("Listar Residencias")]
+        [HttpGet("ListarTodasResidencias")]
         public ActionResult<List<ResidenciaResponse>> GetAll()
         {
             return Ok(_residenciaService.Listar());
@@ -78,7 +78,7 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
         /// <param name="Id">Id da residência</param>
         /// <response code="404">Residência não encontrada</response>
         /// <response code="200">Retorna residência encontrada</response>
-        [HttpGet("ListarResidenciaPorId{Id}")]
+        [HttpGet("RequererResidenciaPorId{Id}")]
 
         public ActionResult<ResidenciaResponse> ExibeUm(int Id)
         {
@@ -88,6 +88,26 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
 
             }
             return Ok(_residenciaService.ExibirResidencia(Id));
+
+        }
+
+        /// <summary>
+        /// Retorna residência encontrada a partir da Id de um usuário
+        /// </summary>
+        /// <returns>Retorna a residência encontrada a partir da Id</returns>
+        /// <param name="Id">Id da residência</param>
+        /// <response code="404">Residência não encontrada</response>
+        /// <response code="200">Retorna residência encontrada</response>
+
+        [HttpGet("RequererResidênciasPorIdUsuario")]
+        public ActionResult<List<ResidenciaModel>> ListarResidenciasDoUsuario(int IdUsuario)
+        {
+            var existe = _residenciaService.ListarResidenciasDoUsuario(IdUsuario);
+            if (existe == null)
+            {
+                return BadRequest(new { message = "Produto já existente" });
+            }
+            return Ok(existe);
         }
 
         /// <summary>
@@ -111,16 +131,7 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
                 return BadRequest();
             }
         }
-        [HttpGet("Listar residências por Id Usuario")]
-        public ActionResult<List<ResidenciaModel>> ListarResidenciasDoUsuario(int IdUsuario)
-        {
-            var existe = _residenciaService.ListarResidenciasDoUsuario(IdUsuario);
-            if (existe == null)
-            {
-                return BadRequest(new { message = "Produto já existente" });
-            }
-            return Ok(existe);
-        }
+
             //PUT PARA USUÁRIO E RESIDÊNCIA
             /// <summary>
             /// Substitui um usuário a partir de sua Id
