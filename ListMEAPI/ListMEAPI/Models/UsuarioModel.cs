@@ -32,10 +32,6 @@ namespace ListMEAPI.Models
             tipousuario = tipoDoUsuario;
         }
 
-        public UsuarioModel()
-        {
-        }
-
         [Key]
         public int Id_Usuario { get; set; }
         public string Nome_Usuario { get; set; }
