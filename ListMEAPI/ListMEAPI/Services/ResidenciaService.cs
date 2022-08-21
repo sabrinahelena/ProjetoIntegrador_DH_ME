@@ -25,14 +25,14 @@ namespace ListMEAPI.Services
            
             return usuarioRetornado;
         }
-        public void Cadastrar(CadastroResidenciaRequest residencia, int id)
+        public dynamic Cadastrar(CadastroResidenciaRequest residencia, int id)
         {
 
             var residenciaNova = new ResidenciaModel(residencia.Nome_Residencias, residencia.Descricao_Residencias, residencia.Foto_Residencias);
             var usuarioRetornado = _validacaoRepository.FindUsuario(id);
             if(usuarioRetornado == null){ }
             _residenciaRepository.Create(residenciaNova,usuarioRetornado);
-          
+            return usuarioRetornado;    
             
         }
 
