@@ -34,9 +34,11 @@ namespace ListMEAPI.Services
         }
 
         //GET POR ID
-        public UsuarioModel ExibirUsuario(int id)
+        public UsuarioResponse ExibirUsuario(int id)
         {
-           return _usuarioRepository.GetOne(id);
+            var response = _usuarioRepository.GetOne(id);
+
+           return UsuarioMapper.From(response);
         }
 
         //GET
