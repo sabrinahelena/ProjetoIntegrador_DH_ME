@@ -36,11 +36,19 @@ namespace ListMEAPI.Repositories
         }
 
         //DELETE
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var result = _context.Usuarios.Find(id);
-            _context.Usuarios.Remove(result);
-            _context.SaveChanges();
+            if (result != null)
+            {
+                _context.Usuarios.Remove(result);
+                _context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
         }
 

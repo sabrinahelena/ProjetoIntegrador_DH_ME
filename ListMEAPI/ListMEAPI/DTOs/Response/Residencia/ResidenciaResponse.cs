@@ -1,4 +1,6 @@
-﻿namespace ListMEAPI.DTOs.Response.Residencia
+﻿using ListMEAPI.Models;
+
+namespace ListMEAPI.DTOs.Response.Residencia
 {
     public class ResidenciaResponse
     {
@@ -6,5 +8,6 @@
         public string Nome_Residencias { get; set; }
         public string? Descricao_Residencias { get; set; }
         public string? Foto_Residencias { get; set; }
+        
     }
 }

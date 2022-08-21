@@ -18,7 +18,7 @@ namespace ListMEAPI.Models
             Senha = senha;
             Residencias = new List<ResidenciaModel>();
         }
-        public UsuarioModel(int id_Usuario, string nome_Usuario, string sobrenome, string? telefone, string data_Nascimento, string email, string? foto_Perfil, string senha, IList<ResidenciaModel> residencias)
+        public UsuarioModel(int id_Usuario, string nome_Usuario, string sobrenome, string? telefone, string data_Nascimento, string email, string? foto_Perfil, string senha, List<ResidenciaModel> residencias)
         {
             Id_Usuario = id_Usuario;
             Nome_Usuario = nome_Usuario;
@@ -44,7 +44,7 @@ namespace ListMEAPI.Models
         public string? Foto_Perfil { get; set; }
 
         public string Senha { get; set; }
-        public IList<ResidenciaModel> Residencias { get; private set; }
+        public List<ResidenciaModel> Residencias { get; private set; }
         public void AdicionarResidencia(ResidenciaModel residencia)
         {
             Residencias.Add(residencia);

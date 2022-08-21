@@ -28,9 +28,9 @@ namespace ListMEAPI.Services
         }
 
         //DELETE
-        public void Deletar(int id)
+        public bool Deletar(int id)
         {
-            _usuarioRepository.Delete(id);
+            return _usuarioRepository.Delete(id);
         }
 
         //GET POR ID

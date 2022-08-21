@@ -18,13 +18,9 @@ namespace ListMEAPI.Interfaces.Servicos
 
         ResidenciaModel Atualizar(int id, CadastroResidenciaRequest residenciaAtualizada);
 
+        ResidenciaModel ExibirResidencia(int Id);
         void Salvar();
 
-
-
-
-
-
-
+        bool Deletar(int Id);
     }
 }

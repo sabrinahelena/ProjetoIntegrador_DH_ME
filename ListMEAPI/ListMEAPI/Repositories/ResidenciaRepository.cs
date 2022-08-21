@@ -16,16 +16,16 @@ namespace ListMEAPI.Repositories
             _context = ctx;
         }
 
-        public dynamic Create(ResidenciaModel residencia)
+        public void Create(ResidenciaModel residencia, UsuarioModel usuario)
         {
+            usuario.AdicionarResidencia(residencia);
             _context.Add(residencia);
             _context.SaveChanges();
-
-            return null;
         }
 
         public List<ResidenciaModel> GetAll()
         {
+            
             return _context.Residencias.ToList();
         }
 
