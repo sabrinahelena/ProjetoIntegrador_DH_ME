@@ -51,7 +51,10 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
         public IActionResult Create([FromBody] CadastroResidenciaRequest residencia, int id)
         {
 
-            _residenciaService.Cadastrar(residencia, id);
+            if (_residenciaService.Cadastrar(residencia, id) == null)
+            {
+                return NotFound(new { mensagem = "Usuario não existe no banco" });
+            };
             return Ok();
         }
 

@@ -1,4 +1,5 @@
-﻿using ListMEAPI.Models;
+﻿using ListMEAPI.DTOs.Request.Residencia;
+using ListMEAPI.Models;
 
 namespace ListMEAPI.Interfaces.Repositorios.Residencia
 {
@@ -9,6 +10,7 @@ namespace ListMEAPI.Interfaces.Repositorios.Residencia
         void Create(ResidenciaModel residencia, UsuarioModel usuario); //POST
         List<ResidenciaModel> GetAll(); //GET 
 
+        ResidenciaModel Update(int Id, CadastroResidenciaRequest residenciaAtualizada);
         UsuarioModel GetUsuario(int id);
         ResidenciaModel GetOneResidencia(int id);
 

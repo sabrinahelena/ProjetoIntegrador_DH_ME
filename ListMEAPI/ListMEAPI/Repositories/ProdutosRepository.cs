@@ -19,11 +19,11 @@ namespace ListMEAPI.Repositories
             _context.SaveChanges();
         }
 
-        public bool DeleteProduto(ProdutosModel produto)
+        public void DeleteProduto(ProdutosModel produto)
         {
             _context.Produtos.Remove(produto);
             _context.SaveChanges();
-            return true;
+            
         }
 
         public List<ProdutosModel> GetAll()

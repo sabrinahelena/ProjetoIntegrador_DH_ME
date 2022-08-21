@@ -9,7 +9,7 @@ namespace ListMEAPI.Interfaces.Repositorios.Produtos
         void Create(ProdutosModel produto); //POST
         List<ProdutosModel> GetAll(); //GET 
         ProdutosModel GetUsuario(int id);
-        bool DeleteProduto(ProdutosModel produto);
+        void DeleteProduto(ProdutosModel produto);
         ProdutosModel PutProduto(int IdProduto, CadastroProdutosRequest alteracoes);
 
     }
