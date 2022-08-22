@@ -128,6 +128,15 @@ body{
 
 }
 
+.imagem_sobreprojeto{
+    width: 350px;
+}
+
+.imagem_sobreequipe{
+    width: 350px;
+    border-radius: 20px;
+}
+
 .texto_sobre{
     width: 800px;
 }
@@ -142,14 +151,39 @@ body{
 
 }
 
+.icones_ferramentas{
+    display: flex;
+}
+
 /*SUPORTE*/
 
 .suporte{
+    border: 1px solid white;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 600px;
+    text-align: center;
 
+}
+
+.botao_suporte{
+    background-color: white; 
+    border-radius: 30px;
+    color: #16262E;
+    border-color: #16262E;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: auto;
+    height: 50px;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.inputs{
+    width: 200px;
 }
 
 /*CONTATO*/
