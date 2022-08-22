@@ -7,17 +7,15 @@ namespace ListMEAPI.Interfaces.Repositorios.Residencia
     {
 
         //Create da residenciamodel
-        dynamic Create(ResidenciaModel residencia); //POST
+        void Create(ResidenciaModel residencia, UsuarioModel usuario); //POST
         List<ResidenciaModel> GetAll(); //GET 
 
-        UsuarioModel GetUsuario(int id); //GET
+        ResidenciaModel Update(int Id, CadastroResidenciaRequest residenciaAtualizada);
+        UsuarioModel GetUsuario(int id);
+        ResidenciaModel GetOneResidencia(int id);
 
-        ResidenciaModel GetOneResidencia(int Id); //GET
-
-        bool Delete(int id); //DELETE
-
-        ResidenciaModel Update(int id, CadastroResidenciaRequest residenciaNova); //PUT
-
+        void Delete(ResidenciaModel residencia);
+        List<ResidenciaModel> GetAllResidenciasFromUsuario(int IdUsuario);
         void Save();
 
         //void Update(ResidenciaModel residencia);

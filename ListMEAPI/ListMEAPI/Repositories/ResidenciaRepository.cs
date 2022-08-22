@@ -16,18 +16,17 @@ namespace ListMEAPI.Repositories
             _context = ctx;
         }
 
-        //POST
-        public dynamic Create(ResidenciaModel residencia)
+        public void Create(ResidenciaModel residencia, UsuarioModel usuario)
         {
+            usuario.AdicionarResidencia(residencia);
             _context.Add(residencia);
             _context.SaveChanges();
-
-            return null;
         }
 
         //GET
         public List<ResidenciaModel> GetAll()
         {
+            
             return _context.Residencias.ToList();
         }
 
@@ -45,20 +44,11 @@ namespace ListMEAPI.Repositories
             return residenciaRequerida;
         }
 
-        //DELETE
-        public bool Delete(int id)
+        public void Delete(ResidenciaModel residencia)
         {
-            var result = _context.Residencias.Find(id);
-            if (result != null)
-            {
-                _context.Residencias.Remove(result);
-                _context.SaveChanges();
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+           
+            _context.Residencias.Remove(residencia);
+            _context.SaveChanges();
 
         }
 
@@ -77,6 +67,10 @@ namespace ListMEAPI.Repositories
             }
             return residenciaAntiga;
 
+        }
+        public List<ResidenciaModel> GetAllResidenciasFromUsuario(int IdUsuario)
+        {
+            return _context.Residencias.Where(i => i.Id_Usuario == IdUsuario).ToList();
         }
         public void Save()
         {

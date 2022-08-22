@@ -14,11 +14,13 @@ namespace ListMEAPI.Interfaces.Servicos
 
         ResidenciaModel ExibirResidencia(int id); //GET
 
-        bool Deletar(int id); //DELETE
+        // void Deletar(int id); //DELETE
 
         ResidenciaModel Atualizar(int id, CadastroResidenciaRequest residenciaAtualizada);
 
+        // ResidenciaModel ExibirResidencia(int Id);
         void Salvar();
-
+        List<ResidenciaModel> ListarResidenciasDoUsuario(int IdUsuario);
+        bool Deletar(int Id);
     }
 }

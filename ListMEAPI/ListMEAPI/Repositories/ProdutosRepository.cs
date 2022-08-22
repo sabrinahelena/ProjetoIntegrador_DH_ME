@@ -1,4 +1,5 @@
-﻿using ListMEAPI.Interfaces.Repositorios.Produtos;
+﻿using ListMEAPI.DTOs.Request.Produtos;
+using ListMEAPI.Interfaces.Repositorios.Produtos;
 using ListMEAPI.Models;
 
 namespace ListMEAPI.Repositories
@@ -18,6 +19,13 @@ namespace ListMEAPI.Repositories
             _context.SaveChanges();
         }
 
+        public void DeleteProduto(ProdutosModel produto)
+        {
+            _context.Produtos.Remove(produto);
+            _context.SaveChanges();
+            
+        }
+
         public List<ProdutosModel> GetAll()
         {
             return _context.Produtos.ToList();
@@ -26,6 +34,22 @@ namespace ListMEAPI.Repositories
         public ProdutosModel GetUsuario(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public ProdutosModel PutProduto(int IdProduto, CadastroProdutosRequest alteracoes)
+        {
+            var produtoAlterado = _context.Produtos.Find(IdProduto);
+            if (produtoAlterado != null)
+            {
+                produtoAlterado.Preco = alteracoes.Preco;
+                produtoAlterado.Descricao_Produtos = alteracoes.Descricao_Produtos;
+                produtoAlterado.Nome_Produtos = alteracoes.Nome_Produtos;
+                _context.SaveChanges();
+                return produtoAlterado;
+            }
+            else{
+                return null;
+            }
         }
     }
 }

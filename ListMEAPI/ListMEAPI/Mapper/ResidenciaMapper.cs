@@ -16,6 +16,7 @@ namespace ListMEAPI.Mapper
             dto.Descricao_Residencias = residencia.Descricao_Residencias;
             dto.Nome_Residencias = residencia.Nome_Residencias;
             dto.Foto_Residencias = residencia.Foto_Residencias;
+            
        
 
             return dto;

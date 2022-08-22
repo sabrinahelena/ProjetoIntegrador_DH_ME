@@ -70,37 +70,21 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /// <response code="200">Retorna a lista de usuários cadastrados</response>
         /// <response code="500">Ocorreu algum erro ao obter lista de usuários cadastrados</response>
 
-        [HttpGet("ListarUsuarios")]
+        /// <summary>
+        /// Listar todos os usuários
+        /// </summary>
+        /// <returns>Lista de usuários cadastrados</returns>
+        /// <response code="404">Não há usuários cadastrados</response>
+        /// <response code="200">Retorna a lista de usuários cadastrados</response>
+        /// <response code="500">Ocorreu algum erro ao obter lista de usuários cadastrados</response>
+        [HttpGet("ListarTodosUsuários")]
+        [Authorize(Roles = "Adm")]
 
         public ActionResult<List<UsuarioResponse>> GetAll()
         {
             return Ok(_usuarioService.Listar());
         }
 
-
-        /// <summary>
-        /// Delete um usuário a partir de sua Id
-        /// </summary>
-        /// <returns>Retorna o usuário recém criado</returns>
-        /// <param name="Id">Id do usuário</param>
-        /// <response code="404">Usuário não encontrado</response>
-        /// <response code="204">Usuário deletado</response>
-        [HttpDelete("DeletarUsuarioPorId{Id}")]
-       
-
-        public ActionResult<UsuarioResponse> Deleta(int Id)
-        {
-            var boolean = _usuarioService.Deletar(Id);
-            if(boolean == true)
-            {
-                return Ok();
-            }
-            else
-            {
-                return NotFound();
-            }
-            
-        }
         /// <summary>
         /// Retorna usuário encontrado a partir de sua Id
         /// </summary>
@@ -108,8 +92,9 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /// <param name="Id">Id do usuário</param>
         /// <response code="404">Usuário não encontrado</response>
         /// <response code="200">Retorna usuário encontrado</response>
+        [HttpGet("RequererUsuárioPorId{Id}")]
+        [Authorize(Roles = "Adm,Usuario")]
 
-        [HttpGet("ExibirUmUsuario{Id}")]
 
         public ActionResult<UsuarioResponse> ExibeUm(int Id)
         {
@@ -122,6 +107,36 @@ namespace ListMEAPI.Controllers.TelaCadastro
             {
                 return NotFound();
             }
+        }
+        /// <summary>
+        /// Retorna usuário encontrado a partir de sua Id
+        /// </summary>
+        /// <returns>Retorna o usuário encontrado a partir da Id</returns>
+        /// <param name="Id">Id do usuário</param>
+        /// <response code="404">Usuário não encontrado</response>
+        /// <response code="200">Retorna usuário encontrado</response>
+
+        /// <summary>
+        /// Delete um usuário a partir de sua Id
+        /// </summary>
+        /// <returns>Retorna o usuário recém criado</returns>
+        /// <param name="Id">Id do usuário</param>
+        /// <response code="404">Usuário não encontrado</response>
+        /// <response code="204">Usuário deletado</response>
+        [HttpDelete("DeletarUsuárioPorId{Id}")]
+        [Authorize(Roles = "Adm,Usuario")]
+        public ActionResult<UsuarioResponse> Deleta(int Id)
+        {
+            var boolean = _usuarioService.Deletar(Id);
+            if(boolean == true)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+            
         }
         /// <summary>
         /// Substitui um usuário a partir de sua Id
@@ -148,7 +163,33 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /// <response code="404">Usuário não encontrado</response>
         /// <response code="204">Usuário substituído</response>
 
-        [HttpPut("AtualizarUsuarioPorId{Id}")]
+
+        /// <summary>
+        /// Substitui um usuário a partir de sua Id
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo requisição:
+        ///
+        ///     PUT /api/CadastroUsuario/AtualizarUsuarioPorId{Id}
+        ///     {    
+        ///         "nome_Usuario": "Sabrina",
+        ///         "sobrenome": "Ferreira",
+        ///         "telefone": "31985268244",
+        ///         "data_Nascimento": "08/01/2004",
+        ///         "email": "sabrinahelenaf@gmail.com",
+        ///         "foto_Perfil": "string",
+        ///         "senha": "sabrinalinda",
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="Id">Id do usuário</param>
+        /// <param name="Usuario">Modelo do usuário</param>
+        /// <response code="400">Usuário não pode ter sua Id modificada</response>
+        /// <response code="404">Usuário não encontrado</response>
+        /// <response code="204">Usuário substituído</response>
+        [HttpPut("AlterarUsuarioPorId{Id}")]
+        [Authorize(Roles = "Adm,Usuario")]
 
         public ActionResult<UsuarioResponse> AtualizaUsuario(int Id, AtualizacaoUsuarioRequest usuarioAtualizado)
         {

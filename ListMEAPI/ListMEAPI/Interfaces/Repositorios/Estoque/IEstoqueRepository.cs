@@ -1,13 +1,21 @@
-﻿using ListMEAPI.Models;
+﻿using ListMEAPI.DTOs.Request.Produtos;
+using ListMEAPI.Models;
 
 namespace ListMEAPI.Interfaces.Repositorios.Estoque
 {
     public interface IEstoqueRepository
     {
-        void Create(EstoqueModel estoque);
-        List<EstoqueModel> GetAll();
-        bool Delete(int Id);
+        //Manipulação de estoque da residência
+        void CreateWhithLista(EstoqueModel estoque, ResidenciaModel residencia,EstoqueModel ListaCompras);
+        void Create(EstoqueModel estoque, ResidenciaModel residencia);
 
-        EstoqueModel PutOnEstoque(int IdProduto, int IdEstoque);
+
+        List<EstoqueModel> GetAll();
+        List<EstoqueModel> GetByIdFromResidencia(int IdResidencia);
+        bool Delete(int Id);
+        EstoqueModel PatchEstoque(AlterarQuantidadeEDataRequest alteracoes, ProdutosModel Produto, EstoqueModel Estoque);
+
+        
+        
     }
 }

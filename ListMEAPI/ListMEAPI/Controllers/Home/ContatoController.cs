@@ -72,8 +72,8 @@ namespace ListMEAPI.Controllers.Home
         /// <response code="404">Não há contatos cadastrados</response>
         /// <response code="200">Retorna a lista de contatos cadastrados</response>
         /// <response code="500">Ocorreu algum erro ao obter lista de contatos cadastrados</response>
-        [HttpGet("RequererTodosContatos")]
-        //[Authorize]
+        [HttpGet("ListarTodosContatos")]
+        [Authorize(Roles = "Adm")]
 
         /*
          * Aqui, terá que ter autorização, pois um usuário cliente normal não pode
@@ -92,8 +92,8 @@ namespace ListMEAPI.Controllers.Home
         /// <param name="Id">Id do contato</param>
         /// <response code="404">Contato não encontrado</response>
         /// <response code="200">Retorna contato encontrado</response>
-        [HttpGet("RequererContatosPorId{Id}")]
-        //[Authorize]
+        [HttpGet("RequererContatoPorId{Id}")]
+        [Authorize(Roles = "Adm")]
 
 
         /*
@@ -104,15 +104,12 @@ namespace ListMEAPI.Controllers.Home
 
         public ActionResult<ContatoResponse> ExibeUm(int Id)
         {
-            var contato = _contatoService.ExibirContato(Id);
-            if (contato == null)
+            var existe = _contatoService.ExibirContato(Id);
+            if (existe == null)
             {
-                return BadRequest();
+                return BadRequest(new { message = "Contanto não encontrado" });
             }
-            else
-            {
-                return Ok(_contatoService.ExibirContato(Id));
-            }
+            return Ok(existe);
         }
     
 
@@ -126,7 +123,7 @@ namespace ListMEAPI.Controllers.Home
         /// <response code="204">Contato deletado</response>
 
         [HttpDelete("DeletarContatoPorId{Id}")]
-        //[Authorize]
+        [Authorize(Roles = "Adm")]
 
         /*
          * Apenas administradores poderão deletar algum contato, depois de respondido.

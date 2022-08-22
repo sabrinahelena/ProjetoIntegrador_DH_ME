@@ -19,7 +19,7 @@ namespace ListMEAPI.Models
             Senha = senha;
             Residencias = new List<ResidenciaModel>();
         }
-        public UsuarioModel(int id_Usuario, string nome_Usuario, string sobrenome, string? telefone, string data_Nascimento, string email, string? foto_Perfil, string senha, IList<ResidenciaModel> residencias)
+        public UsuarioModel(int id_Usuario, string nome_Usuario, string sobrenome, string? telefone, string data_Nascimento, string email, string? foto_Perfil, string senha, List<ResidenciaModel> residencias, string tipoDoUsuario)
         {
             Id_Usuario = id_Usuario;
             Nome_Usuario = nome_Usuario;
@@ -30,8 +30,8 @@ namespace ListMEAPI.Models
             Foto_Perfil = foto_Perfil;
             Senha = senha;
             Residencias = residencias;
+            tipousuario = tipoDoUsuario;
         }
-
 
         [Key]
         public int Id_Usuario { get; set; }
@@ -58,12 +58,6 @@ namespace ListMEAPI.Models
         [MinLength(8, ErrorMessage = "A data de nascimento deve conter pelo menos 8 dígitos, considerando DIA (XX), MÊS (XX), e ANO (XXXX)")]
 
         public string Data_Nascimento { get; set; }
-
-        /// <summary>
-        /// O e-mail do usuário
-        /// </summary>
-        /// 
-        [Unique]
         public string Email { get; set; }
         /// <summary>
         /// A foto de perfil do usuário
@@ -77,10 +71,9 @@ namespace ListMEAPI.Models
         [MinLength(4, ErrorMessage = "A senha deve conter ao menos 4 dígitos.")]
 
         public string Senha { get; set; }
-        /// <summary>
-        /// A lista de residências do usuário
-        /// </summary>
-        public IList<ResidenciaModel> Residencias { get; private set; }
+
+        public string tipousuario = "Usuario";
+        public List<ResidenciaModel> Residencias { get; private set; }
         public void AdicionarResidencia(ResidenciaModel residencia)
         {
             Residencias.Add(residencia);
