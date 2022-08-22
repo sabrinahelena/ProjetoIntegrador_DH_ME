@@ -21,8 +21,17 @@ namespace ListMEAPI.Models
 
         [Key]
         public int Id_Residencias { get; set; }
+        /// <summary>
+        /// O nome para identificar a residência
+        /// </summary>
         public string Nome_Residencias { get; set; }
+        /// <summary>
+        /// A descrição para identificar a residência
+        /// </summary>
         public string? Descricao_Residencias { get; set; }
+        /// <summary>
+        /// A foto da residência
+        /// </summary>
         public string? Foto_Residencias { get; set; }
         public List<EstoqueModel> Estoque { get; set; }
         public List<EstoqueModel> Lista_Compras { get; set; }

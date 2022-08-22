@@ -23,18 +23,21 @@ namespace ListMEAPI.Repositories
             _context.SaveChanges();
         }
 
+        //GET
         public List<ResidenciaModel> GetAll()
         {
             
             return _context.Residencias.ToList();
         }
 
+        //GET USUÁRIO POR ID
         public UsuarioModel GetUsuario(int Id)
         {
             var usuarioRequerido = _context.Usuarios.Find(Id);
             return usuarioRequerido;
         }
 
+        //GET RESIDENCIA POR ID
         public ResidenciaModel GetOneResidencia(int Id)
         {
             var residenciaRequerida = _context.Residencias.Find(Id);
@@ -49,6 +52,7 @@ namespace ListMEAPI.Repositories
 
         }
 
+        //PUT
         public ResidenciaModel Update(int Id, CadastroResidenciaRequest residenciaAtualizada)
         {
             ResidenciaModel residenciaAntiga = _context.Residencias.Find(Id);

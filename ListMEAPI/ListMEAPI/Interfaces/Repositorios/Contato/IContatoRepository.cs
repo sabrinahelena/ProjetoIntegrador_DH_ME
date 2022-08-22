@@ -8,7 +8,7 @@ namespace ListMEAPI.Interfaces.Repositorios.Contato
         void Create(ContatoModel usuario); //POST
         List<ContatoModel> GetAll(); //GET 
 
-        void Delete(int id); //DELETE
+        bool Delete(int id); //DELETE
 
         void Save();
 

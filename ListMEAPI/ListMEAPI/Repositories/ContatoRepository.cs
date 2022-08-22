@@ -24,11 +24,19 @@ namespace ListMEAPI.Repositories
 
 
         //DELETE
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var result = _context.Contatos.Find(id);
-            _context.Contatos.Remove(result);
-            _context.SaveChanges();
+            if (result != null)
+            {
+                _context.Contatos.Remove(result);
+                _context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
         }
 

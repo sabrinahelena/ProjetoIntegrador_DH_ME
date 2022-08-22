@@ -5,10 +5,10 @@ namespace ListMEAPI.Interfaces.Servicos
 {
     public interface IContatoService
     {
-        void Cadastrar(CadastroContatoRequest contato); //POST
+        dynamic Cadastrar(CadastroContatoRequest contato); //POST
         List<ContatoModel> Listar(); //GET 
 
-        void Deletar(int id); //DELETE
+        bool Deletar(int id); //DELETE
 
         void Salvar();
 

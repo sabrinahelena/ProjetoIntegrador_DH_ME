@@ -53,7 +53,8 @@ namespace ListMEAPI.Controllers.Home
          */
         public IActionResult Create([FromBody] CadastroContatoRequest contato)
         {
-            if (contato == null)
+            var contatoCadastrado = (_contatoService.Cadastrar(contato));
+            if (contatoCadastrado == null)
             {
                 return BadRequest();
             }
@@ -80,7 +81,7 @@ namespace ListMEAPI.Controllers.Home
          * essa lista com os contatos.
          */
         public ActionResult<List<ContatoResponse>> GetAll()
-        {
+        { 
             return Ok(_contatoService.Listar());
         }
 
@@ -131,8 +132,16 @@ namespace ListMEAPI.Controllers.Home
 
         public ActionResult<ContatoResponse> Deleta(int Id)
         {
-            _contatoService.Deletar(Id);
-            return Ok();
+            var boolean = _contatoService.Deletar(Id);
+            if (boolean == true)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+
         }
     }
 }
