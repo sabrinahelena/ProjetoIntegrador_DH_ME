@@ -70,6 +70,12 @@ width: auto;
 height: 50px;
 font-weight: bold;
 margin-top: 40px;
+cursor: pointer;
+}
+
+.botao_primeirobloco:hover{
+    transition:all 1s;
+    transform: scale(1.1);
 }
 
 .botao_segundobloco{
@@ -84,7 +90,13 @@ margin-top: 40px;
     width: auto;
     height: 50px;
     font-weight: bold;
-    }
+    cursor: pointer;
+}
+
+.botao_segundobloco:hover{
+        transition:all 1s;
+        transform: scale(1.1);
+}
 
 .inputs{
     height: 25px;

@@ -114,7 +114,15 @@ body{
     width: auto;
     height: 50px;
     font-weight: bold;
+    cursor: pointer;
 
+}
+
+.botao:hover{
+    transition:all 1s;
+    background-color: white;
+    color: #16262E;
+    transform: scale(1.1);
 }
 
 /* SOBRE */
@@ -158,7 +166,6 @@ body{
 /*SUPORTE*/
 
 .suporte{
-    border: 1px solid white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -180,13 +187,20 @@ body{
     height: 50px;
     font-weight: bold;
     margin-top: 10px;
+    cursor: pointer;
+}
+
+.botao_suporte:hover{
+    transition:all 1s;
+    transform: scale(1.1);
 }
 
 .inputs{
-    width: auto;
+    width: 800px;
     height: 20px;
     border-radius: 5px;
     border-style: none;
+    padding: 15px;
 
 }
 .input-mensagem{
@@ -194,6 +208,19 @@ body{
     height: 200px;
     border-radius: 5px;
     border-style: none;
+    padding: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+
+}
+
+.input-mensagem::placeholder{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.imagem_suporte{
+    margin-left: 1000px;
+    margin-top: -150px;
+    width: 350px;
 }
 
 /*CONTATO*/
@@ -203,6 +230,7 @@ body{
     flex-direction: row;
     align-items: center;
     margin-top: 600px;
+    margin-bottom: 200px;
 }
 
 .contato-fale{
