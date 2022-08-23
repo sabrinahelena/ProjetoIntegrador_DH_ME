@@ -1,5 +1,27 @@
 import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
-createApp(App).mount('#app')
+import App from './App.vue'
+import Perfil from './components/Perfil.vue'
+import Residencias from './components/Residencias.vue'
+
+
+const router = createRouter({
+    history: createWebHashHistory(),
+    routes: [
+        {
+            path: '/',
+            component: Perfil
+        },
+        {
+            path: '/sobre',
+            component: Residencias
+        }
+    ]
+})
+
+const app = createApp(App)
+
+app.use(router)
+
+app.mount('#app')
