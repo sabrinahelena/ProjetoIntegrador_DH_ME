@@ -1,19 +1,21 @@
 
 <template>
   <div id="menu-items">
-    
-    <ul>
-      <h2><b>ListMe</b></h2>
-      <li><a href="/">Home</a></li>
-      <li><a href="/">Configurações</a></li>
-      <li><a href="/">Gerenciar Compras</a></li>
-    </ul>
-    
+    <nav>
+      <ul>
+        <h2><b>ListMe</b></h2>
+        <li><RouterLink  to="/">Perfil</RouterLink></li>
+        <li><RouterLink to="/sobre">Residencias</RouterLink></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/">Configurações</a></li>
+        <li><a href="/">Gerenciar Compras</a></li>
+      </ul>
+    </nav>
   </div>
 </template>
 <script>
 export default{
-  name:`MenuLateral`
+  name:`MenuLateral`,
 }
 </script>
 
@@ -47,4 +49,5 @@ ul li{
 ul li a{
   color:white;
 }
+
 </style>
