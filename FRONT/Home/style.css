@@ -114,7 +114,15 @@ body{
     width: auto;
     height: 50px;
     font-weight: bold;
+    cursor: pointer;
 
+}
+
+.botao:hover{
+    transition:all 1s;
+    background-color: white;
+    color: #16262E;
+    transform: scale(1.1);
 }
 
 /* SOBRE */
@@ -126,6 +134,15 @@ body{
     align-items: center;
     justify-content: space-between;
 
+}
+
+.imagem_sobreprojeto{
+    width: 350px;
+}
+
+.imagem_sobreequipe{
+    width: 350px;
+    border-radius: 20px;
 }
 
 .texto_sobre{
@@ -142,6 +159,10 @@ body{
 
 }
 
+.icones_ferramentas{
+    display: flex;
+}
+
 /*SUPORTE*/
 
 .suporte{
@@ -149,7 +170,57 @@ body{
     flex-direction: column;
     align-items: center;
     margin-top: 600px;
+    text-align: center;
 
+}
+
+.botao_suporte{
+    background-color: white; 
+    border-radius: 30px;
+    color: #16262E;
+    border-color: #16262E;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: auto;
+    height: 50px;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.botao_suporte:hover{
+    transition:all 1s;
+    transform: scale(1.1);
+}
+
+.inputs{
+    width: 800px;
+    height: 20px;
+    border-radius: 5px;
+    border-style: none;
+    padding: 15px;
+
+}
+.input-mensagem{
+    width: 800px;
+    height: 200px;
+    border-radius: 5px;
+    border-style: none;
+    padding: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+
+}
+
+.input-mensagem::placeholder{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.imagem_suporte{
+    margin-left: 1000px;
+    margin-top: -150px;
+    width: 350px;
 }
 
 /*CONTATO*/
@@ -159,6 +230,7 @@ body{
     flex-direction: row;
     align-items: center;
     margin-top: 600px;
+    margin-bottom: 200px;
 }
 
 .contato-fale{
