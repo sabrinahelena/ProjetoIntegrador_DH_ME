@@ -41,11 +41,6 @@ export default{
     margin-top: 200px;
 }
 
-.b{
-
-}
-.a{
-}
 .texto{
     margin-top: -100px;
     margin-left: -100px;
