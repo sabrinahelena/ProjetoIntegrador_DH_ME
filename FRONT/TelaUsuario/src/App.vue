@@ -13,6 +13,7 @@ import MenuLateral from './components/MenuLateral.vue';
 import Perfil from './components/Perfil.vue';
 import Residencias from './components/Residencias.vue';
 import ListaCompras from './components/ListaCompras.vue';
+import Home from './components/Home.vue'
 
 
 export default{
@@ -22,7 +23,8 @@ export default{
     MenuLateral,
     Perfil,
     Residencias,
-    ListaCompras
+    ListaCompras,
+    Home
 }
 }
 </script>
