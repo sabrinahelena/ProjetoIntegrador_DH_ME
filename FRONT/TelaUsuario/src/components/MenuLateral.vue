@@ -29,7 +29,7 @@
               <figure class="figure_logo">
                 <img class="imagem_subitem" src="./imagens/profile-user.png">
               </figure>
-            <li class="item subitem"><RouterLink  to="/perfil " class="item" >Perfil</RouterLink></li>
+            <li class="item subitem"><RouterLink  to="/perfil" class="item" >Perfil</RouterLink></li>
           </div>
             <div class="item_home">
               <figure class="figure_logo">
