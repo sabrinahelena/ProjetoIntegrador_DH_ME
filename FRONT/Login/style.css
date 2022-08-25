@@ -45,6 +45,7 @@ body{
     width: auto;
     height: 50px;
     font-weight: bold;
+    cursor: pointer;
 }
 .botao:hover{
     transition:all 1s;
@@ -85,6 +86,7 @@ body{
     width: auto;
     height: 50px;
     font-weight: bold;
+    cursor: pointer;
 }
 .botao_primeirobloco:hover{
     transition:all 1s;

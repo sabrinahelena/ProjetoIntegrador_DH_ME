@@ -53,9 +53,18 @@ body{
     text-decoration: none;
     color: white;
     margin: 40px;
-    font-weight: bold;
-    
+    font-weight: bold;    
 }
+
+.item:hover{
+    background-color: #16262E;
+    border-radius: 10px;
+    transition:all 1s;
+    transform: scale(1.1);
+    width: 3000px;
+
+}
+
 
 .header{
     display: flex;

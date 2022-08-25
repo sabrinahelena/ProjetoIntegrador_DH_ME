@@ -3,8 +3,8 @@
         <img alt="casaImagem" id="imagem-casa" src="./imagens/icons8-house-90.png">
         <h1 id="titulo-residencia"><b>Residências</b></h1>
         <div id="button-add">
-            Adicionar residências
-            <button type="button"><img alt="mais-image" id="mais-image" src="../assets/mais.png"></button>
+            <span class="add_residencia"> Adicionar residências</span>
+            <button class="botao_editarR" type="button"><img alt="mais-image" id="mais-image" src="../assets/mais.png"></button>
         </div>
     </div>
     
@@ -12,10 +12,9 @@
         <ul>
             <li>
             <button class="botao_residencia" type="button">Nome da residência</button>
-            Descrição
-            Tentar fazer de um jeito que crie automaticamente essa li
-            <button type="button"><img alt="editar" id="editar" src="../assets/pencil.png"></button>
-            </li>
+            <span class="texto_descricao">Descrição residencia</span>
+            <button class="botao_editarR" type="button"><img alt="editar" id="editar" src="../assets/pencil.png"></button>
+            </li>   
         </ul>
     </main>
 </template>
@@ -94,7 +93,20 @@ main{
     text-align: left;
     margin-top: 300px;
 }
+.texto_descricao{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.add_residencia{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 ul {
     list-style: none;
+}
+
+.botao_editarR{
+    background-color: white;
+    border: 1px solid white;
+    cursor: pointer;
+
 }
 </style>

@@ -88,6 +88,7 @@ export default{
   margin-top: 60px;
 }
 
+
 .imagem_home{
   width: 30px;
   height: 30px;
@@ -119,6 +120,14 @@ export default{
   color: white;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
+}
+
+.item:hover{
+    background-color: #16262E;
+    border-radius: 10px;
+    transition:all 1s;
+    transform: scale(1.1);
+    height: 30px;
 }
 
 .subitem{
