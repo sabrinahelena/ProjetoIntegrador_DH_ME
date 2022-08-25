@@ -13,11 +13,36 @@
           <h2 class="titulo_site">ListMe</h2>
         </div>
         <div class="itens">
-          <li class="item"><RouterLink to="/home" class="item">Home</RouterLink></li>
-          <li class="item">Configurações</li>
-          <li class="item subitem"><RouterLink  to="/perfil " class="item" >Perfil</RouterLink></li>
-          <li class="item subitem"><RouterLink to="/sobre" class="item" >Residencias</RouterLink></li>
-          <li class="item"><RouterLink to="/listacompras" class="item" >Gerenciar Compras</RouterLink></li>
+          <div class="item_home">
+              <figure class="figure_logo">
+                  <img class="imagem_home" src="./imagens/icons8-house-30.png">
+              </figure>
+              <li class="item home"><RouterLink to="/home" class="item">Home</RouterLink></li>
+          </div>
+          <div class="item_home">
+              <figure class="figure_logo">
+                  <img class="imagem_home" src="./imagens/icons8-configuration-67.png">
+              </figure>
+            <li class="item home">Configurações</li>
+          </div>
+          <div class="item_home">
+              <figure class="figure_logo">
+                <img class="imagem_home" src="./imagens/icons8-circled-user-64.png">
+              </figure>
+            <li class="item subitem home"><RouterLink  to="/perfil " class="item" >Perfil</RouterLink></li>
+          </div>
+            <div class="item_home">
+              <figure class="figure_logo">
+                <img class="imagem_home" src="./imagens/icons8-real-estate-50.png">
+              </figure>
+              <li class="item subitem home"><RouterLink to="/sobre" class="item" >Residencias</RouterLink></li>
+            </div>
+            <div class="item_home">
+                <figure class="figure_logo">
+                <img class="imagem_home" src="./imagens/icons8-buying-48.png">
+              </figure>
+              <li class="item home"><RouterLink to="/listacompras" class="item" >Compras</RouterLink></li>
+            </div>
         </div>
       </ul>
     </nav>
@@ -62,6 +87,11 @@ export default{
   margin-top: 60px;
 }
 
+.imagem_home{
+  width: 30px;
+  height: 30px;
+}
+
 .logo{
   margin-top: -75px;
   align-items: center;
@@ -77,7 +107,6 @@ export default{
 
 .item{
   font-size: 21px;
-  margin-top: 40px;
   text-decoration: none;
   color: white;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -101,6 +130,11 @@ margin-left: 30px;
   align-items: center;
 }
 
+.home{
+  margin-top: 15px;
+  margin-left: -25px;
+}
+
 ul{
   list-style: none;
   text-align: left;
@@ -114,6 +148,12 @@ ul li{
 
 ul li a{
   color:white;
+}
+
+.item_home{
+  margin-left: -50px;
+  display: flex;
+  text-align: center;
 }
 
 
