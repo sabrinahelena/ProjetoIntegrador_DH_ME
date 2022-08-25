@@ -22,5 +22,6 @@ namespace ListMEAPI.Interfaces.Servicos
         void Salvar();
         List<ResidenciaModel> ListarResidenciasDoUsuario(int IdUsuario);
         bool Deletar(int Id);
+        ResidenciaModel AlterarResidencia(PatchResidencialRequest alteracoes, int IdResidencia);
     }
 }

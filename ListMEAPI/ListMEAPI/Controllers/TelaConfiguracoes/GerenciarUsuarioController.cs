@@ -142,5 +142,18 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
             }
         }
 
+        [HttpPatch("AlterarResidencia")]
+        public ActionResult<ResidenciaModel> PatchResidencia (PatchResidencialRequest alteracoes,int IdResidencia)
+        {
+            var existe = _residenciaService.AlterarResidencia(alteracoes, IdResidencia);
+            if (existe != null)
+            {
+                return Ok(existe);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 }

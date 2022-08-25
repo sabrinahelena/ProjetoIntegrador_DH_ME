@@ -77,5 +77,13 @@ namespace ListMEAPI.Repositories
             _context.SaveChanges();
 
         }
+
+        public ResidenciaModel Patch(ResidenciaModel residencia, PatchResidencialRequest alteracoes)
+        {
+            residencia.Nome_Residencias = alteracoes.Nome_Residencia;
+            residencia.Descricao_Residencias = alteracoes.Descricao_Residencia;
+            _context.SaveChanges();
+            return residencia;
+        }
     }
 }
