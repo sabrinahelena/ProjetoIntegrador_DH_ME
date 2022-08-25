@@ -37,12 +37,19 @@
               </figure>
               <li class="item subitem"><RouterLink to="/sobre" class="item" >Residencias</RouterLink></li>
             </div>
+              <div class="item_home">
+                <figure class="figure_logo">
+                <img class="imagem_home" src="./imagens/icons8-buying-48.png">
+              </figure>
+              <li class="item home"><RouterLink to="/estoque" class="item" >Estoque</RouterLink></li>
+            </div>
             <div class="item_home">
                 <figure class="figure_logo">
                 <img class="imagem_home" src="./imagens/icons8-buying-48.png">
               </figure>
               <li class="item home"><RouterLink to="/listacompras" class="item" >Compras</RouterLink></li>
             </div>
+            
         </div>
       </ul>
     </nav>

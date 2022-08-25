@@ -14,7 +14,7 @@ import Perfil from './components/Perfil.vue';
 import Residencias from './components/Residencias.vue';
 import ListaCompras from './components/ListaCompras.vue';
 import Home from './components/Home.vue'
-
+import Estoque from './components/Estoque.vue';
 
 export default{
   name:`App`,
@@ -24,7 +24,8 @@ export default{
     Perfil,
     Residencias,
     ListaCompras,
-    Home
+    Home,
+    Estoque
 }
 }
 </script>

@@ -6,6 +6,7 @@ import Perfil from './components/Perfil.vue'
 import Residencias from './components/Residencias.vue'
 import Home from './components/Home.vue'
 import ListaCompras from './components/ListaCompras.vue'
+import Estoque from './components/Estoque.vue'
 
 
 const router = createRouter({
@@ -26,6 +27,10 @@ const router = createRouter({
         {
             path: '/listacompras',
             component: ListaCompras
+        },
+        {
+            path:'/estoque',
+            component: Estoque
         }
     ]
 })
