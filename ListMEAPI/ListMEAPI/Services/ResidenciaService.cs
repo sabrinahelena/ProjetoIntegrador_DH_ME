@@ -82,6 +82,19 @@ namespace ListMEAPI.Services
             return _residenciaRepository.GetAllResidenciasFromUsuario(IdUsuario);
         }
 
+        public ResidenciaModel AlterarResidencia(PatchResidencialRequest alteracoes, int IdResidencia)
+        {
+            var searchResidencia = _validacaoRepository.FindResidencia(IdResidencia);
+            if (searchResidencia != null)
+            {
+                _residenciaRepository.Patch(searchResidencia, alteracoes);
+                return searchResidencia;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
 
