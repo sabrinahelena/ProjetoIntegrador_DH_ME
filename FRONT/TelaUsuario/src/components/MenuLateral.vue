@@ -21,21 +21,21 @@
           </div>
           <div class="item_home">
               <figure class="figure_logo">
-                  <img class="imagem_home" src="./imagens/icons8-configuration-67.png">
+                  <img class="imagem_home" src="./imagens/icons8-automation-48.png">
               </figure>
             <li class="item home">Configurações</li>
           </div>
           <div class="item_home">
               <figure class="figure_logo">
-                <img class="imagem_home" src="./imagens/icons8-circled-user-64.png">
+                <img class="imagem_subitem" src="./imagens/profile-user.png">
               </figure>
-            <li class="item subitem home"><RouterLink  to="/perfil " class="item" >Perfil</RouterLink></li>
+            <li class="item subitem"><RouterLink  to="/perfil " class="item" >Perfil</RouterLink></li>
           </div>
             <div class="item_home">
               <figure class="figure_logo">
-                <img class="imagem_home" src="./imagens/icons8-real-estate-50.png">
+                <img class="imagem_subitem" src="./imagens/icons8-real-estate-50.png">
               </figure>
-              <li class="item subitem home"><RouterLink to="/sobre" class="item" >Residencias</RouterLink></li>
+              <li class="item subitem"><RouterLink to="/sobre" class="item" >Residencias</RouterLink></li>
             </div>
             <div class="item_home">
                 <figure class="figure_logo">
@@ -68,7 +68,8 @@ export default{
   justify-content: end;
   background-color: #2E4756;
   color: white;
-  width: 2490px;}
+  width: 2490px;
+    }
 
 .titulo_site{
     margin-left: -30px;
@@ -78,7 +79,7 @@ export default{
 .texto_header{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-align: center;
-    margin-right: 30px;
+    margin-right: 50px;
     font-size: 12px;
 }
 
@@ -92,10 +93,17 @@ export default{
   height: 30px;
 }
 
+.imagem_subitem{
+  width: 30px;
+  height: 30px;
+  margin-top: -20px;
+  margin-left: 30px;
+}
+
 .logo{
   margin-top: -75px;
   align-items: center;
-  margin-left: -60px;
+  margin-left: -70px;
   display: flex;
   flex-direction: row;
 }
@@ -114,20 +122,21 @@ export default{
 }
 
 .subitem{
-margin-left: 30px;
+margin-left: 5px;
 }
 #menu-items{
   position: fixed;
   top:0;
   left:0;
   background-color: #2E4756;
-  width: 20%;
+  width: 22%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   text-align: left;
   align-items: center;
+
 }
 
 .home{

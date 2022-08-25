@@ -97,7 +97,7 @@ body{
 }
 
 .imagem_main{
-    width: 250px;
+    width: 400px;
 }
 
 
@@ -174,6 +174,18 @@ body{
 
 }
 
+.teste{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.imagem_suporte{
+    width: 350px;
+    margin-left: 100px;
+}
+
 .botao_suporte{
     background-color: white; 
     border-radius: 30px;
@@ -190,13 +202,18 @@ body{
     cursor: pointer;
 }
 
+.texto_suporte{
+    margin-left: 150px;
+    font-size: 18px;
+}
+
 .botao_suporte:hover{
     transition:all 1s;
     transform: scale(1.1);
 }
 
 .inputs{
-    width: 800px;
+    width: 500px;
     height: 20px;
     border-radius: 5px;
     border-style: none;
@@ -204,7 +221,7 @@ body{
 
 }
 .input-mensagem{
-    width: 800px;
+    width: 500px;
     height: 200px;
     border-radius: 5px;
     border-style: none;
@@ -217,11 +234,6 @@ body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.imagem_suporte{
-    margin-left: 1000px;
-    margin-top: -150px;
-    width: 350px;
-}
 
 /*CONTATO*/
 

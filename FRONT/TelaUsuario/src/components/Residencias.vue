@@ -1,6 +1,6 @@
 <template>
     <div id="titulo">
-        <img alt="casaImagem" id="imagem-casa" src="../assets/casa.png">
+        <img alt="casaImagem" id="imagem-casa" src="./imagens/icons8-house-90.png">
         <h1 id="titulo-residencia"><b>Residências</b></h1>
         <div id="button-add">
             Adicionar residências
@@ -11,7 +11,7 @@
     <main>
         <ul>
             <li>
-            <button type="button">Nome da residência</button>
+            <button class="botao_residencia" type="button">Nome da residência</button>
             Descrição
             Tentar fazer de um jeito que crie automaticamente essa li
             <button type="button"><img alt="editar" id="editar" src="../assets/pencil.png"></button>
@@ -27,6 +27,26 @@ export default{
 </script>
 
 <style scoped>
+
+.botao_residencia{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #2E4756; /* Green */
+    border-radius: 20px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+.botao_residencia:hover{
+    transition:all 1s;
+    transform: scale(0.9);
+}
 #titulo{
     position: fixed;
     top: 0;
@@ -40,12 +60,15 @@ export default{
     color:black;
 }
 #imagem-casa{
-    width: 35px;
-    height: 35px;
+    width: 70px;
+    height: 70px;
     margin-top: 18px;
 }
 #titulo-residencia{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-left: 20px;
+    margin-top: 35px;
+    color: #2E4756;
 }
 #button-add{
     right: 50px;
