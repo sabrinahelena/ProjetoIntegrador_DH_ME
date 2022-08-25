@@ -77,7 +77,7 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /// <response code="404">Não há usuários cadastrados</response>
         /// <response code="200">Retorna a lista de usuários cadastrados</response>
         /// <response code="500">Ocorreu algum erro ao obter lista de usuários cadastrados</response>
-        [HttpGet("ListarTodosUsuários")]
+        [HttpGet("ListarTodosUsuarios")]
         [Authorize(Roles = "Adm")]
 
         public ActionResult<List<UsuarioResponse>> GetAll()
