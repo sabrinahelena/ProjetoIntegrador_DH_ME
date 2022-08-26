@@ -1,5 +1,13 @@
 <template>
   <div id="titulo">
+    <div class="t"> 
+     <img class="estoqueImagem" src="./imagens/icone-inventario.png">
+        <h1 class="titulo-estoque"><b>Estoque</b></h1>
+        </div>
+         <div id="button-add">
+            <span class="add_estoque"> Adicionar produto</span>
+            <button v-on:click="listar"  class="botao_editarR" type="button"><img alt="mais-image" id="mais-image" src="../assets/mais.png"></button>
+        </div>
     <table>
       <thead>
         <th>Produto</th>
@@ -34,6 +42,36 @@ export default {
 </script>
 
 <style scoped>
+
+#button-add{
+    /* right: 50px; */
+    margin-top: 20px;
+    top: 150px;
+    display: flex;
+    position: fixed;
+    text-align: center;
+    align-items: center;
+    font-size: 15px;
+   
+}
+
+#mais-image{
+    width: 30px;
+}
+
+
+.add_estoque{
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.botao_editarR{
+    margin-left: 20px;
+    background-color: white;
+    border: 3px solid #2E4756;
+    border-radius: 12px;
+    cursor: pointer;
+
+}
 #titulo {
   position: fixed;
   top: 0;
@@ -46,6 +84,26 @@ export default {
   margin-top: 50px;
   color: black;
 }
+
+.t{
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.titulo-estoque{
+  color: #2E4756;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 20px;
+    margin-top: 35px;
+
+}
+.estoqueImagem{
+ width: 70px;
+ height: 70px;
+ margin-top: 18px;
+ 
+ }
 
 * {
   box-sizing: border-box;

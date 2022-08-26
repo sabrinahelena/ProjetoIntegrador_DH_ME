@@ -1,29 +1,130 @@
 <template>
-    <table border="1">
-        <tr id="Linha-Inicial">
-            <th><b>Produto</b></th>
-            <th><b>Quantidade</b></th>
+  <div id="titulo">
+    <div class="t"> 
+     <img class="estoqueImagem" src="./imagens/carrinho-azul.png">
+        <h1 class="titulo-estoque"><b>Lista de Compras</b></h1>
+        </div>
+    <table>
+      <thead>
+        <th>Produto</th>
+        <th>Quantidade</th>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Maçã</th>
+          <td>3</td>
         </tr>
-        <tbody>
-            <tr>
-                <td>teste</td>
-                <td>teste</td>
-            </tr>
-        </tbody>
+        <tr>
+          <th>Banana</th>
+          <td>6</td>
+        </tr>
+        <tr>
+          <th>Leite</th>
+          <td>6</td>
+        </tr>
+      </tbody>
     </table>
+  </div>
 </template>
 
 <script>
-export default{
-    name:`ListaCompras`
+export default {
+  name: `ListaCompras`,
 }
-</script>]
+</script>
 
 <style scoped>
-table{
+
+#button-add{
+    /* right: 50px; */
+    margin-top: 20px;
+    top: 150px;
+    display: flex;
     position: fixed;
-    width: 70%;
-    right: 20px;
-    top:80px;
+    text-align: center;
+    align-items: center;
+    font-size: 15px;
+   
 }
+
+#mais-image{
+    width: 30px;
+}
+
+
+.add_estoque{
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.botao_editarR{
+    margin-left: 20px;
+    background-color: white;
+    border: 3px solid #2E4756;
+    border-radius: 12px;
+    cursor: pointer;
+
+}
+#titulo {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100vh;
+  display: flex;
+  text-align: left;
+  font-size: 10px;
+  margin-top: 50px;
+  color: black;
+}
+
+.t{
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.titulo-estoque{
+  color: #2E4756;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 20px;
+    margin-top: 35px;
+
+}
+.estoqueImagem{
+ width: 70px;
+ height: 70px;
+ margin-top: 18px;
+ 
+ }
+
+* {
+  box-sizing: border-box;
+}
+
+
+table {
+  position: fixed;
+  margin-top: 200px;
+  width: 900px;
+  height: 1px;
+  border-collapse: collapse;
+}
+
+table>thead {
+  background-color: #2E4756;
+  color: white;
+  height: 30px;
+}
+
+th,
+td {
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  height: 1px;
+  padding: 5px 10px;
+  font-size: 20px;
+  border-bottom: 1px solid #2E4756;
+}
+
+
 </style>

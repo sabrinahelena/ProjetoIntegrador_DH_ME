@@ -75,7 +75,7 @@ export default{
   justify-content: end;
   background-color: #2E4756;
   color: white;
-  width: 2800px;
+  width: 2440px;
     }
 
 .titulo_site{
