@@ -98,7 +98,7 @@ namespace ListMEAPI.Controllers.TelaCadastro
         public ActionResult<UsuarioResponse> ExibeUm(int Id)
         {
             var verificacao = _usuarioService.ExibirUsuario(Id);
-            if (verificacao != null)
+            if (verificacao != null)                                  
             {
                 return Ok(verificacao);
             }
@@ -126,7 +126,7 @@ namespace ListMEAPI.Controllers.TelaCadastro
         public ActionResult<UsuarioResponse> Deleta(int Id)
         {
             var boolean = _usuarioService.Deletar(Id);
-            if(boolean == true)
+            if(boolean == true)                                         
             {
                 return Ok();
             }
