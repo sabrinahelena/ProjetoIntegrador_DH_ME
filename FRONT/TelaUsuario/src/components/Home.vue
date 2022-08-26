@@ -67,4 +67,57 @@ export default{
     font-size: 25px;
 }
 
+@media(max-width: 750px){
+
+.texto_main{
+    display: flex;
+    margin-top: 10px;
+    border: 2px solid #2E4756;
+    border-radius: 20px;
+    width: 200px;
+    margin-left: 150px;
+    flex-direction: column;
+}
+.imagem{
+    margin-left: 45px;
+    width: 150px;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.texto{
+    margin-top: -50px;
+    margin-left: -100px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+.fonte{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 12px;
+}
+#pagina{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+}
+
+.titulo{
+    margin-left: 150px;
+    font-weight: bold;
+    margin-top: 50px;
+    font-size: 18px;
+    width: 200px;
+
+}
+
+
+
+}
+
 </style>
