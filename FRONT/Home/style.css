@@ -9,6 +9,27 @@ body{
 
 }
 
+.foto_perfil{
+    width: 200px;
+    height: 210px;
+    border-radius: 80px;
+}
+
+.perfil{
+    font-size: 19px;
+    text-align: center;
+}
+
+.iconeG{
+    height: 50px;
+}
+
+.equipe{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
 /* HEADER */
 
 
@@ -178,8 +199,9 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 600px;
+    margin-top: 590px;
     text-align: center;
+    margin-bottom: 100px;
 
 }
 
@@ -242,25 +264,4 @@ body{
 .input-mensagem::placeholder{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
-
-/*CONTATO*/
-
-.contato{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 600px;
-    margin-bottom: 200px;
-}
-
-.contato-fale{
-    margin-left: 600px;
-}
-
-.contato_imagem{
-    margin-left: 100px;
-}
-
-
 

@@ -6,19 +6,19 @@ body{
 .main{
     display: flex;
     border: 1px solid black;
-    margin-top: 70px;
+    margin-top: 100px;
     background-color: #16262E;
     border-radius: 20px;
 
 }
 
 .titulo{
-    margin-left: 200px;
+    margin-left: 300px;
     margin-bottom: -15px;
 }
 .tela_principal{
     border-left: 1px solid  rgb(236, 235, 235);
-    margin-left: 100px;
+    margin-left: 200px;
     color:white;
     display: flex;
     flex-direction: column;
@@ -28,8 +28,8 @@ body{
 }
 
 .form{
-    margin-left: 200px;
-    margin-top: 100px;
+    margin-left: 300px;
+    margin-top: 90px;
 }
 
 .botao{
