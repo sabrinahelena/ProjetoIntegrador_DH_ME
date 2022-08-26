@@ -1,65 +1,80 @@
 <template>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>First</th>
-      <th>Last</th>
-      <th>Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th >1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th >2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-
+  <div id="titulo">
+    <table>
+      <thead>
+        <th>Produto</th>
+        <th>Quantidade</th>
+        <th>Data de validade</th>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Maçã</th>
+          <td>3</td>
+          <td>20/09/2022</td>
+        </tr>
+        <tr>
+          <th>Banana</th>
+          <td>6</td>
+          <td>21/08/2022</td>
+        </tr>
+        <tr>
+          <th>Leite</th>
+          <td>6</td>
+          <td>21/08/2022</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
-
-<style scoped>
-
-* {
-            box-sizing: border-box;
-        }
-        
-        table {
-            border: 1px solid black;
-            border-collapse: collapse;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        table > thead {
-         background-color: black;
-         color: white;
-        }
-
-        th, td {
-            border: 1px solid black;
-            padding: 5px 10px;
-        }
-</style>
-
-
 <script>
-export default{
-    name:'Estoque'
+export default {
+  name: `Residencias`,
 }
 </script>
+
+<style scoped>
+#titulo {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100vh;
+  display: flex;
+  text-align: left;
+  font-size: 10px;
+  margin-top: 50px;
+  color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+table {
+  position: fixed;
+  margin-top: 200px;
+  width: 900px;
+  height: 1px;
+  border-collapse: collapse;
+}
+
+table>thead {
+  background-color: #2E4756;
+  color: white;
+  height: 30px;
+}
+
+th,
+td {
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  height: 1px;
+  padding: 5px 10px;
+  font-size: 20px;
+  border-bottom: 1px solid #2E4756;
+}
+
+
+</style>

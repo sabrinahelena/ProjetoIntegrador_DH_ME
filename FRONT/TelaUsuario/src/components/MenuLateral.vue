@@ -39,7 +39,7 @@
             </div>
               <div class="item_home">
                 <figure class="figure_logo">
-                <img  class="imagem_home" src="./imagens/icone-inventario.png">
+                <img  class="imagem_home" src="./imagens/icons8-warehouse-60.png">
               </figure>
               <li class="item home"><RouterLink to="/estoque" class="item" >Estoque</RouterLink></li>
               </div>
@@ -75,10 +75,11 @@ export default{
   justify-content: end;
   background-color: #2E4756;
   color: white;
-  width: 2490px;
+  width: 2800px;
     }
 
 .titulo_site{
+    font-size: 35px;
     margin-left: -30px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -86,7 +87,7 @@ export default{
 .texto_header{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-align: center;
-    margin-right: 50px;
+    margin-right: 80px;
     font-size: 12px;
 }
 
@@ -117,7 +118,7 @@ export default{
 }
 
 .imagem_logo{
-    width: 50px;
+    width: 70px;
     height: auto;
 }
 

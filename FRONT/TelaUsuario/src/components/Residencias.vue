@@ -34,6 +34,7 @@ export default{
 .imagem_residencia{
     margin-left: 300px;
     width: 300px;
+    margin-top: 30px
 }
 .botao_residencia{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
