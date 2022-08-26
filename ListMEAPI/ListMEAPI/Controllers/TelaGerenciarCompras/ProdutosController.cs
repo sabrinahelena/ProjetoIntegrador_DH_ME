@@ -13,13 +13,12 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
     [ApiController]
     public class ProdutosController : ControllerBase
     {
-        public IProdutosService _produtosService;
-        private ValidacaoRepository _validacaoRepository;
+        private IProdutosService _produtosService;
+     
 
-        public ProdutosController(IProdutosService produtosService, ValidacaoRepository validacao)
+        public ProdutosController(IProdutosService produtosService)
         {
             _produtosService = produtosService;
-            _validacaoRepository = validacao;
         }
 
         //ADICIONAR MAIS PRODUTOS
@@ -52,6 +51,7 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
             }
             return BadRequest();
         }
+
         /// <summary>
         /// Listar todos os produtos
         /// </summary>
@@ -62,7 +62,36 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         [HttpGet("ListarTodosProdutos")]
         public ActionResult<List<ProdutosModel>> GetAll()
         {
-            return Ok(_produtosService.GetEstoque());
+            var existe = _produtosService.GetEstoque();
+            if (existe != null)
+            {
+                return Ok(existe);
+            }
+            else
+            {
+                return BadRequest();
+            }    
+        }
+
+        /// <summary>
+        /// Retorna produto encontrado a partir de sua Id
+        /// </summary>
+        /// <returns>Retorna a residência encontrada a partir da Id</returns>
+        /// <param name="IdProduto">Id do produto</param>
+        /// <response code="404">Produto não encontrada</response>
+        /// <response code="200">Retorna produto encontrado</response>
+        [HttpDelete("DeletarProdutoPorId{IdProduto}")]
+        public ActionResult DeleteProduto(int IdProduto)
+        {
+            var boolean = _produtosService.DeleteProduto(IdProduto);
+            if (boolean)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         //PUT PARA USUÁRIO E RESIDÊNCIA
@@ -94,26 +123,6 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
             if (existe != null)
             {
                 return Ok(existe);
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-        /// <summary>
-        /// Retorna produto encontrado a partir de sua Id
-        /// </summary>
-        /// <returns>Retorna a residência encontrada a partir da Id</returns>
-        /// <param name="IdProduto">Id do produto</param>
-        /// <response code="404">Produto não encontrada</response>
-        /// <response code="200">Retorna produto encontrado</response>
-        [HttpDelete("DeletarProdutoPorId{IdProduto}")]
-        public ActionResult DeleteProduto(int IdProduto)
-        {
-            var boolean = _produtosService.DeleteProduto(IdProduto);
-            if (boolean)
-            {
-                return Ok();
             }
             else
             {

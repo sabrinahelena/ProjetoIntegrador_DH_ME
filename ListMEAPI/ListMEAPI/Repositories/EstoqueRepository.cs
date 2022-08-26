@@ -15,6 +15,8 @@ namespace ListMEAPI.Repositories
             //INSERÇÃO NO BANCO DE DADOS
             _context = ctx;
         }
+
+        //POST
         public void Create(EstoqueModel estoque, ResidenciaModel residencia)
         {
             residencia.AddEstoque(estoque);
@@ -24,6 +26,7 @@ namespace ListMEAPI.Repositories
             _context.SaveChanges();
         }
 
+        //POST DE ESTOQUE E DA LISTA DE COMPRAS
         public void CreateWhithLista(EstoqueModel estoque, ResidenciaModel residencia, EstoqueModel ListaCompras)
         {
             residencia.AddEstoque(estoque);
@@ -33,28 +36,26 @@ namespace ListMEAPI.Repositories
             _context.SaveChanges();
         }
 
-        public bool Delete(int Id)
-        {
-            var result = _context.Estoques.Find(Id);
-            if (result != null)
-            {
-                _context.Estoques.Remove(result);
-                _context.SaveChanges();
-                return true;
-            }
-            {
-                return false;
-            }
-        }
-
+        //GET ALL
         public List<EstoqueModel> GetAll()
         {
             return _context.Estoques.Include(i => i.Produto).ToList();
         }
+
+        //GET POR ID DE RESIDENCIA
         public List<EstoqueModel> GetByIdFromResidencia(int IdResidencia)
         {
             return _context.Estoques.Where(i => i.IdResidencia == IdResidencia && i.Id_Lista == 0).Include(i => i.Produto).ToList();
         }
+
+        //DELETE
+        public void Delete(EstoqueModel estoque)
+        {
+                _context.Estoques.Remove(estoque);
+                _context.SaveChanges();
+        }
+
+        //PATCH
         public EstoqueModel PatchEstoque(AlterarQuantidadeEDataRequest alteracoes, ProdutosModel Produto, EstoqueModel Estoque)
         {
             var adiciona = Estoque.AdicionarQuantidadeEData(alteracoes, Produto);
@@ -68,7 +69,5 @@ namespace ListMEAPI.Repositories
                 return null;
             }
         }
-
-        
     }
 }

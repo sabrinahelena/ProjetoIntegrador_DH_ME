@@ -8,13 +8,8 @@ namespace ListMEAPI.Interfaces.Repositorios.Usuario
         //Create e list do usuariomodel
         dynamic Create(UsuarioModel usuario); //POST
         List<UsuarioModel> GetAll(); //GET 
-
-        UsuarioModel Update(int id, AtualizacaoUsuarioRequest usuarioNovo); //PUT
-
-        bool Delete(int id); //DELETE
-
-        void Save();
-
+        UsuarioModel Update(UsuarioModel usuario, AtualizacaoUsuarioRequest usuarioNovo); //PUT
+        void Delete(UsuarioModel usuario); //DELETE
         UsuarioModel GetOne(int id);
     }
 }

@@ -15,30 +15,34 @@ namespace ListMEAPI.Repositories
             _context = ctx;
         }
 
-        
-
-        //Manipulação da Lista De Compras
-        public List<EstoqueModel> GetListaDeCompras(int IdResidencia)
-        {
-            return _context.Estoques.Where(i => i.IdResidencia == IdResidencia && i.Id_Lista == IdResidencia)
-                .Include(i => i.Produto).ToList();
-        }
+        //POST
         public void Create(EstoqueModel Cadastro, ResidenciaModel residencia)
         {
             residencia.AddListaCompras(Cadastro);
             _context.Add(Cadastro);
             _context.SaveChanges();
         }
-        public bool Patch(EstoqueModel lista,int quantidade)
+
+        //GET ALL LISTAS DE COMPRAS DE UM USUÁRIO
+        public List<EstoqueModel> GetListaDeCompras(int IdResidencia)
+        {
+            return _context.Estoques.Where(i => i.IdResidencia == IdResidencia && i.Id_Lista == IdResidencia)
+                .Include(i => i.Produto).ToList();
+        }
+        
+        //DELETE
+        public void Delete(EstoqueModel lista)
+        {
+            _context.Estoques.Remove(lista);
+        }
+
+        //PATCH
+        public bool Patch(EstoqueModel lista, int quantidade)
         {
             var boolean = lista.AdicionarQuantidadeLista(quantidade);
             _context.SaveChanges();
             return boolean;
         }
 
-        public void Delete(EstoqueModel lista)
-        {
-            _context.Estoques.Remove(lista);
-        }
     }
 }

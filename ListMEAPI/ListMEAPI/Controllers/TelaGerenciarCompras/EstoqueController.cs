@@ -12,7 +12,8 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
     [ApiController]
     public class EstoqueController : ControllerBase
     {
-        public IEstoqueService _estoqueService;
+        private IEstoqueService _estoqueService;
+        
         public EstoqueController(IEstoqueService estoqueService)
         {
             _estoqueService = estoqueService;
@@ -52,9 +53,9 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="200">Retorna a lista de estoques cadastrados</response>
         /// <response code="500">Ocorreu algum erro ao obter lista de estoques cadastrados</response>
         [HttpGet("ListarTodosEstoques")]
-        public List<EstoqueModel> GetEstoque()
+        public ActionResult<List<EstoqueModel>> GetEstoque()
         {
-            return _estoqueService.GetEstoque();
+            return Ok(_estoqueService.GetEstoque());
         }
 
         /// <summary>

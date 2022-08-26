@@ -17,13 +17,7 @@ namespace ListMEAPI.Services
             _validacaoRepository = validacao;
         }
 
-        public ProdutosModel AlterarProduto(int IdProduto, CadastroProdutosRequest alteracoes)
-        {
-            
-                return _produtosRepository.PutProduto(IdProduto, alteracoes);
-            
-        }
-
+        //POST
         public bool Criar(CadastroProdutosRequest produto)
         {
             var searchProdutoExistente = _validacaoRepository.ExisteProduto(produto.Nome_Produtos);
@@ -36,6 +30,13 @@ namespace ListMEAPI.Services
             return true;
         }
 
+        //GET ALL 
+        public List<ProdutosModel> GetEstoque()
+        {
+            return _produtosRepository.GetAll();
+        }
+
+        //DELETE
         public bool DeleteProduto(int Id)
         {
             var searchProduto = _validacaoRepository.FindProduto(Id);
@@ -50,11 +51,19 @@ namespace ListMEAPI.Services
             }
         }
 
-        public List<ProdutosModel> GetEstoque()
+        //PATCH
+        public ProdutosModel AlterarProduto(int IdProduto, CadastroProdutosRequest alteracoes)
         {
-            return _produtosRepository.GetAll();
+            var searchProduto = _validacaoRepository.FindProduto(IdProduto);
+            if (searchProduto != null)
+            {
+                _produtosRepository.PutProduto(searchProduto, alteracoes);
+                return searchProduto;
+            }
+            else
+            {
+                return null;
+            }
         }
-
-        
     }
 }
