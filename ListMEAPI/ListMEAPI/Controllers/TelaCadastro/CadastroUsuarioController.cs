@@ -41,14 +41,8 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /// <param name="usuario">Modelo do usuário</param>
         /// <response code="200">Retorna o usuário recém criado</response>
         /// <response code="500">Ocorreu algum erro criar o usuários</response>
-        //POST USUARIO
-
         [HttpPost("AdicionarUsuario")]
         [AllowAnonymous]
-
-        /*
-         * Para criar seu acesso, não precisa estar autenticado.
-         */
         public ActionResult<dynamic> Create([FromBody] CadastroUsuarioRequest usuario)
         {
             var teste = _usuarioService.Cadastrar(usuario);
@@ -62,13 +56,7 @@ namespace ListMEAPI.Controllers.TelaCadastro
                     
             };
         }
-        /// <summary>
-        /// Listar todos os usuários
-        /// </summary>
-        /// <returns>Lista de usuários cadastrados</returns>
-        /// <response code="404">Não há usuários cadastrados</response>
-        /// <response code="200">Retorna a lista de usuários cadastrados</response>
-        /// <response code="500">Ocorreu algum erro ao obter lista de usuários cadastrados</response>
+
 
         /// <summary>
         /// Listar todos os usuários
@@ -78,7 +66,6 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /// <response code="200">Retorna a lista de usuários cadastrados</response>
         /// <response code="500">Ocorreu algum erro ao obter lista de usuários cadastrados</response>
         [HttpGet("ListarTodosUsuarios")]
-        
         public ActionResult<List<UsuarioResponse>> GetAll()
         {
             return Ok(_usuarioService.Listar());
@@ -92,9 +79,6 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /// <response code="404">Usuário não encontrado</response>
         /// <response code="200">Retorna usuário encontrado</response>
         [HttpGet("RequererUsuárioPorId{Id}")]
-        [Authorize(Roles = "Adm,Usuario")]
-
-
         public ActionResult<UsuarioResponse> ExibeUm(int Id)
         {
             var verificacao = _usuarioService.ExibirUsuario(Id);
@@ -107,13 +91,6 @@ namespace ListMEAPI.Controllers.TelaCadastro
                 return NotFound();
             }
         }
-        /// <summary>
-        /// Retorna usuário encontrado a partir de sua Id
-        /// </summary>
-        /// <returns>Retorna o usuário encontrado a partir da Id</returns>
-        /// <param name="Id">Id do usuário</param>
-        /// <response code="404">Usuário não encontrado</response>
-        /// <response code="200">Retorna usuário encontrado</response>
 
         /// <summary>
         /// Delete um usuário a partir de sua Id
@@ -136,31 +113,6 @@ namespace ListMEAPI.Controllers.TelaCadastro
             }
             
         }
-        /// <summary>
-        /// Substitui um usuário a partir de sua Id
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks>
-        /// Exemplo requisição:
-        ///
-        ///     PUT /api/CadastroUsuario/AtualizarUsuarioPorId{Id}
-        ///     {    
-        ///         "nome_Usuario": "Sabrina",
-        ///         "sobrenome": "Ferreira",
-        ///         "telefone": "31985268244",
-        ///         "data_Nascimento": "08/01/2004",
-        ///         "email": "sabrinahelenaf@gmail.com",
-        ///         "foto_Perfil": "string",
-        ///         "senha": "sabrinalinda",
-        ///     }
-        ///
-        /// </remarks>
-        /// <param name="Id">Id do usuário</param>
-        /// <param name="Usuario">Modelo do usuário</param>
-        /// <response code="400">Usuário não pode ter sua Id modificada</response>
-        /// <response code="404">Usuário não encontrado</response>
-        /// <response code="204">Usuário substituído</response>
-
 
         /// <summary>
         /// Substitui um usuário a partir de sua Id
@@ -192,7 +144,7 @@ namespace ListMEAPI.Controllers.TelaCadastro
             var verificacao = _usuarioService.Atualizar(Id, usuarioAtualizado);
             if (verificacao != null)
             {
-                return Ok();
+                return Ok(verificacao);
             }
             else
             {

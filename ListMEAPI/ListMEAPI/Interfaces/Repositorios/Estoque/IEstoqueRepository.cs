@@ -12,7 +12,7 @@ namespace ListMEAPI.Interfaces.Repositorios.Estoque
 
         List<EstoqueModel> GetAll();
         List<EstoqueModel> GetByIdFromResidencia(int IdResidencia);
-        bool Delete(int Id);
+        void Delete(EstoqueModel estoque);
         EstoqueModel PatchEstoque(AlterarQuantidadeEDataRequest alteracoes, ProdutosModel Produto, EstoqueModel Estoque);
 
         

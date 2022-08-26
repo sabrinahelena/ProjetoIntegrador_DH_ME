@@ -13,43 +13,34 @@ namespace ListMEAPI.Repositories
             //INSERÇÃO NO BANCO DE DADOS
             _context = ctx;
         }
+        
+        //POST
         public void Create(ProdutosModel produto)
         {
             _context.Add(produto);
             _context.SaveChanges();
         }
 
-        public void DeleteProduto(ProdutosModel produto)
-        {
-            _context.Produtos.Remove(produto);
-            _context.SaveChanges();
-            
-        }
-
+        //GET ALL
         public List<ProdutosModel> GetAll()
         {
             return _context.Produtos.ToList();
         }
 
-        public ProdutosModel GetUsuario(int id)
+        //DELETE
+        public void DeleteProduto(ProdutosModel produto)
         {
-            throw new NotImplementedException();
+            _context.Produtos.Remove(produto);
+            _context.SaveChanges();
         }
-
-        public ProdutosModel PutProduto(int IdProduto, CadastroProdutosRequest alteracoes)
+        
+        //PUT
+        public void PutProduto(ProdutosModel produto, CadastroProdutosRequest alteracoes)
         {
-            var produtoAlterado = _context.Produtos.Find(IdProduto);
-            if (produtoAlterado != null)
-            {
-                produtoAlterado.Preco = alteracoes.Preco;
-                produtoAlterado.Descricao_Produtos = alteracoes.Descricao_Produtos;
-                produtoAlterado.Nome_Produtos = alteracoes.Nome_Produtos;
+                produto.Preco = alteracoes.Preco;
+                produto.Descricao_Produtos = alteracoes.Descricao_Produtos;
+                produto.Nome_Produtos = alteracoes.Nome_Produtos;
                 _context.SaveChanges();
-                return produtoAlterado;
-            }
-            else{
-                return null;
-            }
         }
     }
 }

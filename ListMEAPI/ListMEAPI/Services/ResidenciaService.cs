@@ -19,45 +19,47 @@ namespace ListMEAPI.Services
             _residenciaRepository = residenciaRepository;
             _validacaoRepository = validacao;
         }
-        public UsuarioModel RetornarUm(int id)
-        {
-            var usuarioRetornado = _residenciaRepository.GetUsuario(id);
-           
-            return usuarioRetornado;
-        }
+        //POST
         public dynamic Cadastrar(CadastroResidenciaRequest residencia, int id)
         {
-
-            var residenciaNova = new ResidenciaModel(residencia.Nome_Residencias, residencia.Descricao_Residencias, residencia.Foto_Residencias,id);
+            var residenciaNova = new ResidenciaModel(residencia.Nome_Residencias, residencia.Descricao_Residencias, residencia.Foto_Residencias, id);
             var usuarioRetornado = _validacaoRepository.FindUsuario(id);
-            if(usuarioRetornado == null){
+            if (usuarioRetornado == null)
+            {
                 return null;
             }
-            _residenciaRepository.Create(residenciaNova,usuarioRetornado);
-
+            _residenciaRepository.Create(residenciaNova, usuarioRetornado);
             return usuarioRetornado;
-            
         }
-
+        //GET ALL
         public List<ResidenciaResponse> Listar()
         {
-            
+
             var list = _residenciaRepository.GetAll();
 
             return list.Select(c => ResidenciaMapper.From(c)).ToList();
         }
 
-        public void Salvar()
+        //GET por ID de USUARIO
+        public List<ResidenciaModel> ListarPorIdUsuario(int IdUsuario)
         {
-            _residenciaRepository.Save();
-
+            var searchUsuario = _validacaoRepository.FindUsuario(IdUsuario);
+            if (searchUsuario == null)
+            {
+                return null;
+            }
+            else
+            {
+                return _residenciaRepository.GetAllResidenciasFromUsuario(IdUsuario);
+            }
         }
 
-        public ResidenciaModel ExibirResidencia(int Id)
-        {
-            return _residenciaRepository.GetOneResidencia(Id);
-        }
+        //public ResidenciaModel ExibirResidencia(int Id)
+        //{
+        //    return _validacaoRepository.FindResidencia(Id);
+        //}
 
+        //DELETE
         public bool Deletar(int Id)
         {
             var searchResidencia = _validacaoRepository.FindResidencia(Id);
@@ -72,16 +74,13 @@ namespace ListMEAPI.Services
             }
         }
 
+        //PUT
         ResidenciaModel IResidenciaService.Atualizar(int id, CadastroResidenciaRequest residenciaAtualizada)
         {
             return _residenciaRepository.Update(id, residenciaAtualizada);
         }
 
-        public List<ResidenciaModel> ListarResidenciasDoUsuario(int IdUsuario)
-        {
-            return _residenciaRepository.GetAllResidenciasFromUsuario(IdUsuario);
-        }
-
+        //PATCH
         public ResidenciaModel AlterarResidencia(PatchResidencialRequest alteracoes, int IdResidencia)
         {
             var searchResidencia = _validacaoRepository.FindResidencia(IdResidencia);

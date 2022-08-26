@@ -16,6 +16,7 @@ namespace ListMEAPI.Repositories
             _context = ctx;
         }
 
+        //POST
         public void Create(ResidenciaModel residencia, UsuarioModel usuario)
         {
             usuario.AdicionarResidencia(residencia);
@@ -30,20 +31,13 @@ namespace ListMEAPI.Repositories
             return _context.Residencias.ToList();
         }
 
-        //GET USUÁRIO POR ID
-        public UsuarioModel GetUsuario(int Id)
+        //GET ALL RESIDENCIAS DE UM USUÁRIO
+        public List<ResidenciaModel> GetAllResidenciasFromUsuario(int IdUsuario)
         {
-            var usuarioRequerido = _context.Usuarios.Find(Id);
-            return usuarioRequerido;
+            return _context.Residencias.Where(i => i.Id_Usuario == IdUsuario).ToList();
         }
 
-        //GET RESIDENCIA POR ID
-        public ResidenciaModel GetOneResidencia(int Id)
-        {
-            var residenciaRequerida = _context.Residencias.Find(Id);
-            return residenciaRequerida;
-        }
-
+        //DELETE
         public void Delete(ResidenciaModel residencia)
         {
            
@@ -66,18 +60,9 @@ namespace ListMEAPI.Repositories
                 return residenciaAntiga;
             }
             return residenciaAntiga;
-
         }
-        public List<ResidenciaModel> GetAllResidenciasFromUsuario(int IdUsuario)
-        {
-            return _context.Residencias.Where(i => i.Id_Usuario == IdUsuario).ToList();
-        }
-        public void Save()
-        {
-            _context.SaveChanges();
-
-        }
-
+        
+        //PATCH
         public ResidenciaModel Patch(ResidenciaModel residencia, PatchResidencialRequest alteracoes)
         {
             residencia.Nome_Residencias = alteracoes.Nome_Residencia;

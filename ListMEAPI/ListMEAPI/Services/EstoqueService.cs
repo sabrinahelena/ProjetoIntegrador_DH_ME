@@ -19,6 +19,8 @@ namespace ListMEAPI.Services
             _validacaoRepository = validacao;
             _listaDeComprasRepository = lista;
         }
+
+        //POST
         public bool Criar(int IdResidencia, int IdProduto)
         {
             var procuraProduto = _validacaoRepository.FindProduto(IdProduto);
@@ -39,22 +41,17 @@ namespace ListMEAPI.Services
                 {
                     _estoqueRepository.Create(NovoEstoque, procuraResidencia);
                 }
-
                 return true;
             }
-
         }
 
-        public bool DeleteEstoque(int Id)
-        {
-            return _estoqueRepository.Delete(Id);
-        }
-
+        //GET ALL
         public List<EstoqueModel> GetEstoque()
         {
             return _estoqueRepository.GetAll();
         }
 
+        //GET POR ID DE RESIDÊNCIA
         public List<EstoqueModel> GetEstoquePorIdResidencia(int IdResidencia)
         {
             if (_validacaoRepository.FindResidencia(IdResidencia) == null)
@@ -67,6 +64,22 @@ namespace ListMEAPI.Services
             }
         }
 
+        //DELETE
+        public bool DeleteEstoque(int Id)
+        {
+            var searchEstoque=_validacaoRepository.FindEstoque(Id);
+            if (searchEstoque == null)
+            {
+                return false;
+            }
+            else
+            {
+                _estoqueRepository.Delete(searchEstoque);
+                return true;
+            }
+        }
+
+        //PATCH
         public EstoqueModel AlterarProdutoNoEstoque(AlterarQuantidadeEDataRequest alteracoes, int IdProduto, int IdResidencia)
         {
             var searchProduto = _validacaoRepository.FindProduto(IdProduto);
@@ -93,7 +106,5 @@ namespace ListMEAPI.Services
                 return null;
             }
         }
-
-
     }
 }

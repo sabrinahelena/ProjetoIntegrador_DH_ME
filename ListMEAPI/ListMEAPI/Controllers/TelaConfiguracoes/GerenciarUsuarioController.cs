@@ -22,8 +22,6 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
             _residenciaService = residenciaService;
         }
 
-
-        //ADICIONAR MAIS RESIDÊNCIAS
         /// <summary>
         /// Cadastra uma nova residência
         /// </summary>
@@ -43,21 +41,14 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
         /// <response code="200">Retorna a residência recém criada</response>
         /// <response code="500">Ocorreu algum erro criar a residência</response>
         [HttpPost("AdicionarResidencia")]
-      
-
-
-        /*
-         * Aqui, terá que ter login para realizar a ação de adicionar residência
-         */
-
         public IActionResult Create([FromBody] CadastroResidenciaRequest residencia, int id)
         {
-
-            if (_residenciaService.Cadastrar(residencia, id) == null)
+            var existe = _residenciaService.Cadastrar(residencia, id);
+            if ( existe== null)
             {
                 return NotFound(new { mensagem = "Usuario não existe no banco" });
             };
-            return Ok();
+            return Ok(existe);
         }
 
         /// <summary>
@@ -73,24 +64,26 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
             return Ok(_residenciaService.Listar());
         }
 
-        /// <summary>
-        /// Retorna residência encontrada a partir de sua Id
-        /// </summary>
-        /// <returns>Retorna a residência encontrada a partir da Id</returns>
-        /// <param name="Id">Id da residência</param>
-        /// <response code="404">Residência não encontrada</response>
-        /// <response code="200">Retorna residência encontrada</response>
-        [HttpGet("RequererResidenciaPorId{Id}")]
-        public ActionResult<ResidenciaResponse> ExibeUm(int Id)
-        {
-            if (_residenciaService.ExibirResidencia(Id) == null)
-            {
-                return NotFound(new { menssager = "Residencia não encontrada" });
+        ///// <summary>
+        ///// Retorna residência encontrada a partir de sua Id
+        ///// </summary>
+        ///// <returns>Retorna a residência encontrada a partir da Id</returns>
+        ///// <param name="Id">Id da residência</param>
+        ///// <response code="404">Residência não encontrada</response>
+        ///// <response code="200">Retorna residência encontrada</response>
+        //[HttpGet("RequererResidenciaPorId{Id}")]
+        //public ActionResult<ResidenciaResponse> ExibeUm(int Id)
+        //{
+        //    if (_residenciaService.ExibirResidencia(Id) == null)
+        //    {
+        //        return NotFound(new { menssager = "Residencia não encontrada" });
 
-            }
-            return Ok(_residenciaService.ExibirResidencia(Id));
+        //    }
+        //    return Ok(_residenciaService.ExibirResidencia(Id));
 
-        }
+        //}
+
+
 
         /// <summary>
         /// Retorna residência encontrada a partir da Id de um usuário
@@ -99,14 +92,13 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
         /// <param name="Id">Id da residência</param>
         /// <response code="404">Residência não encontrada</response>
         /// <response code="200">Retorna residência encontrada</response>
-
         [HttpGet("RequererResidênciasPorIdUsuario")]
         public ActionResult<List<ResidenciaModel>> ListarResidenciasDoUsuario(int IdUsuario)
         {
-            var existe = _residenciaService.ListarResidenciasDoUsuario(IdUsuario);
+            var existe = _residenciaService.ListarPorIdUsuario(IdUsuario);
             if (existe == null)
             {
-                return BadRequest(new { message = "Produto já existente" });
+                return BadRequest(new { message = "Usuário não encontrado ou não há residências" });
             }
             return Ok(existe);
         }
@@ -132,6 +124,13 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
             }
         }
 
+        /// <summary>
+        /// Altera uma residência a partir de sua Id
+        /// </summary>
+        /// <returns>Retorna a residência recém alterada</returns>
+        /// <param name="IdResidencia">Id da residência</param>
+        /// <response code="404">Residência não encontrada</response>
+        /// <response code="200">Residência alterada</response>
         [HttpPatch("AlterarResidencia")]
         public ActionResult<ResidenciaModel> PatchResidencia (PatchResidencialRequest alteracoes,int IdResidencia)
         {

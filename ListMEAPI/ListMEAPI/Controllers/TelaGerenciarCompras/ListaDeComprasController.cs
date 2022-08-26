@@ -49,7 +49,7 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// Retorna todos os produtos na lista de compras da residênci a partir da Id da residência
         /// </summary>
         /// <returns>Retorna todos os produtos na lista de compras da residênci a partir da Id da residência</returns>
-        /// <param name="Id">Id do usuário</param>
+        /// <param name="IdResidencia">Id do usuário</param>
         /// <response code="404">Usuário não encontrado</response>
         /// <response code="200">Retorna usuário encontrado</response>
         [HttpGet("RequererListaDeComprasPorIdResidência")]
@@ -84,7 +84,6 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
             {
                 return BadRequest();
             }
-
         }
         //ALTERAR QUANTIDADE DO PRODUTO NA LISTA DE COMPRAS DA RESIDÊNCIA
         /// <summary>
