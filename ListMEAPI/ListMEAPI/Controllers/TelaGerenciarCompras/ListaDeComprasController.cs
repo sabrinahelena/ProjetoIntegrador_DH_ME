@@ -32,8 +32,6 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="200"></response>
         /// <response code="500">Ocorreu algum erro ao adicionar o produto na lista</response>
         [HttpPost("AdicionarListaDeCompras")]
-        [Authorize(Roles = "Adm,Usuario")]
-
         public ActionResult AdicionarListaDeCompras(int IdResidencia, int IdProduto)
         {
             var boolean = _listaDeComprasService.CadastrarProdutoNaLista(IdResidencia, IdProduto);
@@ -51,12 +49,10 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// Retorna todos os produtos na lista de compras da residênci a partir da Id da residência
         /// </summary>
         /// <returns>Retorna todos os produtos na lista de compras da residênci a partir da Id da residência</returns>
-        /// <param name="Id">Id do usuário</param>
+        /// <param name="IdResidencia">Id do usuário</param>
         /// <response code="404">Usuário não encontrado</response>
         /// <response code="200">Retorna usuário encontrado</response>
         [HttpGet("RequererListaDeComprasPorIdResidência")]
-        [Authorize(Roles = "Adm,Usuario")]
-
         public ActionResult<List<EstoqueModel>> Listar(int IdResidencia)
         {
             var existe = _listaDeComprasService.ListarAListaDeCompras(IdResidencia);
@@ -77,7 +73,6 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="204">Produto deletado da lista de compras da residência</response>
         [HttpDelete("DeletarProdutoDaListaPorId")]
         [Authorize(Roles = "Adm,Usuario")]
-
         public ActionResult DeletarProdutoDaListaPorId(int IdProduto, int IdResidencia)
         {
             var boolean = _listaDeComprasService.DeletarProdutoLista(IdResidencia, IdProduto);
@@ -89,11 +84,7 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
             {
                 return BadRequest();
             }
-
         }
-
-
-
         //ALTERAR QUANTIDADE DO PRODUTO NA LISTA DE COMPRAS DA RESIDÊNCIA
         /// <summary>
         /// Altera a quantidade de um produto na lista de compras de uma residência
@@ -111,8 +102,6 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="200">A quantidade foi alterada com sucesso</response>
         /// <response code="500">Ocorreu algum erro ao alterar a quantidade</response>
         [HttpPatch("AtualizarQuantidadeProdutoNaListaDeCompras")]
-        [Authorize(Roles = "Adm,Usuario")]
-
         public ActionResult AtualizarQuantidadeProdutoNaListaDeCompras(int IdResidencia,int IdProduto,int Quantidade )
         {
             var boolean = _listaDeComprasService.AlterarQuantidade(IdResidencia, IdProduto, Quantidade);
@@ -125,7 +114,5 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
                 return BadRequest();
             }
         }
-
-       
     }
 }

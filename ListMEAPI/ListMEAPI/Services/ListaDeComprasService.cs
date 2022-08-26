@@ -16,18 +16,7 @@ namespace ListMEAPI.Services
             _validacaoRepository = validacao;
         }
 
-        public List<EstoqueModel> ListarAListaDeCompras(int IdResidencia)
-        {
-            var searchResidencia = _validacaoRepository.FindResidencia(IdResidencia);
-            if (searchResidencia != null)
-            {
-                return _listaRepository.GetListaDeCompras(IdResidencia);
-            }
-            else
-            {
-                return null;
-            }
-        }
+        //POST
         public bool CadastrarProdutoNaLista(int IdResidencia, int IdProduto)
         {
             var searchResidencia = _validacaoRepository.FindResidencia(IdResidencia);
@@ -44,6 +33,40 @@ namespace ListMEAPI.Services
                 return false;
             }
         }
+
+        //GET ALL LISTAS DE COMPRAS DE UM USUÁRIO
+        public List<EstoqueModel> ListarAListaDeCompras(int IdResidencia)
+        {
+            var searchResidencia = _validacaoRepository.FindResidencia(IdResidencia);
+            if (searchResidencia != null)
+            {
+                return _listaRepository.GetListaDeCompras(IdResidencia);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        //DELETE
+        public bool DeletarProdutoLista(int IdResidencia, int IdProduto)
+        {
+            var searchResidencia = _validacaoRepository.FindResidencia(IdResidencia);
+            var searchProduto = _validacaoRepository.FindProduto(IdProduto);
+            var searchLista = _validacaoRepository.FindListaDeCompras(IdResidencia, IdProduto);
+            if (searchResidencia != null && searchProduto != null && searchLista != null)
+            {
+                _listaRepository.Delete(searchLista);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        //PATCH
         public bool AlterarQuantidade(int IdResidencia, int IdProduto, int quantidade)
         {
             var searchResidencia = _validacaoRepository.FindResidencia(IdResidencia);
@@ -58,43 +81,5 @@ namespace ListMEAPI.Services
                 return false;
             }
         }
-
-        public bool DeletarProdutoLista(int IdResidencia, int IdProduto)
-        {
-            var searchResidencia = _validacaoRepository.FindResidencia(IdResidencia);
-            var searchProduto = _validacaoRepository.FindProduto(IdProduto);
-            var searchLista = _validacaoRepository.FindListaDeCompras(IdResidencia, IdProduto);
-            if(searchResidencia!=null && searchProduto != null && searchLista != null)
-            {
-                _listaRepository.Delete(searchLista);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-
-
-
-
-        //public ListaComprasModel AdicionarProduto(int IdProduto, int IdResidencia)
-        //{
-        //    var searchProduto = _validacaoRepository.FindProduto(IdProduto);
-        //    var searchResidencia = _validacaoRepository.FindResidencia(IdResidencia);
-        //    var searchLista = _validacaoRepository.FindListaDeCompras(IdResidencia);
-        //    if(searchProduto != null && searchResidencia != null && searchLista != null)
-        //    {
-        //        var estoque = new EstoqueModel(IdResidencia,searchProduto,0,"");
-        //        estoque.Id_Lista = searchLista.Id_ListaDeCompras;
-        //        return _listaRepository.AddEstoque(estoque,searchLista);
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
-
     }
 }

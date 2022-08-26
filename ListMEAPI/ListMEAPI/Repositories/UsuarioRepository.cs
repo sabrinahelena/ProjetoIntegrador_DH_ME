@@ -36,61 +36,39 @@ namespace ListMEAPI.Repositories
         }
 
         //DELETE
-        public bool Delete(int id)
+        public void Delete(UsuarioModel usuario)
         {
-            var result = _context.Usuarios.Find(id);
-            if (result != null)
-            {
-                _context.Usuarios.Remove(result);
+                _context.Usuarios.Remove(usuario);
                 _context.SaveChanges();
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+                
         }
 
+        //GET ALL
         public List<UsuarioModel> GetAll()
         {
             return _context.Usuarios.Include(i => i.Residencias).ToList();
         }
-        /*
-         * 
-         * PUXA USUÁRIO SEM RESIDENCIA
-         */
+        
+        //GET por Id
         public UsuarioModel GetOne(int id)
         {
             //var requerimento = _context.Usuarios.Find(id);
             var result = _context.Usuarios.Include(i => i.Residencias).Where(i => i.Id_Usuario == id).FirstOrDefault();
             return result;
         }
-
-        public UsuarioModel Update(int Id, AtualizacaoUsuarioRequest usuarioAtualizado)
-        {
-            UsuarioModel usuarioAntigo = _context.Usuarios.Find(Id);
-            if (usuarioAntigo != null)
-            {
-                usuarioAntigo.Nome_Usuario = usuarioAtualizado.Nome_Usuario;
-                usuarioAntigo.Sobrenome = usuarioAtualizado.Sobrenome;
-                usuarioAntigo.Telefone = usuarioAtualizado.Telefone;
-                usuarioAntigo.Foto_Perfil = usuarioAtualizado.Foto_Perfil;
-                usuarioAntigo.Data_Nascimento = usuarioAtualizado.Data_Nascimento;
-                usuarioAntigo.Email = usuarioAtualizado.Email;
-                usuarioAntigo.Senha = usuarioAtualizado.Senha;
+        //PUT
+        public UsuarioModel Update(UsuarioModel usuario, AtualizacaoUsuarioRequest usuarioAtualizado)
+        {   
+                usuario.Nome_Usuario = usuarioAtualizado.Nome_Usuario;
+                usuario.Sobrenome = usuarioAtualizado.Sobrenome;
+                usuario.Telefone = usuarioAtualizado.Telefone;
+                usuario.Foto_Perfil = usuarioAtualizado.Foto_Perfil;
+                usuario.Data_Nascimento = usuarioAtualizado.Data_Nascimento;
+                usuario.Email = usuarioAtualizado.Email;
+                usuario.Senha = usuarioAtualizado.Senha;
                 _context.SaveChanges();
-                return usuarioAntigo;
-            }
-            return usuarioAntigo;
-
+                return usuario;
         }
-
-        public void Save()
-        {
-            _context.SaveChanges();
-        }
-
     }
 }
 
