@@ -6,14 +6,17 @@
             <span class="add_residencia"> Adicionar residências</span>
             <button class="botao_editarR" type="button"><img alt="mais-image" id="mais-image" src="../assets/mais.png"></button>
         </div>
+        <figure>
+            <img class="imagem_residencia" src="./imagens/Ordinary day.gif"/>
+        </figure>
     </div>
     
-    <main>
+    <main class="lista">
         <ul>
             <li>
             <button class="botao_residencia" type="button">Nome da residência</button>
             <span class="texto_descricao">Descrição residencia</span>
-            <button class="botao_editarR" type="button"><img alt="editar" id="editar" src="../assets/pencil.png"></button>
+            <button class="botao_editarR a" type="button"><img alt="editar" id="editar" src="../assets/pencil.png"></button>
             </li>   
         </ul>
     </main>
@@ -27,6 +30,11 @@ export default{
 
 <style scoped>
 
+
+.imagem_residencia{
+    margin-left: 300px;
+    width: 300px;
+}
 .botao_residencia{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: #2E4756; /* Green */
@@ -41,6 +49,7 @@ export default{
     cursor: pointer;
 
 }
+
 
 .botao_residencia:hover{
     transition:all 1s;
@@ -70,7 +79,7 @@ export default{
     color: #2E4756;
 }
 #button-add{
-    right: 50px;
+    /* right: 50px; */
     top: 150px;
     display: flex;
     position: fixed;
@@ -94,9 +103,11 @@ main{
     margin-top: 300px;
 }
 .texto_descricao{
+    margin-left: 20px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .add_residencia{
+    font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 ul {
@@ -104,9 +115,12 @@ ul {
 }
 
 .botao_editarR{
+    margin-left: 20px;
     background-color: white;
-    border: 1px solid white;
+    border: 3px solid #2E4756;
+    border-radius: 12px;
     cursor: pointer;
 
 }
+
 </style>

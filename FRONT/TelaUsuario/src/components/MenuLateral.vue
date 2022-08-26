@@ -39,10 +39,10 @@
             </div>
               <div class="item_home">
                 <figure class="figure_logo">
-                <img class="imagem_home" src="./imagens/icons8-buying-48.png">
+                <img  class="imagem_home" src="./imagens/icone-inventario.png">
               </figure>
               <li class="item home"><RouterLink to="/estoque" class="item" >Estoque</RouterLink></li>
-            </div>
+              </div>
             <div class="item_home">
                 <figure class="figure_logo">
                 <img class="imagem_home" src="./imagens/icons8-buying-48.png">
@@ -141,6 +141,11 @@ export default{
 margin-left: 5px;
 }
 #menu-items{
+display: grid;
+grid-template-columns: 200px 1fr;
+grid-template-rows: 1fr;
+min-height: 100vh;
+
   position: fixed;
   top:0;
   left:0;
