@@ -42,8 +42,6 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="200">Produto foi cadastrado com seucesso</response>
         /// <response code="500">Ocorreu algum erro ao criar o produto</response>
         [HttpPost("AdicionarProduto")]
-        [Authorize(Roles = "Adm,Usuario")]
-
         public ActionResult<ProdutosModel> CadastrarProduto(CadastroProdutosRequest produto)
         {
             
@@ -54,7 +52,6 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
             }
             return BadRequest();
         }
-
         /// <summary>
         /// Listar todos os produtos
         /// </summary>
@@ -63,8 +60,6 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="200">Retorna a lista de produtos cadastrados</response>
         /// <response code="500">Ocorreu algum erro ao obter lista de produtos cadastrados</response>
         [HttpGet("ListarTodosProdutos")]
-        [Authorize(Roles = "Adm,Usuario")]
-
         public ActionResult<List<ProdutosModel>> GetAll()
         {
             return Ok(_produtosService.GetEstoque());
@@ -93,8 +88,6 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="404">Produto não encontrado</response>
         /// <response code="204">Produto substituído</response>
         [HttpPut("AlterarProdutoPorId")]
-        [Authorize(Roles = "Adm,Usuario")]
-
         public ActionResult<ProdutosModel> AlterarProduto(int IdProduto, CadastroProdutosRequest alteracoes)
         {
             var existe = _produtosService.AlterarProduto(IdProduto, alteracoes);
@@ -115,8 +108,6 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="404">Produto não encontrada</response>
         /// <response code="200">Retorna produto encontrado</response>
         [HttpDelete("DeletarProdutoPorId{IdProduto}")]
-        [Authorize(Roles = "Adm,Usuario")]
-
         public ActionResult DeleteProduto(int IdProduto)
         {
             var boolean = _produtosService.DeleteProduto(IdProduto);
@@ -129,7 +120,5 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
                 return BadRequest();
             }
         }
-
-       
     }
 }

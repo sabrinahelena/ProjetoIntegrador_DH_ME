@@ -43,7 +43,7 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
         /// <response code="200">Retorna a residência recém criada</response>
         /// <response code="500">Ocorreu algum erro criar a residência</response>
         [HttpPost("AdicionarResidencia")]
-        [Authorize(Roles = "Adm,Usuario")]
+      
 
 
         /*
@@ -68,8 +68,6 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
         /// <response code="200">Retorna a lista de residências cadastradas</response>
         /// <response code="500">Ocorreu algum erro ao obter lista de residências cadastradas</response>
         [HttpGet("ListarTodasResidencias")]
-        [Authorize(Roles = "Adm,Usuario")]
-
         public ActionResult<List<ResidenciaResponse>> GetAll()
         {
             return Ok(_residenciaService.Listar());
@@ -83,9 +81,6 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
         /// <response code="404">Residência não encontrada</response>
         /// <response code="200">Retorna residência encontrada</response>
         [HttpGet("RequererResidenciaPorId{Id}")]
-        [Authorize(Roles = "Adm,Usuario")]
-
-
         public ActionResult<ResidenciaResponse> ExibeUm(int Id)
         {
             if (_residenciaService.ExibirResidencia(Id) == null)
@@ -106,8 +101,6 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
         /// <response code="200">Retorna residência encontrada</response>
 
         [HttpGet("RequererResidênciasPorIdUsuario")]
-        [Authorize(Roles = "Adm,Usuario")]
-
         public ActionResult<List<ResidenciaModel>> ListarResidenciasDoUsuario(int IdUsuario)
         {
             var existe = _residenciaService.ListarResidenciasDoUsuario(IdUsuario);
@@ -126,9 +119,6 @@ namespace ListMEAPI.Controllers.TelaConfiguracoes
         /// <response code="404">Residência não encontrada</response>
         /// <response code="204">Residência deletada</response>
         [HttpDelete("DeletarResidenciaPorId{Id}")]
-        [Authorize(Roles = "Adm,Usuario")]
-
-
         public ActionResult<ResidenciaResponse> Deleta(int Id)
         {
             var boolean = _residenciaService.Deletar(Id);
