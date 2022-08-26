@@ -265,3 +265,212 @@ body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+
+@media(max-width: 750px){
+    .header{
+        margin-right: 0px;
+        flex-direction: column;
+    }
+    .titulosite{
+        margin-left: -90px;
+    }
+    .imagem_logo{
+        margin-left: -90px;
+        width: 50px;
+        height: auto;
+    }
+    .imagem_main{
+        margin-bottom: 100px;
+        width: 150px;
+        margin-top: 20px;
+        margin-left: 60px;
+    }
+        
+    .opcoes{
+        display: flex;
+        flex-direction: row;
+        width: 300px;
+        align-items: left;
+        justify-content: space-between;
+        padding: 0px;
+        margin-left: -90px;
+
+    }
+
+    .item{
+        text-decoration: none;
+        color: white;
+        margin: 40px;
+        font-weight: bold;    
+    }
+    .botao{
+        border-radius: 30px;
+        padding: 10px 10px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 13px;
+        width: auto;
+        height: 40px;
+        font-weight: bold;
+        cursor: pointer;
+    
+    }
+
+    .main{
+        display: flex;
+        flex-direction: column;
+        margin-top: 130px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .texto_main{
+        text-align: center;
+        width: 200px;
+        height: auto;
+        margin-left: 0px;
+    }
+
+
+    /* SOBRE */
+
+.sobre{
+    display: flex;
+    flex-direction: column;
+    margin-top: 300px;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.imagem_sobreprojeto{
+    width: 200px;
+}
+
+.imagem_sobreequipe{
+    width: 200px;
+    border-radius: 20px;
+}
+
+.texto_sobre{
+    text-align: center;
+    width: 250px;
+}
+
+.foto_perfil{
+    width: 100px;
+    height: 105px;
+    border-radius: 80px;
+}
+
+.perfil{
+    font-size: 16px;
+    text-align: center;
+}
+
+.iconeG{
+    height: 40px;
+}
+
+.iconeL{
+    height: 40px;
+}
+
+.equipe{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*FERRAMENTAS*/
+
+.ferramentas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 600px;
+
+}
+
+.tt{
+    font-size: 23px;
+}
+
+.icones_ferramentas{
+    display: flex;
+}
+
+/*SUPORTE*/
+
+.suporte{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 590px;
+    text-align: center;
+    margin-bottom: 100px;
+
+}
+
+.teste{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.imagem_suporte{
+    width: 150px;
+    margin-left: 0px;
+}
+
+.botao_suporte{
+    background-color: white; 
+    border-radius: 30px;
+    color: #16262E;
+    border-color: #16262E;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: auto;
+    height: 40px;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.texto_suporte{
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.botao_suporte:hover{
+    transition:all 1s;
+    transform: scale(1.1);
+}
+
+.inputs{
+    width: 220px;
+    height: 20px;
+    border-radius: 5px;
+    border-style: none;
+    padding: 15px;
+
+}
+.input-mensagem{
+    width: 220px;
+    height: 200px;
+    border-radius: 5px;
+    border-style: none;
+    padding: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+
+}
+
+.input-mensagem::placeholder{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+}
+
