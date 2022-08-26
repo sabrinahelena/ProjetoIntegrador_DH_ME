@@ -78,8 +78,7 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /// <response code="200">Retorna a lista de usuários cadastrados</response>
         /// <response code="500">Ocorreu algum erro ao obter lista de usuários cadastrados</response>
         [HttpGet("ListarTodosUsuarios")]
-        [Authorize(Roles = "Adm")]
-
+        
         public ActionResult<List<UsuarioResponse>> GetAll()
         {
             return Ok(_usuarioService.Listar());
@@ -124,7 +123,6 @@ namespace ListMEAPI.Controllers.TelaCadastro
         /// <response code="404">Usuário não encontrado</response>
         /// <response code="204">Usuário deletado</response>
         [HttpDelete("DeletarUsuárioPorId{Id}")]
-        [Authorize(Roles = "Adm,Usuario")]
         public ActionResult<UsuarioResponse> Deleta(int Id)
         {
             var boolean = _usuarioService.Deletar(Id);
@@ -184,13 +182,11 @@ namespace ListMEAPI.Controllers.TelaCadastro
         ///
         /// </remarks>
         /// <param name="Id">Id do usuário</param>
-        /// <param name="Usuario">Modelo do usuário</param>
+        /// <param name="usuarioAtualizado">Modelo do usuário</param>
         /// <response code="400">Usuário não pode ter sua Id modificada</response>
         /// <response code="404">Usuário não encontrado</response>
         /// <response code="204">Usuário substituído</response>
         [HttpPut("AlterarUsuarioPorId{Id}")]
-        [Authorize(Roles = "Adm,Usuario")]
-
         public ActionResult<UsuarioResponse> AtualizaUsuario(int Id, AtualizacaoUsuarioRequest usuarioAtualizado)
         {
             var verificacao = _usuarioService.Atualizar(Id, usuarioAtualizado);
