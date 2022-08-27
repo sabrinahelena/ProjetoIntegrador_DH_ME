@@ -55,11 +55,22 @@ namespace ListMEAPI.Models
             //    .HasMaxLength(30).IsUnicode(false).HasColumnName("email_acessoDb");
             //    entity.Property(e => e.senha)
             //    .HasMaxLength(16).IsUnicode(false).HasColumnName("senha_acessoDb");
-                
+
 
             //});
 
-
+            Modelagem.Entity<ContatoModel>(entity =>
+            {
+                entity.HasKey(e => e.Id_Contato);
+                entity.ToTable("contato_table");
+                entity.Property(e => e.Id_Contato).HasColumnName("id_contatoDb");
+                entity.Property(e => e.Nome)
+                .HasMaxLength(20).IsUnicode(false).HasColumnName("nome_contatoDb");
+                entity.Property(e => e.Email)
+                .HasMaxLength(30).IsUnicode(false).HasColumnName("email_contatoDb");
+                entity.Property(e => e.Mensagem)
+                .HasMaxLength(300).IsUnicode(false).HasColumnName("mensagem_contatoDb");
+            });
 
             
 
