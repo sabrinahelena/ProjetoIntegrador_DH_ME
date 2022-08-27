@@ -3,6 +3,7 @@ export default function ResidenciaService(){
     this.GetAll = async function(){
         const reponse = await fetch('https://localhost:7163/api/GerenciarUsuario/ListarTodasResidencias');
         const residencias = await reponse.json();
+        console.log(residencias);
         return residencias;
     }
 

@@ -14,7 +14,7 @@
     <main class="lista">
         <ul>
             <li v-for="residencia in residencias">
-            <button class="botao_residencia" type="button">{{residencia.nome_Residencia}}</button>
+            <button class="botao_residencia" type="button">{{residencia.nome_Residencias}}</button>
             <span class="texto_descricao">{{residencia.descricao_Residencias}}</span>
             <button class="botao_editarR a" type="button"><img alt="editar" id="editar" src="../assets/pencil.png"></button>
             </li>   

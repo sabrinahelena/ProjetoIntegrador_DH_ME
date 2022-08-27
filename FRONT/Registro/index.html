@@ -96,7 +96,26 @@
     </div>
 
 
-
+<script>
+    let body={
+        Nome_Usuario,
+        Sobrenome,
+        Telefone,
+        Data_Nascimento,
+        Foto_Perfil:"",
+        Senha
+    }
+    async function PostUsuario(body){
+   
+        let configCabecalho={
+            method: 'POST',
+            body: JSON.stringify(novaPublicacao)
+        }
+        let response = await fetch(`https://localhost:7163/api/CadastroUsuario/AdicionarUsuario`,configCabecalho);
+        let usuario = await response.json();
+        console.log(usuario);
+    }
+</script>
     
 </body>
 </html>
