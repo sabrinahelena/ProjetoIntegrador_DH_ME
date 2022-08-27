@@ -96,23 +96,27 @@
     </div>
 
 <script>
-  
-let inputPrimeiroNome = document.querySelector('#primeiro-nome')
-let inputSegundoNome = document.querySelector('#last-name')
-let inputTelefone = document.querySelector('#telefone')
-let inputData =document.querySelector('#data-nascimento')
-let inputEmail = document.querySelector('#email')
-let inputSenha = document.querySelector('#senha')
-
-Nome_Usuario = inputPrimeiroNome;
-Sobrenome = inputSegundoNome;
-Telefone = inputTelefone;
-Data_Nascimento = inputData;
-Email = inputEmail;
-Senha = inputSenha;
 
 
-let body={
+
+
+  async function PostUsuario(){
+
+    let inputPrimeiroNome = document.querySelector('#primeiro-nome')
+    let inputSegundoNome = document.querySelector('#last-name')
+    let inputTelefone = document.querySelector('#telefone')
+    let inputData =document.querySelector('#data-nascimento')
+    let inputEmail = document.querySelector('#email')
+    let inputSenha = document.querySelector('#senha')
+
+    Nome_Usuario = inputPrimeiroNome.value;
+    Sobrenome = inputSegundoNome.value;
+    Telefone = inputTelefone.value;
+    Data_Nascimento = inputData.value;
+    Email = inputEmail.value;
+    Senha = inputSenha.value;
+    
+    let body= {
             Nome_Usuario,
             Sobrenome,
             Telefone,
@@ -121,8 +125,6 @@ let body={
             Foto_Perfil:"",
             Senha
         }
-
-  async function PostUsuario(body){
         let configCabecalho={
             method: 'POST',
             body: JSON.stringify(novaPublicacao)
@@ -132,7 +134,5 @@ let body={
     }
 
 </script>
-
-    
 </body>
 </html>
