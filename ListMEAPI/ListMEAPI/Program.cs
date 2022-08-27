@@ -1,6 +1,7 @@
 using ListMEAPI.DependencyInjections;
 using ListMEAPI.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -70,7 +71,9 @@ namespace ListMEAPI
                         ValidateAudience = false
                     };
                 });
-            builder.Services.AddDbContext<ListMEContext>();
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<ListMEContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DBListME")));
             builder.Services.ResolveApiDependencies();
 
             //Ignorando possíveis ciclos do get one de usuário SE HOUVER USUARIO EM RESIDENCIA

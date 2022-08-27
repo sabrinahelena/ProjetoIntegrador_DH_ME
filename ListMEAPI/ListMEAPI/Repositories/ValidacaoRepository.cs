@@ -26,21 +26,21 @@ namespace ListMEAPI.Repositories
         {
             return _context.Residencias.Find(IdResidencia);
         }
-       
+
         public EstoqueModel FindListaDeCompras(int IdResidencia, int IdProduto)
         {
-            return _context.Estoques.Where(i => i.Produto.Id_Produtos == IdProduto 
+            return _context.Estoques.Where(i => i.Produto.Id_Produtos == IdProduto
                  && i.IdResidencia == IdResidencia && i.Id_Lista == IdResidencia).FirstOrDefault();
         }
-            public EstoqueModel FindEstoque(int IdEstoque)
+        public EstoqueModel FindEstoque(int IdEstoque)
         {
             return _context.Estoques.Find(IdEstoque);
         }
 
-        public EstoqueModel FindEstoqueWithProduto(ProdutosModel produto,int IdResidencia)
+        public EstoqueModel FindEstoqueWithProduto(ProdutosModel produto, int IdResidencia)
         {
-            return _context.Estoques.Where(i => i.Produto == produto && 
-                 i.IdResidencia == IdResidencia && i.Id_Lista ==0 ).FirstOrDefault();
+            return _context.Estoques.Where(i => i.Produto == produto &&
+                 i.IdResidencia == IdResidencia && i.Id_Lista == 0).FirstOrDefault();
         }
         public bool ExisteProduto(string nome)
         {
