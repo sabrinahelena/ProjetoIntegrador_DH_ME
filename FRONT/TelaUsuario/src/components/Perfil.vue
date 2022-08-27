@@ -33,6 +33,9 @@
                 </li>
             </ul> 
         </form>
+        <div>
+     <button class="editarD" id="EditarNome" type="button"><img alt="abrirEditar" id="edit-button" src="./imagens/icons8-confirm-67.png"></button>
+        </div>
             <img class="img" src="./imagens/Online page (1).gif"/>
 
     </div>
@@ -65,6 +68,11 @@ export default{
  
  }
 
+ .imagemC{
+    margin-left: 0px;
+    margin-top: 0px;
+ }
+
  .titulo-estoque{
   color: #2E4756;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -80,7 +88,16 @@ export default{
     background-color: white;
     border: 3px solid #2E4756;
     border-radius: 12px;
-    cursor: pointer;;
+    cursor: pointer;
+}
+
+.editarD{
+    margin-top: -300px;
+    margin-left: 20px;
+    background-color: white;
+    border: 3px solid #2E4756;
+    border-radius: 12px;
+    cursor: pointer;
 }
 .t{
   display: flex;

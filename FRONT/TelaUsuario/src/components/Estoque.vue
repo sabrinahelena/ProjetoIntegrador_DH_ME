@@ -8,6 +8,10 @@
             <span class="add_estoque"> Adicionar produto</span>
             <button v-on:click="listar"  class="botao_editarR" type="button"><img alt="mais-image" id="mais-image" src="../assets/mais.png"></button>
         </div>
+            <div id="button-addA">
+            <span class="add_estoque"> Remover produto</span>
+            <button v-on:click="listar"  class="botao_editarR" type="button"><img alt="mais-image" id="mais-image" src="./imagens/icons8-remove-60.png"></button>
+        </div>
     <table>
       <thead>
         <th>Produto</th>
@@ -54,6 +58,20 @@ export default {
     font-size: 15px;
    
 }
+
+#button-addA{
+    /* right: 50px; */
+    margin-top: 20px;
+    top: 150px;
+    display: flex;
+    position: fixed;
+    text-align: center;
+    align-items: center;
+    font-size: 15px;
+    margin-left: 300px;
+   
+}
+
 
 #mais-image{
     width: 30px;
