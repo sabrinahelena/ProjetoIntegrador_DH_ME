@@ -146,7 +146,7 @@ export default {
 }
 
 .modal {
-    margin-top: 50px;
+    margin-top: 80px;
     width: 500px;
     height: 500px;
     position: absolute;
