@@ -133,4 +133,94 @@ ul li{
     width: 30px;
     height: 30px;
 }
+
+@media(max-width: 750px){
+
+.img{
+    width: 180px;
+    margin-top: -10px;
+    margin-left: 60px;
+    margin-bottom: 0px;
+    
+}
+.estoqueImagem{
+ width: 30px;
+ height: 30px;
+ margin-left: 50px;
+ margin-top: 27px;
+ 
+ }
+
+ .titulo-estoque{
+  color: #2E4756;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 20px;
+    margin-top: 45px;
+    font-size: 20px;
+
+}
+
+.editarP{
+    margin-top: 30px;
+    margin-left: 20px;
+    background-color: white;
+    border: 3px solid #2E4756;
+    border-radius: 12px;
+    cursor: pointer;;
+}
+.t{
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  margin-left: 10px;
+align-items: center;
+}
+.form{
+    margin-top: 10px;
+    border: 3px solid #2E4756;
+    width: 300px;
+    margin-left: 9s0px;
+    height: 450px;
+    border-radius: 20px;
+}
+.a{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #2E4756;
+    font-size: 18px
+}
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#perfil-container{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 75%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 18px;
+    
+    
+}
+ul{
+    text-align: left;
+    list-style: none;
+    
+    
+}
+ul li{
+    margin: 2px;
+    text-align: left;
+    margin-left: 50px;
+}
+#nome-placeholder{
+    display: none;
+}
+#edit-button{
+    width: 20px;
+    height: 20px;
+}
+}
 </style>
