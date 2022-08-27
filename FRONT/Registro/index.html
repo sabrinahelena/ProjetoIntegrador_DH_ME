@@ -89,33 +89,50 @@
                 </div>
                 <br>
                 <a href="/FRONT/Login/index.html">
-                    <input type="button" class="botao_segundobloco" value="Confirmar">
+                    <input onclick="PostUsuario()" type="button" class="botao_segundobloco" value="Confirmar">
                 </a>
             </form>
         </div>
     </div>
 
 
+
+
 <script>
-    let body={
-        Nome_Usuario,
-        Sobrenome,
-        Telefone,
-        Data_Nascimento,
-        Foto_Perfil:"",
-        Senha
-    }
-    async function PostUsuario(body){
-   
+
+  async function PostUsuario(){
+
+    let inputPrimeiroNome = document.querySelector('#primeiro-nome')
+    let inputSegundoNome = document.querySelector('#last-name')
+    let inputTelefone = document.querySelector('#telefone')
+    let inputData =document.querySelector('#data-nascimento')
+    let inputEmail = document.querySelector('#email')
+    let inputSenha = document.querySelector('#senha')
+
+    Nome_Usuario = inputPrimeiroNome.value;
+    Sobrenome = inputSegundoNome.value;
+    Telefone = inputTelefone.value;
+    Data_Nascimento = inputData.value;
+    Email = inputEmail.value;
+    Senha = inputSenha.value;
+  
+    let body= {
+            Nome_Usuario,
+            Sobrenome,
+            Telefone,
+            Data_Nascimento,
+            Email,
+            Foto_Perfil,
+            Senha
+        }
         let configCabecalho={
             method: 'POST',
             body: JSON.stringify(novaPublicacao)
         }
         let response = await fetch(`https://localhost:7163/api/CadastroUsuario/AdicionarUsuario`,configCabecalho);
         let usuario = await response.json();
-        console.log(usuario);
     }
+
 </script>
-    
 </body>
 </html>
