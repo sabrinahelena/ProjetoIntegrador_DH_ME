@@ -72,6 +72,18 @@ namespace ListMEAPI.Models
                 .HasMaxLength(300).IsUnicode(false).HasColumnName("mensagem_contatoDb");
             });
 
+            Modelagem.Entity<EstoqueModel>(entity =>
+            {
+                entity.HasKey(e => e.Id_Estoque);
+                entity.ToTable("estoque_table");
+                entity.Property(e => e.Id_Estoque).HasColumnName("id_estoqueDb");
+                entity.Property(e => e.IdResidencia).HasColumnName("id_residencia_estoqueDb");
+                entity.Property(e => e.Produto).HasColumnName("id_produto_estoqueDb");
+                entity.Property(e => e.Quantidade_Produto).HasColumnName("quantidade_produto_estoqueDb");
+                entity.Property(e => e.Data_Validade).HasColumnName("validade_produto_estoqueDb");
+                entity.Property(e => e.Id_Lista).HasColumnName("id_lista_estoque");
+            });
+
             
 
             //Modelagem.Entity<EstoqueModel>(TabelaEstoque =>
