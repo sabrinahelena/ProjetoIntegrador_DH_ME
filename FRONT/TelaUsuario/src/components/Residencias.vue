@@ -4,7 +4,7 @@
         <h1 id="titulo-residencia"><b>Residências</b></h1>
         <div id="button-add">
             <span class="add_residencia"> Adicionar residências</span>
-            <button v-on:click="listar"  class="botao_editarR" type="button"><img alt="mais-image" id="mais-image" src="../assets/mais.png"></button>
+            <button v-on:click="Add()"  class="botao_editarR" type="button"><img alt="mais-image" id="mais-image" src="../assets/mais.png"></button>
         </div>
         <figure>
             <img class="imagem_residencia" src="./imagens/Ordinary day.gif"/>
@@ -13,9 +13,9 @@
     
     <main class="lista">
         <ul>
-            <li v-for="item in residencias">
-            <button class="botao_residencia" type="button">{{item.Nome_Residencia}}</button>
-            <span class="texto_descricao">Descrição residencia</span>
+            <li v-for="residencia in residencias">
+            <button class="botao_residencia" type="button">{{residencia.nome_Residencia}}</button>
+            <span class="texto_descricao">{{residencia.descricao_Residencias}}</span>
             <button class="botao_editarR a" type="button"><img alt="editar" id="editar" src="../assets/pencil.png"></button>
             </li>   
         </ul>
@@ -23,7 +23,10 @@
 </template>
 
 <script>
+import ResidenciaService from '../Services/ResidenciaService'
+const{ GetAll,Post }= new ResidenciaService();
 export default{
+    
     name:`Residencias`,
     data(){
         return{
@@ -31,14 +34,16 @@ export default{
         }
     },
     methods:{
-        listar:function(){
-            fetch('https://localhost:7163/api/GerenciarUsuario/AdicionarResidencia')
-                .then((response)=>response.json())
-                .then((json)=>this.residencias=json)           
+        Add: () =>{
+            Post({
+                nome_Residencias:"TestePost",
+                descricao_Residencias:"DescricaoTeste",
+                foto_Residencias:"nada",
+            },1)
         }
     },
     mounted(){
-        this.listar();
+        GetAll().then(response=>this.residencias=response);
     }
 }
 </script>
