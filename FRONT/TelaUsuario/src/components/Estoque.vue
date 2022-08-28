@@ -17,9 +17,9 @@
       <div class="form">
         <main class="lista">
           <ul>
-            <li>
-              <span class="texto_descricao">PRODUTO
-              <button class="botao_editarR " type="button"><img alt="editar" id="editar"
+            <li v-for="produto in Produtos">
+              <span class="texto_descricao">{{produto.nome_Produtos}}
+              <button v-on:click="AddEstoque(1,produto.id_Produtos)" class="botao_editarR " type="button"><img alt="editar" id="editar"
                   src="../assets/mais.png"></button></span>
             </li>
           </ul>
@@ -39,7 +39,7 @@
           <th>Remover produto</th>
         </thead>
         <tbody>
-            <tr v-for="estoque in Estoques">
+        <tr v-for="estoque in Estoques">
           <th>{{estoque.produto.nome_Produtos}}</th>
           <td>{{estoque.quantidade_Produto}}</td>
             <td>
@@ -50,11 +50,11 @@
             </td>
             <td>
               <div id="button-addA">
-              <button v-on:click="" class="botao_editarR" type="button"><img alt="mais-image" id="mais-image"
+              <button v-on:click="RemoveEstoque(estoque.id_Estoque)" class="botao_editarR" type="button"><img alt="mais-image" id="mais-image"
                   src="./imagens/icons8-remove-60.png"></button>
               </div>
-              </td>
-            </tr>
+            </td>
+        </tr>
         </tbody>
       </table>
     </div>
@@ -63,12 +63,15 @@
 
 <script>
 import EstoqueService from "../Services/EstoqueService"
-  const {GetById} = new EstoqueService();
+import ProdutoService from "../Services/ProdutoService";
+const {GetByIdEstoque, PostEstoque, DeleteEstoque} = new EstoqueService();
+const {GetAll} = new ProdutoService();
 export default {
   name: `Residencias`,
   data(){
     return{
-      Estoques:[]
+      Estoques:[],
+      Produtos:[]
     }
   },
   methods: {
@@ -87,10 +90,17 @@ export default {
       titulo.style.display = 'block';
       let resto = document.querySelector('.z')
       resto.style.display = 'block';
+    },
+    AddEstoque:(IdResidencia, IdProduto)=>{
+      PostEstoque(IdResidencia, IdProduto);
+    },
+    RemoveEstoque:(IdEstoque)=>{
+      DeleteEstoque(IdEstoque);
     }
   },
   mounted(){
-    GetById(1).then(response=>this.Estoques=response);
+    GetByIdEstoque(1).then(response=>this.Estoques=response);
+    GetAll().then(response=>this.Produtos=response);
   }
 }
 </script>

@@ -111,11 +111,14 @@ export default {
             z.style.display = 'block';
             let x = document.querySelector('.x')
             x.style.display = 'block';
-
         }
     },
     mounted() {
-        GetAll().then(response => this.residencias = response);
+        GetAll().then(response => {
+            this.residencias = response 
+            
+        }
+            );
     }
 }
 </script>

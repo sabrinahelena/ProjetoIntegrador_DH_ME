@@ -81,7 +81,7 @@
 
                 <div>
                     <input class="inputs"
-                    id="password"
+                    id="senha"
                     name="password"
                     type="password"
                     placeholder="Senha"
@@ -111,31 +111,30 @@
     let inputSenha = document.querySelector("#senha");
 
     let body= {
-            Nome_Usuario:null,
-            Sobrenome:null,
-            Telefone:null,
-            Data_Nascimento:null,
-            Email:null,
-            Foto_Perfil:null,
-            Senha:null
+        nome_Usuario : inputPrimeiroNome.value,
+        sobrenome : inputSegundoNome.value,
+        telefone : inputTelefone.value,
+        data_Nascimento : inputData.value,
+        email : inputEmail.value,
+        senha : inputSenha.value,
+        foto_Perfil:""
         }
 
-    Nome_Usuario = inputPrimeiroNome.value;
-    Sobrenome = inputSegundoNome.value;
-    Telefone = inputTelefone.value;
-    Data_Nascimento = inputData.value;
-    Email = inputEmail.value;
-    Senha = inputSenha.value;
-  
+    
     
 
     let configCabecalho={
         method: 'POST',
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
+        headers:{
+            'Content-Type': 'application/json; charset=UTF-8',
+                
+            'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
+        }
     }
     let response = await fetch(`https://localhost:7163/api/CadastroUsuario/AdicionarUsuario`,configCabecalho);
-    let usuario = await response.json();
-    console.log(usuario);
+    // let usuario = await response.json();
+    // console.log(usuario);
 
     }
 
