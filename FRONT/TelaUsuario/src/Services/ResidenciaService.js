@@ -7,10 +7,10 @@ export default function ResidenciaService(){
         return residencias;
     }
 
-    this.Post = async function(bodyRecipe,IdUsuario){
+    this.Post = async function(bodyResidencia,IdUsuario){
         const configPost = {
             method: 'POST',
-            body: JSON.stringify(bodyRecipe),
+            body: JSON.stringify(bodyResidencia),
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8',
                 

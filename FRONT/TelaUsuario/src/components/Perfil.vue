@@ -29,7 +29,7 @@
                 </li >
                 <li class="a"> 
                     <label for="Telefone">Telefone:</label>
-                    <input v-model="usuario.telefone" id="telefone" type="text" placeholder="{{usuario.telefone}}" />  
+                    <input v-model="usuario.telefone" id="telefone" type="text" placeholder="" />  
                 </li>
             </ul> 
         </form>

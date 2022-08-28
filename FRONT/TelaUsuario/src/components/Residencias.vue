@@ -15,16 +15,21 @@
                     action= ""
                     >
                     <div>
-                        <input class="input-mensagem"
+                        <input 
+                        v-model="ResidenciaBody.nome_Residencias" 
+                        class="input-mensagem"
                         id="primeiro-nome"
                         name="primeiro-nome"
                         type="text"
                         placeholder="Nome residência"
                         >
+                        
                     </div>
                     <br>
                     <div>
-                        <input class="input-mensagem"
+                        <input  
+                        v-model="ResidenciaBody.descricao_Residencias"
+                        class="input-mensagem"
                         id="mensagem"
                         name="mensagem"
                         type="text"
@@ -37,7 +42,7 @@
                 
                 
                     <button v-on:click="Fechar()" class="fechar" type="button"><img class="imagem_fechar" src="./imagens/icons8-close-60.png" id="mais-image"></button>
-                    <button class="botao_adicionar">Adicionar</button>
+                    <button v-on:click="Add(ResidenciaBody);Fechar()"  class="botao_adicionar">Adicionar</button>
                 </div>
         <figure>
             <img class="imagem_residencia" src="./imagens/Ordinary day.gif" />
@@ -48,7 +53,7 @@
         <ul>
             <li v-for="residencia in residencias">
 
-                <button class="botao_residencia" type="button">{{ residencia.nome_Residencia }}</button>
+                <button class="botao_residencia" type="button">{{ residencia.nome_Residencias }}</button>
                 <span class="texto_descricao">{{ residencia.descricao_Residencias }}</span>
                 <button class="botao_editarR a" type="button"><img alt="editar" id="editar"
                         src="../assets/pencil.png"></button>
@@ -61,21 +66,23 @@
 <script>
 import ResidenciaService from '../Services/ResidenciaService'
 const { GetAll, Post } = new ResidenciaService();
+
 export default {
 
     name: `Residencias`,
     data() {
         return {
-            residencias: []
+            residencias: [],
+            ResidenciaBody:{
+                nome_Residencias: "Nome Residência",
+                descricao_Residencias: "Descrição Residência",
+                foto_Residencias: "null"
+            }
         }
     },
     methods: {
-        Add: () => {
-            Post({
-                nome_Residencias: "TestePost",
-                descricao_Residencias: "DescricaoTeste",
-                foto_Residencias: "nada",
-            }, 1)
+        Add: (ResidenciaBody) => {
+            Post(ResidenciaBody, 1)
         },
         Acao: () => {
             let modal = document.querySelector('.modal')
@@ -84,6 +91,7 @@ export default {
         Fechar: () => {
             let modal = document.querySelector('.modal')
             modal.style.display = 'none';
+            
         }
     },
     mounted() {
