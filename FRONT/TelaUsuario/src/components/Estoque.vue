@@ -19,8 +19,8 @@
           <ul>
             <li>
               <span class="texto_descricao">PRODUTO
-              <button class="botao_editarR " type="button"><img alt="editar" id="editar"
-                  src="../assets/mais.png"></button></span>
+                <button class="botao_editarR " type="button"><img alt="editar" id="editar"
+                    src="../assets/mais.png"></button></span>
             </li>
           </ul>
         </main>
@@ -28,6 +28,19 @@
             src="./imagens/icons8-close-60.png" id="mais-image"></button>
       </div>
 
+    </div>
+
+    <div class="popup">
+      <form method="get">
+        <div>
+          <input class="inputs" id="quant" name="quant" required placeholder="Quantidade" type="number">
+        </div>
+        <br>
+        <button v-on:click="FecharPopUp()" class="fecharP" type="button"><img class="imagem_fecharP"
+            src="./imagens/icons8-close-60.png" id="mais-imageP"></button>
+          <button v-on:click="" class="ADD" type="button"><img class="imagemAdd"
+          src="./imagens/icons8-confirm-67 (1).png" id="mais-imageA"></button>
+      </form>
     </div>
 
     <div class="z">
@@ -39,22 +52,22 @@
           <th>Remover produto</th>
         </thead>
         <tbody>
-            <tr v-for="estoque in Estoques">
-          <th>{{estoque.produto.nome_Produtos}}</th>
-          <td>{{estoque.quantidade_Produto}}</td>
+          <tr v-for="estoque in Estoques">
+            <th>{{ estoque.produto.nome_Produtos }}</th>
+            <td>{{ estoque.quantidade_Produto }}</td>
             <td>
               <div id="button-addA">
-              <button v-on:click="" class="botao_editarR" type="button"><img alt="mais-image" id="mais-image"
-                  src="../assets/pencil.png"></button>
+                <button v-on:click="AbrirPopUp()" class="botao_editarR" type="button"><img alt="mais-image"
+                    id="mais-image" src="../assets/pencil.png"></button>
               </div>
             </td>
             <td>
               <div id="button-addA">
-              <button v-on:click="" class="botao_editarR" type="button"><img alt="mais-image" id="mais-image"
-                  src="./imagens/icons8-remove-60.png"></button>
+                <button v-on:click="" class="botao_editarR" type="button"><img alt="mais-image" id="mais-image"
+                    src="./imagens/icons8-remove-60.png"></button>
               </div>
-              </td>
-            </tr>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -63,12 +76,12 @@
 
 <script>
 import EstoqueService from "../Services/EstoqueService"
-  const {GetById} = new EstoqueService();
+const { GetById } = new EstoqueService();
 export default {
   name: `Residencias`,
-  data(){
-    return{
-      Estoques:[]
+  data() {
+    return {
+      Estoques: []
     }
   },
   methods: {
@@ -79,6 +92,8 @@ export default {
       titulo.style.display = 'none';
       let resto = document.querySelector('.z')
       resto.style.display = 'none';
+      let popup = document.querySelector('.popup')
+      popup.style.display = 'none'
     },
     Fechar: () => {
       let modal = document.querySelector('.modal')
@@ -87,35 +102,90 @@ export default {
       titulo.style.display = 'block';
       let resto = document.querySelector('.z')
       resto.style.display = 'block';
+    },
+    FecharPopUp: () => {
+      let popup = document.querySelector('.popup')
+      popup.style.display = 'none';
+      let titulo = document.querySelector('.y')
+      titulo.style.display = 'block';
+      let resto = document.querySelector('.z')
+      resto.style.display = 'block';
+    },
+
+    AbrirPopUp: () => {
+      let popup = document.querySelector('.popup')
+      popup.style.display = 'block';
+      let titulo = document.querySelector('.y')
+      titulo.style.display = 'none';
+      let resto = document.querySelector('.z')
+      resto.style.display = 'none';
+      let modal = document.querySelector('.modal')
+      modal.style.display = 'none'
     }
   },
-  mounted(){
-    GetById(1).then(response=>this.Estoques=response);
+  mounted() {
+    GetById(1).then(response => this.Estoques = response);
   }
 }
 </script>
 
 <style scoped>
+.inputs{
+  margin-top: 50px;
+  margin-left: 60px;
+}
+
+.ADD {
+  background-color: #2E4756;  
+  width: 40px;
+  height: 40px;
+  float: right;
+  cursor: pointer;
+  margin-right: 290px;
+  margin-top: -15px;
+  border: 1px solid #2E4756;
+
+}
+.imagem_fecharP{
+  width: 30px
+}
+
+.imagemAdd{
+  width: 56px
+}
+.fecharP {
+  background-color: #2E4756;
+  width: 40px;
+  height: 40px;
+  float: right;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: -10px;
+  border: 1px solid #2E4756;
+
+}
 .botao_editarR {
-    background-color: white;
-    border: 3px solid #2E4756;
-    border-radius: 12px;
-    cursor: pointer;
-    
+  background-color: white;
+  border: 3px solid #2E4756;
+  border-radius: 12px;
+  cursor: pointer;
+
 
 }
 
-#editar{
+#editar {
   width: 25px;
 }
+
 .texto_descricao {
-    margin-left: 2px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 18px;
-    color: white;
-    font-weight: bold;
-    
-  }
+  margin-left: 2px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+
+}
+
 .form-titulo {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: white;
@@ -175,6 +245,29 @@ ul {
   margin-top: 300px;
   border: 1px solid #2E4756;
 
+}
+.popup {
+  margin-top: 50px;
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  display: none;
+  background-color: #2E4756;
+  animation: animate;
+  animation-duration: 800ms;
+  border-radius: 20px;
+
+}
+
+
+@keyframes animate {
+  from {
+    opacity: 1;
+  }
+
+  from {
+    opacity: 0;
+  }
 }
 
 .modal {
