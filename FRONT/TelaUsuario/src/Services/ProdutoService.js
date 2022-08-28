@@ -3,6 +3,7 @@ export default function ProdutoService(){
     this.GetAll = async function(){
         const reponse = await fetch(`https://localhost:7163/api/Produtos/ListarTodosProdutos`);
         const produto = await reponse.json();
+        console.log(produto);
         return produto;
     }
 

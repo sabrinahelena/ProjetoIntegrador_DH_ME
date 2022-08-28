@@ -34,6 +34,7 @@ namespace ListMEAPI.Repositories
         public void Delete(EstoqueModel lista)
         {
             _context.Estoques.Remove(lista);
+            _context.SaveChanges();
         }
 
         //PATCH
