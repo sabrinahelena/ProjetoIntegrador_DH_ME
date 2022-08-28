@@ -267,7 +267,7 @@ table {
   margin-top: 200px;
   width: 900px;
   height: 1px;
-  margin-left: -300px;
+  margin-left: -200px;
   border-collapse: collapse;
 }
 

@@ -58,18 +58,6 @@
         </tbody>
       </table>
     </div>
-    <table>
-      <thead>
-        <th>Produto</th>
-        <th>Quantidade</th>
-      </thead>
-      <tbody>
-        <tr v-for="estoque in Estoques">
-          <th>{{estoque.produto.nome_Produtos}}</th>
-          <td>{{estoque.quantidade_Produto}}</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </template>
 
@@ -288,14 +276,12 @@ ul {
   box-sizing: border-box;
 }
 
-
 table {
-  position: fixed;
   margin-top: 200px;
   width: 900px;
   height: 1px;
-  border-collapse: collapse;
   margin-left: -200px;
+  border-collapse: collapse;
 }
 
 table>thead {
