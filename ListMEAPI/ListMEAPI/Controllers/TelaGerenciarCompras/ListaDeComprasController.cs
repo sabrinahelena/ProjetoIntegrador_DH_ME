@@ -72,7 +72,7 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="404">Produto ou residência não encontrado</response>
         /// <response code="204">Produto deletado da lista de compras da residência</response>
         [HttpDelete("DeletarProdutoDaListaPorId")]
-        [Authorize(Roles = "Adm,Usuario")]
+        [AllowAnonymous]
         public ActionResult DeletarProdutoDaListaPorId(int IdProduto, int IdResidencia)
         {
             var boolean = _listaDeComprasService.DeletarProdutoLista(IdResidencia, IdProduto);

@@ -4,6 +4,7 @@
       <div class="t">
         <img class="estoqueImagem" src="./imagens/carrinho-azul.png">
         <h1 class="titulo-estoque"><b>Lista de Compras</b></h1>
+
       </div>
       <div id="button-add">
         <span class="add_estoque"> Adicionar produto</span>
@@ -16,9 +17,9 @@
       <div class="form">
         <main>
           <ul>
-            <li>
-              <span class="texto_descricao">PRODUTO
-                <button class="botao_editarR " type="button"><img alt="editar" id="editar"
+            <li v-for="produto in Produtos">
+              <span class="texto_descricao">{{produto.nome_Produtos}}
+                <button v-on:click="AddLista(produto.id_Produtos)" class="botao_editarR " type="button"><img alt="editar" id="editar"
                     src="../assets/mais.png"></button></span>
             </li>
           </ul>
@@ -36,9 +37,9 @@
           <th>Remover produto</th>
         </thead>
         <tbody>
-          <tr>
-            <th>Maçã</th>
-            <td>3</td>
+          <tr v-for="lista in Lista">
+            <th>{{lista.produto.nome_Produtos}}</th>
+            <td>{{lista.quantidade_Produto}}</td>
             <td>
               <div id="button-addA">
                 <button v-on:click="" class="botao_editarR" type="button"><img alt="mais-image" id="mais-image"
@@ -47,7 +48,7 @@
             </td>
             <td>
               <div id="button-addA">
-                <button v-on:click="" class="botao_editarR" type="button"><img alt="mais-image" id="mais-image"
+                <button v-on:click="RemoveLista(lista.idResidencia,lista.produto.id_Produtos)" class="botao_editarR" type="button"><img alt="mais-image" id="mais-image"
                     src="./imagens/icons8-remove-60.png"></button>
               </div>
             </td>
@@ -55,12 +56,23 @@
         </tbody>
       </table>
     </div>
+>>>>>>> main
   </div>
 </template>
 
 <script>
+import ListaDeComprasService from "../Services/ListaDeComprasService"
+import ProdutoService from "../Services/ProdutoService";
+const {GetById, PostLista, DeleteLista} = new ListaDeComprasService();
+const {GetAll} = new ProdutoService();
 export default {
   name: `ListaCompras`,
+  data(){
+    return{
+      Lista:[],
+      Produtos:[]
+    }
+  },
   methods: {
     Acao: () => {
       let modal = document.querySelector('.modal')
@@ -69,8 +81,7 @@ export default {
       titulo.style.display = 'none';
       let resto = document.querySelector('.x')
       resto.style.display = 'none';
-      let z = document.querySelector('.z')
-      z.style.display = 'none';
+    
     },
     Fechar: () => {
       let modal = document.querySelector('.modal')
@@ -79,20 +90,33 @@ export default {
       titulo.style.display = 'block';
       let resto = document.querySelector('.x')
       resto.style.display = 'block';
-      let z = document.querySelector('.z')
-      z.style.display = 'block';
+  
+    },
+    AddLista:(IdProduto)=>{
+      PostLista(1,IdProduto);
+    },
+    RemoveLista:(IdResidencia,IdProduto)=>{
+      DeleteLista(IdResidencia,IdProduto);
     }
+  },
+  mounted(){
+    GetById(1).then(response=>this.Lista=response);
+    GetAll().then(response=> this.Produtos=response);
   }
 }
+
 </script>
 
 <style scoped>
+
+
 .botao_editarR {
   background-color: white;
   border: 3px solid #2E4756;
   border-radius: 12px;
   cursor: pointer;
   margin-left: 4px;
+
 }
 
 #editar {
