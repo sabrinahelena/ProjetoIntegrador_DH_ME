@@ -54,7 +54,7 @@ namespace ListMEAPI.Repositories
 
         public List<UsuarioModel> GetAll()
         {
-            return _context.Usuarios.ToList();
+            return _context.Usuarios.Include(i => i.Residencias).ToList();
         }
         /*
          * 

@@ -42,22 +42,18 @@ namespace ListMEAPI.Models
                 .HasMaxLength(200).IsUnicode(false).HasColumnName("foto_usuarioDb");
                 entity.Property(e => e.Senha)
                 .HasMaxLength(16).IsUnicode(false).HasColumnName("senha_usuarioDb");
-
-
             });
-            // ACESSO!!
-            //Modelagem.Entity<AcessoModel>(entity =>
-            //{
-            //    entity.HasKey(e => e.Id_Acesso);
-            //    entity.ToTable("acesso_table");
-            //    entity.Property(e => e.Id_Acesso).HasColumnName("id_acessoDb");
-            //    entity.Property(e => e.email)
-            //    .HasMaxLength(30).IsUnicode(false).HasColumnName("email_acessoDb");
-            //    entity.Property(e => e.senha)
-            //    .HasMaxLength(16).IsUnicode(false).HasColumnName("senha_acessoDb");
-
-
-            //});
+            
+            Modelagem.Entity<AcessoModel>(entity =>
+            {
+                entity.HasKey(e => e.Id_Acesso);
+                entity.ToTable("acesso_table");
+                entity.Property(e => e.Id_Acesso).HasColumnName("id_acessoDb");
+                entity.Property(e => e.email)
+                .HasMaxLength(30).IsUnicode(false).HasColumnName("email_acessoDb");
+                entity.Property(e => e.senha)
+                .HasMaxLength(16).IsUnicode(false).HasColumnName("senha_acessoDb");
+            });
 
             Modelagem.Entity<ContatoModel>(entity =>
             {
@@ -84,8 +80,43 @@ namespace ListMEAPI.Models
                 entity.Property(e => e.Id_Lista).HasColumnName("id_lista_estoque");
             });
 
-            
+            Modelagem.Entity<ProdutosModel>(entity =>
+            {
+                entity.HasKey(e => e.Id_Produtos);
+                entity.ToTable("estoque_table");
+                entity.Property(e => e.Id_Produtos).HasColumnName("id_produtoDb");
+                entity.Property(e => e.Nome_Produtos)
+                .HasMaxLength(20).IsUnicode(false).HasColumnName("nome_produtoDb");
+                entity.Property(e => e.Descricao_Produtos)
+                .HasMaxLength(50).IsUnicode(false).HasColumnName("descricao_produtoDb");
+                entity.Property(e => e.Preco).HasColumnName("preco_produtoDb");
+               
+            });
 
+            Modelagem.Entity<ProdutosNoEstoque>(entity =>
+            {
+                entity.HasKey(e => e.Id_ProdutosNoEstoque);
+                entity.ToTable("produtosnoestoque_table");
+                entity.Property(e => e.Id_ProdutosNoEstoque).HasColumnName("idprodutoestoq_prodestoqueDb");
+                entity.Property(e => e.Quantidade_Produtos).HasColumnName("quantidade_prodestoqueDb");
+                entity.Property(e => e.Data_Validade).HasColumnName("validade_prodestoqueDb");
+                entity.Property(e => e.Produtos).HasColumnName("idproduto_prodestoqueDb");
+            });
+
+            Modelagem.Entity<ResidenciaModel>(entity =>
+            {
+                entity.HasKey(e => e.Id_Residencias);
+                entity.ToTable("residencia_table");
+                entity.Property(e => e.Id_Residencias);
+                entity.Property(e => e.Nome_Residencias)
+                .HasMaxLength(45).IsUnicode(false).HasColumnName("nome_residenciaDb");
+                entity.Property(e => e.Descricao_Residencias)
+                .HasMaxLength(80).IsUnicode(false).HasColumnName("descricao_residenciaDb");
+                entity.Property(e => e.Foto_Residencias)
+                .HasMaxLength(80).IsUnicode(false).HasColumnName("foto_residenciaDb");
+                entity.Property(e => e.Estoque).HasColumnName("estoque_residenciaDb");
+                entity.Property(e => e.Id_Usuario).HasColumnName("usuario_residenciaDb");
+            });
             //Modelagem.Entity<EstoqueModel>(TabelaEstoque =>
             //{
             //   TabelaEstoque.HasKey(Coluna => Coluna.Id_Estoque);
