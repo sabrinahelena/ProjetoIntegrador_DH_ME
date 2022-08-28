@@ -88,7 +88,7 @@
                     >
                 </div>
                 <br>
-                <a href="http://127.0.0.1:5173/#/home">
+                <a >
                     <input onclick="PostUsuario()" type="button" class="botao_segundobloco" value="Confirmar" >
                 </a>
             </form>
@@ -101,8 +101,6 @@
 <script>
     
   async function PostUsuario(){
-
-
     let inputPrimeiroNome = document.querySelector("#primeiro-nome");
     let inputSegundoNome = document.querySelector("#last-name");
     let inputTelefone = document.querySelector("#telefone");
@@ -120,9 +118,6 @@
         foto_Perfil:""
         }
 
-    
-    
-
     let configCabecalho={
         method: 'POST',
         body: JSON.stringify(body),
@@ -133,10 +128,9 @@
         }
     }
     let response = await fetch(`https://localhost:7163/api/CadastroUsuario/AdicionarUsuario`,configCabecalho);
-    // let usuario = await response.json();
-    // console.log(usuario);
-
-    }
+    let usuario = await response.json();
+    console.log(usuario);
+}
 
 </script>
 </body>

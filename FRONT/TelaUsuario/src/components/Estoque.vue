@@ -34,12 +34,12 @@
     <div class="popup">
       <form method="get">
         <div>
-          <input class="inputs" id="quant" name="quant" required placeholder="Quantidade" type="number">
+          <input v-model="bodyAlteracaoEstoque.quantidade_Produto" class="inputs" id="quant" name="quant" required placeholder="Quantidade" type="number">
         </div>
         <br>
         <button v-on:click="FecharPopUp()" class="fecharP" type="button"><img class="imagem_fecharP"
             src="./imagens/icons8-close-60.png" id="mais-imageP"></button>
-          <button v-on:click="" class="ADD" type="button"><img class="imagemAdd"
+          <button v-on:click="AlterarEstoque(bodyAlteracaoEstoque,estoque.produto.id_Produtos,estoque.id_Estoque)" class="ADD" type="button"><img class="imagemAdd"
           src="./imagens/icons8-confirm-67 (1).png" id="mais-imageA"></button>
       </form>
     </div>
@@ -80,15 +80,18 @@
 <script>
 import EstoqueService from "../Services/EstoqueService"
 import ProdutoService from "../Services/ProdutoService";
-const {GetByIdEstoque, PostEstoque, DeleteEstoque} = new EstoqueService();
+const {GetByIdEstoque, PostEstoque, DeleteEstoque, PatchEstoque} = new EstoqueService();
 const {GetAll} = new ProdutoService();
 export default {
   name: `Residencias`,
   data(){
     return{
       Estoques:[],
-      Produtos:[]
-
+      Produtos:[],
+      bodyAlteracaoEstoque:{
+        data_Validade:"",
+        quantidade_Produto:0
+      }
     }
   },
   methods: {
@@ -135,6 +138,10 @@ export default {
       resto.style.display = 'none';
       let modal = document.querySelector('.modal')
       modal.style.display = 'none'
+    },
+
+    AlterarEstoque:(bodyAlteracaoEstoque,IdProduto,IdResidencia)=>{
+      PatchEstoque(bodyAlteracaoEstoque,IdProduto,IdResidencia)
     }
   },
   mounted(){
