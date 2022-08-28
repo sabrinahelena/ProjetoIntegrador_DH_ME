@@ -31,7 +31,7 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="200">Retorna se foi adicionado o produto no estoque</response>
         /// <response code="500">Ocorreu algum erro ao colocar um produto no estoque</response>
         [HttpPost("AdicionarEstoquePorIdResidencia{IdResidencia}")]
-        [Authorize(Roles = "Adm,Usuario")]
+        
 
         public ActionResult CriarEstoque(int IdResidencia, int IdProduto)
         {
@@ -54,7 +54,7 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="200">Retorna a lista de estoques cadastrados</response>
         /// <response code="500">Ocorreu algum erro ao obter lista de estoques cadastrados</response>
         [HttpGet("ListarTodosEstoques")]
-        [Authorize(Roles = "Adm,Usuario")]
+        
 
         public List<EstoqueModel> GetEstoque()
         {
@@ -69,7 +69,7 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="404">Residência não encontrada ou não há produtos no estoque dessa residência</response>
         /// <response code="200">Retorna todos os estoques da residência encontrada</response>
         [HttpGet("RequererEstoquePorIdResidencia{IdResidencia}")]
-        [Authorize(Roles = "Adm,Usuario")]
+        
 
         public ActionResult<List<EstoqueModel>> GettEstoqueByIdResidencia(int IdResidencia)
         {
@@ -92,7 +92,7 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="404">Estoque não encontrado</response>
         /// <response code="204">Estoque deletado</response>
         [HttpDelete("DeletarEstoquePorId{Id}")]
-        [Authorize(Roles = "Adm,Usuario")]
+        
 
         public ActionResult DeletarEstoque(int Id)
         {
@@ -127,7 +127,7 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         /// <response code="404">Estoque ou produto não encontrado</response>
         /// <response code="204">Estoque alterado</response>
         [HttpPatch("AtualizarEstoque{IdProduto}/{IdEstoque}")]
-        [Authorize(Roles = "Adm,Usuario")]
+        
 
         public ActionResult<EstoqueModel> AlterarQuantidadeOuData(AlterarQuantidadeEDataRequest produtos, int IdProduto, int IdResidencia)
         {
