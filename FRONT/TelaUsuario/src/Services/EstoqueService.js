@@ -21,4 +21,18 @@ export default function ResidenciaService(){
         const newEstoque = await reponse.json();
         console.log(newEstoque);
     }
+
+    this.PatchEstoque = async function(bodyAlteracao,IdProduto, IdResidencia){
+        const configPatch={
+            method: 'PATCH',
+            body:JSON.stringify(bodyAlteracao),
+            headers:{
+                'Content-Type': 'application/json; charset=UTF-8',
+                
+                'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
+            },
+        }
+        const reponse = await fetch(`https://localhost:7163/api/Estoque/AtualizarEstoque${IdProduto}/${IdResidencia}`,configPatch)
+        const Alteracao = response.json();
+    }
 }
