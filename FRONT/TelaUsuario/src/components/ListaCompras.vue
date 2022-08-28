@@ -69,7 +69,6 @@
         </tbody>
       </table>
     </div>
->>>>>>> main
   </div>
 </template>
 
@@ -94,7 +93,6 @@ export default {
       titulo.style.display = 'none';
       let resto = document.querySelector('.x')
       resto.style.display = 'none';
-<<<<<<< HEAD
       let popup = document.querySelector('.popup')
       popup.style.display = 'none'
     },
@@ -107,9 +105,6 @@ export default {
       resto.style.display = 'none';
       let modal = document.querySelector('.modal')
       modal.style.display = 'none'
-=======
-    
->>>>>>> 047ba20ebc8ad0a037b686a8c8bc56d432600570
     },
     Fechar: () => {
       let modal = document.querySelector('.modal')
@@ -118,7 +113,6 @@ export default {
       titulo.style.display = 'block';
       let resto = document.querySelector('.x')
       resto.style.display = 'block';
-<<<<<<< HEAD
       let z = document.querySelector('.z')
       z.style.display = 'block';
     },
@@ -130,16 +124,13 @@ export default {
       let resto = document.querySelector('.x')
       resto.style.display = 'block';
       let z = document.querySelector('.z')
-      z.style.display = 'block';
-=======
-  
+      z.style.display = 'block'
     },
     AddLista:(IdProduto)=>{
       PostLista(1,IdProduto);
     },
     RemoveLista:(IdResidencia,IdProduto)=>{
-      DeleteLista(IdResidencia,IdProduto);
->>>>>>> 047ba20ebc8ad0a037b686a8c8bc56d432600570
+    DeleteLista(IdResidencia,IdProduto);
     }
   },
   mounted(){
@@ -152,7 +143,6 @@ export default {
 
 <style scoped>
 
-<<<<<<< HEAD
 .imagem_fecharP{
   width: 30px
 }
