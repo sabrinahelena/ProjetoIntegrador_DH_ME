@@ -39,9 +39,9 @@
           <th>Remover produto</th>
         </thead>
         <tbody>
-          <tr>
-            <th>Maçã</th>
-            <td>3</td>
+            <tr v-for="estoque in Estoques">
+          <th>{{estoque.produto.nome_Produtos}}</th>
+          <td>{{estoque.quantidade_Produto}}</td>
             <td>
               <div id="button-addA">
               <button v-on:click="" class="botao_editarR" type="button"><img alt="mais-image" id="mais-image"
@@ -53,17 +53,36 @@
               <button v-on:click="" class="botao_editarR" type="button"><img alt="mais-image" id="mais-image"
                   src="./imagens/icons8-remove-60.png"></button>
               </div>
-          </td>
-          </tr>
+              </td>
+            </tr>
         </tbody>
       </table>
     </div>
+    <table>
+      <thead>
+        <th>Produto</th>
+        <th>Quantidade</th>
+      </thead>
+      <tbody>
+        <tr v-for="estoque in Estoques">
+          <th>{{estoque.produto.nome_Produtos}}</th>
+          <td>{{estoque.quantidade_Produto}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
+import EstoqueService from "../Services/EstoqueService"
+  const {GetById} = new EstoqueService();
 export default {
   name: `Residencias`,
+  data(){
+    return{
+      Estoques:[]
+    }
+  },
   methods: {
     Acao: () => {
       let modal = document.querySelector('.modal')
@@ -81,6 +100,9 @@ export default {
       let resto = document.querySelector('.z')
       resto.style.display = 'block';
     }
+  },
+  mounted(){
+    GetById(1).then(response=>this.Estoques=response);
   }
 }
 </script>

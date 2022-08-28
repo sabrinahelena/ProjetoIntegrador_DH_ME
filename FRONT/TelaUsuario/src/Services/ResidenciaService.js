@@ -3,13 +3,14 @@ export default function ResidenciaService(){
     this.GetAll = async function(){
         const reponse = await fetch('https://localhost:7163/api/GerenciarUsuario/ListarTodasResidencias');
         const residencias = await reponse.json();
+        console.log(residencias);
         return residencias;
     }
 
-    this.Post = async function(bodyRecipe,IdUsuario){
+    this.Post = async function(bodyResidencia,IdUsuario){
         const configPost = {
             method: 'POST',
-            body: JSON.stringify(bodyRecipe),
+            body: JSON.stringify(bodyResidencia),
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8',
                 

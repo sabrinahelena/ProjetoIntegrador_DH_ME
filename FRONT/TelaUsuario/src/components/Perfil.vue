@@ -15,21 +15,21 @@
             <ul>
                 <li class="a">
                     <div id="Nome-Input">
-                        <label for="Nome">Nome: </label>
-                        <input  id="Nome-placeholder" type="text" placeholder="Nome usuário"/>
+                        <label for="Nome">Nome:</label>
+                        <input v-model="usuario.nome_Usuario" id="Nome-placeholder" type="text" placeholder="nome usuário"/>
                     </div>
                 </li>
                 <li class="a">
-                    <label for="Email">Email: </label>
-                    <input id="Email" type="email" placeholder="Pegar email do usuario"/>
+                    <label for="Email">Email:</label>
+                    <input v-model="usuario.email" id="Email" type="email" placeholder="Pegar email do usuario" />
                 </li >
                 <li class="a">
-                    <label for="Data">Data de Aniversário: </label>
-                    <input id="Data" type="date" placeholder="10/20/2000" />  
+                    <label for="Data">Data de Aniversário:</label>
+                    <input v-model="usuario.data_Nascimento" id="Data" type="date" placeholder="10/20/2000" />  
                 </li >
                 <li class="a"> 
-                    <label for="Telefone">Telefone: </label>
-                    <input id="telefone" type="text" placeholder="11-99999999" />  
+                    <label for="Telefone">Telefone:</label>
+                    <input v-model="usuario.telefone" id="telefone" type="text" placeholder="" />  
                 </li>
             </ul> 
         </form>
@@ -42,15 +42,37 @@
   </div>
 </template>
 <script>
+import UsuarioService from '../Services/UsuarioService'
+const{ GetById }= new UsuarioService();
 export default{
   name:`Perfil`,
   data(){
     return{
-        nomePlaceholder:true
+        usuario:{
+        id_Usuario: null,
+        nome_Usuario: null,
+        sobrenome: null,
+        telefone: null,
+        data_Nascimento: null,
+        email: null
+        }
     }
+  },
+  mounted(){
+    GetById(1).then(response=>this.usuario=response);
+    console.log(this.usuario);
   }
 }
 </script>
+
+
+
+
+
+
+
+
+
 
 <style scoped>
 
