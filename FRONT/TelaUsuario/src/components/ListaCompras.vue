@@ -10,17 +10,9 @@
         <th>Quantidade</th>
       </thead>
       <tbody>
-        <tr>
-          <th>Maçã</th>
-          <td>3</td>
-        </tr>
-        <tr>
-          <th>Banana</th>
-          <td>6</td>
-        </tr>
-        <tr>
-          <th>Leite</th>
-          <td>6</td>
+        <tr v-for="lista in Lista">
+          <th>{{lista.produto.nome_Produtos}}</th>
+          <td>{{lista.quantidade_Produto}}</td>
         </tr>
       </tbody>
     </table>
@@ -28,8 +20,18 @@
 </template>
 
 <script>
+import ListaDeComprasService from "../Services/ListaDeComprasService"
+const {GetById} = new ListaDeComprasService();
 export default {
   name: `ListaCompras`,
+  data(){
+    return{
+      Lista:[]
+    }
+  },
+  mounted(){
+    GetById(1).then(response=>this.Lista=response);
+  }
 }
 </script>
 
@@ -43,8 +45,7 @@ export default {
     position: fixed;
     text-align: center;
     align-items: center;
-    font-size: 15px;
-   
+    font-size: 15px;  
 }
 
 #mais-image{
