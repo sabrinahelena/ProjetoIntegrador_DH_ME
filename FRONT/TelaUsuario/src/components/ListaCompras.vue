@@ -12,6 +12,19 @@
             src="../assets/mais.png"></button>
       </div>
     </div>
+    <div class="popup">
+      <form method="get">
+        <div>
+          <input class="inputs" id="quant" name="quant" required placeholder="Quantidade" type="number">
+        </div>
+        <br>
+        <button v-on:click="FecharPopUp()" class="fecharP" type="button"><img class="imagem_fecharP"
+            src="./imagens/icons8-close-60.png" id="mais-imageP"></button>
+          <button v-on:click="" class="ADD" type="button"><img class="imagemAdd"
+          src="./imagens/icons8-confirm-67 (1).png" id="mais-imageA"></button>
+      </form>
+
+    </div>
     <div class="modal">
       <h1 class="form-titulo"> Adicione um produto </h1>
       <div class="form">
@@ -42,8 +55,8 @@
             <td>{{lista.quantidade_Produto}}</td>
             <td>
               <div id="button-addA">
-                <button v-on:click="" class="botao_editarR" type="button"><img alt="mais-image" id="mais-image"
-                    src="../assets/pencil.png"></button>
+                <button v-on:click="AbrirPopUp()" class="botao_editarR" type="button"><img alt="mais-image"
+                    id="mais-image" src="../assets/pencil.png"></button>
               </div>
             </td>
             <td>
@@ -56,7 +69,6 @@
         </tbody>
       </table>
     </div>
->>>>>>> main
   </div>
 </template>
 
@@ -81,7 +93,18 @@ export default {
       titulo.style.display = 'none';
       let resto = document.querySelector('.x')
       resto.style.display = 'none';
-    
+      let popup = document.querySelector('.popup')
+      popup.style.display = 'none'
+    },
+    AbrirPopUp: () => {
+      let popup = document.querySelector('.popup')
+      popup.style.display = 'block';
+      let titulo = document.querySelector('.y')
+      titulo.style.display = 'none';
+      let resto = document.querySelector('.x')
+      resto.style.display = 'none';
+      let modal = document.querySelector('.modal')
+      modal.style.display = 'none'
     },
     Fechar: () => {
       let modal = document.querySelector('.modal')
@@ -90,13 +113,24 @@ export default {
       titulo.style.display = 'block';
       let resto = document.querySelector('.x')
       resto.style.display = 'block';
-  
+      let z = document.querySelector('.z')
+      z.style.display = 'block';
+    },
+    FecharPopUp: () => {
+      let popup = document.querySelector('.popup')
+      popup.style.display = 'none';
+      let titulo = document.querySelector('.y')
+      titulo.style.display = 'block';
+      let resto = document.querySelector('.x')
+      resto.style.display = 'block';
+      let z = document.querySelector('.z')
+      z.style.display = 'block'
     },
     AddLista:(IdProduto)=>{
       PostLista(1,IdProduto);
     },
     RemoveLista:(IdResidencia,IdProduto)=>{
-      DeleteLista(IdResidencia,IdProduto);
+    DeleteLista(IdResidencia,IdProduto);
     }
   },
   mounted(){
@@ -109,7 +143,16 @@ export default {
 
 <style scoped>
 
-
+.imagem_fecharP{
+  width: 30px
+}
+.imagemAdd{
+  width: 56px
+}
+.inputs{
+  margin-top: 50px;
+  margin-left: 60px;
+}
 .botao_editarR {
   background-color: white;
   border: 3px solid #2E4756;
@@ -193,7 +236,48 @@ ul {
   border: 1px solid #2E4756;
 
 }
+.fecharP {
+  background-color: #2E4756;
+  width: 40px;
+  height: 40px;
+  float: right;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: -10px;
+  border: 1px solid #2E4756;
 
+}
+
+.ADD {
+  background-color: #2E4756;  
+  width: 40px;
+  height: 40px;
+  float: right;
+  cursor: pointer;
+  margin-right: 290px;
+  margin-top: -15px;
+  border: 1px solid #2E4756;
+
+}
+.popup {
+  margin-top: 200px;
+  margin-left: 200px;
+  width: 400px;
+  height: 120px;
+  position: absolute;
+  display: none;
+  background-color: #2E4756;
+  animation: animate;
+  animation-duration: 800ms;
+  border-radius: 20px;
+
+}
+
+@keyframes animate {
+  from {
+    opacity: 1;
+  }
+}
 .modal {
   margin-top: 50px;
   width: 500px;
@@ -291,7 +375,7 @@ table {
   margin-top: 200px;
   width: 900px;
   height: 1px;
-  margin-left: -200px;
+  margin-left: -300px;
   border-collapse: collapse;
 }
 
