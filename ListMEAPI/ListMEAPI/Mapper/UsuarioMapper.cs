@@ -10,10 +10,12 @@ namespace ListMEAPI.Mapper
             var dto = new UsuarioResponse();
             dto.Id_Usuario = usuario.Id_Usuario;
             dto.Nome_Usuario = usuario.Nome_Usuario;
+            dto.Sobrenome = usuario.Sobrenome;
+            dto.Data_Nascimento = usuario.Data_Nascimento;
+            dto.Telefone = usuario.Telefone;
+            dto.Email = usuario.Email;
 
-            if (usuario.Residencias != null)
-                //SELECT = PERMITE ACESSAR A LISTA DE RESIDENCIAS E GUARDAR NO ENDERECOS
-                dto.Residencias = usuario.Residencias.Select(c => ResidenciaMapper.From(c)).ToList();
+            
 
             return dto;
 

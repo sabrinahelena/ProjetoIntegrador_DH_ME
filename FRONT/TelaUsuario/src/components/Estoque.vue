@@ -50,20 +50,10 @@
         <th>Data de validade</th>
       </thead>
       <tbody>
-        <tr>
-          <th>Maçã</th>
-          <td>3</td>
-          <td>20/09/2022</td>
-        </tr>
-        <tr>
-          <th>Banana</th>
-          <td>6</td>
-          <td>21/08/2022</td>
-        </tr>
-        <tr>
-          <th>Leite</th>
-          <td>6</td>
-          <td>21/08/2022</td>
+        <tr v-for="estoque in Estoques">
+          <th>{{estoque.produto.nome_Produtos}}</th>
+          <td>{{estoque.quantidade_Produto}}</td>
+          <td>{{estoque.data_Validade}}</td>
         </tr>
       </tbody>
     </table>
@@ -72,8 +62,15 @@
 </template>
 
 <script>
+import EstoqueService from "../Services/EstoqueService"
+  const {GetById} = new EstoqueService();
 export default {
   name: `Residencias`,
+  data(){
+    return{
+      Estoques:[]
+    }
+  },
   methods: {
     Acao: () => {
       let modal = document.querySelector('.modal')
@@ -91,6 +88,9 @@ export default {
       let resto = document.querySelector('.z')
       resto.style.display = 'block';
     }
+  },
+  mounted(){
+    GetById(1).then(response=>this.Estoques=response);
   }
 }
 </script>

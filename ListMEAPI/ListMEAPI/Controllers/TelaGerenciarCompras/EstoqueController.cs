@@ -113,13 +113,12 @@ namespace ListMEAPI.Controllers.TelaGerenciarCompras
         ///         "Quantidade_Produto": 10
         ///     }
         /// </remarks>
-        /// <param name="IdProduto">Id do produto</param>
-        /// <param name="IdResidencia">Id do estoque</param>
-        /// <param name="produtos">Modelo das alterações do estoque</param>
+        /// <param name="IdResidencia">Id da Residência</param>
+        /// <param name="IdProduto">Modelo das alterações do estoque</param>
         /// <response code="400">Estoque não pode ter quantidade negativa</response>
         /// <response code="404">Estoque ou produto não encontrado</response>
         /// <response code="204">Estoque alterado</response>
-        [HttpPatch("AtualizarEstoque{IdProduto}/{IdEstoque}")]
+        [HttpPatch("AtualizarEstoque{IdProduto}/{IdResidencia}")]
         public ActionResult<EstoqueModel> AlterarQuantidadeOuData(AlterarQuantidadeEDataRequest produtos, int IdProduto, int IdResidencia)
         {
             var existe = _estoqueService.AlterarProdutoNoEstoque(produtos, IdProduto, IdResidencia);
