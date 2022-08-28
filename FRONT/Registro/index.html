@@ -102,6 +102,7 @@
     
   async function PostUsuario(){
 
+
     let inputPrimeiroNome = document.querySelector("#primeiro-nome");
     let inputSegundoNome = document.querySelector("#last-name");
     let inputTelefone = document.querySelector("#telefone");
@@ -127,6 +128,7 @@
     Senha = inputSenha.value;
   
     
+
     let configCabecalho={
         method: 'POST',
         body: JSON.stringify(body)
@@ -134,6 +136,7 @@
     let response = await fetch(`https://localhost:7163/api/CadastroUsuario/AdicionarUsuario`,configCabecalho);
     let usuario = await response.json();
     console.log(usuario);
+
     }
 
 </script>

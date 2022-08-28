@@ -1,12 +1,14 @@
 <template>
     <div id="titulo">
+        <div class="y">
         <img alt="casaImagem" id="imagem-casa" src="./imagens/icons8-house-90.png">
         <h1 id="titulo-residencia"><b>Residências</b></h1>
         <div id="button-add">
-            <span class="add_residencia"> Adicionar residências</span>
-            <button v-on:click="Acao()" class="botao_editarR" type="button"><img alt="mais-image" id="mais-image"
+            <span class="y add_residencia"> Adicionar residências</span>
+            <button v-on:click="Acao()" class="y botao_editarR" type="button"><img alt="mais-image" id="mais-image"
                     src="../assets/mais.png"></button>
         </div>
+    </div>
         <div class="modal">
             <h1 class="form-titulo"> Adicione uma residência </h1>
                 <div class="form">
@@ -42,25 +44,31 @@
                 
                 
                     <button v-on:click="Fechar()" class="fechar" type="button"><img class="imagem_fechar" src="./imagens/icons8-close-60.png" id="mais-image"></button>
+
                     <button v-on:click="Add(ResidenciaBody);Fechar()"  class="botao_adicionar">Adicionar</button>
-                </div>
-        <figure>
-            <img class="imagem_residencia" src="./imagens/Ordinary day.gif" />
-        </figure>
+        </div>
+        <div class="z">
+        <div >
+            <figure>
+                <img class="imagem_residencia" src="./imagens/Ordinary day.gif" />
+            </figure>
+        </div>
+    </div>
     </div>
 
-    <main class="lista">
-        <ul>
-            <li v-for="residencia in residencias">
-
-                <button class="botao_residencia" type="button">{{ residencia.nome_Residencias }}</button>
-                <span class="texto_descricao">{{ residencia.descricao_Residencias }}</span>
-                <button class="botao_editarR a" type="button"><img alt="editar" id="editar"
-                        src="../assets/pencil.png"></button>
-            </li>
-
-        </ul>
-    </main>
+    <div class="x">
+        <main class="lista">
+            <ul>
+                <li v-for="residencia in residencias">
+                    <button class="botao_residencia" type="button">{{ residencia.nome_Residencias }}</button>
+                    <span class="texto_descricao">{{ residencia.descricao_Residencias }}</span>
+                    <button class="botao_editarR a" type="button"><img alt="editar" id="editar"
+                            src="../assets/pencil.png"></button>
+                </li>
+            </ul>
+        </main>
+    </div>
+>>>>>>> main
 </template>
 
 <script>
@@ -87,11 +95,23 @@ export default {
         Acao: () => {
             let modal = document.querySelector('.modal')
             modal.style.display = 'block';
+            let y = document.querySelector('.y')
+            y.style.display = 'none';
+            let z = document.querySelector('.z')
+            z.style.display = 'none';
+            let x = document.querySelector('.x')
+            x.style.display = 'none';
         },
         Fechar: () => {
             let modal = document.querySelector('.modal')
             modal.style.display = 'none';
-            
+            let y = document.querySelector('.y')
+            y.style.display = 'block'
+            let z = document.querySelector('.z')
+            z.style.display = 'block';
+            let x = document.querySelector('.x')
+            x.style.display = 'block';
+
         }
     },
     mounted() {
@@ -227,8 +247,8 @@ export default {
 
 #titulo-residencia {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-left: 20px;
-    margin-top: 35px;
+    margin-left: 80px;
+    margin-top: -50px;
     color: #2E4756;
 }
 
