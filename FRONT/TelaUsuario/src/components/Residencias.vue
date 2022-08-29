@@ -43,7 +43,7 @@
                     </div>
                 
                 
-                    <button v-on:click="Fechar()" class="fechar" type="button"><img class="imagem_fechar" src="./imagens/icons8-close-60.png" id="mais-image"></button>
+                    <button v-on:click="Fechar()" class="fechar" type="button"><img class="imagem_fechar" src="../assets/icons8-close-60.png" id="mais-image"></button>
 
                     <button v-on:click="Add(ResidenciaBody);Fechar()"  class="botao_adicionar">Adicionar</button>
         </div>
