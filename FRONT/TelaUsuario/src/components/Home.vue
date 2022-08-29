@@ -2,7 +2,7 @@
        <div id="pagina">
         <div class="main"> 
             <figure>
-                <img class="imagem" src="./imagens/Frozen food.gif">
+                <img class="imagem" src="./imagens/Frozen-food.gif">
             </figure>
                 <div class="texto">
                     <p class="fonte titulo"> Seja bem-vindo ao ListME!</p>

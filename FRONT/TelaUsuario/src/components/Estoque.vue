@@ -40,7 +40,7 @@
         <button v-on:click="FecharPopUp()" class="fecharP" type="button"><img class="imagem_fecharP"
             src="./imagens/icons8-close-60.png" id="mais-imageP"></button>
           <button v-on:click="AlterarEstoque(bodyAlteracaoEstoque,estoque.produto.id_Produtos,estoque.id_Estoque)" class="ADD" type="button"><img class="imagemAdd"
-          src="./imagens/icons8-confirm-67 (1).png" id="mais-imageA"></button>
+          src="./imagens/icons8-confirm-67(1).png" id="mais-imageA"></button>
       </form>
     </div>
 

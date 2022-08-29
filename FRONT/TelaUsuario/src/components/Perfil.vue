@@ -36,7 +36,7 @@
         <div>
      <button class="editarD" id="EditarNome" type="button"><img alt="abrirEditar" id="edit-button" src="./imagens/icons8-confirm-67.png"></button>
         </div>
-            <img class="img" src="./imagens/Online page (1).gif"/>
+            <img class="img" src="./imagens/Online-page-(1).gif"/>
 
     </div>
   </div>
