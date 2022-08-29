@@ -26,7 +26,8 @@
             <h1 class="titulo">Faça seu login</h1>
             <div class="form">
                 <form
-                method = "get">
+                method = "get"
+                >
                     <div>
                         <input class="inputs" 
                         id="email"
@@ -46,11 +47,11 @@
                         type="password">
                     </div>
                     <br>
-                    <a href="http://127.0.0.1:5173/#/home">
-                        <input type="button" class="botao" value="Confirmar">
+                    <a >
+                        <input  onclick="PostAcesso()"  type="button" class="botao" value="Confirmar">
                     </a>
                     <div class="checkbox">
-                        <input type="checkbox" name="manterlog" id="logado" value ="manterlogado">
+                        <input  type="checkbox" name="manterlog" id="logado" value ="manterlogado">
                         <label for="logado"> Manter-me logado </label>
                     </div>
                 </form>
@@ -59,7 +60,32 @@
     </div>
 </div>
 <script>
-    
+    async function PostAcesso(){
+
+        let inputEmail = document.querySelector("#email").value;
+        let inputSenha = document.querySelector("#senha").value;
+
+        let body= {
+            email : inputEmail,
+            senha : inputSenha
+            }   
+        console.log("teste")    
+        console.log(body);    
+
+        let configCabecalho={
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers:{
+                'Content-Type': 'application/json; charset=UTF-8',
+                
+                'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
+            }
+        }
+        let response = await fetch(`https://localhost:7163/api/Acesso/Autenticar`,configCabecalho);
+        // window.location.href=`http://127.0.0.1:5173/#/home`;
+    // let usuario = await response.json();
+    // console.log(usuario);
+    }
 </script>
     
 </body>

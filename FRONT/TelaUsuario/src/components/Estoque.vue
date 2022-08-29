@@ -59,7 +59,7 @@
 
             <td>
               <div id="button-addA">
-                <button v-on:click="AbrirPopUp()" class="botao_editarR" type="button"><img alt="mais-image"
+                <button v-on:click="AbrirPopUp(estoque)" class="botao_editarR" type="button"><img alt="mais-image"
                     id="mais-image" src="../assets/pencil.png"></button>
               </div>
             </td>
@@ -129,7 +129,7 @@ export default {
       resto.style.display = 'block';
     },
 
-    AbrirPopUp: () => {
+    AbrirPopUp: (estoque) => {
       let popup = document.querySelector('.popup')
       popup.style.display = 'block';
       let titulo = document.querySelector('.y')
@@ -138,6 +138,7 @@ export default {
       resto.style.display = 'none';
       let modal = document.querySelector('.modal')
       modal.style.display = 'none'
+      return estoque;
     },
 
     AlterarEstoque:(bodyAlteracaoEstoque,IdProduto,IdResidencia)=>{
