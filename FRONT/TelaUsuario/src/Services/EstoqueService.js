@@ -1,7 +1,7 @@
 export default function ResidenciaService(){
     
     this.GetByIdEstoque = async function(IdResidencia){
-        const reponse = await fetch(`https://localhost:7163/api/Estoque/RequererEstoquePorIdResidencia${IdResidencia}`);
+        const reponse = await fetch(`https://listmeapi20220829125529.azurewebsites.net/api/Estoque/RequererEstoquePorIdResidencia${IdResidencia}`);
         const estoque = await reponse.json();
         console.log(estoque);
         return estoque;
@@ -17,7 +17,7 @@ export default function ResidenciaService(){
                 'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
               },
         }
-        const reponse = await fetch(`https://localhost:7163/api/Estoque/AdicionarEstoquePorIdResidencia${IdResidencia}?IdProduto=${IdProduto}`,configPost);
+        const reponse = await fetch(`https://listmeapi20220829125529.azurewebsites.net/api/Estoque/AdicionarEstoquePorIdResidencia${IdResidencia}?IdProduto=${IdProduto}`,configPost);
         
     }
 
@@ -31,7 +31,7 @@ export default function ResidenciaService(){
                 'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
             },
         }
-        const reponse = await fetch(`https://localhost:7163/api/Estoque/AtualizarEstoque${IdProduto}/${IdResidencia}`,configPatch)
+        const reponse = await fetch(`https://listmeapi20220829125529.azurewebsites.net/api/Estoque/AtualizarEstoque${IdProduto}/${IdResidencia}`,configPatch)
         const Alteracao = response.json();
     }
 
@@ -45,6 +45,6 @@ export default function ResidenciaService(){
                 'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
             },
         }
-        const reponse = await fetch(`https://localhost:7163/api/Estoque/DeletarEstoquePorId${IdEstoque}`,configPatch)
+        const reponse = await fetch(`https://listmeapi20220829125529.azurewebsites.net/api/Estoque/DeletarEstoquePorId${IdEstoque}`,configPatch)
     }
 }

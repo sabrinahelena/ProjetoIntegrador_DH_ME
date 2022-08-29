@@ -1,7 +1,7 @@
 export default function ResidenciaService(){
     
     this.GetById = async function(IdResidencia){
-        const reponse = await fetch(`https://localhost:7163/api/ListaDeCompras/RequererListaDeComprasPorIdResidência?IdResidencia=${IdResidencia}`);
+        const reponse = await fetch(`https://listmeapi20220829125529.azurewebsites.net/api/ListaDeCompras/RequererListaDeComprasPorIdResidência?IdResidencia=${IdResidencia}`);
         const lista = await reponse.json();
         console.log(lista);
         return lista;
@@ -19,7 +19,7 @@ export default function ResidenciaService(){
                 'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
             },
         }
-        const reponse = await fetch(`https://localhost:7163/api/ListaDeCompras/AtualizarQuantidadeProdutoNaListaDeCompras?IdResidencia=${IdResidencia}&IdProduto=${IdProduto}&Quantidade=${Quantidade}`,configPatch)
+        const reponse = await fetch(`https://listmeapi20220829125529.azurewebsites.net/api/ListaDeCompras/AtualizarQuantidadeProdutoNaListaDeCompras?IdResidencia=${IdResidencia}&IdProduto=${IdProduto}&Quantidade=${Quantidade}`,configPatch)
         const Alteracao = response.json();
     }
 
@@ -35,7 +35,7 @@ export default function ResidenciaService(){
                 'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
               },
         }
-        const reponse = await fetch(`https://localhost:7163/api/ListaDeCompras/AdicionarListaDeCompras?IdResidencia=${IdResidencia}&IdProduto=${IdProduto}`,configPost);
+        const reponse = await fetch(`https://listmeapi20220829125529.azurewebsites.net/api/ListaDeCompras/AdicionarListaDeCompras?IdResidencia=${IdResidencia}&IdProduto=${IdProduto}`,configPost);
     }
 
     this.DeleteLista = async function(IdResidencia,IdProduto){
@@ -48,6 +48,6 @@ export default function ResidenciaService(){
                 'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
               },
         }
-        const response = await fetch(`https://localhost:7163/api/ListaDeCompras/DeletarProdutoDaListaPorId?IdProduto=${IdProduto}&IdResidencia=${IdResidencia}`,configDeleteLista);
+        const response = await fetch(`https://listmeapi20220829125529.azurewebsites.net/api/ListaDeCompras/DeletarProdutoDaListaPorId?IdProduto=${IdProduto}&IdResidencia=${IdResidencia}`,configDeleteLista);
     }
 }
