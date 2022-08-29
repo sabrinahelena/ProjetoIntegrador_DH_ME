@@ -1,7 +1,7 @@
 export default function ResidenciaService(){
     
     this.GetAll = async function(){
-        const reponse = await fetch('https://localhost:7163/api/GerenciarUsuario/ListarTodasResidencias');
+        const reponse = await fetch('https://listmeapi20220829125529.azurewebsites.net/api/GerenciarUsuario/ListarTodasResidencias');
         const residencias = await reponse.json();
         console.log(residencias);
         return residencias;
@@ -17,7 +17,7 @@ export default function ResidenciaService(){
                 'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
               },
         }
-        const reponse = await fetch(`https://localhost:7163/api/GerenciarUsuario/AdicionarResidencia?id=${IdUsuario}`,configPost);
+        const reponse = await fetch(`https://listmeapi20220829125529.azurewebsites.net/api/GerenciarUsuario/AdicionarResidencia?id=${IdUsuario}`,configPost);
         const newResidencia = await reponse.json();
         console.log(newResidencia);
     }

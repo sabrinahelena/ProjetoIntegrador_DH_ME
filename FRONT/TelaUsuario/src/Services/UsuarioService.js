@@ -1,7 +1,7 @@
 export default function UsuarioService(){
     
     this.GetById = async function(IdUsuario){
-        const reponse = await fetch(`https://localhost:7163/api/CadastroUsuario/RequererUsuárioPorId${IdUsuario}`);
+        const reponse = await fetch(`https://listmeapi20220829125529.azurewebsites.net/api/CadastroUsuario/RequererUsuárioPorId${IdUsuario}`);
         const usuario = await reponse.json();
         console.log(usuario);
         console.log("alo");
@@ -18,7 +18,7 @@ export default function UsuarioService(){
                 'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
               },
         }
-        const reponse = await fetch(`https://localhost:7163/api/CadastroUsuario/AlterarUsuarioPorId${IdUsuario}`,configPost);
+        const reponse = await fetch(`https://listmeapi20220829125529.azurewebsites.net/api/CadastroUsuario/AlterarUsuarioPorId${IdUsuario}`,configPost);
         const newUsuario = await reponse.json();
         console.log(newUsuario);
     }
