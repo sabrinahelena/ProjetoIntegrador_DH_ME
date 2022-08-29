@@ -15,6 +15,7 @@ import Residencias from './components/Residencias.vue';
 import ListaCompras from './components/ListaCompras.vue';
 import Home from './components/Home.vue'
 import Estoque from './components/Estoque.vue';
+import Login from './components/Login.vue';
 
 export default{
   name:`App`,
@@ -25,7 +26,8 @@ export default{
     Residencias,
     ListaCompras,
     Home,
-    Estoque
+    Estoque,
+    Login,
 }
 }
 </script>

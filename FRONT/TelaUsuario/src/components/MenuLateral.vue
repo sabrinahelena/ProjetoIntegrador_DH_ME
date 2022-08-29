@@ -2,7 +2,7 @@
 <template>
   <div id="menu-items">
     <div class="header">
-      <p class="texto_header"> Sabrina Helena <br> sabrinahelenaf@gmail.com </p>
+      <p class="texto_header"><br> </p>
     </div>
     <nav>
       <ul class="menu">
