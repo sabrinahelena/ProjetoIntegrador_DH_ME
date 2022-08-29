@@ -7,8 +7,10 @@
                 <div class="texto_primeirobloco">
                     <p> Se você já possui uma conta, autentique-se agora!</p>
                 </div>
-                <form action="/FRONT/Login/index.html">
+                <form >
+                    <RouterLink to="/redirectLogin">
                         <button type="submit" class="botao_primeirobloco">LOGIN</button>
+                    </RouterLink>
                 </form>
                 <div>
                     <figure class="figure">
@@ -22,10 +24,12 @@
             <h1>Cadastre-se</h1>
             <form
                 method = "get"
-                action= "/Login/index.html"
+                
                 >
                 <div>
-                    <input class="inputs"
+                    <input 
+                    v-model="bodyRegistro.nome_Usuario"
+                    class="inputs"
                     id="primeiro-nome"
                     name="primeiro-nome"
                     placeholder="Nome"
@@ -33,7 +37,9 @@
                 </div>
                 <br>
                 <div> 
-                    <input class="inputs"
+                    <input 
+                    v-model="bodyRegistro.sobrenome"
+                    class="inputs"
                     id="last-name"
                     name="last-name"
                     placeholder="Sobrenome"
@@ -42,16 +48,20 @@
                 <br>
 
                 <div>
-                    <input class="inputs"
+                    <input
+                    v-model="bodyRegistro.telefone"
+                    class="inputs"
                     id="telefone"
                     name="telefone"
-                    type="number"
+                    type="text"
                     placeholder="Telefone">
                 </div>
                 <br>
 
                 <div>
-                    <input class="inputs"
+                    <input 
+                    v-model="bodyRegistro.data_Nascimento"
+                    class="inputs"
                     id="data-nascimento"
                     name="data-nascimento"
                     type="date"
@@ -60,7 +70,9 @@
                 <br>
 
                 <div>
-                    <input class="inputs"
+                    <input 
+                    v-model="bodyRegistro.email"
+                    class="inputs"
                     id="email"
                     name="email"
                     type="email"
@@ -71,7 +83,9 @@
 
 
                 <div>
-                    <input class="inputs"
+                    <input 
+                    v-model="bodyRegistro.senha"
+                    class="inputs"
                     id="senha"
                     name="password"
                     type="password"
@@ -79,9 +93,14 @@
                     >
                 </div>
                 <br>
-                <a >
-                    <input v-on:click="PostUsuario()" type="button" class="botao_segundobloco" value="Confirmar" >
-                </a>
+                
+                
+                <RouterLink to="/login" target="_blank">
+                   <!-- <input  v-on:click="PostUsuario(bodyRegistro)  " type="button" class="botao_segundobloco" value="Confirmar" >
+                   -->teste
+                </RouterLink> 
+                
+               
             </form>
         </div>
     </div>
@@ -91,49 +110,33 @@
 </template>
 
 <script>
+import { RouterLink } from "vue-router";
+import RegistroService from "../Services/RegistroService"
+const {PostRegistro} = new RegistroService();
     export default {
     name: `Registro`,
     data() {
         return {
-            Estoques: [],
-            Produtos: [],
-            bodyAlteracaoEstoque: {
-                data_Validade: "", //retirar isso e substituir por coisas do registro
-                quantidade_Produto: 0
+            bodyRegistro: {
+                nome_Usuario : null,
+                sobrenome : null,
+                telefone : null,
+                data_Nascimento : null,
+                email : null,
+                foto_Perfil:"",
+                senha : null
+            
             }
         }
     },
     methods: {
-        PostUsuario: () => {
-            let inputPrimeiroNome = document.querySelector("#primeiro-nome");
-    let inputSegundoNome = document.querySelector("#last-name");
-    let inputTelefone = document.querySelector("#telefone");
-    let inputData =document.querySelector("#data-nascimento");
-    let inputEmail = document.querySelector("#email");
-    let inputSenha = document.querySelector("#senha");
-
-    let body= {
-        nome_Usuario : inputPrimeiroNome.value,
-        sobrenome : inputSegundoNome.value,
-        telefone : inputTelefone.value,
-        data_Nascimento : inputData.value,
-        email : inputEmail.value,
-        senha : inputSenha.value,
-        foto_Perfil:""
+        PostUsuario: (bodyRegistro) => {
+            PostRegistro(bodyRegistro);
+        },
+        Teste:()=>{
+            
         }
 
-    let configCabecalho={
-        method: 'POST',
-        body: JSON.stringify(body),
-        headers:{
-            'Content-Type': 'application/json; charset=UTF-8',
-                
-            'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
-        }
-    }
-    let response = await fetch(`https://localhost:7163/api/CadastroUsuario/AdicionarUsuario`,configCabecalho);
-    window.location.href=`/Login/index.html`; //colocar o ngc de router
-}
     }
     // let usuario = await response.json();
     // console.log(usuario);

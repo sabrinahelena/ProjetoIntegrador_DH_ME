@@ -8,8 +8,8 @@ import Home from './components/Home.vue'
 import ListaCompras from './components/ListaCompras.vue'
 import Estoque from './components/Estoque.vue'
 import Login from './components/Login.vue'
-
-
+import Registro from "./components/Registro.vue"
+import MenuLateral from "./components/MenuLateral.vue"
 const router = createRouter({
     history: createWebHashHistory(),
     routes: [
@@ -33,9 +33,22 @@ const router = createRouter({
             path:'/estoque',
             component: Estoque
         },
+        
+        {
+            path:'/registro',
+            component: Registro
+        },
         {
             path:'/login',
             component: Login
+        },
+        {
+            path:'/redirectLogin',
+            redirect:'/login',
+        },
+        {
+            path:'/menu',
+            component: MenuLateral
         }
     ]
 })

@@ -17,12 +17,12 @@
                 <div class="form">
                     <form method="get">
                         <div>
-                            <input class="inputs" id="email" name="email" required placeholder="Email" type="email">
+                            <input v-model="bodyLogin.email" class="inputs" id="email" name="email" required placeholder="Email" type="email">
                         </div>
                         <br>
 
                         <div>
-                            <input class="inputs" id="senha" name="senha" required placeholder="Senha" type="password">
+                            <input v-model="bodyLogin.senha" class="inputs" id="senha" name="senha" required placeholder="Senha" type="password">
                         </div>
                         <br>
                         <a>
@@ -40,41 +40,22 @@
 </template>
 
 <script>
-
+import LoginService from '../Services/LoginService'
+const {PostLogin} = new LoginService();
 export default {
     name: `Login`,
     data() {
         return {
-            Estoques: [],
-            Produtos: [],
-            bodyAlteracaoEstoque: {
-                data_Validade: "", //retirar isso e substituir por coisas do login
-                quantidade_Produto: 0
+            
+            bodyLogin: {
+                email: "", //retirar isso e substituir por coisas do login
+                senha: ""
             }
         }
     },
     methods: {
-        PostAcesso: () => {
-            let inputEmail = document.querySelector("#email").value;
-            let inputSenha = document.querySelector("#senha").value;
-
-            let body = {
-                email: inputEmail,
-                senha: inputSenha
-            }
-            console.log("teste")
-            console.log(body);
-
-            let configCabecalho = {
-                method: 'POST',
-                body: JSON.stringify(body),
-                headers: {
-                    'Content-Type': 'application/json; charset=UTF-8',
-
-                    'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
-                }
-            }
-            let response = await fetch(`https://localhost:7163/api/Acesso/Autenticar`, configCabecalho);
+        PostAcesso: (bodyLogin) => {
+            PostLogin(bodyLogin);
         }
     }
 }

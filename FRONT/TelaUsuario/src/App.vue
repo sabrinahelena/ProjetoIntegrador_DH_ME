@@ -2,6 +2,8 @@
 
 <template>
   <div>
+    <!-- <Registro/>
+    <Login/> -->
     <MenuLateral/>
     <RouterView></RouterView>
   </div>
@@ -16,6 +18,7 @@ import ListaCompras from './components/ListaCompras.vue';
 import Home from './components/Home.vue'
 import Estoque from './components/Estoque.vue';
 import Login from './components/Login.vue';
+import Registro from './components/Registro.vue';
 
 export default{
   name:`App`,
@@ -28,6 +31,7 @@ export default{
     Home,
     Estoque,
     Login,
+    Registro
 }
 }
 </script>
