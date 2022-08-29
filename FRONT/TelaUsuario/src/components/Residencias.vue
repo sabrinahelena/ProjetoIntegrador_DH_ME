@@ -1,7 +1,7 @@
 <template>
     <div id="titulo">
         <div class="y">
-        <img alt="casaImagem" id="imagem-casa" src="./imagens/icons8-house-90.png">
+        <img alt="casaImagem" id="imagem-casa" src="../assets/icons8-house-90.png">
         <h1 id="titulo-residencia"><b>Residências</b></h1>
         <div id="button-add">
             <span class="y add_residencia"> Adicionar residências</span>
