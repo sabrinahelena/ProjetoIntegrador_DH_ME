@@ -17,10 +17,11 @@
       <div class="form">
         <main class="lista">
           <ul>
-            <li>
-              <span class="texto_descricao">PRODUTO
-                <button class="botao_editarR " type="button"><img alt="editar" id="editar"
-                    src="../assets/mais.png"></button></span>
+
+            <li v-for="produto in Produtos">
+              <span class="texto_descricao">{{produto.nome_Produtos}}
+              <button v-on:click="AddEstoque(1,produto.id_Produtos)" class="botao_editarR " type="button"><img alt="editar" id="editar"
+                  src="../assets/mais.png"></button></span>
             </li>
           </ul>
         </main>
@@ -33,12 +34,12 @@
     <div class="popup">
       <form method="get">
         <div>
-          <input class="inputs" id="quant" name="quant" required placeholder="Quantidade" type="number">
+          <input v-model="bodyAlteracaoEstoque.quantidade_Produto" class="inputs" id="quant" name="quant" required placeholder="Quantidade" type="number">
         </div>
         <br>
         <button v-on:click="FecharPopUp()" class="fecharP" type="button"><img class="imagem_fecharP"
             src="./imagens/icons8-close-60.png" id="mais-imageP"></button>
-          <button v-on:click="" class="ADD" type="button"><img class="imagemAdd"
+          <button v-on:click="AlterarEstoque(bodyAlteracaoEstoque,estoque.produto.id_Produtos,estoque.id_Estoque)" class="ADD" type="button"><img class="imagemAdd"
           src="./imagens/icons8-confirm-67 (1).png" id="mais-imageA"></button>
       </form>
     </div>
@@ -55,19 +56,21 @@
           <tr v-for="estoque in Estoques">
             <th>{{ estoque.produto.nome_Produtos }}</th>
             <td>{{ estoque.quantidade_Produto }}</td>
+
             <td>
               <div id="button-addA">
-                <button v-on:click="AbrirPopUp()" class="botao_editarR" type="button"><img alt="mais-image"
+                <button v-on:click="AbrirPopUp(estoque)" class="botao_editarR" type="button"><img alt="mais-image"
                     id="mais-image" src="../assets/pencil.png"></button>
               </div>
             </td>
             <td>
               <div id="button-addA">
-                <button v-on:click="" class="botao_editarR" type="button"><img alt="mais-image" id="mais-image"
-                    src="./imagens/icons8-remove-60.png"></button>
+
+              <button v-on:click="RemoveEstoque(estoque.id_Estoque)" class="botao_editarR" type="button"><img alt="mais-image" id="mais-image"
+                  src="./imagens/icons8-remove-60.png"></button>
               </div>
             </td>
-          </tr>
+        </tr>
         </tbody>
       </table>
     </div>
@@ -76,12 +79,19 @@
 
 <script>
 import EstoqueService from "../Services/EstoqueService"
-const { GetById } = new EstoqueService();
+import ProdutoService from "../Services/ProdutoService";
+const {GetByIdEstoque, PostEstoque, DeleteEstoque, PatchEstoque} = new EstoqueService();
+const {GetAll} = new ProdutoService();
 export default {
   name: `Residencias`,
-  data() {
-    return {
-      Estoques: []
+  data(){
+    return{
+      Estoques:[],
+      Produtos:[],
+      bodyAlteracaoEstoque:{
+        data_Validade:"",
+        quantidade_Produto:0
+      }
     }
   },
   methods: {
@@ -103,6 +113,13 @@ export default {
       let resto = document.querySelector('.z')
       resto.style.display = 'block';
     },
+
+    AddEstoque:(IdResidencia, IdProduto)=>{
+      PostEstoque(IdResidencia, IdProduto);
+    },
+    RemoveEstoque:(IdEstoque)=>{
+      DeleteEstoque(IdEstoque);
+    },
     FecharPopUp: () => {
       let popup = document.querySelector('.popup')
       popup.style.display = 'none';
@@ -112,7 +129,7 @@ export default {
       resto.style.display = 'block';
     },
 
-    AbrirPopUp: () => {
+    AbrirPopUp: (estoque) => {
       let popup = document.querySelector('.popup')
       popup.style.display = 'block';
       let titulo = document.querySelector('.y')
@@ -121,10 +138,16 @@ export default {
       resto.style.display = 'none';
       let modal = document.querySelector('.modal')
       modal.style.display = 'none'
+      return estoque;
+    },
+
+    AlterarEstoque:(bodyAlteracaoEstoque,IdProduto,IdResidencia)=>{
+      PatchEstoque(bodyAlteracaoEstoque,IdProduto,IdResidencia)
     }
   },
-  mounted() {
-    GetById(1).then(response => this.Estoques = response);
+  mounted(){
+    GetByIdEstoque(1).then(response=>this.Estoques=response);
+    GetAll().then(response=>this.Produtos=response);
   }
 }
 </script>

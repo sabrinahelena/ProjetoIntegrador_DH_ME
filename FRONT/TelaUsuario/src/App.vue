@@ -4,7 +4,7 @@
   <div>
     <MenuLateral/>
     <RouterView></RouterView>
-    </div>
+  </div>
   
 </template>
 
