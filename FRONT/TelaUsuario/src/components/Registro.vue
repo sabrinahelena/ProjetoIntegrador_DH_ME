@@ -14,7 +14,7 @@
                 </form>
                 <div>
                     <figure class="figure">
-                        <img class="imagem" src="./imagens/Privacy-policy-rafiki.png">
+                        <img class="imagem" src="../assets/Privacy-policy-rafiki.png">
                     </figure>
                 </div>
             </div>

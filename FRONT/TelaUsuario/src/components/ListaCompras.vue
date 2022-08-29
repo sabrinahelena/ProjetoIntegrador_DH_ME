@@ -2,7 +2,7 @@
   <div id="titulo">
     <div class="y">
       <div class="t">
-        <img class="estoqueImagem" src="./imagens/carrinho-azul.png">
+        <img class="estoqueImagem" src="../assets/carrinho-azul.png">
         <h1 class="titulo-estoque"><b>Lista de Compras</b></h1>
 
       </div>
@@ -19,9 +19,9 @@
         </div>
         <br>
         <button v-on:click="FecharPopUp()" class="fecharP" type="button"><img class="imagem_fecharP"
-            src="./imagens/icons8-close-60.png" id="mais-imageP"></button>
+            src="../assets/icons8-close-60.png" id="mais-imageP"></button>
           <button v-on:click="" class="ADD" type="button"><img class="imagemAdd"
-          src="./imagens/icons8-confirm-67(1).png" id="mais-imageA"></button>
+          src="../assets/icons8-confirm-67(1).png" id="mais-imageA"></button>
       </form>
 
     </div>
@@ -38,7 +38,7 @@
           </ul>
         </main>
         <button v-on:click="Fechar()" class="fechar" type="button"><img class="imagem_fechar"
-            src="./imagens/icons8-close-60.png" id="mais-image"></button>
+            src="../assets/icons8-close-60.png" id="mais-image"></button>
       </div>
     </div>
     <div class="x">
@@ -62,7 +62,7 @@
             <td>
               <div id="button-addA">
                 <button v-on:click="RemoveLista(lista.idResidencia,lista.produto.id_Produtos)" class="botao_editarR" type="button"><img alt="mais-image" id="mais-image"
-                    src="./imagens/icons8-remove-60.png"></button>
+                    src="../assets/icons8-remove-60.png"></button>
               </div>
             </td>
           </tr>

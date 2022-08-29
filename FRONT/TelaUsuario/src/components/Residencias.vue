@@ -50,7 +50,7 @@
         <div class="z">
         <div >
             <figure>
-                <img class="imagem_residencia" src="./imagens/Ordinary-day.gif" />
+                <img class="imagem_residencia" src="../assets/Ordinary-day.gif" />
             </figure>
         </div>
     </div>

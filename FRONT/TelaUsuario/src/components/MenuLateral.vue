@@ -8,44 +8,44 @@
       <ul class="menu">
         <div class="logo">
           <figure>
-            <img class="imagem_logo" src="./imagens/icons8-house-96.png">
+            <img class="imagem_logo" src="../assets/icons8-house-96.png">
           </figure>
           <h2 class="titulo_site">ListMe</h2>
         </div>
         <div class="itens">
           <div class="item_home">
               <figure class="figure_logo">
-                  <img class="imagem_home" src="./imagens/icons8-house-30.png">
+                  <img class="imagem_home" src="../assets/icons8-house-30.png">
               </figure>
               <li class="item home"><RouterLink to="/home" class="item">Home</RouterLink></li>
           </div>
           <div class="item_home">
               <figure class="figure_logo">
-                  <img class="imagem_home" src="./imagens/icons8-automation-48.png">
+                  <img class="imagem_home" src="../assets/icons8-automation-48.png">
               </figure>
             <li class="item home">Configurações</li>
           </div>
           <div class="item_home">
               <figure class="figure_logo">
-                <img class="imagem_subitem" src="./imagens/profile-user.png">
+                <img class="imagem_subitem" src="../assets/profile-user.png">
               </figure>
             <li class="item subitem"><RouterLink  to="/perfil" class="item" >Perfil</RouterLink></li>
           </div>
             <div class="item_home">
               <figure class="figure_logo">
-                <img class="imagem_subitem" src="./imagens/icons8-real-estate-50.png">
+                <img class="imagem_subitem" src="../assets/icons8-real-estate-50.png">
               </figure>
               <li class="item subitem"><RouterLink to="/sobre" class="item" >Residencias</RouterLink></li>
             </div>
               <div class="item_home">
                 <figure class="figure_logo">
-                <img  class="imagem_home" src="./imagens/icons8-warehouse-60.png">
+                <img  class="imagem_home" src="../assets/icons8-warehouse-60.png">
               </figure>
               <li class="item home"><RouterLink to="/estoque" class="item" >Estoque</RouterLink></li>
               </div>
             <div class="item_home">
                 <figure class="figure_logo">
-                <img class="imagem_home" src="./imagens/icons8-buying-48.png">
+                <img class="imagem_home" src="../assets/icons8-buying-48.png">
               </figure>
               <li class="item home"><RouterLink to="/listacompras" class="item" >Compras</RouterLink></li>
             </div>

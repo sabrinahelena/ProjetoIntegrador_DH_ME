@@ -3,7 +3,7 @@
   <div id="perfil-container">
     
        <div class="t"> 
-     <img class="estoqueImagem" src="./imagens/icons8-male-user-96.png">
+     <img class="estoqueImagem" src="../assets/icons8-male-user-96.png">
         <h1 class="titulo-estoque"><b>Perfil</b></h1>
 
         <div>
@@ -34,9 +34,9 @@
             </ul> 
         </form>
         <div>
-     <button class="editarD" id="EditarNome" type="button"><img alt="abrirEditar" id="edit-button" src="./imagens/icons8-confirm-67.png"></button>
+     <button class="editarD" id="EditarNome" type="button"><img alt="abrirEditar" id="edit-button" src="../assets/icons8-confirm-67.png"></button>
         </div>
-            <img class="img" src="./imagens/Online-page-(1).gif"/>
+            <img class="img" src="../assets/Online-page-(1).gif">
 
     </div>
   </div>
